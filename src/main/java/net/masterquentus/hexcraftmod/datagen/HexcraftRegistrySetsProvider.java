@@ -17,7 +17,7 @@ import net.minecraftforge.common.data.DatapackBuiltinEntriesProvider;
 import net.minecraftforge.registries.ForgeRegistries;
 
 // Maybe Rename to HexcraftDataProvider or similar
-public class HexcraftWorldGenProvider extends DatapackBuiltinEntriesProvider {
+public class HexcraftRegistrySetsProvider extends DatapackBuiltinEntriesProvider {
 	public static final RegistrySetBuilder BUILDER = new RegistrySetBuilder()
 			.add(Registries.CONFIGURED_FEATURE, HexcraftConfiguredFeatures::bootstrap)
 			.add(Registries.PLACED_FEATURE, HexcraftPlacedFeatures::bootstrap)
@@ -27,7 +27,7 @@ public class HexcraftWorldGenProvider extends DatapackBuiltinEntriesProvider {
 			.add(Registries.DIMENSION_TYPE, HexcraftDimensions::bootstrapType)
 			.add(Registries.DAMAGE_TYPE, HexcraftDamageTypes::bootstrap);
 
-	public HexcraftWorldGenProvider(PackOutput output, CompletableFuture<HolderLookup.Provider> registries) {
+	public HexcraftRegistrySetsProvider(PackOutput output, CompletableFuture<HolderLookup.Provider> registries) {
 		super(output, registries, BUILDER, Set.of(HexcraftMod.MOD_ID));
 	}
 }

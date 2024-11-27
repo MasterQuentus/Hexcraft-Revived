@@ -860,6 +860,54 @@ public class HexcraftItems {
             () -> new HexcraftBoatItem(true, HexcraftBoatEntity.Type.ECHO_WOOD, new Item.Properties()));
 
     //Chest
+    public static final RegistryObject<Item> CHEST_EBONY = ITEMS.register("chest_ebony",
+            () -> new HexcraftChestBlockItem(HexcraftBlocks.CHEST_EBONY.get(), new Item.Properties()));
+
+    public static final RegistryObject<Item> CHEST_BLOOD_OAK = ITEMS.register("chest_blood_oak",
+            () -> new HexcraftChestBlockItem(HexcraftBlocks.CHEST_BLOOD_OAK.get(), new Item.Properties()));
+
+    public static final RegistryObject<Item> CHEST_HELL_BARK = ITEMS.register("chest_hell_bark",
+            () -> new HexcraftChestBlockItem(HexcraftBlocks.CHEST_HELL_BARK.get(), new Item.Properties()));
+
+    public  static final RegistryObject<Item> CHEST_WHITE_OAK = ITEMS.register("chest_white_oak",
+            () -> new HexcraftChestBlockItem(HexcraftBlocks.CHEST_WHITE_OAK.get(), new Item.Properties()));
+
+    public static final RegistryObject<Item> CHEST_ALDER = ITEMS.register("chest_alder",
+            () -> new HexcraftChestBlockItem(HexcraftBlocks.CHEST_ALDER.get(), new Item.Properties()));
+
+    public static final RegistryObject<Item> CHEST_WITCH_HAZEL = ITEMS.register("chest_witch_hazel",
+            () -> new HexcraftChestBlockItem(HexcraftBlocks.CHEST_WITCH_HAZEL.get(), new Item.Properties()));
+
+    public static final RegistryObject<Item> CHEST_WILLOW = ITEMS.register("chest_willow",
+            () -> new HexcraftChestBlockItem(HexcraftBlocks.CHEST_WILLOW.get(), new Item.Properties()));
+
+    public static final RegistryObject<Item> CHEST_HAWTHORN = ITEMS.register("chest_hawthorn",
+            () -> new HexcraftChestBlockItem(HexcraftBlocks.CHEST_HAWTHORN.get(), new Item.Properties()));
+
+    public static final RegistryObject<Item> CHEST_CEDAR = ITEMS.register("chest_cedar",
+            () -> new HexcraftChestBlockItem(HexcraftBlocks.CHEST_CEDAR.get(), new Item.Properties()));
+
+    public static final RegistryObject<Item> CHEST_DISTORTED = ITEMS.register("chest_distorted",
+            () -> new HexcraftChestBlockItem(HexcraftBlocks.CHEST_DISTORTED.get(), new Item.Properties()));
+
+    public static final RegistryObject<Item> CHEST_ELDER = ITEMS.register("chest_elder",
+            () -> new HexcraftChestBlockItem(HexcraftBlocks.CHEST_ELDER.get(), new Item.Properties()));
+
+    public static final RegistryObject<Item> CHEST_JUNIPER = ITEMS.register("chest_juniper",
+            () -> new HexcraftChestBlockItem(HexcraftBlocks.CHEST_JUNIPER.get(), new Item.Properties()));
+
+    public static final RegistryObject<Item> CHEST_ROWAN = ITEMS.register("chest_rowan",
+            () -> new HexcraftChestBlockItem(HexcraftBlocks.CHEST_ROWAN.get(), new Item.Properties()));
+
+    public static final RegistryObject<Item> CHEST_TWISTED = ITEMS.register("chest_twisted",
+            () -> new HexcraftChestBlockItem(HexcraftBlocks.CHEST_TWISTED.get(), new Item.Properties()));
+
+    public static final RegistryObject<Item> CHEST_WITCH_WOOD = ITEMS.register("chest_witch_wood",
+            () -> new HexcraftChestBlockItem(HexcraftBlocks.CHEST_WITCH_WOOD.get(), new Item.Properties()));
+
+    public static final RegistryObject<Item> CHEST_ECHO_WOOD = ITEMS.register("chest_echo_wood",
+            () -> new HexcraftChestBlockItem(HexcraftBlocks.CHEST_ECHO_WOOD.get(), new Item.Properties()));
+
 
 
 

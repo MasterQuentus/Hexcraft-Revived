@@ -2586,6 +2586,40 @@ public class HexcraftBlocks {
 	public static final RegistryObject<LiquidBlock> BLOOD_BLOCK = BLOCKS.register("blood_block",
 			() -> new LiquidBlock(HexcraftFluids.SOURCE_BLOOD, BlockBehaviour.Properties.copy(Blocks.WATER).noLootTable()));
 
+	//Chests
+	public static final RegistryObject<HexcraftChestBlock> CHEST_ALDER = BLOCKS.register("chest_alder",
+			() -> new HexcraftChestBlock(BlockBehaviour.Properties.copy(ALDER_PLANKS.get()).strength(2.5f)));
+	public static final RegistryObject<HexcraftChestBlock> CHEST_BLOOD_OAK = BLOCKS.register("chest_blood_oak",
+			() -> new HexcraftChestBlock(BlockBehaviour.Properties.copy(BLOOD_OAK_PLANKS.get()).strength(2.5f)));
+	public static final RegistryObject<HexcraftChestBlock> CHEST_CEDAR = BLOCKS.register("chest_cedar",
+			() -> new HexcraftChestBlock(BlockBehaviour.Properties.copy(CEDAR_PLANKS.get()).strength(2.5f)));
+	public static final RegistryObject<HexcraftChestBlock> CHEST_DISTORTED = BLOCKS.register("chest_distorted",
+			() -> new HexcraftChestBlock(BlockBehaviour.Properties.copy(DISTORTED_PLANKS.get()).strength(2.5f)));
+	public static final RegistryObject<HexcraftChestBlock> CHEST_EBONY = BLOCKS.register("chest_ebony",
+			() -> new HexcraftChestBlock(BlockBehaviour.Properties.copy(EBONY_PLANKS.get()).strength(2.5f)));
+	public static final RegistryObject<HexcraftChestBlock> CHEST_ECHO_WOOD = BLOCKS.register("chest_echo_wood",
+			() -> new HexcraftChestBlock(BlockBehaviour.Properties.copy(ECHO_WOOD_PLANKS.get()).strength(2.5f)));
+	public static final RegistryObject<HexcraftChestBlock> CHEST_ELDER = BLOCKS.register("chest_elder",
+			() -> new HexcraftChestBlock(BlockBehaviour.Properties.copy(ELDER_PLANKS.get()).strength(2.5f)));
+	public static final RegistryObject<HexcraftChestBlock> CHEST_HAWTHORN = BLOCKS.register("chest_hawthorn",
+			() -> new HexcraftChestBlock(BlockBehaviour.Properties.copy(HAWTHORN_PLANKS.get()).strength(2.5f)));
+	public static final RegistryObject<HexcraftChestBlock> CHEST_HELL_BARK = BLOCKS.register("chest_hell_bark",
+			() -> new HexcraftChestBlock(BlockBehaviour.Properties.copy(HELL_BARK_PLANKS.get()).strength(2.5f)));
+	public static final RegistryObject<HexcraftChestBlock> CHEST_JUNIPER = BLOCKS.register("chest_juniper",
+			() -> new HexcraftChestBlock(BlockBehaviour.Properties.copy(JUNIPER_PLANKS.get()).strength(2.5f)));
+	public static final RegistryObject<HexcraftChestBlock> CHEST_ROWAN = BLOCKS.register("chest_rowan",
+			() -> new HexcraftChestBlock(BlockBehaviour.Properties.copy(ROWAN_PLANKS.get()).strength(2.5f)));
+	public static final RegistryObject<HexcraftChestBlock> CHEST_TWISTED = BLOCKS.register("chest_twisted",
+			() -> new HexcraftChestBlock(BlockBehaviour.Properties.copy(TWISTED_PLANKS.get()).strength(2.5f)));
+	public static final RegistryObject<HexcraftChestBlock> CHEST_WHITE_OAK = BLOCKS.register("chest_white_oak",
+			() -> new HexcraftChestBlock(BlockBehaviour.Properties.copy(WHITE_OAK_PLANKS.get()).strength(2.5f)));
+	public static final RegistryObject<HexcraftChestBlock> CHEST_WILLOW = BLOCKS.register("chest_willow",
+			() -> new HexcraftChestBlock(BlockBehaviour.Properties.copy(WILLOW_PLANKS.get()).strength(2.5f)));
+	public static final RegistryObject<HexcraftChestBlock> CHEST_WITCH_HAZEL = BLOCKS.register("chest_witch_hazel",
+			() -> new HexcraftChestBlock(BlockBehaviour.Properties.copy(WITCH_HAZEL_PLANKS.get()).strength(2.5f)));
+	public static final RegistryObject<HexcraftChestBlock> CHEST_WITCH_WOOD = BLOCKS.register("chest_witch_wood",
+			() -> new HexcraftChestBlock(BlockBehaviour.Properties.copy(WITCH_WOOD_PLANKS.get()).strength(2.5f)));
+
 	private static <T extends Block> RegistryObject<T> registerBlock(String name, Supplier<T> block) {
 		RegistryObject<T> toReturn = BLOCKS.register(name, block);
 		registerBlockItem(name, toReturn);

@@ -66,6 +66,16 @@ public class HexcraftBlockEntities {
 							HexcraftBlocks.WITCH_WOOD_HANGING_SIGN.get(), HexcraftBlocks.WITCH_WOOD_WALL_HANGING_SIGN.get(),
 							HexcraftBlocks.ECHO_WOOD_HANGING_SIGN.get(), HexcraftBlocks.ECHO_WOOD_WALL_HANGING_SIGN.get()).build(null));
 
+
+	//public static final RegistryObject<BlockEntityType<HexcraftChestBlockEntity>> CHEST = BLOCK_ENTITIES.register("chest",
+			//() -> BlockEntityType.Builder.of(HexcraftChestBlockEntity::new,
+					//HexcraftBlocks.CHEST_ALDER.get(), HexcraftBlocks.CHEST_BLOOD_OAK.get(), HexcraftBlocks.CHEST_CEDAR.get(),
+					//HexcraftBlocks.CHEST_DISTORTED.get(), HexcraftBlocks.CHEST_EBONY.get(), HexcraftBlocks.CHEST_ECHO_WOOD.get(),
+					//HexcraftBlocks.CHEST_ELDER.get(), HexcraftBlocks.CHEST_HAWTHORN.get(), HexcraftBlocks.CHEST_HELL_BARK.get(),
+					//HexcraftBlocks.CHEST_JUNIPER.get(), HexcraftBlocks.CHEST_ROWAN.get(), HexcraftBlocks.CHEST_TWISTED.get(),
+					//HexcraftBlocks.CHEST_WHITE_OAK.get(), HexcraftBlocks.CHEST_WILLOW.get(), HexcraftBlocks.CHEST_WITCH_HAZEL.get(),
+					//HexcraftBlocks.CHEST_WITCH_WOOD.get()).build(null));
+
 	//Crates
 
 

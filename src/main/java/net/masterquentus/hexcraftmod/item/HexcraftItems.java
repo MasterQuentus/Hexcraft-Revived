@@ -432,6 +432,12 @@ public class HexcraftItems {
     public static final RegistryObject<Item> ARTHANA = ITEMS.register("arthana",
             () -> new SwordItem(HexcraftToolTiers.ARTHANA , 3, -2.4F, new Item.Properties()));
 
+    public static final RegistryObject<Item> VEIL_ASCENDANT_KEY = ITEMS.register("veil_ascendant_key",
+            () -> new VeilAscendantKeyItem(new Item.Properties().stacksTo(1)));
+
+    public static final RegistryObject<Item> ASCENDANT_DIAL = ITEMS.register("ascendant_dial",
+            () -> new AscendantDialItem(new Item.Properties().stacksTo(1)));
+
     public static final RegistryObject<Item> ANOINTING_PASTE = ITEMS.register("anointing_paste",
             () -> new AnointingPasteItem(new Item.Properties()));
 

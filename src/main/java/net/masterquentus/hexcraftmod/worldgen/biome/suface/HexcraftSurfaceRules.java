@@ -8,6 +8,7 @@ import net.minecraft.world.level.levelgen.SurfaceRules;
 import net.minecraft.world.level.levelgen.VerticalAnchor;
 
 public class HexcraftSurfaceRules {
+    // Block state rules for your custom blocks and vanilla blocks
     private static final SurfaceRules.RuleSource DIRT = makeStateRule(Blocks.DIRT);
     private static final SurfaceRules.RuleSource GRASS_BLOCK = makeStateRule(Blocks.GRASS_BLOCK);
     private static final SurfaceRules.RuleSource STONE = makeStateRule(Blocks.STONE);
@@ -20,59 +21,70 @@ public class HexcraftSurfaceRules {
     private static final SurfaceRules.RuleSource DEEPSLATE = makeStateRule(Blocks.DEEPSLATE);
 
     public static SurfaceRules.RuleSource makeRules() {
+        // Condition: is block at or above water level
         SurfaceRules.ConditionSource isAtOrAboveWaterLevel = SurfaceRules.waterBlockCheck(-1, 0);
 
-        // Default grass surface
-        SurfaceRules.RuleSource defaultOverWorld = SurfaceRules.sequence(
+        // Default Overworld surface: Grass on top with dirt below
+        SurfaceRules.RuleSource defaultOverworld = SurfaceRules.sequence(
                 SurfaceRules.ifTrue(SurfaceRules.ON_FLOOR,
-                        SurfaceRules.ifTrue(isAtOrAboveWaterLevel, GRASS_BLOCK)), DIRT);
-
-        //Default bedrock floor
-        SurfaceRules.RuleSource bedrock_floor = SurfaceRules.ifTrue(SurfaceRules.verticalGradient(
-                        "minecraft:bedrock_floor", VerticalAnchor.bottom(), VerticalAnchor.aboveBottom(5)),
-                BEDROCK);
-
-        SurfaceRules.RuleSource vilegrassSurface = SurfaceRules.ifTrue(
-                SurfaceRules.abovePreliminarySurface(),
-                SurfaceRules.sequence(
-                        SurfaceRules.ifTrue(SurfaceRules.ON_FLOOR,
-                                SurfaceRules.ifTrue(isAtOrAboveWaterLevel, VILE_GRASS_BLOCK)),
-                        SurfaceRules.ifTrue(SurfaceRules.ON_FLOOR, VILE_DIRT),
-                        SurfaceRules.ifTrue(SurfaceRules.UNDER_FLOOR, VILE_DIRT)
-                )
-
+                        SurfaceRules.ifTrue(isAtOrAboveWaterLevel, GRASS_BLOCK)),
+                DIRT
         );
 
-        SurfaceRules.RuleSource desertSurface = SurfaceRules.ifTrue(
-                SurfaceRules.abovePreliminarySurface(),
-                SurfaceRules.sequence(
-                        SurfaceRules.ifTrue(SurfaceRules.ON_FLOOR,
-                                SurfaceRules.ifTrue(isAtOrAboveWaterLevel, CRIMSON_SAND_BLOCK)),
-                        SurfaceRules.ifTrue(SurfaceRules.ON_FLOOR, CRIMSON_SAND_BLOCK),
-                        SurfaceRules.ifTrue(SurfaceRules.UNDER_FLOOR, CRIMSON_SAND_STONE_BLOCK)
-                )
+        // Bedrock layer at the bottom 5 blocks
+        SurfaceRules.RuleSource bedrockFloor = SurfaceRules.ifTrue(
+                SurfaceRules.verticalGradient("bedrock_floor", VerticalAnchor.bottom(), VerticalAnchor.aboveBottom(5)),
+                BEDROCK
         );
 
+        // Underworld stone base (used underground as filler)
+        SurfaceRules.RuleSource underworldStoneLayer = SurfaceRules.sequence(
+                SurfaceRules.ifTrue(SurfaceRules.UNDER_FLOOR, UNDER_WORLD_STONE_BLOCK)
+        );
+
+        // Vampire Forest surface: vile grass on top, vile dirt below
         SurfaceRules.RuleSource vampireSurface = SurfaceRules.sequence(
-                bedrock_floor,
-                vilegrassSurface,
-                DEEPSLATE
+                bedrockFloor,
+                SurfaceRules.ifTrue(
+                        SurfaceRules.abovePreliminarySurface(),
+                        SurfaceRules.sequence(
+                                SurfaceRules.ifTrue(SurfaceRules.ON_FLOOR,
+                                        SurfaceRules.ifTrue(isAtOrAboveWaterLevel, VILE_GRASS_BLOCK)),
+                                SurfaceRules.ifTrue(SurfaceRules.ON_FLOOR, VILE_DIRT),
+                                SurfaceRules.ifTrue(SurfaceRules.UNDER_FLOOR, VILE_DIRT)
+                        )
+                ),
+                // DEEPSLATE removed
+                underworldStoneLayer
         );
 
-        SurfaceRules.RuleSource crimsonSurface = SurfaceRules.sequence(
-                bedrock_floor,
-                desertSurface,
-                DEEPSLATE
+        // Crimson Desert surface: crimson sand on top, crimson sandstone below
+        SurfaceRules.RuleSource crimsonDesertSurface = SurfaceRules.sequence(
+                bedrockFloor,
+                SurfaceRules.ifTrue(
+                        SurfaceRules.abovePreliminarySurface(),
+                        SurfaceRules.sequence(
+                                SurfaceRules.ifTrue(SurfaceRules.ON_FLOOR,
+                                        SurfaceRules.ifTrue(isAtOrAboveWaterLevel, CRIMSON_SAND_BLOCK)),
+                                SurfaceRules.ifTrue(SurfaceRules.ON_FLOOR, CRIMSON_SAND_BLOCK),
+                                SurfaceRules.ifTrue(SurfaceRules.UNDER_FLOOR, CRIMSON_SAND_STONE_BLOCK)
+                        )
+                ),
+                // DEEPSLATE removed
+                underworldStoneLayer
         );
 
-        SurfaceRules.RuleSource abyssGeneration = SurfaceRules.sequence(
+
+        // Combine biome-specific rules by biome
+        SurfaceRules.RuleSource underworldBiomes = SurfaceRules.sequence(
                 SurfaceRules.ifTrue(SurfaceRules.isBiome(HexcraftBiomes.VAMPIRE_FOREST), vampireSurface),
-                SurfaceRules.ifTrue(SurfaceRules.isBiome(HexcraftBiomes.CRIMSON_DESERT), crimsonSurface)
+                SurfaceRules.ifTrue(SurfaceRules.isBiome(HexcraftBiomes.CRIMSON_DESERT), crimsonDesertSurface)
         );
 
+        // Final combined rule set: underworld biomes, then default overworld rules as fallback
         return SurfaceRules.sequence(
-                abyssGeneration,
-                defaultOverWorld
+                underworldBiomes,
+                defaultOverworld
         );
     }
 

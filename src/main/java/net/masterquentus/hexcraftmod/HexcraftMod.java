@@ -22,6 +22,9 @@ import net.masterquentus.hexcraftmod.fluid.HexcraftFluids;
 import net.masterquentus.hexcraftmod.item.HexcraftCreativeModTabs;
 import net.masterquentus.hexcraftmod.item.HexcraftItems;
 import net.masterquentus.hexcraftmod.loot.HexcraftLootModifier;
+import net.masterquentus.hexcraftmod.magic.CapabilityEventHandler;
+import net.masterquentus.hexcraftmod.magic.MagicStamina;
+import net.masterquentus.hexcraftmod.magic.MagicStaminaTickHandler;
 import net.masterquentus.hexcraftmod.recipe.HexcraftRecipeTypes;
 import net.masterquentus.hexcraftmod.recipe.HexcraftRecipes;
 import net.masterquentus.hexcraftmod.screens.HexcraftMenuTypes;
@@ -47,6 +50,8 @@ import net.minecraft.world.level.block.FlowerPotBlock;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.EntityRenderersEvent;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.common.capabilities.CapabilityManager;
+import net.minecraftforge.common.capabilities.CapabilityToken;
 import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
 import net.minecraftforge.event.server.ServerStartingEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -117,12 +122,16 @@ public class HexcraftMod {
 		MinecraftForge.EVENT_BUS.register(VampireBloodEventHandler.class);
 		MinecraftForge.EVENT_BUS.register(VampireWeaknessHandler.class);
 		MinecraftForge.EVENT_BUS.register(HexcraftEventClientBusEvents.class);
+		MinecraftForge.EVENT_BUS.register(MagicStaminaTickHandler.class);
+		MinecraftForge.EVENT_BUS.register(CapabilityEventHandler.class);
 
 
 		// Register the commonSetup method
 		modEventBus.addListener(this::commonSetup);
 
 	}
+
+
 
 
 	// Helper method to create ResourceLocation
@@ -139,6 +148,8 @@ public class HexcraftMod {
 	private void commonSetup(final FMLCommonSetupEvent event) {
 		HexcraftItems.registerCompostables();
 		event.enqueueWork(() -> {
+
+			CapabilityManager.get(new CapabilityToken<MagicStamina>() {});  // No need to call register() manually
 
 
 			// Register the Leach Chest Block Entity

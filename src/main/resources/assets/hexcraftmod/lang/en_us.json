@@ -106,6 +106,8 @@
   "item.hexcraftmod.reek_of_misfortune": "Reek Of Misfortune",
   "item.hexcraftmod.wool_of_bat": "Wool Of Bat",
   "item.hexcraftmod.arthana": "Arthana",
+  "item.hexcraftmod.veil_ascendant_key": "Veil Ascendant Key",
+  "item.hexcraftmod.ascendant_dial": "Ascendant Dial",
   "item.hexcraftmod.anointing_paste": "Anointing Paste",
   "item.hexcraftmod.mutandis": "Mutandis",
   "item.hexcraftmod.mutandis_extremis": "Mutandis Extremis",
@@ -1076,6 +1078,8 @@
   "patchouli.page.hexcraftmod.witch_satchel.1": "The Witch’s Satchel is a special storage item used by witches to hold herbs, seeds, and enchanted plants.",
   "patchouli.page.hexcraftmod.witch_satchel.2": "It has 16 slots and can only store plant-related items, excluding cactus blocks.",
   "patchouli.page.hexcraftmod.witch_satchel.3": "The satchel is dyeable, allowing players to customize its appearance.",
+
+  "dimension.hexcraftmod.ascendant_prison": "The Shattered Veil",
 
   //Creative Mod Tab
   "creativetab.hexcraft_tab": "Hexcraft Tab"

@@ -4,6 +4,8 @@ import com.mojang.datafixers.util.Pair;
 import net.masterquentus.hexcraftmod.HexcraftMod;
 import net.masterquentus.hexcraftmod.block.HexcraftBlocks;
 import net.masterquentus.hexcraftmod.worldgen.biome.HexcraftBiomes;
+import net.masterquentus.hexcraftmod.worldgen.biome.suface.HexcraftSurfaceRules;
+import net.minecraft.core.Holder;
 import net.minecraft.core.HolderGetter;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstapContext;
@@ -19,63 +21,273 @@ import net.minecraft.world.level.dimension.LevelStem;
 import net.minecraft.world.level.levelgen.NoiseBasedChunkGenerator;
 import net.minecraft.world.level.levelgen.NoiseGeneratorSettings;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.OptionalLong;
 
+
 public class HexcraftDimensions {
+    // Existing Underworld dimension keys
     public static final ResourceKey<LevelStem> UNDERWORLDDIM_KEY = ResourceKey.create(Registries.LEVEL_STEM,
             new ResourceLocation(HexcraftMod.MOD_ID, "underworlddim"));
     public static final ResourceKey<Level> UNDERWORLDDIM_LEVEL_KEY = ResourceKey.create(Registries.DIMENSION,
             new ResourceLocation(HexcraftMod.MOD_ID, "underworlddim"));
     public static final ResourceKey<DimensionType> UNDERWORLD_DIM_TYPE = ResourceKey.create(Registries.DIMENSION_TYPE,
             new ResourceLocation(HexcraftMod.MOD_ID, "underworlddim_type"));
+    public static final ResourceKey<NoiseGeneratorSettings> UNDERWORLD_NOISE_SETTINGS_KEY = ResourceKey.create(
+            Registries.NOISE_SETTINGS, new ResourceLocation(HexcraftMod.MOD_ID, "underworld_noise_settings"));
+
+    // New Prison World dimension keys
+    public static final ResourceKey<LevelStem> PRISONWORLD_DIM_KEY = ResourceKey.create(Registries.LEVEL_STEM,
+            new ResourceLocation(HexcraftMod.MOD_ID, "prison_world"));
+    public static final ResourceKey<Level> PRISONWORLD_LEVEL_KEY = ResourceKey.create(Registries.DIMENSION,
+            new ResourceLocation(HexcraftMod.MOD_ID, "prison_world"));
+    public static final ResourceKey<DimensionType> PRISONWORLD_DIM_TYPE = ResourceKey.create(Registries.DIMENSION_TYPE,
+            new ResourceLocation(HexcraftMod.MOD_ID, "prison_world_type"));
+
+    public static void bootstrapNoiseSettings(BootstapContext<NoiseGeneratorSettings> context) {
+        Holder<NoiseGeneratorSettings> cavesSettingsHolder = context.lookup(Registries.NOISE_SETTINGS).getOrThrow(NoiseGeneratorSettings.CAVES);
+        NoiseGeneratorSettings cavesSettings = cavesSettingsHolder.value();
+
+        NoiseGeneratorSettings underworldNoiseSettings = new NoiseGeneratorSettings(
+                cavesSettings.noiseSettings(),
+                cavesSettings.defaultBlock(),
+                cavesSettings.defaultFluid(),
+                cavesSettings.noiseRouter(),
+                HexcraftSurfaceRules.makeRules(),  // <-- Your custom surface rules here
+                cavesSettings.spawnTarget(),
+                cavesSettings.seaLevel(),
+                cavesSettings.oreVeinsEnabled(),
+                cavesSettings.aquifersEnabled(),
+                cavesSettings.useLegacyRandomSource(),
+                cavesSettings.disableMobGeneration()
+        );
+
+        context.register(UNDERWORLD_NOISE_SETTINGS_KEY, underworldNoiseSettings);
+    }
 
 
     public static void bootstrapType(BootstapContext<DimensionType> context) {
+        // Underworld Dimension Type
         context.register(UNDERWORLD_DIM_TYPE, new DimensionType(
                 OptionalLong.of(12000), // fixedTime
                 false, // hasSkylight
-                true, // hasCeiling
+                true,  // hasCeiling
                 false, // ultraWarm
                 false, // natural
-                1.0, // coordinateScale
+                1.0,   // coordinateScale
                 false, // bedWorks
-                true, // respawnAnchorWorks
-                0, // minY
-                256, // height
-                256, // logicalHeight
-                BlockTags.INFINIBURN_OVERWORLD, // infiniburn
-                BuiltinDimensionTypes.OVERWORLD_EFFECTS, // effectsLocation
-                1.0f, // ambientLight
+                true,  // respawnAnchorWorks
+                -64,   // minY: lowered to underground
+                320,   // height: enough vertical space underground (256 + 64)
+                320,   // logicalHeight
+                BlockTags.INFINIBURN_OVERWORLD,
+                BuiltinDimensionTypes.OVERWORLD_EFFECTS,
+                1.0f,  // ambientLight
                 new DimensionType.MonsterSettings(true, false, ConstantInt.of(0), 0)));
+
+        // Prison World Dimension Type - like vanilla overworld
+        context.register(PRISONWORLD_DIM_TYPE, new DimensionType(
+                OptionalLong.empty(), // no fixed time, dynamic day-night cycle
+                true,                 // hasSkylight - true for natural daylight
+                false,                // hasCeiling - false (no roof)
+                false,                // ultraWarm - false (not like Nether)
+                true,                 // natural - true, natural dimension
+                1.0,                  // coordinateScale - standard scale
+                true,                 // bedWorks - true, beds can be used
+                true,                 // respawnAnchorWorks - true, respawn anchors work
+                0,                    // minY
+                256,                  // height
+                256,                  // logicalHeight
+                BlockTags.INFINIBURN_OVERWORLD, // blocks that burn infinitely
+                BuiltinDimensionTypes.OVERWORLD_EFFECTS, // overworld visual effects
+                0.0f,                 // ambientLight - 0 means default daylight brightness
+                new DimensionType.MonsterSettings(true, false, ConstantInt.of(0), 0)
+        ));
     }
 
+    public static MultiNoiseBiomeSource createVanillaOverworldBiomeSource(HolderGetter<Biome> biomeRegistry) {
+        List<Pair<Climate.ParameterPoint, Holder<Biome>>> parameters = new ArrayList<>();
+
+        // This list is based on vanilla's climate parameter points and biomes for the overworld
+        // You can add all or just key biomes. Here’s a minimal example:
+
+        parameters.add(Pair.of(Climate.parameters(0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F),
+                biomeRegistry.getOrThrow(Biomes.PLAINS)));
+
+        parameters.add(Pair.of(Climate.parameters(0.9F, 0.0F, 0.0F, 0.0F, 0.0F, 0.1F, 0.9F),
+                biomeRegistry.getOrThrow(Biomes.DESERT)));
+
+        parameters.add(Pair.of(Climate.parameters(0.1F, 0.1F, 0.0F, 0.0F, 0.0F, 0.9F, 0.1F),
+                biomeRegistry.getOrThrow(Biomes.FOREST)));
+
+        parameters.add(Pair.of(Climate.parameters(0.2F, 0.3F, 0.0F, 0.0F, 0.0F, 0.7F, 0.5F),
+                biomeRegistry.getOrThrow(Biomes.BIRCH_FOREST)));
+
+        parameters.add(Pair.of(Climate.parameters(-0.2F, 0.1F, 0.0F, 0.0F, 0.0F, 0.3F, 0.3F),
+                biomeRegistry.getOrThrow(Biomes.DARK_FOREST)));
+
+        parameters.add(Pair.of(Climate.parameters(0.0F, -0.2F, 0.0F, 0.0F, 0.0F, 0.15F, 0.6F),
+                biomeRegistry.getOrThrow(Biomes.SWAMP)));
+
+        parameters.add(Pair.of(Climate.parameters(0.4F, 0.0F, 0.0F, 0.0F, 0.0F, 0.8F, 0.2F),
+                biomeRegistry.getOrThrow(Biomes.JUNGLE)));
+
+        parameters.add(Pair.of(Climate.parameters(-0.5F, 0.2F, 0.0F, 0.0F, 0.0F, 0.2F, 0.4F),
+                biomeRegistry.getOrThrow(Biomes.TAIGA)));
+
+        parameters.add(Pair.of(Climate.parameters(-0.6F, -0.3F, 0.0F, 0.0F, 0.0F, 0.1F, 0.3F),
+                biomeRegistry.getOrThrow(Biomes.SNOWY_TAIGA)));
+
+        parameters.add(Pair.of(Climate.parameters(-0.85F, -0.5F, 0.0F, 0.0F, 0.0F, 0.0F, 0.2F),
+                biomeRegistry.getOrThrow(Biomes.ICE_SPIKES)));
+
+        parameters.add(Pair.of(Climate.parameters(0.5F, 0.4F, 0.0F, 0.0F, 0.0F, 0.9F, 0.6F),
+                biomeRegistry.getOrThrow(Biomes.SAVANNA)));
+
+        parameters.add(Pair.of(Climate.parameters(0.55F, 0.6F, 0.0F, 0.0F, 0.0F, 0.85F, 0.75F),
+                biomeRegistry.getOrThrow(Biomes.SAVANNA_PLATEAU)));
+
+        parameters.add(Pair.of(Climate.parameters(0.35F, 0.35F, 0.0F, 0.0F, 0.0F, 0.75F, 0.55F),
+                biomeRegistry.getOrThrow(Biomes.FLOWER_FOREST)));
+
+        parameters.add(Pair.of(Climate.parameters(0.15F, -0.15F, 0.0F, 0.0F, 0.0F, 0.2F, 0.2F),
+                biomeRegistry.getOrThrow(Biomes.BADLANDS)));
+
+        parameters.add(Pair.of(Climate.parameters(-0.1F, 0.0F, 0.0F, 0.0F, 0.0F, 0.25F, 0.4F),
+                biomeRegistry.getOrThrow(Biomes.OCEAN)));
+
+        parameters.add(Pair.of(Climate.parameters(-0.55F, -0.35F, 0.0F, 0.0F, 0.0F, 0.05F, 0.1F),
+                biomeRegistry.getOrThrow(Biomes.DEEP_OCEAN)));
+
+        parameters.add(Pair.of(Climate.parameters(-0.95F, -0.55F, 0.0F, 0.0F, 0.0F, 0.0F, 0.05F),
+                biomeRegistry.getOrThrow(Biomes.FROZEN_OCEAN)));
+
+        parameters.add(Pair.of(Climate.parameters(0.85F, 0.0F, 0.0F, 0.0F, 0.0F, 1.0F, 0.55F),
+                biomeRegistry.getOrThrow(Biomes.MUSHROOM_FIELDS)));
+
+        parameters.add(Pair.of(Climate.parameters(0.05F, 0.05F, 0.0F, 0.0F, 0.0F, 0.05F, 0.05F),
+                biomeRegistry.getOrThrow(Biomes.SUNFLOWER_PLAINS)));
+
+        parameters.add(Pair.of(Climate.parameters(-0.45F, 0.35F, 0.0F, 0.0F, 0.0F, 0.1F, 0.1F),
+                biomeRegistry.getOrThrow(Biomes.SNOWY_PLAINS)));
+
+        parameters.add(Pair.of(Climate.parameters(0.0F, -0.25F, 0.0F, 0.0F, 0.0F, 0.1F, 0.65F),
+                biomeRegistry.getOrThrow(Biomes.MANGROVE_SWAMP)));
+
+        parameters.add(Pair.of(Climate.parameters(0.25F, 0.35F, 0.0F, 0.0F, 0.0F, 0.7F, 0.55F),
+                biomeRegistry.getOrThrow(Biomes.OLD_GROWTH_BIRCH_FOREST)));
+
+        parameters.add(Pair.of(Climate.parameters(-0.5F, 0.25F, 0.0F, 0.0F, 0.0F, 0.35F, 0.4F),
+                biomeRegistry.getOrThrow(Biomes.OLD_GROWTH_PINE_TAIGA)));
+
+        parameters.add(Pair.of(Climate.parameters(-0.6F, 0.2F, 0.0F, 0.0F, 0.0F, 0.15F, 0.45F),
+                biomeRegistry.getOrThrow(Biomes.OLD_GROWTH_SPRUCE_TAIGA)));
+
+        parameters.add(Pair.of(Climate.parameters(0.4F, 0.45F, 0.0F, 0.0F, 0.0F, 0.75F, 0.6F),
+                biomeRegistry.getOrThrow(Biomes.WINDSWEPT_GRAVELLY_HILLS)));
+
+        parameters.add(Pair.of(Climate.parameters(0.3F, 0.35F, 0.0F, 0.0F, 0.0F, 0.7F, 0.65F),
+                biomeRegistry.getOrThrow(Biomes.WINDSWEPT_FOREST)));
+
+        parameters.add(Pair.of(Climate.parameters(0.55F, 0.5F, 0.0F, 0.0F, 0.0F, 0.85F, 0.75F),
+                biomeRegistry.getOrThrow(Biomes.WINDSWEPT_SAVANNA)));
+
+        parameters.add(Pair.of(Climate.parameters(0.25F, 0.05F, 0.0F, 0.0F, 0.0F, 0.9F, 0.35F),
+                biomeRegistry.getOrThrow(Biomes.SPARSE_JUNGLE)));
+
+        parameters.add(Pair.of(Climate.parameters(0.36F, 0.12F, 0.0F, 0.0F, 0.0F, 0.92F, 0.42F),
+                biomeRegistry.getOrThrow(Biomes.BAMBOO_JUNGLE)));
+
+        parameters.add(Pair.of(Climate.parameters(0.12F, 0.05F, 0.0F, 0.0F, 0.0F, 0.32F, 0.52F),
+                biomeRegistry.getOrThrow(Biomes.ERODED_BADLANDS)));
+
+        parameters.add(Pair.of(Climate.parameters(0.02F, 0.12F, 0.0F, 0.0F, 0.0F, 0.42F, 0.48F),
+                biomeRegistry.getOrThrow(Biomes.WOODED_BADLANDS)));
+
+        parameters.add(Pair.of(Climate.parameters(0.11F, 0.32F, 0.0F, 0.0F, 0.0F, 0.62F, 0.42F),
+                biomeRegistry.getOrThrow(Biomes.MEADOW)));
+
+        parameters.add(Pair.of(Climate.parameters(0.21F, 0.42F, 0.0F, 0.0F, 0.0F, 0.72F, 0.46F),
+                biomeRegistry.getOrThrow(Biomes.CHERRY_GROVE)));
+
+        parameters.add(Pair.of(Climate.parameters(0.32F, 0.33F, 0.0F, 0.0F, 0.0F, 0.67F, 0.52F),
+                biomeRegistry.getOrThrow(Biomes.GROVE)));
+
+        parameters.add(Pair.of(Climate.parameters(-0.52F, -0.62F, 0.0F, 0.0F, 0.0F, 0.12F, 0.38F),
+                biomeRegistry.getOrThrow(Biomes.SNOWY_SLOPES)));
+
+        parameters.add(Pair.of(Climate.parameters(-0.72F, -0.72F, 0.0F, 0.0F, 0.0F, 0.02F, 0.42F),
+                biomeRegistry.getOrThrow(Biomes.FROZEN_PEAKS)));
+
+        parameters.add(Pair.of(Climate.parameters(-0.62F, -0.82F, 0.0F, 0.0F, 0.0F, 0.02F, 0.32F),
+                biomeRegistry.getOrThrow(Biomes.JAGGED_PEAKS)));
+
+        parameters.add(Pair.of(Climate.parameters(-0.52F, -0.72F, 0.0F, 0.0F, 0.0F, 0.02F, 0.36F),
+                biomeRegistry.getOrThrow(Biomes.STONY_PEAKS)));
+
+        parameters.add(Pair.of(Climate.parameters(0.02F, 0.02F, 0.0F, 0.0F, 0.0F, 0.02F, 0.32F),
+                biomeRegistry.getOrThrow(Biomes.RIVER)));
+
+        parameters.add(Pair.of(Climate.parameters(-0.62F, -0.32F, 0.0F, 0.0F, 0.0F, 0.02F, 0.58F),
+                biomeRegistry.getOrThrow(Biomes.FROZEN_RIVER)));
+
+        parameters.add(Pair.of(Climate.parameters(0.02F, 0.22F, 0.0F, 0.0F, 0.0F, 0.32F, 0.28F),
+                biomeRegistry.getOrThrow(Biomes.BEACH)));
+
+        parameters.add(Pair.of(Climate.parameters(-0.52F, 0.12F, 0.0F, 0.0F, 0.0F, 0.02F, 0.28F),
+                biomeRegistry.getOrThrow(Biomes.SNOWY_BEACH)));
+
+        parameters.add(Pair.of(Climate.parameters(-0.32F, 0.22F, 0.0F, 0.0F, 0.0F, 0.12F, 0.38F),
+                biomeRegistry.getOrThrow(Biomes.STONY_SHORE)));
+
+        parameters.add(Pair.of(Climate.parameters(-0.22F, -0.62F, 0.0F, 0.0F, 0.0F, 0.02F, 0.82F),
+                biomeRegistry.getOrThrow(Biomes.WARM_OCEAN)));
+
+        parameters.add(Pair.of(Climate.parameters(-0.34F, -0.82F, 0.0F, 0.0F, 0.0F, 0.02F, 0.88F),
+                biomeRegistry.getOrThrow(Biomes.LUKEWARM_OCEAN)));
+
+        parameters.add(Pair.of(Climate.parameters(-0.45F, -0.91F, 0.0F, 0.0F, 0.0F, 0.02F, 0.94F),
+                biomeRegistry.getOrThrow(Biomes.DEEP_LUKEWARM_OCEAN)));
+
+        parameters.add(Pair.of(Climate.parameters(-0.63F, -1.0F, 0.0F, 0.0F, 0.0F, 0.02F, 0.975F),
+                biomeRegistry.getOrThrow(Biomes.COLD_OCEAN)));
+
+        parameters.add(Pair.of(Climate.parameters(-0.72F, -1.0F, 0.0F, 0.0F, 0.0F, 0.02F, 0.985F),
+                biomeRegistry.getOrThrow(Biomes.DEEP_COLD_OCEAN)));
+
+        parameters.add(Pair.of(Climate.parameters(-0.82F, -1.0F, 0.0F, 0.0F, 0.0F, 0.02F, 0.995F),
+                biomeRegistry.getOrThrow(Biomes.DEEP_FROZEN_OCEAN)));
+
+        return MultiNoiseBiomeSource.createFromList(new Climate.ParameterList<>(parameters));
+    }
 
     public static void bootstrapStem(BootstapContext<LevelStem> context) {
         HolderGetter<Biome> biomeRegistry = context.lookup(Registries.BIOME);
         HolderGetter<DimensionType> dimTypes = context.lookup(Registries.DIMENSION_TYPE);
         HolderGetter<NoiseGeneratorSettings> noiseGenSettings = context.lookup(Registries.NOISE_SETTINGS);
 
-        // Ensure you have the correct biome sources here for the biomes you're using.
-        NoiseBasedChunkGenerator wrappedChunkGenerator = new NoiseBasedChunkGenerator(
-                new FixedBiomeSource(biomeRegistry.getOrThrow(HexcraftBiomes.VAMPIRE_FOREST)),
-                noiseGenSettings.getOrThrow(NoiseGeneratorSettings.LARGE_BIOMES));
-
-        // Adding your Crimson Desert biome with the correct noise-based source.
-        NoiseBasedChunkGenerator noiseBasedChunkGenerator = new NoiseBasedChunkGenerator(
+        // Underworld chunk generator with your Hexcraft biomes, using your custom underground noise settings
+        NoiseBasedChunkGenerator underworldChunkGen = new NoiseBasedChunkGenerator(
                 MultiNoiseBiomeSource.createFromList(
                         new Climate.ParameterList<>(List.of(
-                                Pair.of(Climate.parameters(0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F),
+                                Pair.of(Climate.parameters(-0.3F, 0.4F, 0.0F, 0.0F, 0.0F, 0.6F, 0.5F),
                                         biomeRegistry.getOrThrow(HexcraftBiomes.VAMPIRE_FOREST)),
-                                Pair.of(Climate.parameters(0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F),
+                                Pair.of(Climate.parameters(0.7F, 0.1F, 0.0F, 0.0F, 0.0F, 0.2F, 0.7F),
                                         biomeRegistry.getOrThrow(HexcraftBiomes.CRIMSON_DESERT))
-                        ))),
-                noiseGenSettings.getOrThrow(NoiseGeneratorSettings.CAVES));
+                        ))
+                ),
+                noiseGenSettings.getOrThrow(UNDERWORLD_NOISE_SETTINGS_KEY) // <-- use your custom noise settings here
+        );
 
-        // Register the level stem (dimension) with the noise-based chunk generator.
-        LevelStem stem = new LevelStem(dimTypes.getOrThrow(HexcraftDimensions.UNDERWORLD_DIM_TYPE), noiseBasedChunkGenerator);
+        context.register(UNDERWORLDDIM_KEY, new LevelStem(dimTypes.getOrThrow(UNDERWORLD_DIM_TYPE), underworldChunkGen));
 
-        // Register the level stem for your underworld dimension.
-        context.register(UNDERWORLDDIM_KEY, stem);
+        // Prison World chunk generator with vanilla overworld biomes
+        MultiNoiseBiomeSource prisonBiomeSource = createVanillaOverworldBiomeSource(biomeRegistry);
+        Holder<NoiseGeneratorSettings> overworldNoiseSettings = noiseGenSettings.getOrThrow(NoiseGeneratorSettings.OVERWORLD);
+
+        NoiseBasedChunkGenerator prisonChunkGenerator = new NoiseBasedChunkGenerator(prisonBiomeSource, overworldNoiseSettings);
+
+        context.register(PRISONWORLD_DIM_KEY, new LevelStem(dimTypes.getOrThrow(PRISONWORLD_DIM_TYPE), prisonChunkGenerator));
     }
 }

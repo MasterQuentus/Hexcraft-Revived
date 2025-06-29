@@ -23,7 +23,7 @@ public class HexcraftRegistrySetsProvider extends DatapackBuiltinEntriesProvider
 			.add(Registries.CONFIGURED_FEATURE, HexcraftConfiguredFeatures::bootstrap)
 			.add(Registries.PLACED_FEATURE, HexcraftPlacedFeatures::bootstrap)
 			.add(ForgeRegistries.Keys.BIOME_MODIFIERS, HexcraftBiomeModifers::bootstrap)
-			.add(Registries.BIOME, HexcraftBiomes::boostrap)
+			.add(Registries.BIOME, HexcraftBiomes::bootstrap)
 			.add(Registries.LEVEL_STEM, HexcraftDimensions::bootstrapStem)
 			.add(Registries.DAMAGE_TYPE, HexcraftDamageTypes::bootstrap);
 

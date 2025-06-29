@@ -17,10 +17,9 @@ public class HexcraftBiomes {
     public static final ResourceKey<Biome> VAMPIRE_FOREST = register("vampire_forest");
     public static final ResourceKey<Biome> CRIMSON_DESERT = register("crimson_desert");
 
-    public static void boostrap(BootstapContext<Biome> context) {
+    public static void bootstrap(BootstapContext<Biome> context) {  // <-- fixed typo
         context.register(VAMPIRE_FOREST, vampireBiome(context));
         context.register(CRIMSON_DESERT, crimsondesertBiome(context));
-
     }
 
     public static void globalOverworldGeneration(BiomeGenerationSettings.Builder builder) {
@@ -51,20 +50,22 @@ public class HexcraftBiomes {
         BiomeDefaultFeatures.addDefaultExtraVegetation(biomeBuilder);
         biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, HexcraftPlacedFeatures.VAMPIRE_ORCHID_PLACED_KEY);
         biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, HexcraftPlacedFeatures.BLOOD_OAK_PLACED_KEY);
+
         return new Biome.BiomeBuilder()
                 .hasPrecipitation(true)
                 .downfall(0.8f)
                 .temperature(0.7f)
                 .generationSettings(biomeBuilder.build())
                 .mobSpawnSettings(spawnBuilder.build())
-                .specialEffects((new BiomeSpecialEffects.Builder())
+                .specialEffects(new BiomeSpecialEffects.Builder()
                         .waterColor(0xe0000FF)
                         .waterFogColor(0x0051FF)
                         .skyColor(0x2400A6)
                         .grassColorOverride(0x006100)
                         .foliageColorOverride(0xd009300)
                         .fogColor(0x22a1e6)
-                        .ambientMoodSound(AmbientMoodSettings.LEGACY_CAVE_SETTINGS).build())
+                        .ambientMoodSound(AmbientMoodSettings.LEGACY_CAVE_SETTINGS)
+                        .build())
                 .build();
     }
 
@@ -79,26 +80,29 @@ public class HexcraftBiomes {
 
         globalOverworldGeneration(biomeBuilder);
         BiomeDefaultFeatures.addMossyStoneBlock(biomeBuilder);
-        BiomeDefaultFeatures.addForestFlowers(biomeBuilder);
-        BiomeDefaultFeatures.addDefaultOres(biomeBuilder);
+        // You might want to remove forest flowers for a desert biome:
+        // BiomeDefaultFeatures.addForestFlowers(biomeBuilder);
 
+        BiomeDefaultFeatures.addDefaultOres(biomeBuilder);
         BiomeDefaultFeatures.addDefaultMushrooms(biomeBuilder);
         BiomeDefaultFeatures.addDefaultExtraVegetation(biomeBuilder);
         biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, VegetationPlacements.PATCH_DEAD_BUSH);
+
         return new Biome.BiomeBuilder()
-                .hasPrecipitation(true)
+                .hasPrecipitation(false)  // changed to false for desert
                 .downfall(0.0f)
-                .temperature(0.7f)
+                .temperature(1.5f)        // hotter for desert
                 .generationSettings(biomeBuilder.build())
                 .mobSpawnSettings(spawnBuilder.build())
-                .specialEffects((new BiomeSpecialEffects.Builder())
+                .specialEffects(new BiomeSpecialEffects.Builder()
                         .waterColor(0x8D8300)
                         .waterFogColor(0x8D7100)
                         .skyColor(0x8D71B3)
                         .grassColorOverride(0xC6A93E)
                         .foliageColorOverride(0xE5A93E)
                         .fogColor(0xAC8700)
-                        .ambientMoodSound(AmbientMoodSettings.LEGACY_CAVE_SETTINGS).build())
+                        .ambientMoodSound(AmbientMoodSettings.LEGACY_CAVE_SETTINGS)
+                        .build())
                 .build();
     }
 

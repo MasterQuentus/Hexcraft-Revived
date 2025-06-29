@@ -277,7 +277,7 @@ public class HexcraftDimensions {
                                         biomeRegistry.getOrThrow(HexcraftBiomes.CRIMSON_DESERT))
                         ))
                 ),
-                noiseGenSettings.getOrThrow(UNDERWORLD_NOISE_SETTINGS_KEY) // <-- use your custom noise settings here
+                noiseGenSettings.getOrThrow(UNDERWORLD_NOISE_SETTINGS_KEY)
         );
 
         context.register(UNDERWORLDDIM_KEY, new LevelStem(dimTypes.getOrThrow(UNDERWORLD_DIM_TYPE), underworldChunkGen));

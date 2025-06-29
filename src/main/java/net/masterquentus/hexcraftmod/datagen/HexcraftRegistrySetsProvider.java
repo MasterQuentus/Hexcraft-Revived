@@ -19,11 +19,13 @@ import net.minecraftforge.registries.ForgeRegistries;
 // Maybe Rename to HexcraftDataProvider or similar
 public class HexcraftRegistrySetsProvider extends DatapackBuiltinEntriesProvider {
 	public static final RegistrySetBuilder BUILDER = new RegistrySetBuilder()
+			.add(Registries.NOISE_SETTINGS, HexcraftDimensions::bootstrapNoiseSettings)
 			.add(Registries.DIMENSION_TYPE, HexcraftDimensions::bootstrapType)
 			.add(Registries.CONFIGURED_FEATURE, HexcraftConfiguredFeatures::bootstrap)
 			.add(Registries.PLACED_FEATURE, HexcraftPlacedFeatures::bootstrap)
 			.add(ForgeRegistries.Keys.BIOME_MODIFIERS, HexcraftBiomeModifers::bootstrap)
 			.add(Registries.BIOME, HexcraftBiomes::bootstrap)
+			// MUST come after NOISE_SETTINGS, DIMENSION_TYPE, and BIOME
 			.add(Registries.LEVEL_STEM, HexcraftDimensions::bootstrapStem)
 			.add(Registries.DAMAGE_TYPE, HexcraftDamageTypes::bootstrap);
 

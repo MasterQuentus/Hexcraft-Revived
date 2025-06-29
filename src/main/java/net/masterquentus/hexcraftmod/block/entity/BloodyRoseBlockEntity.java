@@ -8,7 +8,6 @@ import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 
 public class BloodyRoseBlockEntity extends BlockEntity {
-
 	private UUID uuid = null;
 	private String name = null;
 
@@ -40,15 +39,27 @@ public class BloodyRoseBlockEntity extends BlockEntity {
 	@Override
 	public void saveAdditional(CompoundTag nbt) {
 		super.saveAdditional(nbt);
-		if (uuid != null)
+		if (uuid != null) {
 			nbt.putUUID("uuid", uuid);
+		}
+		if (name != null && !name.isEmpty()) { // Make sure name is stored properly
+			nbt.putString("name", name);
+		} else {
+			System.out.println("DEBUG: No name found when saving Bloody Rose!");
+		}
 	}
 
 	@Override
 	public void load(CompoundTag nbt) {
 		super.load(nbt);
-		if (nbt.contains("uuid"))
+		if (nbt.contains("uuid")) {
 			this.uuid = nbt.getUUID("uuid");
+		}
+		if (nbt.contains("name")) {
+			this.name = nbt.getString("name");
+		} else {
+			System.out.println("DEBUG: No name found when loading Bloody Rose!");
+		}
 	}
 
 }

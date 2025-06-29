@@ -1,0 +1,11 @@
+{
+  "name": "Bosses",
+  "description": "Powerful entities that wield immense power and pose great challenges.",
+  "icon": "minecraft:wither_skeleton_skull",
+  "sortnum": 1,
+  "entries": [
+    "hexcraftmod:lilith",
+    "hexcraftmod:medusa",
+    "hexcraftmod:pandora"
+  ]
+}

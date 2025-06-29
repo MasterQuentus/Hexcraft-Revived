@@ -1,0 +1,27 @@
+{
+  "name": "The Rite of the Ancients",
+  "category": "rituals",
+  "icon": "hexcraftmod:eclipsium_block",
+  "pages": [
+    {
+      "type": "text",
+      "title": "Becoming an Original Vampire",
+      "text": "Only the strongest vampires can ascend to the rank of the Originals. This **dark rite** grants true immortality."
+    },
+    {
+      "type": "text",
+      "title": "Requirements",
+      "text": "The ritual must be performed using: \\n- **1 Blood Altar** \\n- **1 Block of Eclipsium** \\n- **1 Bottle of Vampire Blood** \\n- Must be surrounded by **Candles**."
+    },
+    {
+      "type": "text",
+      "title": "The Ritual",
+      "text": "The vampire must **cut themselves with a dagger** and drink from the altar. This will cause their body to temporarily die before being reborn."
+    },
+    {
+      "type": "text",
+      "title": "Powers of the Ancients",
+      "text": "- **True Immortality**: Only a **White Oak Stake** can kill an Original Vampire. \\n- **No Sun Weakness**: Daylight is no longer a threat. \\n- **Domination**: Command lesser vampires and thralls."
+    }
+  ]
+}

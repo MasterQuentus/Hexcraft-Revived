@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "hanging=false": {
+      "model": "hexcraftmod:block/fairy_lantern"
+    },
+    "hanging=true": {
+      "model": "hexcraftmod:block/fairy_lantern_hanging"
+    }
+  }
+}

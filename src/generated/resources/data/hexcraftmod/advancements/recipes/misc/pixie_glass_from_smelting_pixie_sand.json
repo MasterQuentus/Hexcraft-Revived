@@ -1,0 +1,35 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_pixie_sand": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "hexcraftmod:pixie_sand"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "hexcraftmod:pixie_glass_from_smelting_pixie_sand"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_pixie_sand",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "hexcraftmod:pixie_glass_from_smelting_pixie_sand"
+    ]
+  },
+  "sends_telemetry_event": false
+}

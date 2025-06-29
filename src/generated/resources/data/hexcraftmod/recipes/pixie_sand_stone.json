@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "P": {
+      "item": "hexcraftmod:pixie_sand"
+    }
+  },
+  "pattern": [
+    "PP ",
+    "PP "
+  ],
+  "result": {
+    "item": "hexcraftmod:pixie_sand_stone"
+  },
+  "show_notification": true
+}

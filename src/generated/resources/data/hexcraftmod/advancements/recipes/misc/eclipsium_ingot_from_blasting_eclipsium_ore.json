@@ -1,0 +1,35 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_eclipsium_ore": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "hexcraftmod:eclipsium_ore"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "hexcraftmod:eclipsium_ingot_from_blasting_eclipsium_ore"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_eclipsium_ore",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "hexcraftmod:eclipsium_ingot_from_blasting_eclipsium_ore"
+    ]
+  },
+  "sends_telemetry_event": false
+}

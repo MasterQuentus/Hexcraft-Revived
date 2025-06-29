@@ -1,0 +1,19 @@
+{
+  "type": "hexcraftmod:witches_oven",
+  "bakeTime": 200,
+  "excessResult": {
+    "item": "hexcraftmod:toxic_fumes"
+  },
+  "experience": 0.65,
+  "ingredients": [
+    {
+      "item": "minecraft:rotten_flesh"
+    },
+    {
+      "item": "hexcraftmod:clay_pot"
+    }
+  ],
+  "result": {
+    "item": "hexcraftmod:salt"
+  }
+}

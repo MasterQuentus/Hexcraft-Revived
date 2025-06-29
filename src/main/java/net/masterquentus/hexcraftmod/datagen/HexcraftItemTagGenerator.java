@@ -76,7 +76,8 @@ public class HexcraftItemTagGenerator extends ItemTagsProvider {
 				.add(HexcraftBlocks.ROWAN_PLANKS.get().asItem())
 				.add(HexcraftBlocks.TWISTED_PLANKS.get().asItem())
 				.add(HexcraftBlocks.WITCH_WOOD_PLANKS.get().asItem())
-				.add(HexcraftBlocks.ECHO_WOOD_PLANKS.get().asItem());
+				.add(HexcraftBlocks.ECHO_WOOD_PLANKS.get().asItem())
+				.add(HexcraftBlocks.PHOENIX_PLANKS.get().asItem());
 
 		this.tag(ItemTags.LOGS_THAT_BURN)
 				.add(HexcraftBlocks.EBONY_LOG.get().asItem())
@@ -156,7 +157,8 @@ public class HexcraftItemTagGenerator extends ItemTagsProvider {
 				.add(HexcraftBlocks.ROWAN_SAPLING.get().asItem())
 				.add(HexcraftBlocks.TWISTED_SAPLING.get().asItem())
 				.add(HexcraftBlocks.WITCH_WOOD_SAPLING.get().asItem())
-				.add(HexcraftBlocks.ECHO_WOOD_SAPLING.get().asItem());
+				.add(HexcraftBlocks.ECHO_WOOD_SAPLING.get().asItem())
+				.add(HexcraftBlocks.PHOENIX_SAPLING.get().asItem());
 
 		this.tag(ItemTags.DIRT)
 				.add(HexcraftBlocks.VILE_GRASS_BLOCK.get().asItem())
@@ -164,7 +166,11 @@ public class HexcraftItemTagGenerator extends ItemTagsProvider {
 
 		this.tag(ItemTags.FLOWERS)
 				.add(HexcraftBlocks.VAMPIRE_ORCHID.get().asItem())
-				.add(HexcraftBlocks.BLOODY_ROSE.get().asItem());
+				.add(HexcraftBlocks.BLOODY_ROSE.get().asItem(),
+						HexcraftBlocks.SOUL_FLOWER.get().asItem(),
+						HexcraftBlocks.WISPY_COTTON.get().asItem(),
+						HexcraftBlocks.DUSKROOT_LANTERN.get().asItem(),
+						HexcraftBlocks.SCORCHSTALKS.get().asItem());
 
 		this.tag(ItemTags.LEAVES)
 				.add(HexcraftBlocks.EBONY_LEAVES.get().asItem())
@@ -182,7 +188,8 @@ public class HexcraftItemTagGenerator extends ItemTagsProvider {
 				.add(HexcraftBlocks.ROWAN_LEAVES.get().asItem())
 				.add(HexcraftBlocks.TWISTED_LEAVES.get().asItem())
 				.add(HexcraftBlocks.WITCH_WOOD_LEAVES.get().asItem())
-				.add(HexcraftBlocks.ECHO_WOOD_LEAVES.get().asItem());
+				.add(HexcraftBlocks.ECHO_WOOD_LEAVES.get().asItem())
+				.add(HexcraftBlocks.PHOENIX_LEAVES.get().asItem());
 
 		this.tag(ItemTags.SLABS)
 				.add(HexcraftBlocks.PEARL_STONE_SLAB.get().asItem())
@@ -247,7 +254,12 @@ public class HexcraftItemTagGenerator extends ItemTagsProvider {
 				.add(HexcraftBlocks.HELL_BARK_WOOD.get().asItem())
 				.add(HexcraftBlocks.STRIPPED_HELL_BARK_LOG.get().asItem())
 				.add(HexcraftBlocks.STRIPPED_HELL_BARK_WOOD.get().asItem())
-				.add(HexcraftBlocks.HELL_BARK_PLANKS.get().asItem());
+				.add(HexcraftBlocks.HELL_BARK_PLANKS.get().asItem())
+				.add(HexcraftBlocks.PHOENIX_LOG.get().asItem())
+				.add(HexcraftBlocks.PHOENIX_WOOD.get().asItem())
+				.add(HexcraftBlocks.STRIPPED_PHOENIX_LOG.get().asItem())
+				.add(HexcraftBlocks.STRIPPED_PHOENIX_WOOD.get().asItem())
+				.add(HexcraftBlocks.PHOENIX_PLANKS.get().asItem());
 
 		this.tag(ItemTags.WOODEN_SLABS)
 				.add(HexcraftBlocks.EBONY_SLAB.get().asItem())
@@ -265,7 +277,8 @@ public class HexcraftItemTagGenerator extends ItemTagsProvider {
 				.add(HexcraftBlocks.ROWAN_SLAB.get().asItem())
 				.add(HexcraftBlocks.TWISTED_SLAB.get().asItem())
 				.add(HexcraftBlocks.WITCH_WOOD_SLAB.get().asItem())
-				.add(HexcraftBlocks.ECHO_WOOD_SLAB.get().asItem());
+				.add(HexcraftBlocks.ECHO_WOOD_SLAB.get().asItem())
+				.add(HexcraftBlocks.PHOENIX_SLAB.get().asItem());
 
 		this.tag(ItemTags.WOODEN_STAIRS)
 				.add(HexcraftBlocks.EBONY_STAIRS.get().asItem())
@@ -283,7 +296,8 @@ public class HexcraftItemTagGenerator extends ItemTagsProvider {
 				.add(HexcraftBlocks.ROWAN_STAIRS.get().asItem())
 				.add(HexcraftBlocks.TWISTED_STAIRS.get().asItem())
 				.add(HexcraftBlocks.WITCH_WOOD_STAIRS.get().asItem())
-				.add(HexcraftBlocks.ECHO_WOOD_STAIRS.get().asItem());
+				.add(HexcraftBlocks.ECHO_WOOD_STAIRS.get().asItem())
+				.add(HexcraftBlocks.PHOENIX_STAIRS.get().asItem());
 
 		this.tag(ItemTags.STONE_BUTTONS)
 				.add(HexcraftBlocks.PEARL_STONE_BUTTON.get().asItem())
@@ -307,13 +321,8 @@ public class HexcraftItemTagGenerator extends ItemTagsProvider {
 				.add(HexcraftBlocks.ROWAN_BUTTON.get().asItem())
 				.add(HexcraftBlocks.TWISTED_BUTTON.get().asItem())
 				.add(HexcraftBlocks.WITCH_WOOD_BUTTON.get().asItem())
-				.add(HexcraftBlocks.ECHO_WOOD_BUTTON.get().asItem());
-
-		this.tag(ItemTags.WOODEN_PRESSURE_PLATES)
-				.add(HexcraftBlocks.PEARL_STONE_PRESSURE_PLATE.get().asItem())
-				.add(HexcraftBlocks.CRIMSON_STONE_PRESSURE_PLATE.get().asItem())
-				.add(HexcraftBlocks.UNDER_WORLD_STONE_PRESSURE_PLATE.get().asItem())
-				.add(HexcraftBlocks.CHARSTONE_PRESSURE_PLATE.get().asItem());
+				.add(HexcraftBlocks.ECHO_WOOD_BUTTON.get().asItem())
+				.add(HexcraftBlocks.PHOENIX_BUTTON.get().asItem());
 
 
 		this.tag(ItemTags.WOODEN_PRESSURE_PLATES)
@@ -332,7 +341,8 @@ public class HexcraftItemTagGenerator extends ItemTagsProvider {
 				.add(HexcraftBlocks.ROWAN_PRESSURE_PLATE.get().asItem())
 				.add(HexcraftBlocks.TWISTED_PRESSURE_PLATE.get().asItem())
 				.add(HexcraftBlocks.WITCH_WOOD_PRESSURE_PLATE.get().asItem())
-				.add(HexcraftBlocks.ECHO_WOOD_PRESSURE_PLATE.get().asItem());
+				.add(HexcraftBlocks.ECHO_WOOD_PRESSURE_PLATE.get().asItem())
+				.add(HexcraftBlocks.PHOENIX_PRESSURE_PLATE.get().asItem());
 
 		this.tag(ItemTags.WOODEN_FENCES)
 				.add(HexcraftBlocks.EBONY_FENCE.get().asItem())
@@ -350,7 +360,8 @@ public class HexcraftItemTagGenerator extends ItemTagsProvider {
 				.add(HexcraftBlocks.ROWAN_FENCE.get().asItem())
 				.add(HexcraftBlocks.TWISTED_FENCE.get().asItem())
 				.add(HexcraftBlocks.WITCH_WOOD_FENCE.get().asItem())
-				.add(HexcraftBlocks.ECHO_WOOD_FENCE.get().asItem());
+				.add(HexcraftBlocks.ECHO_WOOD_FENCE.get().asItem())
+				.add(HexcraftBlocks.PHOENIX_FENCE.get().asItem());
 
 		this.tag(ItemTags.FENCE_GATES)
 				.add(HexcraftBlocks.EBONY_FENCE_GATE.get().asItem())
@@ -368,7 +379,8 @@ public class HexcraftItemTagGenerator extends ItemTagsProvider {
 				.add(HexcraftBlocks.ROWAN_FENCE_GATE.get().asItem())
 				.add(HexcraftBlocks.TWISTED_FENCE_GATE.get().asItem())
 				.add(HexcraftBlocks.WITCH_WOOD_FENCE_GATE.get().asItem())
-				.add(HexcraftBlocks.ECHO_WOOD_FENCE_GATE.get().asItem());
+				.add(HexcraftBlocks.ECHO_WOOD_FENCE_GATE.get().asItem())
+				.add(HexcraftBlocks.PHOENIX_FENCE_GATE.get().asItem());
 
 		this.tag(ItemTags.WOODEN_DOORS)
 				.add(HexcraftBlocks.EBONY_DOOR.get().asItem())
@@ -386,7 +398,8 @@ public class HexcraftItemTagGenerator extends ItemTagsProvider {
 				.add(HexcraftBlocks.ROWAN_DOOR.get().asItem())
 				.add(HexcraftBlocks.TWISTED_DOOR.get().asItem())
 				.add(HexcraftBlocks.WITCH_WOOD_DOOR.get().asItem())
-				.add(HexcraftBlocks.ECHO_WOOD_DOOR.get().asItem());
+				.add(HexcraftBlocks.ECHO_WOOD_DOOR.get().asItem())
+				.add(HexcraftBlocks.PHOENIX_DOOR.get().asItem());
 
 		this.tag(ItemTags.WOODEN_TRAPDOORS)
 				.add(HexcraftBlocks.EBONY_TRAPDOOR.get().asItem())
@@ -404,7 +417,8 @@ public class HexcraftItemTagGenerator extends ItemTagsProvider {
 				.add(HexcraftBlocks.ROWAN_TRAPDOOR.get().asItem())
 				.add(HexcraftBlocks.TWISTED_TRAPDOOR.get().asItem())
 				.add(HexcraftBlocks.WITCH_WOOD_TRAPDOOR.get().asItem())
-				.add(HexcraftBlocks.ECHO_WOOD_TRAPDOOR.get().asItem());
+				.add(HexcraftBlocks.ECHO_WOOD_TRAPDOOR.get().asItem())
+				.add(HexcraftBlocks.PHOENIX_TRAPDOOR.get().asItem());
 
 		this.tag(ItemTags.WALLS)
 				.add(HexcraftBlocks.PEARL_STONE_WALL.get().asItem())
@@ -429,7 +443,8 @@ public class HexcraftItemTagGenerator extends ItemTagsProvider {
 				.add(HexcraftBlocks.ROWAN_SIGN.get().asItem())
 				.add(HexcraftBlocks.TWISTED_SIGN.get().asItem())
 				.add(HexcraftBlocks.WITCH_WOOD_SIGN.get().asItem())
-				.add(HexcraftBlocks.ECHO_WOOD_SIGN.get().asItem());
+				.add(HexcraftBlocks.ECHO_WOOD_SIGN.get().asItem())
+				.add(HexcraftBlocks.PHOENIX_SIGN.get().asItem());
 
 		this.tag(ItemTags.HANGING_SIGNS)
 				.add(HexcraftBlocks.EBONY_HANGING_SIGN.get().asItem())
@@ -447,7 +462,8 @@ public class HexcraftItemTagGenerator extends ItemTagsProvider {
 				.add(HexcraftBlocks.ROWAN_HANGING_SIGN.get().asItem())
 				.add(HexcraftBlocks.TWISTED_HANGING_SIGN.get().asItem())
 				.add(HexcraftBlocks.WITCH_WOOD_HANGING_SIGN.get().asItem())
-				.add(HexcraftBlocks.ECHO_WOOD_HANGING_SIGN.get().asItem());
+				.add(HexcraftBlocks.ECHO_WOOD_HANGING_SIGN.get().asItem())
+				.add(HexcraftBlocks.PHOENIX_HANGING_SIGN.get().asItem());
 
 		this.tag(ItemTags.BOATS)
 				.add(HexcraftItems.EBONY_BOAT.get().asItem())
@@ -470,6 +486,11 @@ public class HexcraftItemTagGenerator extends ItemTagsProvider {
 		this.tag(ItemTags.SAND)
 				.add(HexcraftBlocks.CRIMSON_SAND.get().asItem())
 				.add(HexcraftBlocks.FAIRY_SAND.get().asItem());
+
+		this.tag(ItemTags.COALS)
+				.add(HexcraftBlocks.ABYSSAL_COAL_BLOCK.get().asItem())
+				.add(HexcraftItems.ABYSSAL_COAL.get().asItem());
+
 
 	}
 

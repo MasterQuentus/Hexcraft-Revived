@@ -1,0 +1,29 @@
+{
+  "name": "Crimson Fang",
+  "category": "weapons",
+  "icon": "minecraft:iron_sword",
+  "sortnum": 3,
+  "pages": [
+    {
+      "type": "text",
+      "title": "A Blade of Blood",
+      "text": "Crimson Fang is a rapier imbued with vampiric energy, allowing its wielder to drain life from enemies."
+    },
+    {
+      "type": "text",
+      "title": "Base Form",
+      "text": "Every strike from Crimson Fang restores a small amount of health to the user."
+    },
+    {
+      "type": "text",
+      "title": "Upgraded Form",
+      "text": "When infused with Lilith’s Soul, it gains Vampiric Wrath, increasing attack power when at full health."
+    },
+    {
+      "type": "spotlight",
+      "item": "hexcraftmod:crimson_fang",
+      "title": "Weapon Info",
+      "text": "A blade designed for the bloodthirsty, drawing power from its victims."
+    }
+  ]
+}

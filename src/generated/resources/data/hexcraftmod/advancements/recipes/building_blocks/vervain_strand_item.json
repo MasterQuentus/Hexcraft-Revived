@@ -1,0 +1,35 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "hexcraftmod:vervain_strand_item"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    },
+    "has_vervain": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "hexcraftmod:vervain"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "has_vervain",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "hexcraftmod:vervain_strand_item"
+    ]
+  },
+  "sends_telemetry_event": false
+}

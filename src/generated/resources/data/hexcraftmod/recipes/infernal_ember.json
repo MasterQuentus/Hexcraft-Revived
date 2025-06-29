@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "B": {
+      "item": "minecraft:blaze_powder"
+    },
+    "F": {
+      "item": "minecraft:flint"
+    },
+    "L": {
+      "item": "minecraft:lava_bucket"
+    },
+    "N": {
+      "item": "hexcraftmod:nykium_ingot"
+    }
+  },
+  "pattern": [
+    "FBF",
+    "LNL",
+    "FBF"
+  ],
+  "result": {
+    "item": "hexcraftmod:infernal_ember"
+  },
+  "show_notification": true
+}

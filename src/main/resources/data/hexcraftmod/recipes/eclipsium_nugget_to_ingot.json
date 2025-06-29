@@ -1,0 +1,17 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "###",
+        "###",
+        "###"
+    ],
+    "key": {
+        "#": {
+            "item": "hexcraftmod:eclipsium_nugget"
+        }
+    },
+    "result": {
+        "item": "hexcraftmod:eclipsium_ingot",
+        "count": 1
+    }
+}

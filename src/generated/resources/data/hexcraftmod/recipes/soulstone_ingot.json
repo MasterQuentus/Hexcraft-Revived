@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "hexcraftmod:soulstone_block"
+    }
+  ],
+  "result": {
+    "count": 9,
+    "item": "hexcraftmod:soulstone_ingot"
+  }
+}

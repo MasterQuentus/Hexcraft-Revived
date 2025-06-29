@@ -47,7 +47,7 @@ public class HexcraftDimensions {
                 BlockTags.INFINIBURN_OVERWORLD, // infiniburn
                 BuiltinDimensionTypes.OVERWORLD_EFFECTS, // effectsLocation
                 1.0f, // ambientLight
-                new DimensionType.MonsterSettings(false, false, ConstantInt.of(0), 0)));
+                new DimensionType.MonsterSettings(true, false, ConstantInt.of(0), 0)));
     }
 
 
@@ -55,21 +55,27 @@ public class HexcraftDimensions {
         HolderGetter<Biome> biomeRegistry = context.lookup(Registries.BIOME);
         HolderGetter<DimensionType> dimTypes = context.lookup(Registries.DIMENSION_TYPE);
         HolderGetter<NoiseGeneratorSettings> noiseGenSettings = context.lookup(Registries.NOISE_SETTINGS);
-        //HolderGetter<NoiseGeneratorSettings> defaultBlock = (HolderGetter<NoiseGeneratorSettings>) HexcraftBlocks.UNDER_WORLD_STONE.get();
 
+        // Ensure you have the correct biome sources here for the biomes you're using.
+        NoiseBasedChunkGenerator wrappedChunkGenerator = new NoiseBasedChunkGenerator(
+                new FixedBiomeSource(biomeRegistry.getOrThrow(HexcraftBiomes.VAMPIRE_FOREST)),
+                noiseGenSettings.getOrThrow(NoiseGeneratorSettings.LARGE_BIOMES));
 
+        // Adding your Crimson Desert biome with the correct noise-based source.
         NoiseBasedChunkGenerator noiseBasedChunkGenerator = new NoiseBasedChunkGenerator(
                 MultiNoiseBiomeSource.createFromList(
-                        new Climate.ParameterList<>(List.of(Pair.of(
-                                        Climate.parameters(0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F), biomeRegistry.getOrThrow(HexcraftBiomes.VAMPIRE_FOREST)),
-                                Pair.of(
-                                        Climate.parameters(0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F), biomeRegistry.getOrThrow(HexcraftBiomes.CRIMSON_DESERT))
+                        new Climate.ParameterList<>(List.of(
+                                Pair.of(Climate.parameters(0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F),
+                                        biomeRegistry.getOrThrow(HexcraftBiomes.VAMPIRE_FOREST)),
+                                Pair.of(Climate.parameters(0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F),
+                                        biomeRegistry.getOrThrow(HexcraftBiomes.CRIMSON_DESERT))
                         ))),
-
                 noiseGenSettings.getOrThrow(NoiseGeneratorSettings.CAVES));
 
+        // Register the level stem (dimension) with the noise-based chunk generator.
         LevelStem stem = new LevelStem(dimTypes.getOrThrow(HexcraftDimensions.UNDERWORLD_DIM_TYPE), noiseBasedChunkGenerator);
 
+        // Register the level stem for your underworld dimension.
         context.register(UNDERWORLDDIM_KEY, stem);
     }
 }

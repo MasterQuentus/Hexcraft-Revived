@@ -1,15 +1,34 @@
 package net.masterquentus.hexcraftmod.events;
 
 import net.masterquentus.hexcraftmod.HexcraftMod;
+import net.masterquentus.hexcraftmod.entity.FairyEntity;
+import net.masterquentus.hexcraftmod.entity.VampireEntity;
+import net.masterquentus.hexcraftmod.entity.WendigoEntity;
+import net.masterquentus.hexcraftmod.entity.vampires.LilithEntity;
 import net.masterquentus.hexcraftmod.client.layers.HexcraftModelLayers;
+import net.masterquentus.hexcraftmod.entity.HexcraftEntities;
 import net.minecraft.client.model.BoatModel;
 import net.minecraft.client.model.ChestBoatModel;
 import net.minecraftforge.client.event.EntityRenderersEvent;
+import net.minecraftforge.event.entity.EntityAttributeCreationEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
 @Mod.EventBusSubscriber(modid = HexcraftMod.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class ModEvents {
+
+    @SubscribeEvent
+    public static void entityAttributeEvent(EntityAttributeCreationEvent event) {
+        event.put(HexcraftEntities.VAMPIRE_EVOKER.get(), VampireEntity.setAttributes());
+        event.put(HexcraftEntities.VAMPIRE_VINDICATOR.get(), VampireEntity.setAttributes());
+        event.put(HexcraftEntities.VAMPIRE_PIGLIN.get(), VampireEntity.setAttributes());
+        event.put(HexcraftEntities.LILITH.get(), LilithEntity.setAttributes());
+        event.put(HexcraftEntities.WENDIGO.get(), WendigoEntity.setAttributes());
+        event.put(HexcraftEntities.FAIRY.get(), FairyEntity.setAttributes());
+
+    }
+
+
     @SubscribeEvent
     public static void registerLayers(EntityRenderersEvent.RegisterLayerDefinitions event) {
 

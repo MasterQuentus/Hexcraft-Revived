@@ -1,0 +1,30 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": {
+      "item": "minecraft:hay_block"
+    },
+    "C": {
+      "item": "minecraft:candle"
+    },
+    "D": {
+      "item": "minecraft:yellow_dye"
+    },
+    "H": {
+      "item": "minecraft:honeycomb"
+    },
+    "S": {
+      "item": "minecraft:string"
+    }
+  },
+  "pattern": [
+    " S ",
+    "CHA",
+    " D "
+  ],
+  "result": {
+    "item": "hexcraftmod:yellow_witch_candle"
+  },
+  "show_notification": true
+}

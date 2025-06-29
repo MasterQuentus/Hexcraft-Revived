@@ -1,0 +1,9 @@
+{
+    "parent": "block/cactus",
+    "textures": {
+        "side": "hexcraftmod:block/blister_cactus_side",
+        "top": "hexcraftmod:block/blister_cactus_top",
+        "bottom": "hexcraftmod:block/blister_cactus_bottom"
+    },
+    "render_type": "cutout"
+}

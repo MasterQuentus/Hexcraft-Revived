@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "S": {
+      "item": "minecraft:string"
+    },
+    "V": {
+      "item": "hexcraftmod:vervain"
+    }
+  },
+  "pattern": [
+    "SVS",
+    "VSV"
+  ],
+  "result": {
+    "item": "hexcraftmod:vervain_strand_item"
+  },
+  "show_notification": true
+}

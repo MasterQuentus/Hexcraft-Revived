@@ -1,0 +1,9 @@
+{
+  "parent": "minecraft:block/orientable",
+  "textures": {
+    "front": "hexcraftmod:block/poppet_table_frount",
+    "side": "hexcraftmod:block/poppet_table_frount",
+    "top": "hexcraftmod:block/poppet_table_top",
+	"down": "hexcraftmod:block/oak_planks"
+  }
+}

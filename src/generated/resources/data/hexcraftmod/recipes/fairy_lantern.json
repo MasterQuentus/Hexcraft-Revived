@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "F": {
+      "item": "hexcraftmod:fairy_dust"
+    },
+    "N": {
+      "item": "minecraft:iron_nugget"
+    }
+  },
+  "pattern": [
+    "NNN",
+    "NFN",
+    "NNN"
+  ],
+  "result": {
+    "item": "hexcraftmod:fairy_lantern"
+  },
+  "show_notification": true
+}

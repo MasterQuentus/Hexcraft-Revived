@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:smelting",
+  "category": "blocks",
+  "cookingtime": 150,
+  "experience": 0.1,
+  "group": "smooth_pixie_sand_stone",
+  "ingredient": {
+    "item": "hexcraftmod:pixie_sand_stone"
+  },
+  "result": "hexcraftmod:smooth_pixie_sand_stone"
+}

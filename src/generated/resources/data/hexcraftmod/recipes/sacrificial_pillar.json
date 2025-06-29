@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "D": {
+      "item": "hexcraftmod:dark_crystal_shards"
+    },
+    "E": {
+      "item": "hexcraftmod:eclipsium_block"
+    },
+    "V": {
+      "item": "hexcraftmod:vampiric_gem"
+    }
+  },
+  "pattern": [
+    "D D",
+    " V ",
+    " E "
+  ],
+  "result": {
+    "item": "hexcraftmod:sacrificial_pillar"
+  },
+  "show_notification": true
+}

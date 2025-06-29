@@ -40,8 +40,12 @@ public class HexcraftTags {
 		public static final TagKey<Block> PAXEL_MINEABLE = createBlockTag(
 				HexcraftMod.id("mineable/paxel"));
 
+		public static final TagKey<Block> SOULSTEM_CANDLES = createBlockTag(
+				HexcraftMod.id("soulstem_candles"));
+
 		private static TagKey<Block> tag(String name) {
 			return BlockTags.create(new ResourceLocation(HexcraftMod.MOD_ID, name));
+
 
 		}
 
@@ -61,6 +65,11 @@ public class HexcraftTags {
 				HexcraftMod.id("witches_oven_blacklist"));
 
 	}
+
+
+	public static final TagKey<EntityType<?>> AQUATIC_MOBS_TAG = TagKey.create(
+			Registries.ENTITY_TYPE, new ResourceLocation("your_mod_id", "aquatic_mobs")
+	);
 
 	public static class MobEffects {
 

@@ -1,0 +1,35 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_infernal_ember": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "hexcraftmod:infernal_ember"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "hexcraftmod:flint_and_hellfire"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_infernal_ember",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "hexcraftmod:flint_and_hellfire"
+    ]
+  },
+  "sends_telemetry_event": false
+}

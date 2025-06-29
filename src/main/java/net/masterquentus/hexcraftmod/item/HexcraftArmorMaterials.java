@@ -16,26 +16,26 @@ import java.util.function.Supplier;
 import java.util.EnumMap;
 
 public enum HexcraftArmorMaterials implements ArmorMaterial {
-    STEEL("steel", 24, Util.make(new EnumMap<>(ArmorItem.Type.class), (p_266655_) -> {
-        p_266655_.put(ArmorItem.Type.BOOTS, 4);
-        p_266655_.put(ArmorItem.Type.LEGGINGS, 5);
+    STEEL("steel", 28, Util.make(new EnumMap<>(ArmorItem.Type.class), (p_266655_) -> {
+        p_266655_.put(ArmorItem.Type.BOOTS, 3);
+        p_266655_.put(ArmorItem.Type.LEGGINGS, 6);
         p_266655_.put(ArmorItem.Type.CHESTPLATE, 7);
-        p_266655_.put(ArmorItem.Type.HELMET, 5);
-    }), 15, SoundEvents.ARMOR_EQUIP_IRON, 3.0F, 0.1F, () -> Ingredient.of(HexcraftItems.STEEL_INGOT.get())),
+        p_266655_.put(ArmorItem.Type.HELMET, 4);
+    }), 16, SoundEvents.ARMOR_EQUIP_IRON, 2.5F, 0.1F, () -> Ingredient.of(HexcraftItems.STEEL_INGOT.get())),
 
-    DARKSTEEL("darksteel", 34, Util.make(new EnumMap<>(ArmorItem.Type.class), (p_266655_) -> {
+    DARKSTEEL("darksteel", 38, Util.make(new EnumMap<>(ArmorItem.Type.class), (p_266655_) -> {
         p_266655_.put(ArmorItem.Type.BOOTS, 4);
-        p_266655_.put(ArmorItem.Type.LEGGINGS, 5);
-        p_266655_.put(ArmorItem.Type.CHESTPLATE, 7);
+        p_266655_.put(ArmorItem.Type.LEGGINGS, 7);
+        p_266655_.put(ArmorItem.Type.CHESTPLATE, 8);
         p_266655_.put(ArmorItem.Type.HELMET, 5);
-    }), 15, SoundEvents.ARMOR_EQUIP_IRON, 3.0F, 0.1F, () -> Ingredient.of(HexcraftItems.DARK_STEEL.get())),
+    }), 17, SoundEvents.ARMOR_EQUIP_NETHERITE, 3.5F, 0.1F, () -> Ingredient.of(HexcraftItems.DARK_STEEL.get())),
 
-    BLOODYNYKIUM("bloodynykium", 35, Util.make(new EnumMap<>(ArmorItem.Type.class), (p_266655_) -> {
+    BLOODYNYKIUM("bloodynykium", 36, Util.make(new EnumMap<>(ArmorItem.Type.class), (p_266655_) -> {
         p_266655_.put(ArmorItem.Type.BOOTS, 4);
-        p_266655_.put(ArmorItem.Type.LEGGINGS, 5);
-        p_266655_.put(ArmorItem.Type.CHESTPLATE, 7);
+        p_266655_.put(ArmorItem.Type.LEGGINGS, 7);
+        p_266655_.put(ArmorItem.Type.CHESTPLATE, 8);
         p_266655_.put(ArmorItem.Type.HELMET, 5);
-    }), 15, SoundEvents.ARMOR_EQUIP_IRON, 3.0F, 0.1F, () -> Ingredient.of(HexcraftItems.BLOODY_NYKIUM.get())),
+    }), 18, SoundEvents.ARMOR_EQUIP_NETHERITE, 3.5F, 0.2F, () -> Ingredient.of(HexcraftItems.BLOODY_NYKIUM.get())),
 
     JORMIUM("jormium", 35, Util.make(new EnumMap<>(ArmorItem.Type.class), (p_266655_) -> {
         p_266655_.put(ArmorItem.Type.BOOTS, 4);

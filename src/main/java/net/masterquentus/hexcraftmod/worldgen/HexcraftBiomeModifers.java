@@ -16,19 +16,31 @@ public class HexcraftBiomeModifers {
 
     public static final ResourceKey<BiomeModifier> ADD_VAMPIRIC_ORE = registerKey("add_vampiric_ore");
     public static final ResourceKey<BiomeModifier> ADD_NETHER_VAMPIRIC_ORE = registerKey("add_nether_vampiric_ore");
+
     public static final ResourceKey<BiomeModifier> ADD_END_VAMPIRIC_ORE = registerKey("add_end_vampiric_ore");
+
     public static final ResourceKey<BiomeModifier> ADD_SILVER_ORE = registerKey("add_silver_ore");
+
     public static final ResourceKey<BiomeModifier> ADD_NETHER_SILVER_ORE = registerKey("add_nether_silver_ore");
+
     public static final ResourceKey<BiomeModifier> ADD_END_SILVER_ORE = registerKey("add_end_silver_ore");
+
     public static final ResourceKey<BiomeModifier> ADD_MOON_STONE_ORE = registerKey("add_moon_stone_ore");
+
     public static final ResourceKey<BiomeModifier> ADD_NETHER_MOON_STONE_ORE = registerKey("add_nether_moon_stone_ore");
+
     public static final ResourceKey<BiomeModifier> ADD_END_MOON_STONE_ORE = registerKey("add_end_moon_stone_ore");
+
     public static final ResourceKey<BiomeModifier> ADD_TRENOGEN_ORE = registerKey("add_trenogen_ore");
+
     public static final ResourceKey<BiomeModifier> ADD_JORMUIM_ORE = registerKey("add_jormuim_ore");
 
     public static final ResourceKey<BiomeModifier> ADD_PEARL_STONE_ORE = registerKey("add_pearl_stone_ore");
+
     public static final ResourceKey<BiomeModifier> ADD_CRIMSON_STONE_ORE = registerKey("add_crimson_stone_ore");
+
     public static final ResourceKey<BiomeModifier> ADD_CHARSTONE_ORE = registerKey("add_charstone_ore");
+
     public static final ResourceKey<BiomeModifier> ADD_MAGIC_CRYSTAL_GEODE = registerKey("add_alexandrite_geode");
 
     public static void bootstrap(BootstapContext<BiomeModifier> context) {

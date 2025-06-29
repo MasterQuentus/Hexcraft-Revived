@@ -1,0 +1,12 @@
+{
+  "name": "Monsters",
+  "description": "Creatures that roam the lands, both natural and supernatural.",
+  "icon": "minecraft:rotten_flesh",
+  "sortnum": 2,
+  "entries": [
+    "hexcraftmod:wendigo",
+    "hexcraftmod:vampires",
+    "hexcraftmod:werewolves",
+    "hexcraftmod:witches"
+  ]
+}

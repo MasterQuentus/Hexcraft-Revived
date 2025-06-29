@@ -1,0 +1,15 @@
+{
+  "name": "Blessed Daylight Ring",
+  "category": "weapons",
+  "icon": "hexcraftmod:blessed_daylight_ring",
+  "pages": [
+    {
+      "type": "text",
+      "text": "A sacred relic that allows vampires to walk in the daylight without burning."
+    },
+    {
+      "type": "crafting",
+      "recipe": "hexcraftmod:blessed_daylight_ring"
+    }
+  ]
+}

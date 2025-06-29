@@ -37,36 +37,34 @@ import net.minecraft.world.phys.Vec2;
 import net.minecraft.world.phys.Vec3;
 
 public class TagLockKitItem extends Item {
-
 	public TagLockKitItem(Properties properties) {
-		super(new Properties());
+		super(properties);
 	}
 
 	@Override
-	public InteractionResult interactLivingEntity(ItemStack stack, Player player, LivingEntity target,
-			InteractionHand hand) {
-		if (target instanceof Player) {
+	public InteractionResult interactLivingEntity(ItemStack stack, Player player, LivingEntity target, InteractionHand hand) {
+		if (target instanceof Player targetPlayer) {
 			int failChance = 2;
-			if (!player.isCrouching()) {
-				failChance += 2;
-			}
-			if (!facingAway(player, (Player) target)) {
-				failChance += 4;
-			}
-			if (HexcraftMod.RANDOM.nextInt(10) >= failChance) {
+			if (!player.isCrouching()) failChance += 2;
+			if (!facingAway(player, targetPlayer)) failChance += 4;
+
+			// Determine if the Taglock fails
+			if (HexcraftMod.RANDOM.nextInt(10) < failChance) {
 				if (!player.level().isClientSide) {
-					player.displayClientMessage(
-							Component.literal("Taglock attempt failed").withStyle(ChatFormatting.RED), false);
-					((ServerPlayer) target).displayClientMessage(
-							Component.literal(player.getDisplayName().getString() + " has tried to taglock you")
+					player.displayClientMessage(Component.literal("Taglock attempt failed!").withStyle(ChatFormatting.RED), false);
+					targetPlayer.displayClientMessage(
+							Component.literal(player.getDisplayName().getString() + " tried to take a taglock from you!")
 									.withStyle(ChatFormatting.RED),
 							false);
 				}
 				return InteractionResult.FAIL;
 			}
 		}
-		if (!target.getType().is(HexcraftTags.EntityTypes.TAGLOCK_BLACKLIST))
+
+		// Ensure it's not blacklisted before tagging the entity
+		if (!target.getType().is(HexcraftTags.EntityTypes.TAGLOCK_BLACKLIST)) {
 			fillTaglockEntity(player, stack, target);
+		}
 
 		return InteractionResult.SUCCESS;
 	}
@@ -77,9 +75,11 @@ public class TagLockKitItem extends Item {
 		BlockState state = level.getBlockState(context.getClickedPos());
 		BlockPos clicked = context.getClickedPos();
 
+		// Taglock from Beds (Sleeping Players)
 		if (state.getBlock() instanceof BedBlock) {
 			if (!level.isClientSide) {
-				BlockEntity be = state.getValue(BedBlock.PART) == BedPart.HEAD ? level.getBlockEntity(clicked)
+				BlockEntity be = state.getValue(BedBlock.PART) == BedPart.HEAD
+						? level.getBlockEntity(clicked)
 						: level.getBlockEntity(clicked.relative(BedBlock.getConnectedDirection(state)));
 
 				if (be instanceof BedBlockEntity bed) {
@@ -96,12 +96,15 @@ public class TagLockKitItem extends Item {
 				return InteractionResult.CONSUME;
 			}
 			return InteractionResult.SUCCESS;
-		} else if (state.getBlock() == HexcraftBlocks.BLOODY_ROSE.get()) {
+		}
+
+		// Taglock from Bloody Rose
+		else if (state.getBlock() == HexcraftBlocks.BLOODY_ROSE.get()) {
 			if (!level.isClientSide) {
 				if (state.getValue(BloodyRoseBlock.FILLED)) {
 					BlockEntity be = level.getBlockEntity(clicked);
-					if (be instanceof BloodyRoseBlockEntity poppy) {
-						fillTaglock(context.getPlayer(), context.getItemInHand(), poppy.getUUID(), poppy.getName());
+					if (be instanceof BloodyRoseBlockEntity roseEntity) {
+						fillTaglock(context.getPlayer(), context.getItemInHand(), roseEntity.getUUID(), roseEntity.getName());
 						BloodyRoseBlock.reset(level, clicked);
 					}
 				}
@@ -109,25 +112,50 @@ public class TagLockKitItem extends Item {
 			}
 			return InteractionResult.SUCCESS;
 		}
+
 		return InteractionResult.FAIL;
 	}
 
+	// Fills Taglock Kit with Entity's Data
 	public void fillTaglockEntity(Player player, ItemStack stack, LivingEntity entity) {
-		fillTaglock(player, stack, entity.getUUID(), entity.getDisplayName().getString());
+		String entityName = "Unknown Entity"; // Default fallback
+
+		if (entity.getCustomName() != null) {
+			entityName = entity.getCustomName().getString(); // Use custom name if available
+		} else if (entity instanceof Player) {
+			entityName = entity.getScoreboardName(); // Use Scoreboard Name for Players
+		}
+
+		System.out.println("DEBUG: Attempting to taglock entity with name = " + entityName);
+		fillTaglock(player, stack, entity.getUUID(), entityName);
 	}
 
+	// Converts Empty Taglock Kit into Full Taglock Kit
 	public void fillTaglock(Player pPlayer, ItemStack stack, UUID uuid, String name) {
 		if (pPlayer instanceof ServerPlayer player) {
 			ItemStack newStack = new ItemStack(HexcraftItems.TAGLOCK_KIT_FULL.get(), 1);
-
 			CompoundTag nbt = new CompoundTag();
-			nbt.putUUID("entity", uuid);
-			nbt.putString("entityName", name);
+
+			// Ensure UUID exists
+			if (uuid != null) {
+				nbt.putUUID("entity", uuid);
+			} else {
+				player.sendSystemMessage(Component.literal("Failed to taglock: UUID is missing!").withStyle(ChatFormatting.RED));
+				return;
+			}
+
+			// Ensure name exists
+			if (name != null && !name.isEmpty()) {
+				nbt.putString("entityName", name);
+			} else {
+				player.sendSystemMessage(Component.literal("Failed to taglock: Name is missing!").withStyle(ChatFormatting.RED));
+				return;
+			}
+
 			newStack.setTag(nbt);
 
 			if (!player.getInventory().add(newStack)) {
-				ItemEntity itemEntity = new ItemEntity(player.level(), player.getX(), player.getY(0.5), player.getZ(),
-						newStack);
+				ItemEntity itemEntity = new ItemEntity(player.level(), player.getX(), player.getY(0.5), player.getZ(), newStack);
 				itemEntity.setNoPickUpDelay();
 				itemEntity.setThrower(player.getUUID());
 				player.level().addFreshEntity(itemEntity);
@@ -135,12 +163,17 @@ public class TagLockKitItem extends Item {
 
 			// Send sound packet to player
 			player.connection.send(new ClientboundSoundPacket(
-					BuiltInRegistries.SOUND_EVENT.wrapAsHolder(SoundEvents.EXPERIENCE_ORB_PICKUP), SoundSource.MASTER,
-					player.getX(), player.getY(), player.getZ(), 1.0F, 1.0F, HexcraftMod.RANDOM.nextLong()));
+					BuiltInRegistries.SOUND_EVENT.wrapAsHolder(SoundEvents.EXPERIENCE_ORB_PICKUP),
+					SoundSource.MASTER,
+					player.getX(), player.getY(), player.getZ(),
+					1.0F, 1.0F, HexcraftMod.RANDOM.nextLong()
+			));
+
 			stack.shrink(1);
 		}
 	}
 
+	// Check if the player is facing away from the target (for sneaky taglocks)
 	private boolean facingAway(Player source, Player target) {
 		Vec3 sourceLook = source.getLookAngle().normalize();
 		Vec3 targetLook = target.getLookAngle().normalize();
@@ -151,5 +184,4 @@ public class TagLockKitItem extends Item {
 		return !(Math.acos((v1.x * v2.x + v1.y * v2.y)
 				/ (Math.sqrt(v1.x * v1.x + v1.y * v1.y) * Math.sqrt(v2.x * v2.x + v2.y * v2.y))) > Math.PI / 2);
 	}
-
 }

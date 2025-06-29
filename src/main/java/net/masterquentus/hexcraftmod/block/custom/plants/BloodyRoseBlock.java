@@ -1,5 +1,8 @@
 package net.masterquentus.hexcraftmod.block.custom.plants;
 
+import net.masterquentus.hexcraftmod.block.HexcraftBlocks;
+import net.masterquentus.hexcraftmod.item.HexcraftItems;
+import net.minecraft.world.item.ItemStack;
 import org.jetbrains.annotations.Nullable;
 
 import net.masterquentus.hexcraftmod.block.entity.BloodyRoseBlockEntity;
@@ -49,6 +52,11 @@ public class BloodyRoseBlock extends FlowerBlock implements EntityBlock {
 				}
 			}
 		}
+	}
+
+	@Override
+	public ItemStack getCloneItemStack(BlockGetter world, BlockPos pos, BlockState state) {
+		return new ItemStack(HexcraftBlocks.BLOODY_ROSE.get()); // Drops the item instead of block
 	}
 
 	@Override

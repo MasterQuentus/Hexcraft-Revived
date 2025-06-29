@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "N": {
+      "item": "minecraft:iron_nugget"
+    },
+    "P": {
+      "item": "hexcraftmod:pixie_dust"
+    }
+  },
+  "pattern": [
+    "NNN",
+    "NPN",
+    "NNN"
+  ],
+  "result": {
+    "item": "hexcraftmod:pixie_lantern"
+  },
+  "show_notification": true
+}

@@ -18,18 +18,46 @@ public class HexcraftCreativeModTabs {
             () -> CreativeModeTab.builder().icon(() -> new ItemStack(HexcraftItems.INFUSED_FABRIC.get()))
                     .title(Component.translatable("creativetab.hexcraft_tab"))
                     .displayItems((itemDisplayParameters, output) ->  {
+                        // ---------------------------------------------------
+// 1. Non-Wood Items & Equipment
+// ---------------------------------------------------
+
+// Items
+                        output.accept(HexcraftItems.HEXCRAFT_GRIMOIRE.get());
                         output.accept(HexcraftItems.INFUSED_FABRIC.get());
                         output.accept(HexcraftItems.BOUND_LEATHER.get());
                         output.accept(HexcraftItems.TANNED_LEATHER.get());
+                        output.accept(HexcraftItems.DAYLIGHT_RING.get());
+                        output.accept(HexcraftItems.BLESSED_DAYLIGHT_RING.get());
+                        output.accept(HexcraftItems.WITHER_BONE.get());
+                        output.accept(HexcraftItems.DREAMWEAVER_CHARM.get());
                         output.accept(HexcraftItems.BONE_NEEDLE.get());
                         output.accept(HexcraftItems.TAGLOCK_KIT.get());
                         output.accept(HexcraftItems.WITCHES_SATCHEL.get());
                         output.accept(HexcraftItems.UNFIRED_CLAY_POT.get());
                         output.accept(HexcraftItems.CLAY_POT.get());
+                        output.accept(HexcraftItems.INFERNAL_EMBER.get());
+                        output.accept(HexcraftItems.ASH.get());
+                        output.accept(HexcraftItems.TOXIC_FUMES.get());
+                        output.accept(HexcraftItems.RITUAL_CHALK.get());
                         output.accept(HexcraftItems.BLOOD_BOTTLE.get());
                         output.accept(HexcraftItems.LILITH_CONTRACT.get());
+                        output.accept(HexcraftItems.DEATH_CONTRACT.get());
                         output.accept(HexcraftItems.LILITH_SOUL.get());
+                        output.accept(HexcraftItems.DEATH_SOUL.get());
+                        output.accept(HexcraftItems.ENVY_SOUL.get());
+                        output.accept(HexcraftItems.GLUTTONY_SOUL.get());
+                        output.accept(HexcraftItems.GREED_SOUL.get());
+                        output.accept(HexcraftItems.LUST_SOUL.get());
+                        output.accept(HexcraftItems.MEDUSA_SOUL.get());
+                        output.accept(HexcraftItems.MIRROR_DEMON_SOUL.get());
+                        output.accept(HexcraftItems.PRIDE_SOUL.get());
+                        output.accept(HexcraftItems.SLOTH_SOUL.get());
+                        output.accept(HexcraftItems.WRATH_SOUL.get());
                         output.accept(HexcraftItems.MAGIC_CRYSTAL.get());
+                        output.accept(HexcraftItems.WITCH_SIGIL.get());
+                        output.accept(HexcraftItems.NECROTIC_STONE.get());
+                        output.accept(HexcraftItems.ENCHANTED_RUNE.get());
                         output.accept(HexcraftItems.BLANK_RUNE.get());
                         output.accept(HexcraftItems.AIR_RUNE.get());
                         output.accept(HexcraftItems.EARTH_RUNE.get());
@@ -59,6 +87,8 @@ public class HexcraftCreativeModTabs {
                         output.accept(HexcraftItems.RAW_BLOODY_NYKIUM.get());
                         output.accept(HexcraftItems.BLOODY_NYKIUM.get());
                         output.accept(HexcraftItems.BLOODY_NYKIUM_NUGGET.get());
+                        output.accept(HexcraftItems.NYKIUM_INGOT.get());
+                        output.accept(HexcraftItems.NYKIUM_NUGGET.get());
                         output.accept(HexcraftItems.RAW_CUROGEN.get());
                         output.accept(HexcraftItems.CUROGEN.get());
                         output.accept(HexcraftItems.CUROGEN_NUGGET.get());
@@ -68,19 +98,29 @@ public class HexcraftCreativeModTabs {
                         output.accept(HexcraftItems.JORMIUM_NUGGET.get());
                         output.accept(HexcraftItems.STEEL_POWDER.get());
                         output.accept(HexcraftItems.STEEL_INGOT.get());
-                        output.accept(HexcraftItems.SILVER_NUGGET.get());
+                        output.accept(HexcraftItems.RAW_SOULSTONE.get());
+                        output.accept(HexcraftItems.SOULSTONE_INGOT.get());
+                        output.accept(HexcraftItems.SOULSTONE_NUGGET.get());
+                        output.accept(HexcraftItems.RAW_ABYSSIUM.get());
+                        output.accept(HexcraftItems.ABYSSIUM_INGOT.get());
+                        output.accept(HexcraftItems.ABYSSIUM_NUGGET.get());
+                        output.accept(HexcraftItems.RAW_ECLIPSIUM.get());
+                        output.accept(HexcraftItems.ECLIPSIUM_INGOT.get());
+                        output.accept(HexcraftItems.ECLIPSIUM_NUGGET.get());
                         output.accept(HexcraftItems.WHITE_OAK_ASH.get());
                         output.accept(HexcraftItems.SALT.get());
                         output.accept(HexcraftItems.NECROMANTIC_STONE.get());
+                        output.accept(HexcraftItems.ENCHANTED_RUNE.get());
+                        output.accept(HexcraftItems.CORRUPTED_RUNE.get());
                         output.accept(HexcraftItems.ATTUNED_STONE.get());
                         output.accept(HexcraftItems.ATTUNED_STONE_CHARGED.get());
                         output.accept(HexcraftItems.ARTHANA.get());
                         output.accept(HexcraftItems.BLOODED_WAYSTONE.get());
                         output.accept(HexcraftItems.BOUND_WAYSTONE.get());
                         output.accept(HexcraftItems.WOOD_ASH.get());
+                        output.accept(HexcraftItems.ABYSSAL_COAL.get());
                         output.accept(HexcraftItems.BREATH_OF_THE_GODDESS.get());
                         output.accept(HexcraftItems.EXHALE_OF_THE_HORNED_ONE.get());
-                        //output.accept(HexcraftItems.BREW_OF_LOVE.get());
                         output.accept(HexcraftItems.BREW_OF_SPROUTING.get());
                         output.accept(HexcraftItems.BREW_OF_THE_GROTESQUE.get());
                         output.accept(HexcraftItems.DROP_OF_LUCK.get());
@@ -88,9 +128,15 @@ public class HexcraftCreativeModTabs {
                         output.accept(HexcraftItems.WOOL_OF_BAT.get());
                         output.accept(HexcraftItems.CONDENSED_FEAR.get());
                         output.accept(HexcraftItems.DIAMOND_VAPOUR.get());
+                        output.accept(HexcraftItems.BLISTERING_VITALITY_POTION.get());
+                        output.accept(HexcraftItems.IRENIAL_BREW.get());
+                        output.accept(HexcraftItems.SENIA_BREW.get());
+                        output.accept(HexcraftItems.MIRA_BREW.get());
+                        output.accept(HexcraftItems.VENOM_BOTTLE.get());
                         output.accept(HexcraftItems.ANOINTING_PASTE.get());
                         output.accept(HexcraftItems.MUTANDIS.get());
                         output.accept(HexcraftItems.MUTANDIS_EXTREMIS.get());
+                        output.accept(HexcraftItems.DUSKROOT.get());
                         output.accept(HexcraftItems.POPPET.get());
                         output.accept(HexcraftItems.VOODOO_POPPET.get());
                         output.accept(HexcraftItems.VOODOO_PROTECTION_POPPET.get());
@@ -110,7 +156,7 @@ public class HexcraftCreativeModTabs {
                         output.accept(HexcraftItems.TOOL_PROTECTION_POPPET.get());
                         output.accept(HexcraftItems.BLOOD_BUCKET.get());
 
-                        //Tools
+// Tools
                         output.accept(HexcraftItems.STEEL_SWORD.get());
                         output.accept(HexcraftItems.STEEL_PICKAXE.get());
                         output.accept(HexcraftItems.STEEL_SHOVEL.get());
@@ -154,14 +200,16 @@ public class HexcraftCreativeModTabs {
                         output.accept(HexcraftItems.VAMPIRIC_HOE.get());
                         output.accept(HexcraftItems.VAMPIRIC_PAXEL.get());
 
-                        //Bows
+                        output.accept(HexcraftItems.CRIMSON_FANG.get());
+
+// Bows
                         output.accept(HexcraftItems.STEEL_BOW.get());
                         output.accept(HexcraftItems.DARK_STEEL_BOW.get());
                         output.accept(HexcraftItems.BLOODY_NYKIUM_BOW.get());
                         output.accept(HexcraftItems.JORMIUM_BOW.get());
                         output.accept(HexcraftItems.CUROGEN_BOW.get());
 
-                        //Armor
+// Armor
                         output.accept(HexcraftItems.STEEL_HELMET.get());
                         output.accept(HexcraftItems.STEEL_CHESTPLATE.get());
                         output.accept(HexcraftItems.STEEL_LEGGING.get());
@@ -191,24 +239,20 @@ public class HexcraftCreativeModTabs {
                         output.accept(HexcraftItems.VAMPIRIC_LEGGING.get());
                         output.accept(HexcraftItems.VAMPIRIC_BOOTS.get());
 
-
-                        //Blocks
+// Non-Wood Blocks
+                        output.accept(HexcraftBlocks.DEMON_HEART.get());
                         output.accept(HexcraftBlocks.BLOOD_MUSHROOM_BLOCK.get());
                         output.accept(HexcraftBlocks.BLOOD_MUSHROOM_STEM.get());
                         output.accept(HexcraftBlocks.VILESHROOM_BLOCK.get());
                         output.accept(HexcraftBlocks.VILESHROOM_STEM.get());
                         output.accept(HexcraftBlocks.GHOSTSHROOM_BLOCK.get());
                         output.accept(HexcraftBlocks.GHOSTSHROOM_STEM.get());
-                        output.accept(HexcraftBlocks.VILE_GRASS_BLOCK.get());
+                        output.accept(HexcraftItems.VILE_GRASS_BLOCK_ITEM.get());
                         output.accept(HexcraftBlocks.VILE_DIRT.get());
                         output.accept(HexcraftBlocks.LIVING_KELP_BLOCK.get());
                         output.accept(HexcraftBlocks.EMBER_MOSS_BLOCK.get());
                         output.accept(HexcraftBlocks.EMBER_MOSS_CARPET.get());
                         output.accept(HexcraftBlocks.CRIMSON_MAGMA.get());
-                        output.accept(HexcraftBlocks.VAMPIRE_ORCHID.get());
-                        output.accept(HexcraftBlocks.BLOODY_ROSE.get());
-                        output.accept(HexcraftBlocks.WISPY_COTTON.get());
-                        output.accept(HexcraftBlocks.SOUL_FLOWER.get());
                         output.accept(HexcraftBlocks.CURSED_SOIL.get());
                         output.accept(HexcraftBlocks.CURED_SOIL.get());
                         output.accept(HexcraftBlocks.FERTILIZED_DIRT.get());
@@ -218,7 +262,11 @@ public class HexcraftCreativeModTabs {
                         output.accept(HexcraftBlocks.UNDER_WORLD_STONE.get());
                         output.accept(HexcraftBlocks.CHARSTONE.get());
 
-                        //Saplings
+// ---------------------------------------------------
+// 2. Wood & Natural Blocks
+// ---------------------------------------------------
+
+// Saplings
                         output.accept(HexcraftBlocks.BLOOD_MUSHROOM.get());
                         output.accept(HexcraftBlocks.VILESHROOM.get());
                         output.accept(HexcraftBlocks.GHOSTSHROOM.get());
@@ -238,8 +286,9 @@ public class HexcraftCreativeModTabs {
                         output.accept(HexcraftBlocks.TWISTED_SAPLING.get());
                         output.accept(HexcraftBlocks.WITCH_WOOD_SAPLING.get());
                         output.accept(HexcraftBlocks.ECHO_WOOD_SAPLING.get());
+                        output.accept(HexcraftBlocks.PHOENIX_SAPLING.get());
 
-                        //Leaves
+// Leaves
                         output.accept(HexcraftBlocks.EBONY_LEAVES.get());
                         output.accept(HexcraftBlocks.BLOOD_OAK_LEAVES.get());
                         output.accept(HexcraftBlocks.HELL_BARK_LEAVES.get());
@@ -256,8 +305,9 @@ public class HexcraftCreativeModTabs {
                         output.accept(HexcraftBlocks.TWISTED_LEAVES.get());
                         output.accept(HexcraftBlocks.WITCH_WOOD_LEAVES.get());
                         output.accept(HexcraftBlocks.ECHO_WOOD_LEAVES.get());
+                        output.accept(HexcraftBlocks.PHOENIX_LEAVES.get());
 
-                        //Leaves Pile
+// Leaves Pile
                         output.accept(HexcraftBlocks.EBONY_LEAVES_PILE.get());
                         output.accept(HexcraftBlocks.BLOOD_OAK_LEAVES_PILE.get());
                         output.accept(HexcraftBlocks.HELL_BARK_LEAVES_PILE.get());
@@ -274,8 +324,9 @@ public class HexcraftCreativeModTabs {
                         output.accept(HexcraftBlocks.TWISTED_LEAVES_PILE.get());
                         output.accept(HexcraftBlocks.WITCH_WOOD_LEAVES_PILE.get());
                         output.accept(HexcraftBlocks.ECHO_WOOD_LEAVES_PILE.get());
+                        output.accept(HexcraftBlocks.PHOENIX_LEAVES_PILE.get());
 
-                        //Logs
+// Logs
                         output.accept(HexcraftBlocks.EBONY_LOG.get());
                         output.accept(HexcraftBlocks.BLOOD_OAK_LOG.get());
                         output.accept(HexcraftBlocks.HELL_BARK_LOG.get());
@@ -292,8 +343,9 @@ public class HexcraftCreativeModTabs {
                         output.accept(HexcraftBlocks.TWISTED_LOG.get());
                         output.accept(HexcraftBlocks.WITCH_WOOD_LOG.get());
                         output.accept(HexcraftBlocks.ECHO_WOOD_LOG.get());
+                        output.accept(HexcraftBlocks.PHOENIX_LOG.get());
 
-                        //Striped Logs
+// Striped Logs
                         output.accept(HexcraftBlocks.STRIPPED_EBONY_LOG.get());
                         output.accept(HexcraftBlocks.STRIPPED_BLOOD_OAK_LOG.get());
                         output.accept(HexcraftBlocks.STRIPPED_HELL_BARK_LOG.get());
@@ -310,8 +362,9 @@ public class HexcraftCreativeModTabs {
                         output.accept(HexcraftBlocks.STRIPPED_TWISTED_LOG.get());
                         output.accept(HexcraftBlocks.STRIPPED_WITCH_WOOD_LOG.get());
                         output.accept(HexcraftBlocks.STRIPPED_ECHO_WOOD_LOG.get());
+                        output.accept(HexcraftBlocks.STRIPPED_PHOENIX_LOG.get());
 
-                        //Woods
+// Woods
                         output.accept(HexcraftBlocks.EBONY_WOOD.get());
                         output.accept(HexcraftBlocks.BLOOD_OAK_WOOD.get());
                         output.accept(HexcraftBlocks.HELL_BARK_WOOD.get());
@@ -328,8 +381,9 @@ public class HexcraftCreativeModTabs {
                         output.accept(HexcraftBlocks.TWISTED_WOOD.get());
                         output.accept(HexcraftBlocks.WITCH_WOOD_WOOD.get());
                         output.accept(HexcraftBlocks.ECHO_WOOD_WOOD.get());
+                        output.accept(HexcraftBlocks.PHOENIX_WOOD.get());
 
-                        //Striped Woods
+// Striped Woods
                         output.accept(HexcraftBlocks.STRIPPED_EBONY_WOOD.get());
                         output.accept(HexcraftBlocks.STRIPPED_BLOOD_OAK_WOOD.get());
                         output.accept(HexcraftBlocks.STRIPPED_HELL_BARK_WOOD.get());
@@ -346,8 +400,9 @@ public class HexcraftCreativeModTabs {
                         output.accept(HexcraftBlocks.STRIPPED_TWISTED_WOOD.get());
                         output.accept(HexcraftBlocks.STRIPPED_WITCH_WOOD_WOOD.get());
                         output.accept(HexcraftBlocks.STRIPPED_ECHO_WOOD_WOOD.get());
+                        output.accept(HexcraftBlocks.STRIPPED_PHOENIX_WOOD.get());
 
-                        //Planks
+// Planks
                         output.accept(HexcraftBlocks.EBONY_PLANKS.get());
                         output.accept(HexcraftBlocks.BLOOD_OAK_PLANKS.get());
                         output.accept(HexcraftBlocks.HELL_BARK_PLANKS.get());
@@ -364,8 +419,9 @@ public class HexcraftCreativeModTabs {
                         output.accept(HexcraftBlocks.TWISTED_PLANKS.get());
                         output.accept(HexcraftBlocks.WITCH_WOOD_PLANKS.get());
                         output.accept(HexcraftBlocks.ECHO_WOOD_PLANKS.get());
+                        output.accept(HexcraftBlocks.PHOENIX_PLANKS.get());
 
-                        //Signs
+// Signs
                         output.accept(HexcraftItems.EBONY_SIGN.get());
                         output.accept(HexcraftItems.BLOOD_OAK_SIGN.get());
                         output.accept(HexcraftItems.HELL_BARK_SIGN.get());
@@ -382,6 +438,10 @@ public class HexcraftCreativeModTabs {
                         output.accept(HexcraftItems.TWISTED_SIGN.get());
                         output.accept(HexcraftItems.WITCH_WOOD_SIGN.get());
                         output.accept(HexcraftItems.ECHO_WOOD_SIGN.get());
+                        output.accept(HexcraftItems.PHOENIX_SIGN.get());
+
+
+// Hanging Signs
                         output.accept(HexcraftItems.EBONY_HANGING_SIGN.get());
                         output.accept(HexcraftItems.BLOOD_OAK_HANGING_SIGN.get());
                         output.accept(HexcraftItems.HELL_BARK_HANGING_SIGN.get());
@@ -398,8 +458,36 @@ public class HexcraftCreativeModTabs {
                         output.accept(HexcraftItems.TWISTED_HANGING_SIGN.get());
                         output.accept(HexcraftItems.WITCH_WOOD_HANGING_SIGN.get());
                         output.accept(HexcraftItems.ECHO_WOOD_HANGING_SIGN.get());
+                        output.accept(HexcraftItems.PHOENIX_HANGING_SIGN.get());
 
-                        //Boats
+
+                        //Chest Blocks
+                        output.accept(HexcraftItems.EBONY_CHEST.get());
+                        output.accept(HexcraftItems.BLOOD_OAK_CHEST.get());
+                        output.accept(HexcraftItems.HELL_BARK_CHEST.get());
+                        output.accept(HexcraftItems.WHITE_OAK_CHEST.get());
+                        output.accept(HexcraftItems.ALDER_CHEST.get());
+                        output.accept(HexcraftItems.WITCH_HAZEL_CHEST.get());
+                        output.accept(HexcraftItems.WILLOW_CHEST.get());
+                        output.accept(HexcraftItems.HAWTHORN_CHEST.get());
+                        output.accept(HexcraftItems.CEDAR_CHEST.get());
+                        output.accept(HexcraftItems.DISTORTED_CHEST.get());
+                        output.accept(HexcraftItems.ELDER_CHEST.get());
+                        output.accept(HexcraftItems.JUNIPER_CHEST.get());
+                        output.accept(HexcraftItems.ROWAN_CHEST.get());
+                        output.accept(HexcraftItems.TWISTED_CHEST.get());
+                        output.accept(HexcraftItems.WITCH_WOOD_CHEST.get());
+                        output.accept(HexcraftItems.ECHO_WOOD_CHEST.get());
+                        output.accept(HexcraftItems.PHOENIX_CHEST.get());
+
+                        output.accept(HexcraftItems.PANDORAS_BOX.get());
+                        output.accept(HexcraftItems.SACRIFICIAL_PILLAR.get());
+
+// ---------------------------------------------------
+// 3. Boats, Bookshelves, Extra Tools, Plants & Foods
+// ---------------------------------------------------
+
+// Boats
                         output.accept(HexcraftItems.EBONY_BOAT.get());
                         output.accept(HexcraftItems.BLOOD_OAK_BOAT.get());
                         output.accept(HexcraftItems.HELL_BARK_BOAT.get());
@@ -432,11 +520,10 @@ public class HexcraftCreativeModTabs {
                         output.accept(HexcraftItems.TWISTED_CHEST_BOAT.get());
                         output.accept(HexcraftItems.WITCH_WOOD_CHEST_BOAT.get());
                         output.accept(HexcraftItems.ECHO_WOOD_CHEST_BOAT.get());
+                        //output.accept(HexcraftItems.PHOENIX_BOAT.get());
+                        //output.accept(HexcraftItems.PHOENIX_CHEST_BOAT.get());
 
-                        //Chest
-
-
-                        //Bookshelves
+// Bookshelves
                         output.accept(HexcraftBlocks.EBONY_BOOKSHELF.get());
                         output.accept(HexcraftBlocks.BLOOD_OAK_BOOKSHELF.get());
                         output.accept(HexcraftBlocks.HELL_BARK_BOOKSHELF.get());
@@ -453,22 +540,50 @@ public class HexcraftCreativeModTabs {
                         output.accept(HexcraftBlocks.TWISTED_BOOKSHELF.get());
                         output.accept(HexcraftBlocks.WITCH_WOOD_BOOKSHELF.get());
                         output.accept(HexcraftBlocks.ECHO_WOOD_BOOKSHELF.get());
+                        output.accept(HexcraftBlocks.PHOENIX_BOOKSHELF.get());
 
-
-                        //Tools
+// Extra Tools
                         output.accept(HexcraftItems.VAMPIRIC_STAFF.get());
 
+//Candles
+                        output.accept(HexcraftBlocks.SOULSTEM_CANDLE.get());
+                        output.accept(HexcraftBlocks.WHITE_WITCH_CANDLE.get());
+                        output.accept(HexcraftBlocks.ORANGE_WITCH_CANDLE.get());
+                        output.accept(HexcraftBlocks.MAGENTA_WITCH_CANDLE.get());
+                        output.accept(HexcraftBlocks.LIGHT_BLUE_WITCH_CANDLE.get());
+                        output.accept(HexcraftBlocks.YELLOW_WITCH_CANDLE.get());
+                        output.accept(HexcraftBlocks.LIME_WITCH_CANDLE.get());
+                        output.accept(HexcraftBlocks.PINK_WITCH_CANDLE.get());
+                        output.accept(HexcraftBlocks.GRAY_WITCH_CANDLE.get());
+                        output.accept(HexcraftBlocks.LIGHT_GRAY_WITCH_CANDLE.get());
+                        output.accept(HexcraftBlocks.CYAN_WITCH_CANDLE.get());
+                        output.accept(HexcraftBlocks.PURPLE_WITCH_CANDLE.get());
+                        output.accept(HexcraftBlocks.BLUE_WITCH_CANDLE.get());
+                        output.accept(HexcraftBlocks.BROWN_WITCH_CANDLE.get());
+                        output.accept(HexcraftBlocks.GREEN_WITCH_CANDLE.get());
+                        output.accept(HexcraftBlocks.RED_WITCH_CANDLE.get());
+                        output.accept(HexcraftBlocks.BLACK_WITCH_CANDLE.get());
 
-                        //Plants
-                        output.accept(HexcraftBlocks.DEMON_HEART.get());
+// Plants
+                        output.accept(HexcraftBlocks.VAMPIRE_ORCHID.get());
+                        output.accept(HexcraftBlocks.BLOODY_ROSE.get());
+                        output.accept(HexcraftBlocks.WISPY_COTTON.get());
+                        output.accept(HexcraftBlocks.SOUL_FLOWER.get());
+                        output.accept(HexcraftBlocks.DUSKROOT_LANTERN.get());
+                        output.accept(HexcraftBlocks.SCORCHSTALKS.get());
+                        output.accept(HexcraftBlocks.BLISTER_CACTUS.get());
+                        output.accept(HexcraftBlocks.BLISTER_CACTUS_FLOWER.get());
                         output.accept(HexcraftItems.WITCHES_LADDER_ITEM.get());
                         output.accept(HexcraftItems.VILEVINE_ITEM.get());
+                        output.accept(HexcraftItems.BLOODTHORN_VINES_ITEM.get());
                         output.accept(HexcraftBlocks.WILD_BRAMBLE.get());
                         output.accept(HexcraftBlocks.ENDER_BRAMBLE.get());
                         output.accept(HexcraftItems.LIVING_KELP_ITEM.get());
                         output.accept(HexcraftBlocks.GLINT_WEED.get());
                         output.accept(HexcraftBlocks.EMBER_MOSS.get());
                         output.accept(HexcraftBlocks.SPANISH_MOSS.get());
+                        output.accept(HexcraftItems.GARLIC_STRAND_ITEM.get());
+                        output.accept(HexcraftItems.VERVAIN_STRAND_ITEM.get());
                         output.accept(HexcraftBlocks.VILE_GRASS.get());
                         output.accept(HexcraftItems.AERPINE.get());
                         output.accept(HexcraftItems.XERIFAE.get());
@@ -500,14 +615,64 @@ public class HexcraftCreativeModTabs {
                         output.accept(HexcraftItems.WORMWOOD_SEEDS.get());
                         output.accept(HexcraftItems.XERIFAE_SEEDS.get());
 
-                        //Foods
+  //Coral
+                        output.accept(HexcraftBlocks.DEAD_TWILIGHT_CORAL_BLOCK.get());
+                        output.accept(HexcraftBlocks.DEAD_SANGUINE_CORAL_BLOCK.get());
+                        output.accept(HexcraftBlocks.DEAD_WHISPER_CORAL_BLOCK.get());
+                        output.accept(HexcraftBlocks.DEAD_EBONFANG_CORAL_BLOCK.get());
+                        output.accept(HexcraftBlocks.DEAD_SPECTRAL_BLOOM_CORAL_BLOCK.get());
+                        output.accept(HexcraftBlocks.DEAD_HELLVINE_CORAL_BLOCK.get());
+                        output.accept(HexcraftBlocks.DEAD_TWILIGHT_CORAL.get());
+                        output.accept(HexcraftBlocks.DEAD_SANGUINE_CORAL.get());
+                        output.accept(HexcraftBlocks.DEAD_WHISPER_CORAL.get());
+                        output.accept(HexcraftBlocks.DEAD_EBONFANG_CORAL.get());
+                        output.accept(HexcraftBlocks.DEAD_SPECTRAL_BLOOM_CORAL.get());
+                        output.accept(HexcraftBlocks.DEAD_HELLVINE_CORAL.get());
+                        output.accept(HexcraftItems.DEAD_TWILIGHT_CORAL_WALL_FAN_ITEM.get());
+                        output.accept(HexcraftItems.DEAD_SANGUINE_CORAL_WALL_FAN_ITEM.get());
+                        output.accept(HexcraftItems.DEAD_WHISPER_CORAL_WALL_FAN_ITEM.get());
+                        output.accept(HexcraftItems.DEAD_EBONFANG_CORAL_WALL_FAN_ITEM.get());
+                        output.accept(HexcraftItems.DEAD_SPECTRAL_BLOOM_CORAL_WALL_FAN_ITEM.get());
+                        output.accept(HexcraftItems.DEAD_HELLVINE_CORAL_WALL_FAN_ITEM.get());
+                        output.accept(HexcraftBlocks.TWILIGHT_CORAL_BLOCK.get());
+                        output.accept(HexcraftBlocks.SANGUINE_CORAL_BLOCK.get());
+                        output.accept(HexcraftBlocks.WHISPER_CORAL_BLOCK.get());
+                        output.accept(HexcraftBlocks.EBONFANG_CORAL_BLOCK.get());
+                        output.accept(HexcraftBlocks.SPECTRAL_BLOOM_CORAL_BLOCK.get());
+                        output.accept(HexcraftBlocks.HELLVINE_CORAL_BLOCK.get());
+                        output.accept(HexcraftBlocks.TWILIGHT_CORAL.get());
+                        output.accept(HexcraftBlocks.SANGUINE_CORAL.get());
+                        output.accept(HexcraftBlocks.WHISPER_CORAL.get());
+                        output.accept(HexcraftBlocks.EBONFANG_CORAL.get());
+                        output.accept(HexcraftBlocks.SPECTRAL_BLOOM_CORAL.get());
+                        output.accept(HexcraftBlocks.HELLVINE_CORAL.get());
+                        output.accept(HexcraftItems.TWILIGHT_CORAL_WALL_FAN_ITEM.get());
+                        output.accept(HexcraftItems.SANGUINE_CORAL_WALL_FAN_ITEM.get());
+                        output.accept(HexcraftItems.WHISPER_CORAL_WALL_FAN_ITEM.get());
+                        output.accept(HexcraftItems.EBONFANG_CORAL_WALL_FAN_ITEM.get());
+                        output.accept(HexcraftItems.SPECTRAL_BLOOM_CORAL_WALL_FAN_ITEM.get());
+                        output.accept(HexcraftItems.HELLVINE_CORAL_WALL_FAN_ITEM.get());
+
+
+
+// Foods
                         output.accept(HexcraftItems.JUNIPER_BERRIES.get());
                         output.accept(HexcraftItems.BLOOD_BERRIES.get());
                         output.accept(HexcraftItems.BLOOD_APPLE.get());
+                        output.accept(HexcraftItems.BLISTER_CACTUS_FRUIT.get());
+                        output.accept(HexcraftItems.BLISTER_FRUIT.get());
                         output.accept(HexcraftItems.FAIRY_DUST.get());
                         output.accept(HexcraftItems.PIXIE_DUST.get());
+                        output.accept(HexcraftItems.LIVING_KELP_SALAD.get());
 
-                        //Building Blocks
+// ---------------------------------------------------
+// 4. Building Blocks & Ores
+// ---------------------------------------------------
+
+// Building Blocks
+                        output.accept(HexcraftBlocks.HELLFIRE_CAMPFIRE.get());
+                        output.accept(HexcraftBlocks.FAIRY_LANTERN.get());
+                        output.accept(HexcraftBlocks.PIXIE_LANTERN.get());
                         output.accept(HexcraftBlocks.HELL_FUNGAL_LAMP.get());
                         output.accept(HexcraftBlocks.ECHO_FUNGAL_LAMP.get());
                         output.accept(HexcraftBlocks.VILESHROOM_LAMP.get());
@@ -515,11 +680,21 @@ public class HexcraftCreativeModTabs {
                         output.accept(HexcraftBlocks.AMETHYST_CHIMES.get());
                         output.accept(HexcraftBlocks.PURE_MAGIC_CRYSTAL.get());
                         output.accept(HexcraftBlocks.WITCHES_OVEN.get());
+                        output.accept(HexcraftBlocks.FUME_FUNNEL.get());
+                        output.accept(HexcraftBlocks.ALTAR_BASE.get());
                         output.accept(HexcraftBlocks.WITCHES_CAULDRON.get());
-                        output.accept(HexcraftBlocks.POPPET_TABLE.get());
+                        //output.accept(HexcraftBlocks.FAIRY_HOUSE.get());
+                        //output.accept(HexcraftBlocks.PIXIE_HOUSE.get());
+                        output.accept(HexcraftBlocks.FAIRY_WARD.get());
+                        output.accept(HexcraftBlocks.PIXIE_WARD.get());
+                        //output.accept(HexcraftBlocks.POPPET_TABLE.get());
                         output.accept(HexcraftBlocks.MOONSTONE_BLOCK.get());
                         output.accept(HexcraftBlocks.SILVER_BLOCK.get());
                         output.accept(HexcraftBlocks.VAMPIRIC_BLOCK.get());
+                        output.accept(HexcraftBlocks.SOULSTONE_BLOCK.get());
+                        output.accept(HexcraftBlocks.ABYSSIUM_BLOCK.get());
+                        output.accept(HexcraftBlocks.ECLIPSIUM_BLOCK.get());
+                        output.accept(HexcraftBlocks.ABYSSAL_COAL_BLOCK.get());
                         output.accept(HexcraftBlocks.PEARL_COBBLESTONE.get());
                         output.accept(HexcraftBlocks.PEARL_STONE_BRICKS.get());
                         output.accept(HexcraftBlocks.POLISHED_PEARL_STONE.get());
@@ -555,12 +730,20 @@ public class HexcraftCreativeModTabs {
                         output.accept(HexcraftBlocks.CUT_FAIRY_SAND_STONE.get());
                         output.accept(HexcraftBlocks.FAIRY_GLASS.get());
                         output.accept(HexcraftBlocks.FAIRY_GLASS_PANE.get());
+                        output.accept(HexcraftBlocks.PIXIE_SAND.get());
+                        output.accept(HexcraftBlocks.PIXIE_SAND_STONE.get());
+                        output.accept(HexcraftBlocks.SMOOTH_PIXIE_SAND_STONE.get());
+                        output.accept(HexcraftBlocks.CHISELED_PIXIE_SAND_STONE.get());
+                        output.accept(HexcraftBlocks.CUT_PIXIE_SAND_STONE.get());
+                        output.accept(HexcraftBlocks.PIXIE_GLASS.get());
+                        output.accept(HexcraftBlocks.PIXIE_GLASS_PANE.get());
                         output.accept(HexcraftBlocks.CRIMSON_ICE.get());
                         output.accept(HexcraftBlocks.CRIMSON_PACKED_ICE.get());
                         output.accept(HexcraftBlocks.UNDER_WORLD_STONE_WALL.get());
                         output.accept(HexcraftBlocks.CHARSTONE_WALL.get());
                         output.accept(HexcraftBlocks.CRIMSON_SAND_STONE_WALL.get());
                         output.accept(HexcraftBlocks.FAIRY_SAND_STONE_WALL.get());
+                        output.accept(HexcraftBlocks.PIXIE_SAND_STONE_WALL.get());
                         output.accept(HexcraftBlocks.PEARL_STONE_STAIRS.get());
                         output.accept(HexcraftBlocks.PEARL_COBBLESTONE_STAIRS.get());
                         output.accept(HexcraftBlocks.PEARL_STONE_BRICKS_STAIRS.get());
@@ -581,6 +764,8 @@ public class HexcraftCreativeModTabs {
                         output.accept(HexcraftBlocks.SMOOTH_CRIMSON_SAND_STONE_STAIRS.get());
                         output.accept(HexcraftBlocks.FAIRY_SAND_STONE_STAIRS.get());
                         output.accept(HexcraftBlocks.SMOOTH_FAIRY_SAND_STONE_STAIRS.get());
+                        output.accept(HexcraftBlocks.PIXIE_SAND_STONE_STAIRS.get());
+                        output.accept(HexcraftBlocks.SMOOTH_PIXIE_SAND_STONE_STAIRS.get());
                         output.accept(HexcraftBlocks.EBONY_STAIRS.get());
                         output.accept(HexcraftBlocks.BLOOD_OAK_STAIRS.get());
                         output.accept(HexcraftBlocks.HELL_BARK_STAIRS.get());
@@ -597,6 +782,7 @@ public class HexcraftCreativeModTabs {
                         output.accept(HexcraftBlocks.TWISTED_STAIRS.get());
                         output.accept(HexcraftBlocks.WITCH_WOOD_STAIRS.get());
                         output.accept(HexcraftBlocks.ECHO_WOOD_STAIRS.get());
+                        output.accept(HexcraftBlocks.PHOENIX_STAIRS.get());
                         output.accept(HexcraftBlocks.PEARL_STONE_PRESSURE_PLATE.get());
                         output.accept(HexcraftBlocks.CRIMSON_STONE_PRESSURE_PLATE.get());
                         output.accept(HexcraftBlocks.UNDER_WORLD_STONE_PRESSURE_PLATE.get());
@@ -617,6 +803,7 @@ public class HexcraftCreativeModTabs {
                         output.accept(HexcraftBlocks.TWISTED_PRESSURE_PLATE.get());
                         output.accept(HexcraftBlocks.WITCH_WOOD_PRESSURE_PLATE.get());
                         output.accept(HexcraftBlocks.ECHO_WOOD_PRESSURE_PLATE.get());
+                        output.accept(HexcraftBlocks.PHOENIX_PRESSURE_PLATE.get());
                         output.accept(HexcraftBlocks.PEARL_STONE_BUTTON.get());
                         output.accept(HexcraftBlocks.CRIMSON_STONE_BUTTON.get());
                         output.accept(HexcraftBlocks.UNDER_WORLD_STONE_BUTTON.get());
@@ -637,6 +824,7 @@ public class HexcraftCreativeModTabs {
                         output.accept(HexcraftBlocks.TWISTED_BUTTON.get());
                         output.accept(HexcraftBlocks.WITCH_WOOD_BUTTON.get());
                         output.accept(HexcraftBlocks.ECHO_WOOD_BUTTON.get());
+                        output.accept(HexcraftBlocks.PHOENIX_BUTTON.get());
                         output.accept(HexcraftBlocks.EBONY_FENCE.get());
                         output.accept(HexcraftBlocks.BLOOD_OAK_FENCE.get());
                         output.accept(HexcraftBlocks.HELL_BARK_FENCE.get());
@@ -653,7 +841,9 @@ public class HexcraftCreativeModTabs {
                         output.accept(HexcraftBlocks.TWISTED_FENCE.get());
                         output.accept(HexcraftBlocks.WITCH_WOOD_FENCE.get());
                         output.accept(HexcraftBlocks.ECHO_WOOD_FENCE.get());
+                        output.accept(HexcraftBlocks.PHOENIX_FENCE.get());
                         output.accept(HexcraftBlocks.EBONY_FENCE_GATE.get());
+                        output.accept(HexcraftBlocks.PHOENIX_FENCE_GATE.get());
                         output.accept(HexcraftBlocks.BLOOD_OAK_FENCE_GATE.get());
                         output.accept(HexcraftBlocks.HELL_BARK_FENCE_GATE.get());
                         output.accept(HexcraftBlocks.WHITE_OAK_FENCE_GATE.get());
@@ -669,6 +859,7 @@ public class HexcraftCreativeModTabs {
                         output.accept(HexcraftBlocks.TWISTED_FENCE_GATE.get());
                         output.accept(HexcraftBlocks.WITCH_WOOD_FENCE_GATE.get());
                         output.accept(HexcraftBlocks.ECHO_WOOD_FENCE_GATE.get());
+                        output.accept(HexcraftBlocks.PHOENIX_FENCE_GATE.get());
                         output.accept(HexcraftBlocks.EBONY_DOOR.get());
                         output.accept(HexcraftBlocks.BLOOD_OAK_DOOR.get());
                         output.accept(HexcraftBlocks.HELL_BARK_DOOR.get());
@@ -685,6 +876,7 @@ public class HexcraftCreativeModTabs {
                         output.accept(HexcraftBlocks.TWISTED_DOOR.get());
                         output.accept(HexcraftBlocks.WITCH_WOOD_DOOR.get());
                         output.accept(HexcraftBlocks.ECHO_WOOD_DOOR.get());
+                        output.accept(HexcraftBlocks.PHOENIX_DOOR.get());
                         output.accept(HexcraftBlocks.EBONY_TRAPDOOR.get());
                         output.accept(HexcraftBlocks.BLOOD_OAK_TRAPDOOR.get());
                         output.accept(HexcraftBlocks.HELL_BARK_TRAPDOOR.get());
@@ -701,6 +893,7 @@ public class HexcraftCreativeModTabs {
                         output.accept(HexcraftBlocks.TWISTED_TRAPDOOR.get());
                         output.accept(HexcraftBlocks.WITCH_WOOD_TRAPDOOR.get());
                         output.accept(HexcraftBlocks.ECHO_WOOD_TRAPDOOR.get());
+                        output.accept(HexcraftBlocks.PHOENIX_TRAPDOOR.get());
                         output.accept(HexcraftBlocks.PEARL_STONE_SLAB.get());
                         output.accept(HexcraftBlocks.PEARL_COBBLESTONE_SLAB.get());
                         output.accept(HexcraftBlocks.PEARL_STONE_BRICKS_SLAB.get());
@@ -723,6 +916,9 @@ public class HexcraftCreativeModTabs {
                         output.accept(HexcraftBlocks.FAIRY_SAND_STONE_SLAB.get());
                         output.accept(HexcraftBlocks.SMOOTH_FAIRY_SAND_STONE_SLAB.get());
                         output.accept(HexcraftBlocks.CUT_FAIRY_SAND_STONE_SLAB.get());
+                        output.accept(HexcraftBlocks.PIXIE_SAND_STONE_SLAB.get());
+                        output.accept(HexcraftBlocks.SMOOTH_PIXIE_SAND_STONE_SLAB.get());
+                        output.accept(HexcraftBlocks.CUT_PIXIE_SAND_STONE_SLAB.get());
                         output.accept(HexcraftBlocks.EBONY_SLAB.get());
                         output.accept(HexcraftBlocks.BLOOD_OAK_SLAB.get());
                         output.accept(HexcraftBlocks.HELL_BARK_SLAB.get());
@@ -739,8 +935,9 @@ public class HexcraftCreativeModTabs {
                         output.accept(HexcraftBlocks.TWISTED_SLAB.get());
                         output.accept(HexcraftBlocks.WITCH_WOOD_SLAB.get());
                         output.accept(HexcraftBlocks.ECHO_WOOD_SLAB.get());
+                        output.accept(HexcraftBlocks.PHOENIX_SLAB.get());
 
-                        //Ores
+// Ores
                         output.accept(HexcraftBlocks.MOONSTONE_ORE.get());
                         output.accept(HexcraftBlocks.END_MOONSTONE_ORE.get());
                         output.accept(HexcraftBlocks.NETHER_MOONSTONE_ORE.get());
@@ -757,9 +954,23 @@ public class HexcraftCreativeModTabs {
                         output.accept(HexcraftBlocks.TRENOGEN_ORE.get());
                         output.accept(HexcraftBlocks.DEEPSLATE_TRENOGEN_ORE.get());
                         output.accept(HexcraftBlocks.JORMUIM_ORE.get());
+                        output.accept(HexcraftBlocks.SOULSTONE_ORE.get());
+                        output.accept(HexcraftBlocks.ABYSSIUM_ORE.get());
+                        output.accept(HexcraftBlocks.ECLIPSIUM_ORE.get());
+                        output.accept(HexcraftBlocks.ABYSSAL_COAL_ORE.get());
                         output.accept(HexcraftBlocks.MAGIC_CRYSTAL_CLUSTER.get());
                         output.accept(HexcraftBlocks.BUDDING_MAGIC_CRYSTAL.get());
                         output.accept(HexcraftBlocks.MAGIC_CRYSTAL_BLOCK.get());
+
+
+                        //Spawn Eggs
+                        output.accept(HexcraftItems.VAMPIRE_EVOKER_SPAWN_EGG.get());
+                        output.accept(HexcraftItems.VAMPIRE_VINDICATOR_SPAWN_EGG.get());
+                        output.accept(HexcraftItems.VAMPIRE_PIGLIN_SPAWN_EGG.get());
+                        output.accept(HexcraftItems.LILITH_SPAWN_EGG.get());
+                        output.accept(HexcraftItems.WENDIGO_SPAWN_EGG.get());
+                        output.accept(HexcraftItems.FAIRY_SPAWN_EGG.get());
+
                     })
                     .build());
 

@@ -11,68 +11,95 @@ import net.masterquentus.hexcraftmod.recipe.WitchesCauldronRecipeBuilder;
 import net.masterquentus.hexcraftmod.recipe.WitchesOvenRecipeBuilder;
 import net.minecraft.advancements.critereon.ItemPredicate;
 import net.minecraft.data.PackOutput;
-import net.minecraft.data.recipes.FinishedRecipe;
-import net.minecraft.data.recipes.RecipeCategory;
-import net.minecraft.data.recipes.RecipeProvider;
-import net.minecraft.data.recipes.ShapedRecipeBuilder;
-import net.minecraft.data.recipes.ShapelessRecipeBuilder;
-import net.minecraft.data.recipes.SimpleCookingRecipeBuilder;
+import net.minecraft.data.recipes.*;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.AbstractCookingRecipe;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.level.ItemLike;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.common.crafting.conditions.IConditionBuilder;
 
 public class HexcraftRecipeProvider extends RecipeProvider implements IConditionBuilder {
 
-	private static final List<ItemLike> SILVER_SMELTABLES = List.of(HexcraftItems.RAW_SILVER.get(),
-			HexcraftBlocks.SILVER_ORE.get(), HexcraftBlocks.DEEPSLATE_SILVER_ORE.get(),
-			HexcraftBlocks.NETHER_SILVER_ORE.get(), HexcraftBlocks.END_SILVER_ORE.get());
+	// Metal & Ore Smeltables (Higher Priority)
+	private static final List<ItemLike> SILVER_SMELTABLES = List.of(
+			HexcraftItems.RAW_SILVER.get(),
+			HexcraftBlocks.SILVER_ORE.get(),
+			HexcraftBlocks.DEEPSLATE_SILVER_ORE.get(),
+			HexcraftBlocks.NETHER_SILVER_ORE.get(),
+			HexcraftBlocks.END_SILVER_ORE.get()
+	);
+	private static final List<ItemLike> MOONSTONE_SMELTABLES = List.of(
+			HexcraftBlocks.MOONSTONE_ORE.get(),
+			HexcraftBlocks.DEEPSLATE_MOONSTONE_ORE.get(),
+			HexcraftBlocks.NETHER_MOONSTONE_ORE.get(),
+			HexcraftBlocks.END_MOONSTONE_ORE.get()
+	);
+	private static final List<ItemLike> VAMPIRIC_SMELTABLES = List.of(
+			HexcraftBlocks.VAMPIRIC_ORE.get(),
+			HexcraftBlocks.DEEPSLATE_VAMPIRIC_ORE.get(),
+			HexcraftBlocks.NETHER_VAMPIRIC_ORE.get(),
+			HexcraftBlocks.END_VAMPIRIC_ORE.get()
+	);
+	private static final List<ItemLike> NYKIUM_SMELTABLES = List.of(
+			HexcraftItems.RAW_BLOODY_NYKIUM.get(),
+			HexcraftBlocks.NYKIUM_ORE.get()
+	);
+	private static final List<ItemLike> TRENOGEN_SMELTABLES = List.of(
+			HexcraftItems.RAW_CUROGEN.get(),
+			HexcraftBlocks.TRENOGEN_ORE.get(),
+			HexcraftBlocks.DEEPSLATE_TRENOGEN_ORE.get()
+	);
+	private static final List<ItemLike> JORMUIM_SMELTABLES = List.of(
+			HexcraftItems.RAW_JORMIUM.get(),
+			HexcraftBlocks.JORMUIM_ORE.get()
+	);
+	private static final List<ItemLike> SOULSTONE_SMELTABLES = List.of(
+			HexcraftItems.RAW_SOULSTONE.get(),
+			HexcraftBlocks.SOULSTONE_ORE.get()
+	);
+	private static final List<ItemLike> ABYSSIUM_SMELTABLES = List.of(
+			HexcraftItems.RAW_ABYSSIUM.get(),
+			HexcraftBlocks.ABYSSIUM_ORE.get()
+	);
+	private static final List<ItemLike> ECLIPSIUM_SMELTABLES = List.of(
+			HexcraftItems.RAW_ECLIPSIUM.get(),
+			HexcraftBlocks.ECLIPSIUM_ORE.get()
+	);
 
-	private static final List<ItemLike> MOONSTONE_SMELTABLES = List.of(HexcraftBlocks.MOONSTONE_ORE.get(), HexcraftBlocks.DEEPSLATE_MOONSTONE_ORE.get(),
-			HexcraftBlocks.NETHER_MOONSTONE_ORE.get(), HexcraftBlocks.END_MOONSTONE_ORE.get());
+	private static final List<ItemLike> NYKIUM_INGOT_SMELTABLES = List.of(
+			HexcraftItems.BLOODY_NYKIUM.get()
+	);
 
-	private static final List<ItemLike> VAMPIRIC_SMELTABLES = List.of(HexcraftBlocks.VAMPIRIC_ORE.get(), HexcraftBlocks.DEEPSLATE_VAMPIRIC_ORE.get(),
-			HexcraftBlocks.NETHER_VAMPIRIC_ORE.get(), HexcraftBlocks.END_VAMPIRIC_ORE.get());
-
-	private static final List<ItemLike> NYKIUM_SMELTABLES = List.of(HexcraftItems.RAW_BLOODY_NYKIUM.get(), HexcraftBlocks.NYKIUM_ORE.get());
-
-	private static final List<ItemLike> TRENOGEN_SMELTABLES = List.of(HexcraftItems.RAW_CUROGEN.get(), HexcraftBlocks.TRENOGEN_ORE.get(), HexcraftBlocks.DEEPSLATE_TRENOGEN_ORE.get());
-
-	private static final List<ItemLike> JORMUIM_SMELTABLES = List.of(HexcraftItems.RAW_JORMIUM.get(), HexcraftBlocks.JORMUIM_ORE.get());
-
+	// Leather & Miscellaneous Smeltables
 	private static final List<ItemLike> LEATHER_SMELTABLES = List.of(Items.ROTTEN_FLESH);
-
+	private static final List<ItemLike> TANNED_LEATHER_SMELTABLES = List.of(HexcraftItems.BOUND_LEATHER.get());
 	private static final List<ItemLike> STEEL_SMELTABLES = List.of(HexcraftItems.STEEL_POWDER.get());
 
+	// Clay Smeltables
 	private static final List<ItemLike> CLAY_SMELTABLES = List.of(HexcraftItems.UNFIRED_CLAY_POT.get());
 
-	private static final List<ItemLike> TANNED_LEATHER_SMELTABLES = List.of(HexcraftItems.BOUND_LEATHER.get());
-
+	// Pearl & Stone Smeltables
 	private static final List<ItemLike> PEARL_STONE_SMELTABLES = List.of(HexcraftBlocks.PEARL_COBBLESTONE.get());
-
 	private static final List<ItemLike> PEARL_STONE_BRICKS_SMELTABLES = List.of(HexcraftBlocks.PEARL_STONE_BRICKS.get());
-
 	private static final List<ItemLike> CRIMSON_STONE_SMELTABLES = List.of(HexcraftBlocks.CRIMSON_COBBLESTONE.get());
-
 	private static final List<ItemLike> CRIMSON_STONE_BRICKS_SMELTABLES = List.of(HexcraftBlocks.CRIMSON_STONE_BRICKS.get());
-
 	private static final List<ItemLike> UNDER_WORLD_STONE_SMELTABLES = List.of(HexcraftBlocks.UNDER_WORLD_COBBLESTONE.get());
-
 	private static final List<ItemLike> UNDER_WORLD_STONE_BRICKS_SMELTABLES = List.of(HexcraftBlocks.UNDER_WORLD_STONE_BRICKS.get());
-
 	private static final List<ItemLike> CHARD_STONE_SMELTABLES = List.of(HexcraftBlocks.CHARSTONE_COBBLESTONE.get());
-
 	private static final List<ItemLike> CHARD_STONE_BRICKS_SMELTABLES = List.of(HexcraftBlocks.CHARSTONE_BRICKS.get());
 
-	private static final List<ItemLike> SMOOTH_CRIMSON_SAND_STONE_SMELTABLES = List.of(HexcraftBlocks.SMOOTH_CRIMSON_SAND_STONE.get());
-
+	// Sandstone & Glass Smeltables
+	private static final List<ItemLike> SMOOTH_CRIMSON_SAND_STONE_SMELTABLES = List.of(HexcraftBlocks.CRIMSON_SAND_STONE.get());
 	private static final List<ItemLike> CRIMSON_SAND_SMELTABLES = List.of(HexcraftBlocks.CRIMSON_SAND.get());
-
-	private static final List<ItemLike> SMOOTH_FAIRY_SAND_STONE_SMELTABLES = List.of(HexcraftBlocks.SMOOTH_FAIRY_SAND_STONE.get());
-
+	private static final List<ItemLike> SMOOTH_FAIRY_SAND_STONE_SMELTABLES = List.of(HexcraftBlocks.FAIRY_SAND_STONE.get());
 	private static final List<ItemLike> FAIRY_SAND_SMELTABLES = List.of(HexcraftBlocks.FAIRY_SAND.get());
+	private static final List<ItemLike> SMOOTH_PIXIE_SAND_STONE_SMELTABLES = List.of(HexcraftBlocks.PIXIE_SAND_STONE.get());
+	private static final List<ItemLike> PIXIE_SAND_SMELTABLES = List.of(HexcraftBlocks.PIXIE_SAND.get());
+
+	// Blister Cactus Smeltables
+	private static final List<ItemLike> BLISTER_CACTUS_FRUIT_SMELTABLES = List.of(HexcraftItems.BLISTER_CACTUS_FRUIT.get());
 
 
 	public HexcraftRecipeProvider(PackOutput pOutput) {
@@ -82,25 +109,53 @@ public class HexcraftRecipeProvider extends RecipeProvider implements ICondition
 
 	@Override
 	protected void buildRecipes(Consumer<FinishedRecipe> pWriter) {
+		// Metals & Gems (Higher Priority)
 		oreSmelting(pWriter, SILVER_SMELTABLES, RecipeCategory.MISC, HexcraftItems.SILVER_INGOT.get(), 0.7f, 200, "silver_ingot");
 		oreBlasting(pWriter, SILVER_SMELTABLES, RecipeCategory.MISC, HexcraftItems.SILVER_INGOT.get(), 0.7f, 100, "silver_ingot");
+
 		oreSmelting(pWriter, MOONSTONE_SMELTABLES, RecipeCategory.MISC, HexcraftItems.MOONSTONE.get(), 0.7f, 200, "moonstone");
 		oreBlasting(pWriter, MOONSTONE_SMELTABLES, RecipeCategory.MISC, HexcraftItems.MOONSTONE.get(), 0.7f, 100, "moonstone");
+
 		oreSmelting(pWriter, VAMPIRIC_SMELTABLES, RecipeCategory.MISC, HexcraftItems.VAMPIRIC_GEM.get(), 0.7f, 200, "vampiric_gem");
 		oreBlasting(pWriter, VAMPIRIC_SMELTABLES, RecipeCategory.MISC, HexcraftItems.VAMPIRIC_GEM.get(), 0.7f, 100, "vampiric_gem");
+
 		oreSmelting(pWriter, NYKIUM_SMELTABLES, RecipeCategory.MISC, HexcraftItems.BLOODY_NYKIUM.get(), 0.7f, 200, "bloody_nykium");
 		oreBlasting(pWriter, NYKIUM_SMELTABLES, RecipeCategory.MISC, HexcraftItems.BLOODY_NYKIUM.get(), 0.7f, 100, "bloody_nykium");
+
 		oreSmelting(pWriter, TRENOGEN_SMELTABLES, RecipeCategory.MISC, HexcraftItems.CUROGEN.get(), 0.7f, 200, "curogen");
 		oreBlasting(pWriter, TRENOGEN_SMELTABLES, RecipeCategory.MISC, HexcraftItems.CUROGEN.get(), 0.7f, 100, "curogen");
+
 		oreSmelting(pWriter, JORMUIM_SMELTABLES, RecipeCategory.MISC, HexcraftItems.JORMIUM_INGOT.get(), 0.7f, 200, "jormium_ingot");
 		oreBlasting(pWriter, JORMUIM_SMELTABLES, RecipeCategory.MISC, HexcraftItems.JORMIUM_INGOT.get(), 0.7f, 100, "jormium_ingot");
+
 		oreSmelting(pWriter, STEEL_SMELTABLES, RecipeCategory.MISC, HexcraftItems.STEEL_INGOT.get(), 0.7f, 200, "steel_ingot");
 		oreBlasting(pWriter, STEEL_SMELTABLES, RecipeCategory.MISC, HexcraftItems.STEEL_INGOT.get(), 0.7f, 100, "steel_ingot");
-		oreSmelting(pWriter, LEATHER_SMELTABLES, RecipeCategory.MISC, Items.LEATHER, 0.7f, 200, "leather");
-		oreBlasting(pWriter, LEATHER_SMELTABLES, RecipeCategory.MISC, Items.LEATHER, 0.7f, 100, "leather");
-		oreSmelting(pWriter, CLAY_SMELTABLES, RecipeCategory.MISC, HexcraftItems.CLAY_POT.get(), 0.2f, 200, "clay_pot");
-		oreSmelting(pWriter, TANNED_LEATHER_SMELTABLES, RecipeCategory.MISC, HexcraftItems.TANNED_LEATHER.get(), 0.2f, 200, "tanned_leather");
-		oreBlasting(pWriter, TANNED_LEATHER_SMELTABLES, RecipeCategory.MISC, HexcraftItems.TANNED_LEATHER.get(), 0.2f, 100, "tanned_leather");
+
+		oreSmelting(pWriter, SOULSTONE_SMELTABLES, RecipeCategory.MISC, HexcraftItems.SOULSTONE_INGOT.get(), 0.7f, 200, "soulstone_ingot");
+		oreSmelting(pWriter, ABYSSIUM_SMELTABLES, RecipeCategory.MISC, HexcraftItems.ABYSSIUM_INGOT.get(), 0.7f, 200, "abyssium_ingot");
+		oreSmelting(pWriter, ECLIPSIUM_SMELTABLES, RecipeCategory.MISC, HexcraftItems.ECLIPSIUM_INGOT.get(), 0.7f, 200, "eclipsium_ingot");
+		oreBlasting(pWriter, SOULSTONE_SMELTABLES, RecipeCategory.MISC, HexcraftItems.SOULSTONE_INGOT.get(), 0.7f, 100, "soulstone_ingot");
+		oreBlasting(pWriter, ABYSSIUM_SMELTABLES, RecipeCategory.MISC, HexcraftItems.ABYSSIUM_INGOT.get(), 0.7f, 100, "abyssium_ingot");
+		oreBlasting(pWriter, ECLIPSIUM_SMELTABLES, RecipeCategory.MISC, HexcraftItems.ECLIPSIUM_INGOT.get(), 0.7f, 100, "eclipsium_ingot");
+
+		oreSmelting(pWriter, NYKIUM_INGOT_SMELTABLES, RecipeCategory.FOOD, HexcraftItems.NYKIUM_INGOT.get(), 0.3f, 200, "nykium_ingot");
+
+		// Leather & Miscellaneous
+		oreSmelting(pWriter, LEATHER_SMELTABLES, RecipeCategory.MISC, Items.LEATHER, 0.3f, 150, "leather");
+		oreBlasting(pWriter, LEATHER_SMELTABLES, RecipeCategory.MISC, Items.LEATHER, 0.3f, 80, "leather");
+
+		oreSmelting(pWriter, TANNED_LEATHER_SMELTABLES, RecipeCategory.MISC, HexcraftItems.TANNED_LEATHER.get(), 0.2f, 150, "tanned_leather");
+		oreBlasting(pWriter, TANNED_LEATHER_SMELTABLES, RecipeCategory.MISC, HexcraftItems.TANNED_LEATHER.get(), 0.2f, 80, "tanned_leather");
+
+		oreSmelting(pWriter, BLISTER_CACTUS_FRUIT_SMELTABLES, RecipeCategory.FOOD, HexcraftItems.BLISTER_FRUIT.get(), 0.3f, 200, "cooked_blister_fruit");
+
+		SimpleCookingRecipeBuilder.campfireCooking(Ingredient.of(HexcraftItems.BLISTER_CACTUS_FRUIT.get()), RecipeCategory.FOOD, HexcraftItems.BLISTER_FRUIT.get(), 0.3f, 600)
+				.unlockedBy(getHasName(HexcraftItems.BLISTER_CACTUS_FRUIT.get()), has(HexcraftItems.BLISTER_CACTUS_FRUIT.get())).save(pWriter, HexcraftMod.MOD_ID + ":cooked_blister_fruit_campfire");
+
+		SimpleCookingRecipeBuilder.smoking(Ingredient.of(HexcraftItems.BLISTER_CACTUS_FRUIT.get()), RecipeCategory.FOOD, HexcraftItems.BLISTER_FRUIT.get(), 0.3f, 100)
+				.unlockedBy(getHasName(HexcraftItems.BLISTER_CACTUS_FRUIT.get()), has(HexcraftItems.BLISTER_CACTUS_FRUIT.get())).save(pWriter, HexcraftMod.MOD_ID + ":cooked_blister_fruit_smoker");
+
+		// Stone & Bricks (No Blasting)
 		oreSmelting(pWriter, PEARL_STONE_SMELTABLES, RecipeCategory.MISC, HexcraftBlocks.PEARL_STONE.get(), 0.2f, 200, "pearl_stone");
 		oreSmelting(pWriter, PEARL_STONE_BRICKS_SMELTABLES, RecipeCategory.MISC, HexcraftBlocks.CRACKED_PEARL_STONE.get(), 0.2f, 200, "cracked_pearl_stone");
 		oreSmelting(pWriter, CRIMSON_STONE_SMELTABLES, RecipeCategory.MISC, HexcraftBlocks.CRIMSON_STONE.get(), 0.2f, 200, "crimson_stone");
@@ -109,10 +164,15 @@ public class HexcraftRecipeProvider extends RecipeProvider implements ICondition
 		oreSmelting(pWriter, UNDER_WORLD_STONE_BRICKS_SMELTABLES, RecipeCategory.MISC, HexcraftBlocks.CRACKED_UNDER_WORLD_STONE.get(), 0.2f, 200, "cracked_under_world_stone");
 		oreSmelting(pWriter, CHARD_STONE_SMELTABLES, RecipeCategory.MISC, HexcraftBlocks.CHARSTONE.get(), 0.2f, 200, "charstone");
 		oreSmelting(pWriter, CHARD_STONE_BRICKS_SMELTABLES, RecipeCategory.MISC, HexcraftBlocks.CRACKED_CHARSTONE.get(), 0.2f, 200, "cracked_charstone");
-		oreSmelting(pWriter, SMOOTH_CRIMSON_SAND_STONE_SMELTABLES, RecipeCategory.MISC, HexcraftBlocks.CRIMSON_SAND_STONE.get(), 0.1f, 200, "smooth_crimson_sand_stone");
-		oreSmelting(pWriter, CRIMSON_SAND_SMELTABLES, RecipeCategory.MISC, HexcraftBlocks.CRIMSON_GLASS.get(), 0.1f, 200, "crimson_glass");
-		oreSmelting(pWriter, SMOOTH_FAIRY_SAND_STONE_SMELTABLES, RecipeCategory.MISC, HexcraftBlocks.FAIRY_SAND_STONE.get(), 0.1f, 200, "smooth_fairy_sand_stone");
-		oreSmelting(pWriter, FAIRY_SAND_SMELTABLES, RecipeCategory.MISC, HexcraftBlocks.FAIRY_GLASS.get(), 0.1f, 200, "fairy_glass");
+
+		// Sandstone & Glass (Shorter Smelting Time)
+		oreSmelting(pWriter, SMOOTH_CRIMSON_SAND_STONE_SMELTABLES, RecipeCategory.MISC, HexcraftBlocks.SMOOTH_CRIMSON_SAND_STONE.get(), 0.1f, 150, "smooth_crimson_sand_stone");
+		oreSmelting(pWriter, CRIMSON_SAND_SMELTABLES, RecipeCategory.MISC, HexcraftBlocks.CRIMSON_GLASS.get(), 0.1f, 150, "crimson_glass");
+		oreSmelting(pWriter, SMOOTH_FAIRY_SAND_STONE_SMELTABLES, RecipeCategory.MISC, HexcraftBlocks.SMOOTH_FAIRY_SAND_STONE.get(), 0.1f, 150, "smooth_fairy_sand_stone");
+		oreSmelting(pWriter, FAIRY_SAND_SMELTABLES, RecipeCategory.MISC, HexcraftBlocks.FAIRY_GLASS.get(), 0.1f, 150, "fairy_glass");
+		oreSmelting(pWriter, SMOOTH_PIXIE_SAND_STONE_SMELTABLES, RecipeCategory.MISC, HexcraftBlocks.SMOOTH_PIXIE_SAND_STONE.get(), 0.1f, 150, "smooth_pixie_sand_stone");
+		oreSmelting(pWriter, PIXIE_SAND_SMELTABLES, RecipeCategory.MISC, HexcraftBlocks.PIXIE_GLASS.get(), 0.1f, 150, "pixie_glass");
+
 
 
 
@@ -281,7 +341,6 @@ public class HexcraftRecipeProvider extends RecipeProvider implements ICondition
 				.unlockedBy(getHasName(HexcraftItems.JORMIUM_INGOT.get()), has(HexcraftItems.JORMIUM_INGOT.get()))
 				.save(pWriter);
 
-
 		ShapedRecipeBuilder.shaped(RecipeCategory.MISC, HexcraftItems.BOUND_LEATHER.get())
 				.pattern("SSS")
 				.pattern("LSL")
@@ -341,6 +400,38 @@ public class HexcraftRecipeProvider extends RecipeProvider implements ICondition
 				.unlockedBy(getHasName(HexcraftItems.VAMPIRIC_GEM.get()), has(HexcraftItems.VAMPIRIC_GEM.get()))
 				.save(pWriter);
 
+		ShapedRecipeBuilder.shaped(RecipeCategory.MISC, HexcraftBlocks.SOULSTONE_BLOCK.get())
+				.pattern("SSS")
+				.pattern("SSS")
+				.pattern("SSS")
+				.define('S', HexcraftItems.SOULSTONE_INGOT.get())
+				.unlockedBy(getHasName(HexcraftItems.SOULSTONE_INGOT.get()), has(HexcraftItems.SOULSTONE_INGOT.get()))
+				.save(pWriter);
+
+		ShapedRecipeBuilder.shaped(RecipeCategory.MISC, HexcraftBlocks.ABYSSIUM_BLOCK.get())
+				.pattern("AAA")
+				.pattern("AAA")
+				.pattern("AAA")
+				.define('A', HexcraftItems.ABYSSIUM_INGOT.get())
+				.unlockedBy(getHasName(HexcraftItems.ABYSSIUM_INGOT.get()), has(HexcraftItems.ABYSSIUM_INGOT.get()))
+				.save(pWriter);
+
+		ShapedRecipeBuilder.shaped(RecipeCategory.MISC, HexcraftBlocks.ECLIPSIUM_BLOCK.get())
+				.pattern("EEE")
+				.pattern("EEE")
+				.pattern("EEE")
+				.define('E', HexcraftItems.ECLIPSIUM_INGOT.get())
+				.unlockedBy(getHasName(HexcraftItems.ECLIPSIUM_INGOT.get()), has(HexcraftItems.ECLIPSIUM_INGOT.get()))
+				.save(pWriter);
+
+		ShapedRecipeBuilder.shaped(RecipeCategory.MISC, HexcraftBlocks.ABYSSAL_COAL_BLOCK.get())
+				.pattern("AAA")
+				.pattern("AAA")
+				.pattern("AAA")
+				.define('A', HexcraftItems.ABYSSAL_COAL.get())
+				.unlockedBy(getHasName(HexcraftItems.ABYSSAL_COAL.get()), has(HexcraftItems.ABYSSAL_COAL.get()))
+				.save(pWriter);
+
 		ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, HexcraftBlocks.PEARL_STONE_WALL.get(), 6)
 				.pattern("PPP")
 				.pattern("PPP")
@@ -383,6 +474,13 @@ public class HexcraftRecipeProvider extends RecipeProvider implements ICondition
 				.unlockedBy(getHasName(HexcraftBlocks.FAIRY_SAND_STONE.get()), has(HexcraftBlocks.FAIRY_SAND_STONE.get()))
 				.save(pWriter);
 
+		ShapedRecipeBuilder.shaped(RecipeCategory.MISC, HexcraftBlocks.PIXIE_SAND_STONE_WALL.get(), 6)
+				.pattern("PPP")
+				.pattern("PPP")
+				.define('P', HexcraftBlocks.PIXIE_SAND_STONE.get())
+				.unlockedBy(getHasName(HexcraftBlocks.PIXIE_SAND_STONE.get()), has(HexcraftBlocks.PIXIE_SAND_STONE.get()))
+				.save(pWriter);
+
 		ShapedRecipeBuilder.shaped(RecipeCategory.MISC, HexcraftBlocks.CRIMSON_GLASS_PANE.get(), 16)
 				.pattern("CCC")
 				.pattern("CCC")
@@ -395,6 +493,13 @@ public class HexcraftRecipeProvider extends RecipeProvider implements ICondition
 				.pattern("FFF")
 				.define('F', HexcraftBlocks.FAIRY_GLASS.get())
 				.unlockedBy(getHasName(HexcraftBlocks.FAIRY_GLASS.get()), has(HexcraftBlocks.FAIRY_GLASS.get()))
+				.save(pWriter);
+
+		ShapedRecipeBuilder.shaped(RecipeCategory.MISC, HexcraftBlocks.PIXIE_GLASS_PANE.get(), 16)
+				.pattern("PPP")
+				.pattern("PPP")
+				.define('P', HexcraftBlocks.PIXIE_GLASS.get())
+				.unlockedBy(getHasName(HexcraftBlocks.PIXIE_GLASS.get()), has(HexcraftBlocks.PIXIE_GLASS.get()))
 				.save(pWriter);
 
 		ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, HexcraftBlocks.CRIMSON_PACKED_ICE.get())
@@ -479,6 +584,28 @@ public class HexcraftRecipeProvider extends RecipeProvider implements ICondition
 				.pattern(" F ")
 				.define('F', HexcraftBlocks.FAIRY_SAND_STONE_SLAB.get())
 				.unlockedBy(getHasName(HexcraftBlocks.FAIRY_SAND_STONE_SLAB.get()), has(HexcraftBlocks.FAIRY_SAND_STONE_SLAB.get()))
+				.save(pWriter);
+
+
+		ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, HexcraftBlocks.PIXIE_SAND_STONE.get())
+				.pattern("PP ")
+				.pattern("PP ")
+				.define('P', HexcraftBlocks.PIXIE_SAND.get())
+				.unlockedBy(getHasName(HexcraftBlocks.PIXIE_SAND.get()), has(HexcraftBlocks.PIXIE_SAND.get()))
+				.save(pWriter);
+
+		ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, HexcraftBlocks.CUT_PIXIE_SAND_STONE.get(), 4)
+				.pattern("PP ")
+				.pattern("PP ")
+				.define('P', HexcraftBlocks.PIXIE_SAND_STONE.get())
+				.unlockedBy(getHasName(HexcraftBlocks.PIXIE_SAND_STONE.get()), has(HexcraftBlocks.PIXIE_SAND_STONE.get()))
+				.save(pWriter);
+
+		ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, HexcraftBlocks.CHISELED_PIXIE_SAND_STONE.get())
+				.pattern(" P ")
+				.pattern(" P ")
+				.define('P', HexcraftBlocks.PIXIE_SAND_STONE_SLAB.get())
+				.unlockedBy(getHasName(HexcraftBlocks.PIXIE_SAND_STONE_SLAB.get()), has(HexcraftBlocks.PIXIE_SAND_STONE_SLAB.get()))
 				.save(pWriter);
 
 		ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, HexcraftBlocks.CHISELED_CRIMSON_STONE.get())
@@ -690,6 +817,22 @@ public class HexcraftRecipeProvider extends RecipeProvider implements ICondition
 				.unlockedBy(getHasName(HexcraftBlocks.SMOOTH_FAIRY_SAND_STONE.get()), has(HexcraftBlocks.SMOOTH_FAIRY_SAND_STONE.get()))
 				.save(pWriter);
 
+		ShapedRecipeBuilder.shaped(RecipeCategory.MISC, HexcraftBlocks.PIXIE_SAND_STONE_STAIRS.get(),4)
+				.pattern("P  ")
+				.pattern("PP ")
+				.pattern("PPP")
+				.define('P', HexcraftBlocks.PIXIE_SAND_STONE.get())
+				.unlockedBy(getHasName(HexcraftBlocks.PIXIE_SAND_STONE.get()), has(HexcraftBlocks.PIXIE_SAND_STONE.get()))
+				.save(pWriter);
+
+		ShapedRecipeBuilder.shaped(RecipeCategory.MISC, HexcraftBlocks.SMOOTH_PIXIE_SAND_STONE_STAIRS.get(),4)
+				.pattern("P  ")
+				.pattern("PP ")
+				.pattern("PPP")
+				.define('P', HexcraftBlocks.SMOOTH_PIXIE_SAND_STONE.get())
+				.unlockedBy(getHasName(HexcraftBlocks.SMOOTH_PIXIE_SAND_STONE.get()), has(HexcraftBlocks.SMOOTH_PIXIE_SAND_STONE.get()))
+				.save(pWriter);
+
 		ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, HexcraftBlocks.EBONY_STAIRS.get(),4)
 				.pattern("E  ")
 				.pattern("EE ")
@@ -818,6 +961,13 @@ public class HexcraftRecipeProvider extends RecipeProvider implements ICondition
 				.unlockedBy(getHasName(HexcraftBlocks.ECHO_WOOD_PLANKS.get()), has(HexcraftBlocks.ECHO_WOOD_PLANKS.get()))
 				.save(pWriter);
 
+		ShapedRecipeBuilder.shaped(RecipeCategory.MISC, HexcraftBlocks.PHOENIX_STAIRS.get(),4)
+				.pattern("P  ")
+				.pattern("PP ")
+				.pattern("PPP")
+				.define('P', HexcraftBlocks.PHOENIX_PLANKS.get())
+				.unlockedBy(getHasName(HexcraftBlocks.PHOENIX_PLANKS.get()), has(HexcraftBlocks.PHOENIX_PLANKS.get()))
+				.save(pWriter);
 
 		ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, HexcraftBlocks.PEARL_STONE_SLAB.get(),6)
 				.pattern("PPP")
@@ -951,6 +1101,24 @@ public class HexcraftRecipeProvider extends RecipeProvider implements ICondition
 				.unlockedBy(getHasName(HexcraftBlocks.CUT_FAIRY_SAND_STONE.get()), has(HexcraftBlocks.CUT_FAIRY_SAND_STONE.get()))
 				.save(pWriter);
 
+		ShapedRecipeBuilder.shaped(RecipeCategory.MISC, HexcraftBlocks.PIXIE_SAND_STONE_SLAB.get(), 6)
+				.pattern("PPP")
+				.define('P', HexcraftBlocks.PIXIE_SAND_STONE.get())
+				.unlockedBy(getHasName(HexcraftBlocks.PIXIE_SAND_STONE.get()), has(HexcraftBlocks.PIXIE_SAND_STONE.get()))
+				.save(pWriter);
+
+		ShapedRecipeBuilder.shaped(RecipeCategory.MISC, HexcraftBlocks.SMOOTH_PIXIE_SAND_STONE_SLAB.get(), 6)
+				.pattern("PPP")
+				.define('P', HexcraftBlocks.SMOOTH_PIXIE_SAND_STONE.get())
+				.unlockedBy(getHasName(HexcraftBlocks.SMOOTH_PIXIE_SAND_STONE.get()), has(HexcraftBlocks.SMOOTH_PIXIE_SAND_STONE.get()))
+				.save(pWriter);
+
+		ShapedRecipeBuilder.shaped(RecipeCategory.MISC, HexcraftBlocks.CUT_PIXIE_SAND_STONE_SLAB.get(), 6)
+				.pattern("PPP")
+				.define('P', HexcraftBlocks.CUT_PIXIE_SAND_STONE.get())
+				.unlockedBy(getHasName(HexcraftBlocks.CUT_PIXIE_SAND_STONE.get()), has(HexcraftBlocks.CUT_PIXIE_SAND_STONE.get()))
+				.save(pWriter);
+
 		ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, HexcraftBlocks.EBONY_SLAB.get(),6)
 				.pattern("EEE")
 				.define('E', HexcraftBlocks.EBONY_PLANKS.get())
@@ -1045,6 +1213,12 @@ public class HexcraftRecipeProvider extends RecipeProvider implements ICondition
 				.pattern("EEE")
 				.define('E', HexcraftBlocks.ECHO_WOOD_PLANKS.get())
 				.unlockedBy(getHasName(HexcraftBlocks.ECHO_WOOD_PLANKS.get()), has(HexcraftBlocks.ECHO_WOOD_PLANKS.get()))
+				.save(pWriter);
+
+		ShapedRecipeBuilder.shaped(RecipeCategory.MISC, HexcraftBlocks.PHOENIX_SLAB.get(), 6)
+				.pattern("PPP")
+				.define('P', HexcraftBlocks.PHOENIX_PLANKS.get())
+				.unlockedBy(getHasName(HexcraftBlocks.PHOENIX_PLANKS.get()), has(HexcraftBlocks.PHOENIX_PLANKS.get()))
 				.save(pWriter);
 
 		ShapedRecipeBuilder.shaped(RecipeCategory.MISC, HexcraftBlocks.EMBER_MOSS_CARPET.get(),3)
@@ -1181,6 +1355,14 @@ public class HexcraftRecipeProvider extends RecipeProvider implements ICondition
 				.unlockedBy(getHasName(HexcraftBlocks.ECHO_WOOD_PLANKS.get()), has(HexcraftBlocks.ECHO_WOOD_PLANKS.get()))
 				.save(pWriter);
 
+		ShapedRecipeBuilder.shaped(RecipeCategory.MISC, HexcraftBlocks.PHOENIX_PLANKS.get(), 3)
+				.pattern("PSP")
+				.pattern("PSP")
+				.define('P', HexcraftBlocks.PHOENIX_PLANKS.get())
+				.define('S', Items.STICK)
+				.unlockedBy(getHasName(HexcraftBlocks.PHOENIX_PLANKS.get()), has(HexcraftBlocks.PHOENIX_PLANKS.get()))
+				.save(pWriter);
+
 		ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, HexcraftBlocks.EBONY_FENCE_GATE.get())
 				.pattern("SES")
 				.pattern("SES")
@@ -1307,6 +1489,14 @@ public class HexcraftRecipeProvider extends RecipeProvider implements ICondition
 				.define('E', HexcraftBlocks.ECHO_WOOD_PLANKS.get())
 				.define('S', Items.STICK)
 				.unlockedBy(getHasName(HexcraftBlocks.ECHO_WOOD_PLANKS.get()), has(HexcraftBlocks.ECHO_WOOD_PLANKS.get()))
+				.save(pWriter);
+
+		ShapedRecipeBuilder.shaped(RecipeCategory.MISC, HexcraftBlocks.PHOENIX_FENCE_GATE.get())
+				.pattern("SPS")
+				.pattern("SPS")
+				.define('P', HexcraftBlocks.PHOENIX_PLANKS.get())
+				.define('S', Items.STICK)
+				.unlockedBy(getHasName(HexcraftBlocks.PHOENIX_PLANKS.get()), has(HexcraftBlocks.PHOENIX_PLANKS.get()))
 				.save(pWriter);
 
 		ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, HexcraftBlocks.EBONY_DOOR.get(), 3)
@@ -1437,6 +1627,14 @@ public class HexcraftRecipeProvider extends RecipeProvider implements ICondition
 				.unlockedBy(getHasName(HexcraftBlocks.ECHO_WOOD_PLANKS.get()), has(HexcraftBlocks.ECHO_WOOD_PLANKS.get()))
 				.save(pWriter);
 
+		ShapedRecipeBuilder.shaped(RecipeCategory.MISC, HexcraftBlocks.PHOENIX_DOOR.get(), 3)
+				.pattern("PP ")
+				.pattern("PP ")
+				.pattern("PP ")
+				.define('P', HexcraftBlocks.PHOENIX_PLANKS.get())
+				.unlockedBy(getHasName(HexcraftBlocks.PHOENIX_PLANKS.get()), has(HexcraftBlocks.PHOENIX_PLANKS.get()))
+				.save(pWriter);
+
 		ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, HexcraftBlocks.EBONY_TRAPDOOR.get(), 2)
 				.pattern("EEE")
 				.pattern("EEE")
@@ -1547,6 +1745,13 @@ public class HexcraftRecipeProvider extends RecipeProvider implements ICondition
 				.pattern("EEE")
 				.define('E', HexcraftBlocks.ECHO_WOOD_PLANKS.get())
 				.unlockedBy(getHasName(HexcraftBlocks.ECHO_WOOD_PLANKS.get()), has(HexcraftBlocks.ECHO_WOOD_PLANKS.get()))
+				.save(pWriter);
+
+		ShapedRecipeBuilder.shaped(RecipeCategory.MISC, HexcraftBlocks.PHOENIX_TRAPDOOR.get(), 2)
+				.pattern("PPP")
+				.pattern("PPP")
+				.define('P', HexcraftBlocks.PHOENIX_PLANKS.get())
+				.unlockedBy(getHasName(HexcraftBlocks.PHOENIX_PLANKS.get()), has(HexcraftBlocks.PHOENIX_PLANKS.get()))
 				.save(pWriter);
 
 		ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, HexcraftItems.EBONY_SIGN.get(), 3)
@@ -1693,6 +1898,15 @@ public class HexcraftRecipeProvider extends RecipeProvider implements ICondition
 				.unlockedBy(getHasName(HexcraftBlocks.ECHO_WOOD_PLANKS.get()), has(HexcraftBlocks.ECHO_WOOD_PLANKS.get()))
 				.save(pWriter);
 
+		ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, HexcraftItems.PHOENIX_SIGN.get(), 3)
+				.pattern("PPP")
+				.pattern("PPP")
+				.pattern(" S ")
+				.define('P', HexcraftBlocks.PHOENIX_PLANKS.get())
+				.define('S', Items.STICK)
+				.unlockedBy(getHasName(HexcraftBlocks.PHOENIX_PLANKS.get()), has(HexcraftBlocks.PHOENIX_PLANKS.get()))
+				.save(pWriter);
+
 		ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, HexcraftItems.EBONY_HANGING_SIGN.get(), 6)
 				.pattern("C C")
 				.pattern("EEE")
@@ -1835,6 +2049,15 @@ public class HexcraftRecipeProvider extends RecipeProvider implements ICondition
 				.define('E', HexcraftBlocks.ECHO_WOOD_PLANKS.get())
 				.define('C', Items.CHAIN)
 				.unlockedBy(getHasName(HexcraftBlocks.ECHO_WOOD_PLANKS.get()), has(HexcraftBlocks.ECHO_WOOD_PLANKS.get()))
+				.save(pWriter);
+
+		ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, HexcraftItems.PHOENIX_HANGING_SIGN.get(), 6)
+				.pattern("C C")
+				.pattern("PPP")
+				.pattern("PPP")
+				.define('P', HexcraftBlocks.PHOENIX_PLANKS.get())
+				.define('C', Items.CHAIN)
+				.unlockedBy(getHasName(HexcraftBlocks.PHOENIX_PLANKS.get()), has(HexcraftBlocks.PHOENIX_PLANKS.get()))
 				.save(pWriter);
 
 		ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, HexcraftItems.EBONY_BOAT.get())
@@ -2069,6 +2292,12 @@ public class HexcraftRecipeProvider extends RecipeProvider implements ICondition
 				.unlockedBy(getHasName(HexcraftBlocks.ECHO_WOOD_PLANKS.get()), has(HexcraftBlocks.ECHO_WOOD_PLANKS.get()))
 				.save(pWriter);
 
+		ShapedRecipeBuilder.shaped(RecipeCategory.MISC, HexcraftBlocks.PHOENIX_PRESSURE_PLATE.get())
+				.pattern("PP ")
+				.define('P', HexcraftBlocks.PHOENIX_PLANKS.get())
+				.unlockedBy(getHasName(HexcraftBlocks.PHOENIX_PLANKS.get()), has(HexcraftBlocks.PHOENIX_PLANKS.get()))
+				.save(pWriter);
+
 		ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, HexcraftBlocks.MAGIC_CRYSTAL_BLOCK.get(),4)
 				.pattern("MM ")
 				.pattern("MM ")
@@ -2214,6 +2443,12 @@ public class HexcraftRecipeProvider extends RecipeProvider implements ICondition
 				.define('E', HexcraftBlocks.ECHO_WOOD_LOG.get())
 				.unlockedBy(getHasName(HexcraftBlocks.ECHO_WOOD_LOG.get()), has(HexcraftBlocks.ECHO_WOOD_LOG.get())).save(pWriter);
 
+		ShapedRecipeBuilder.shaped(RecipeCategory.MISC, HexcraftBlocks.PHOENIX_WOOD.get(), 4)
+				.pattern("PP ")
+				.pattern("PP ")
+				.pattern("   ")
+				.define('P', HexcraftBlocks.PHOENIX_LOG.get())
+				.unlockedBy(getHasName(HexcraftBlocks.PHOENIX_LOG.get()), has(HexcraftBlocks.PHOENIX_LOG.get())).save(pWriter);
 
 		ShapedRecipeBuilder.shaped(RecipeCategory.MISC, HexcraftBlocks.EBONY_BOOKSHELF.get())
 				.pattern("EEE")
@@ -2342,6 +2577,14 @@ public class HexcraftRecipeProvider extends RecipeProvider implements ICondition
 				.define('E', HexcraftBlocks.ECHO_WOOD_PLANKS.get())
 				.define('B', Items.BOOK)
 				.unlockedBy(getHasName(HexcraftBlocks.ECHO_WOOD_PLANKS.get()), has(HexcraftBlocks.ECHO_WOOD_PLANKS.get())).save(pWriter);
+
+		ShapedRecipeBuilder.shaped(RecipeCategory.MISC, HexcraftBlocks.PHOENIX_BOOKSHELF.get())
+				.pattern("PPP")
+				.pattern("BBB")
+				.pattern("PPP")
+				.define('P', HexcraftBlocks.PHOENIX_PLANKS.get())
+				.define('B', Items.BOOK)
+				.unlockedBy(getHasName(HexcraftBlocks.PHOENIX_PLANKS.get()), has(HexcraftBlocks.PHOENIX_PLANKS.get())).save(pWriter);
 
 		ShapedRecipeBuilder.shaped(RecipeCategory.MISC, HexcraftItems.WITCHES_SATCHEL.get())
 				.pattern("SSS")
@@ -2799,7 +3042,78 @@ public class HexcraftRecipeProvider extends RecipeProvider implements ICondition
 				.unlockedBy(getHasName(HexcraftItems.CUROGEN.get()), has(HexcraftItems.CUROGEN.get()))
 				.save(pWriter);
 
+		ShapedRecipeBuilder.shaped(RecipeCategory.MISC, HexcraftBlocks.FAIRY_SAND.get(), 8)
+				.pattern("SSS")
+				.pattern("SFS")
+				.pattern("SSS")
+				.define('F', HexcraftItems.FAIRY_DUST.get())
+				.define('S', Blocks.SAND)
+				.unlockedBy(getHasName(HexcraftItems.FAIRY_DUST.get()), has(HexcraftItems.FAIRY_DUST.get()))
+				.unlockedBy(getHasName(Blocks.SAND), has(Blocks.SAND))
+				.save(pWriter);
 
+		ShapedRecipeBuilder.shaped(RecipeCategory.MISC, HexcraftBlocks.PIXIE_SAND.get(), 8)
+				.pattern("SSS")
+				.pattern("SPS")
+				.pattern("SSS")
+				.define('P', HexcraftItems.PIXIE_DUST.get())
+				.define('S', Blocks.SAND)
+				.unlockedBy(getHasName(HexcraftItems.PIXIE_DUST.get()), has(HexcraftItems.PIXIE_DUST.get()))
+				.unlockedBy(getHasName(Blocks.SAND), has(Blocks.SAND))
+				.save(pWriter);
+
+		// Fairy Ward Recipe
+		ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, HexcraftBlocks.FAIRY_WARD.get())
+				.pattern(" D ")
+				.pattern("GCG")
+				.pattern(" D ")
+				.define('D', HexcraftItems.FAIRY_DUST.get())
+				.define('G', Items.GLOWSTONE_DUST)
+				.define('C', HexcraftBlocks.FAIRY_LANTERN.get())
+				.unlockedBy(getHasName(HexcraftItems.FAIRY_DUST.get()), has(HexcraftItems.FAIRY_DUST.get()))
+				.save(pWriter);
+
+// Pixie Ward Recipe
+		ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, HexcraftBlocks.PIXIE_WARD.get())
+				.pattern(" P ")
+				.pattern("FLF")
+				.pattern(" P ")
+				.define('P', HexcraftItems.PIXIE_DUST.get())
+				.define('F', Items.GLOWSTONE_DUST)
+				.define('L', HexcraftBlocks.FAIRY_LANTERN.get())
+				.unlockedBy(getHasName(HexcraftItems.PIXIE_DUST.get()), has(HexcraftItems.PIXIE_DUST.get()))
+				.save(pWriter);
+
+		ShapedRecipeBuilder.shaped(RecipeCategory.MISC, HexcraftItems.DREAMWEAVER_CHARM.get())
+				.pattern(" S ")
+				.pattern("FMP")
+				.pattern(" G ")
+				.define('S', Items.SPIDER_EYE)
+				.define('P', HexcraftItems.PIXIE_DUST.get())
+				.define('F', HexcraftItems.FAIRY_DUST.get())
+				.define('M', HexcraftItems.MOONSTONE.get())
+				.define('G', Items.GLOWSTONE_DUST)
+				.unlockedBy(getHasName(HexcraftItems.FAIRY_DUST.get()), has(HexcraftItems.FAIRY_DUST.get()))
+				.unlockedBy(getHasName(HexcraftItems.PIXIE_DUST.get()), has(HexcraftItems.PIXIE_DUST.get()))
+				.save(pWriter);
+
+		ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, HexcraftBlocks.FAIRY_LANTERN.get())
+				.pattern("NNN")
+				.pattern("NFN")
+				.pattern("NNN")
+				.define('N', Items.IRON_NUGGET)
+				.define('F', HexcraftItems.FAIRY_DUST.get())
+				.unlockedBy(getHasName(HexcraftItems.FAIRY_DUST.get()), has(HexcraftItems.FAIRY_DUST.get()))
+				.save(pWriter);
+
+		ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, HexcraftBlocks.PIXIE_LANTERN.get())
+				.pattern("NNN")
+				.pattern("NPN")
+				.pattern("NNN")
+				.define('N', Items.IRON_NUGGET)
+				.define('P', HexcraftItems.PIXIE_DUST.get())
+				.unlockedBy(getHasName(HexcraftItems.PIXIE_DUST.get()), has(HexcraftItems.PIXIE_DUST.get()))
+				.save(pWriter);
 
 		//Tools
 		ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, HexcraftItems.STEEL_SWORD.get())
@@ -3117,6 +3431,290 @@ public class HexcraftRecipeProvider extends RecipeProvider implements ICondition
 				.unlockedBy(getHasName(HexcraftItems.VAMPIRIC_GEM.get()), has(HexcraftItems.VAMPIRIC_GEM.get()))
 				.save(pWriter);
 
+		ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, HexcraftItems.GARLIC_STRAND_ITEM.get())
+				.pattern("SGS")
+				.pattern("GSG")
+				.define('G', HexcraftItems.GARLIC.get())
+				.define('S', Items.STRING)
+				.unlockedBy(getHasName(HexcraftItems.GARLIC.get()), has(HexcraftItems.GARLIC.get()))
+				.save(pWriter);
+
+		ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, HexcraftItems.VERVAIN_STRAND_ITEM.get())
+				.pattern("SVS")
+				.pattern("VSV")
+				.define('V', HexcraftItems.VERVAIN.get())
+				.define('S', Items.STRING)
+				.unlockedBy(getHasName(HexcraftItems.VERVAIN.get()), has(HexcraftItems.VERVAIN.get()))
+				.save(pWriter);
+
+		ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, HexcraftItems.SACRIFICIAL_PILLAR.get())
+				.pattern("D D")
+				.pattern(" V ")
+				.pattern(" E ")
+				.define('D', HexcraftItems.DARK_CRYSTAL_SHARDS.get())
+				.define('V', HexcraftItems.VAMPIRIC_GEM.get())
+				.define('E', HexcraftBlocks.ECLIPSIUM_BLOCK.get())
+				.unlockedBy(getHasName(HexcraftItems.DARK_CRYSTAL_SHARDS.get()), has(HexcraftItems.DARK_CRYSTAL_SHARDS.get()))
+				.unlockedBy(getHasName(HexcraftItems.VAMPIRIC_GEM.get()), has(HexcraftItems.VAMPIRIC_GEM.get()))
+				.unlockedBy(getHasName(HexcraftBlocks.ECLIPSIUM_BLOCK.get()), has(HexcraftBlocks.ECLIPSIUM_BLOCK.get()))
+				.save(pWriter);
+
+		ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, HexcraftItems.DAYLIGHT_RING.get())
+				.pattern("GBG")
+				.pattern("MWM")
+				.pattern("GGG")
+				.define('G', Items.GOLD_INGOT)
+				.define('B', HexcraftItems.BLOOD_DROP.get())
+				.define('M', HexcraftItems.MOONSTONE.get())
+				.define('W', HexcraftItems.WITHER_BONE.get())
+				.unlockedBy(getHasName(HexcraftItems.MOONSTONE.get()), has(HexcraftItems.MOONSTONE.get()))
+				.save(pWriter);
+
+		ShapedRecipeBuilder.shaped(RecipeCategory.MISC, HexcraftItems.INFERNAL_EMBER.get())
+				.pattern("FBF")
+				.pattern("LNL")
+				.pattern("FBF")
+				.define('F', Items.FLINT)
+				.define('B', Items.BLAZE_POWDER)
+				.define('L', Items.LAVA_BUCKET)
+				.define('N', HexcraftItems.NYKIUM_INGOT.get()) // or a mod item available pre-Underworld
+				.unlockedBy(getHasName(HexcraftItems.NYKIUM_INGOT.get()), has(HexcraftItems.NYKIUM_INGOT.get()))
+				.save(pWriter);
+
+		SmithingTransformRecipeBuilder.smithing(
+						Ingredient.EMPTY, // No template
+						Ingredient.of(Items.FLINT_AND_STEEL),
+						Ingredient.of(HexcraftItems.INFERNAL_EMBER.get()),
+						RecipeCategory.TOOLS,
+						HexcraftItems.FLINT_AND_HELLFIRE.get()
+				).unlocks("has_infernal_ember", has(HexcraftItems.INFERNAL_EMBER.get()))
+				.save(pWriter, HexcraftMod.MOD_ID + ":flint_and_hellfire");
+
+		ShapedRecipeBuilder.shaped(RecipeCategory.MISC, HexcraftItems.ENHANCED_JORMIUM_INGOT.get())
+				.define('J', HexcraftItems.JORMIUM_INGOT.get())
+				.define('C', HexcraftItems.MAGIC_CRYSTAL.get())  // or a special catalyst item
+				.pattern(" C ")
+				.pattern("J J")
+				.pattern(" J ")
+				.unlockedBy("has_jormium_ingot", has(HexcraftItems.JORMIUM_INGOT.get()))
+				.save(pWriter);
+
+		ShapedRecipeBuilder.shaped(RecipeCategory.MISC, HexcraftItems.NECROTIC_STONE.get())
+				.define('B', Items.BONE_BLOCK)
+				.define('A', HexcraftItems.ASH.get())
+				.define('D', HexcraftItems.DARK_CRYSTAL_SHARDS.get())
+				.pattern(" A ")
+				.pattern("DBD")
+				.pattern(" A ")
+				.unlockedBy("has_dark_crystal_shard", has(HexcraftItems.DARK_CRYSTAL_SHARDS.get()))
+				.save(pWriter);
+
+		// WHITE WITCH CANDLE
+		ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, HexcraftBlocks.WHITE_WITCH_CANDLE.get())
+				.define('C', Items.CANDLE)
+				.define('S', Items.STRING)
+				.define('H', Items.HONEYCOMB)
+				.define('D', Items.WHITE_DYE)
+				.pattern(" S ")
+				.pattern("CHC")
+				.pattern(" D ")
+				.unlockedBy("has_candle", has(Items.CANDLE))
+				.save(pWriter);
+
+// ORANGE WITCH CANDLE
+		ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, HexcraftBlocks.ORANGE_WITCH_CANDLE.get())
+				.define('C', Items.CANDLE)
+				.define('S', Items.STRING)
+				.define('H', Items.HONEYCOMB)
+				.define('D', Items.ORANGE_DYE)
+				.define('N', Items.NETHER_WART)  // natural pigment
+				.pattern(" S ")
+				.pattern("CHN")
+				.pattern(" D ")
+				.unlockedBy("has_nether_wart", has(Items.NETHER_WART))
+				.save(pWriter);
+
+// MAGENTA WITCH CANDLE
+		ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, HexcraftBlocks.MAGENTA_WITCH_CANDLE.get())
+				.define('C', Items.CANDLE)
+				.define('S', Items.STRING)
+				.define('H', Items.HONEYCOMB)
+				.define('D', Items.MAGENTA_DYE)
+				.define('B', Items.BEETROOT)  // natural red pigment for magenta tint
+				.pattern(" S ")
+				.pattern("CHB")
+				.pattern(" D ")
+				.unlockedBy("has_beetroot", has(Items.BEETROOT))
+				.save(pWriter);
+
+// LIGHT BLUE WITCH CANDLE
+		ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, HexcraftBlocks.LIGHT_BLUE_WITCH_CANDLE.get())
+				.define('C', Items.CANDLE)
+				.define('S', Items.STRING)
+				.define('H', Items.HONEYCOMB)
+				.define('D', Items.LIGHT_BLUE_DYE)
+				.define('L', Items.LAPIS_LAZULI)  // blue pigment
+				.pattern(" S ")
+				.pattern("CHL")
+				.pattern(" D ")
+				.unlockedBy("has_lapis_lazuli", has(Items.LAPIS_LAZULI))
+				.save(pWriter);
+
+// YELLOW WITCH CANDLE
+		ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, HexcraftBlocks.YELLOW_WITCH_CANDLE.get())
+				.define('C', Items.CANDLE)
+				.define('S', Items.STRING)
+				.define('H', Items.HONEYCOMB)
+				.define('D', Items.YELLOW_DYE)
+				.define('A', Items.HAY_BLOCK)  // straw for a natural touch
+				.pattern(" S ")
+				.pattern("CHA")
+				.pattern(" D ")
+				.unlockedBy("has_hay_block", has(Items.HAY_BLOCK))
+				.save(pWriter);
+
+// LIME WITCH CANDLE
+		ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, HexcraftBlocks.LIME_WITCH_CANDLE.get())
+				.define('C', Items.CANDLE)
+				.define('S', Items.STRING)
+				.define('H', Items.HONEYCOMB)
+				.define('D', Items.LIME_DYE)
+				.define('L', Items.OAK_LEAVES)  // natural leaves for herbal vibe
+				.pattern(" S ")
+				.pattern("CHL")
+				.pattern(" D ")
+				.unlockedBy("has_oak_leaves", has(Items.OAK_LEAVES))
+				.save(pWriter);
+
+// PINK WITCH CANDLE
+		ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, HexcraftBlocks.PINK_WITCH_CANDLE.get())
+				.define('C', Items.CANDLE)
+				.define('S', Items.STRING)
+				.define('H', Items.HONEYCOMB)
+				.define('D', Items.PINK_DYE)
+				.define('R', Items.ROSE_BUSH)  // floral natural ingredient
+				.pattern(" S ")
+				.pattern("CHR")
+				.pattern(" D ")
+				.unlockedBy("has_rose_bush", has(Items.ROSE_BUSH))
+				.save(pWriter);
+
+// GRAY WITCH CANDLE
+		ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, HexcraftBlocks.GRAY_WITCH_CANDLE.get())
+				.define('C', Items.CANDLE)
+				.define('S', Items.STRING)
+				.define('H', Items.HONEYCOMB)
+				.define('D', Items.GRAY_DYE)
+				.define('O', Items.COAL)  // charcoal for grayish pigment
+				.pattern(" S ")
+				.pattern("CHO")
+				.pattern(" D ")
+				.unlockedBy("has_coal", has(Items.COAL))
+				.save(pWriter);
+
+// LIGHT GRAY WITCH CANDLE
+		ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, HexcraftBlocks.LIGHT_GRAY_WITCH_CANDLE.get())
+				.define('C', Items.CANDLE)
+				.define('S', Items.STRING)
+				.define('H', Items.HONEYCOMB)
+				.define('D', Items.LIGHT_GRAY_DYE)
+				.define('B', Items.BONE_MEAL)  // natural whitening agent
+				.pattern(" S ")
+				.pattern("CHB")
+				.pattern(" D ")
+				.unlockedBy("has_bone_meal", has(Items.BONE_MEAL))
+				.save(pWriter);
+
+// CYAN WITCH CANDLE
+		ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, HexcraftBlocks.CYAN_WITCH_CANDLE.get())
+				.define('C', Items.CANDLE)
+				.define('S', Items.STRING)
+				.define('H', Items.HONEYCOMB)
+				.define('D', Items.CYAN_DYE)
+				.define('L', Items.LAPIS_LAZULI)
+				.pattern(" S ")
+				.pattern("CHL")
+				.pattern(" D ")
+				.unlockedBy("has_lapis_lazuli", has(Items.LAPIS_LAZULI))
+				.save(pWriter);
+
+// PURPLE WITCH CANDLE
+		ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, HexcraftBlocks.PURPLE_WITCH_CANDLE.get())
+				.define('C', Items.CANDLE)
+				.define('S', Items.STRING)
+				.define('H', Items.HONEYCOMB)
+				.define('D', Items.PURPLE_DYE)
+				.define('B', Items.BEETROOT)
+				.pattern(" S ")
+				.pattern("CHB")
+				.pattern(" D ")
+				.unlockedBy("has_beetroot", has(Items.BEETROOT))
+				.save(pWriter);
+
+// BLUE WITCH CANDLE
+		ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, HexcraftBlocks.BLUE_WITCH_CANDLE.get())
+				.define('C', Items.CANDLE)
+				.define('S', Items.STRING)
+				.define('H', Items.HONEYCOMB)
+				.define('D', Items.BLUE_DYE)
+				.define('L', Items.LAPIS_LAZULI)
+				.pattern(" S ")
+				.pattern("CHL")
+				.pattern(" D ")
+				.unlockedBy("has_lapis_lazuli", has(Items.LAPIS_LAZULI))
+				.save(pWriter);
+
+// BROWN WITCH CANDLE
+		ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, HexcraftBlocks.BROWN_WITCH_CANDLE.get())
+				.define('C', Items.CANDLE)
+				.define('S', Items.STRING)
+				.define('H', Items.HONEYCOMB)
+				.define('D', Items.BROWN_DYE)
+				.define('O', Items.COCOA_BEANS)  // natural brown pigment
+				.pattern(" S ")
+				.pattern("CHO")  // changed from CHC to CHO to include cocoa beans
+				.pattern(" D ")
+				.unlockedBy("has_cocoa_beans", has(Items.COCOA_BEANS))
+				.save(pWriter);
+
+// GREEN WITCH CANDLE
+		ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, HexcraftBlocks.GREEN_WITCH_CANDLE.get())
+				.define('C', Items.CANDLE)
+				.define('S', Items.STRING)
+				.define('H', Items.HONEYCOMB)
+				.define('D', Items.GREEN_DYE)
+				.define('L', Items.OAK_LEAVES)
+				.pattern(" S ")
+				.pattern("CHL")
+				.pattern(" D ")
+				.unlockedBy("has_oak_leaves", has(Items.OAK_LEAVES))
+				.save(pWriter);
+
+// RED WITCH CANDLE
+		ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, HexcraftBlocks.RED_WITCH_CANDLE.get())
+				.define('C', Items.CANDLE)
+				.define('S', Items.STRING)
+				.define('H', Items.HONEYCOMB)
+				.define('D', Items.RED_DYE)
+				.define('N', Items.NETHER_WART)
+				.pattern(" S ")
+				.pattern("CHN")
+				.pattern(" D ")
+				.unlockedBy("has_nether_wart", has(Items.NETHER_WART))
+				.save(pWriter);
+
+// BLACK WITCH CANDLE
+		ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, HexcraftBlocks.BLACK_WITCH_CANDLE.get())
+				.define('C', Items.CANDLE)
+				.define('S', Items.STRING)
+				.define('H', Items.HONEYCOMB)
+				.define('D', Items.BLACK_DYE)
+				.define('O', Items.COAL)
+				.pattern(" S ")
+				.pattern("CHO")
+				.pattern(" D ")
+				.unlockedBy("has_coal", has(Items.COAL))
+				.save(pWriter);
 
 		//Shapeless
 		ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, HexcraftItems.BLOODY_NYKIUM_NUGGET.get(), 9)
@@ -3149,6 +3747,21 @@ public class HexcraftRecipeProvider extends RecipeProvider implements ICondition
 				.unlockedBy(getHasName(HexcraftItems.STEEL_INGOT.get()), has(HexcraftItems.STEEL_INGOT.get()))
 				.save(pWriter);
 
+		ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, HexcraftItems.SOULSTONE_NUGGET.get(), 9)
+				.requires(HexcraftItems.SOULSTONE_INGOT.get())
+				.unlockedBy(getHasName(HexcraftItems.SOULSTONE_INGOT.get()), has(HexcraftItems.SOULSTONE_INGOT.get()))
+				.save(pWriter);
+
+		ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, HexcraftItems.ABYSSIUM_NUGGET.get(), 9)
+				.requires(HexcraftItems.ABYSSIUM_INGOT.get())
+				.unlockedBy(getHasName(HexcraftItems.ABYSSIUM_INGOT.get()), has(HexcraftItems.ABYSSIUM_INGOT.get()))
+				.save(pWriter);
+
+		ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, HexcraftItems.ECLIPSIUM_NUGGET.get(), 9)
+				.requires(HexcraftItems.ECLIPSIUM_INGOT.get())
+				.unlockedBy(getHasName(HexcraftItems.ECLIPSIUM_INGOT.get()), has(HexcraftItems.ECLIPSIUM_INGOT.get()))
+				.save(pWriter);
+
 		ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, HexcraftItems.SILVER_INGOT.get(), 9)
 				.requires(HexcraftBlocks.SILVER_BLOCK.get())
 				.unlockedBy(getHasName(HexcraftItems.SILVER_INGOT.get()), has(HexcraftItems.SILVER_INGOT.get()))
@@ -3162,6 +3775,26 @@ public class HexcraftRecipeProvider extends RecipeProvider implements ICondition
 		ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, HexcraftItems.MOONSTONE.get(), 9)
 				.requires(HexcraftBlocks.MOONSTONE_BLOCK.get())
 				.unlockedBy(getHasName(HexcraftItems.MOONSTONE.get()), has(HexcraftItems.MOONSTONE.get()))
+				.save(pWriter);
+
+		ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, HexcraftItems.SOULSTONE_INGOT.get(), 9)
+				.requires(HexcraftBlocks.SOULSTONE_BLOCK.get())
+				.unlockedBy(getHasName(HexcraftItems.SOULSTONE_INGOT.get()), has(HexcraftItems.SOULSTONE_INGOT.get()))
+				.save(pWriter);
+
+		ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, HexcraftItems.ABYSSIUM_INGOT.get(), 9)
+				.requires(HexcraftBlocks.ABYSSIUM_BLOCK.get())
+				.unlockedBy(getHasName(HexcraftItems.ABYSSIUM_INGOT.get()), has(HexcraftItems.ABYSSIUM_INGOT.get()))
+				.save(pWriter);
+
+		ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, HexcraftItems.ECLIPSIUM_INGOT.get(), 9)
+				.requires(HexcraftBlocks.ECLIPSIUM_BLOCK.get())
+				.unlockedBy(getHasName(HexcraftItems.ECLIPSIUM_INGOT.get()), has(HexcraftItems.ECLIPSIUM_INGOT.get()))
+				.save(pWriter);
+
+		ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, HexcraftItems.ABYSSAL_COAL.get(), 9)
+				.requires(HexcraftBlocks.ABYSSAL_COAL_BLOCK.get())
+				.unlockedBy(getHasName(HexcraftItems.ABYSSAL_COAL.get()), has(HexcraftItems.ABYSSAL_COAL.get()))
 				.save(pWriter);
 
 		ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, HexcraftItems.BONE_NEEDLE.get(), 1)
@@ -3469,15 +4102,60 @@ public class HexcraftRecipeProvider extends RecipeProvider implements ICondition
 				.requires(HexcraftItems.VAMPIRIC_SHOVEL.get())
 				.unlockedBy(getHasName(HexcraftItems.VAMPIRIC_GEM.get()), has(HexcraftItems.VAMPIRIC_GEM.get())).save(pWriter);
 
+		ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, HexcraftItems.LIVING_KELP_SALAD.get(), 1)
+				.requires(HexcraftItems.LIVING_KELP_ITEM.get())
+				.requires(Items.COD)
+				.requires(Items.SEAGRASS)
+				.unlockedBy(getHasName(Items.COAL), has(Items.COAL))
+				.save(pWriter);
+
+		ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, HexcraftItems.CORRUPTED_NETHER_STAR.get())
+				.requires(Items.NETHER_STAR)
+				.requires(HexcraftItems.CORRUPTED_STEEL.get())
+				.unlockedBy(getHasName(HexcraftItems.CORRUPTED_STEEL.get()), has(HexcraftItems.CORRUPTED_STEEL.get()))
+				.save(pWriter);
+
+		ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, HexcraftItems.DARK_CRYSTAL_SHARDS.get(), 3)
+				.requires(HexcraftItems.ECLIPSIUM_INGOT.get())
+				.requires(HexcraftItems.SOULSTONE_INGOT.get())
+				.unlockedBy(getHasName(HexcraftItems.ECLIPSIUM_INGOT.get()), has(HexcraftItems.ECLIPSIUM_INGOT.get()))
+				.save(pWriter);
+
+		ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, HexcraftItems.CORRUPTED_RUNE.get())
+				.requires(HexcraftItems.TOXIC_FUMES.get())
+				.requires(HexcraftItems.ENCHANTED_RUNE.get())
+				.unlockedBy(getHasName(HexcraftItems.ENCHANTED_RUNE.get()), has(HexcraftItems.ENCHANTED_RUNE.get()))
+				.save(pWriter);
+
+		ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, HexcraftItems.RITUAL_CHALK.get())
+				.requires(HexcraftItems.ASH.get())
+				.requires(HexcraftItems.SALT.get())
+				.requires(Items.BONE_MEAL)
+				.unlockedBy(getHasName(HexcraftItems.SALT.get()), has(HexcraftItems.SALT.get()))
+				.save(pWriter);
+
 		WitchesOvenRecipeBuilder
 				.buildOvenRecipe(HexcraftItems.WHITE_OAK_ASH.get(), HexcraftItems.WOOD_ASH.get(), 0.35f, 200)
 				.requires(HexcraftBlocks.WHITE_OAK_SAPLING.get()).requires(HexcraftItems.CLAY_POT.get())
 				.unlockedBy("has_clay_pot", inventoryTrigger(ItemPredicate.Builder.item().of(HexcraftItems.CLAY_POT.get()).build()))
 				.save(pWriter);
 
+
 		WitchesOvenRecipeBuilder.buildOvenRecipe(HexcraftItems.BREATH_OF_THE_GODDESS.get(), HexcraftItems.WOOD_ASH.get(), 0.35f, 200)
 				.requires(Items.OAK_SAPLING).requires(HexcraftItems.CLAY_POT.get())
 				.unlockedBy("has_clay_pot", inventoryTrigger(ItemPredicate.Builder.item().of(HexcraftItems.CLAY_POT.get()).build()))
+				.save(pWriter);
+
+		WitchesOvenRecipeBuilder.buildOvenRecipe(HexcraftItems.SALT.get(), HexcraftItems.TOXIC_FUMES.get(), 0.65f, 200)
+				.requires(Items.ROTTEN_FLESH)
+				.requires(HexcraftItems.CLAY_POT.get())
+				.unlockedBy("has_rotten_flesh", inventoryTrigger(ItemPredicate.Builder.item().of(Items.ROTTEN_FLESH).build()))
+				.save(pWriter);
+
+		WitchesOvenRecipeBuilder.buildOvenRecipe(HexcraftItems.ENCHANTED_RUNE.get(), HexcraftItems.ASH.get(), 0.4f, 300)
+				.requires(HexcraftItems.BLANK_RUNE.get()) // Main item input
+				.requires(HexcraftItems.CLAY_POT.get())   // Required clay pot
+				.unlockedBy("has_blank_rune", inventoryTrigger(ItemPredicate.Builder.item().of(HexcraftItems.BLANK_RUNE.get()).build()))
 				.save(pWriter);
 
 		WitchesCauldronRecipeBuilder.buildCauldronRecipe(HexcraftItems.MUTANDIS.get(), 6).requires(HexcraftItems.EXHALE_OF_THE_HORNED_ONE.get())
@@ -3489,6 +4167,34 @@ public class HexcraftRecipeProvider extends RecipeProvider implements ICondition
 				.requires(HexcraftItems.MAGIC_CRYSTAL.get()).requires(HexcraftItems.EARTH_RUNE.get()).unlockedBy("has_cauldron",
 						inventoryTrigger(ItemPredicate.Builder.item().of(Items.CAULDRON).build()))
 				.save(pWriter);
+
+		WitchesCauldronRecipeBuilder.buildCauldronRecipe(HexcraftItems.ATTUNED_STONE_CHARGED.get()).requires(HexcraftItems.ATTUNED_STONE.get())
+				.requires(HexcraftItems.BLOODY_NYKIUM.get()).requires(HexcraftItems.SALT.get()).unlockedBy("has_cauldron",
+						inventoryTrigger(ItemPredicate.Builder.item().of(Items.CAULDRON).build()))
+				.save(pWriter);
+
+		WitchesCauldronRecipeBuilder.buildCauldronRecipe(HexcraftItems.ATTUNED_STONE.get()).requires(HexcraftItems.NECROTIC_STONE.get())
+				.requires(HexcraftItems.ENCHANTED_RUNE.get()).requires(HexcraftItems.SALT.get()).unlockedBy("has_cauldron",
+						inventoryTrigger(ItemPredicate.Builder.item().of(Items.CAULDRON).build()))
+				.save(pWriter);
+
+		WitchesCauldronRecipeBuilder.buildCauldronRecipe(HexcraftItems.WITCH_SIGIL.get())
+				.requires(HexcraftItems.SALT.get())
+				.requires(HexcraftItems.ENCHANTED_RUNE.get())
+				.requires(HexcraftItems.NECROMANTIC_STONE.get())
+				.unlockedBy("has_cauldron",
+						inventoryTrigger(ItemPredicate.Builder.item().of(Items.CAULDRON).build()))
+				.save(pWriter);
+
+		WitchesCauldronRecipeBuilder.buildCauldronRecipe(HexcraftItems.NECROMANTIC_STONE.get())
+				.requires(HexcraftItems.ASH.get())
+				.requires(Items.BONE)
+				.requires(HexcraftItems.SALT.get())
+				.unlockedBy("has_cauldron",
+						inventoryTrigger(ItemPredicate.Builder.item().of(Items.CAULDRON).build()))
+				.save(pWriter);
+
+
 	}
 
 	protected static void oreSmelting(Consumer<FinishedRecipe> pFinishedRecipeConsumer, List<ItemLike> pIngredients,

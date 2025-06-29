@@ -31,23 +31,14 @@
               "functions": [
                 {
                   "add": false,
-                  "count": {
-                    "type": "minecraft:uniform",
-                    "max": 5.0,
-                    "min": 2.0
-                  },
+                  "count": 3.0,
                   "function": "minecraft:set_count"
-                },
-                {
-                  "enchantment": "minecraft:silk_touch",
-                  "formula": "minecraft:ore_drops",
-                  "function": "minecraft:apply_bonus"
                 },
                 {
                   "function": "minecraft:explosion_decay"
                 }
               ],
-              "name": "hexcraftmod:white_oak_planks"
+              "name": "minecraft:book"
             }
           ]
         }

@@ -1,0 +1,18 @@
+{
+  "name": "Serpent’s Wrath",
+  "category": "weapons",
+  "icon": "minecraft:golden_sword",
+  "sortnum": 2,
+  "pages": [
+    {
+      "type": "text",
+      "title": "The Venomous Fang",
+      "text": "A cursed dagger crafted from the fangs of a serpent. Infused with poison, it strikes swiftly and lethally."
+    },
+    {
+      "type": "text",
+      "title": "Base Form",
+      "text": "Serpent’s Wrath applies Poison to enemies upon striking."
+    }
+  ]
+}

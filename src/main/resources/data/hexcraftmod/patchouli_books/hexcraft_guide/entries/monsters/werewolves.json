@@ -1,0 +1,26 @@
+{
+  "name": "Werewolves",
+  "category": "supernatural",
+  "icon": "minecraft:leather",
+  "pages": [
+    {
+      "type": "text",
+      "text": "Werewolves are cursed warriors who transform under the full moon. Their claws tear through enemies with immense power."
+    },
+    {
+      "type": "text",
+      "title": "Becoming a Werewolf",
+      "text": "Players can become werewolves by: \\n- Being bitten by an Alpha Werewolf."
+    },
+    {
+      "type": "text",
+      "title": "Weaknesses",
+      "text": "- Silver weapons deal increased damage. \\n- Forced transformations under a full moon. \\n- Cannot attack vampires without taking damage."
+    },
+    {
+      "type": "text",
+      "title": "Abilities",
+      "text": "- Beast Reflexes \\n- Pack Call (Summon wolves) \\n- Moon Howl (Terrifies enemies) \\n- Regeneration"
+    }
+  ]
+}

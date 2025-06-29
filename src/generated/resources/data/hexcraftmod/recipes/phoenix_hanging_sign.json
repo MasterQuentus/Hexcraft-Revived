@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "C": {
+      "item": "minecraft:chain"
+    },
+    "P": {
+      "item": "hexcraftmod:phoenix_planks"
+    }
+  },
+  "pattern": [
+    "C C",
+    "PPP",
+    "PPP"
+  ],
+  "result": {
+    "count": 6,
+    "item": "hexcraftmod:phoenix_hanging_sign"
+  },
+  "show_notification": true
+}

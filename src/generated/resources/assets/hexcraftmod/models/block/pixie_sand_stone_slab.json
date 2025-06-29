@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/slab",
+  "textures": {
+    "bottom": "hexcraftmod:block/pixie_sand_stone",
+    "side": "hexcraftmod:block/pixie_sand_stone",
+    "top": "hexcraftmod:block/pixie_sand_stone"
+  }
+}

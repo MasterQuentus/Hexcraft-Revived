@@ -52,7 +52,7 @@ public class WitchesOvenRecipe implements Recipe<SimpleContainer> {
 
 	@Override
 	public NonNullList<Ingredient> getIngredients() {
-		return this.ingredients;
+		return ingredients;
 	}
 	
 	@Override

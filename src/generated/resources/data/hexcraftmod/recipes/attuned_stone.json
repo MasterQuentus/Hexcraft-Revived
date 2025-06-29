@@ -1,0 +1,18 @@
+{
+  "type": "hexcraftmod:witches_cauldron",
+  "brewTime": 100,
+  "ingredients": [
+    {
+      "item": "hexcraftmod:necrotic_stone"
+    },
+    {
+      "item": "hexcraftmod:enchanted_rune"
+    },
+    {
+      "item": "hexcraftmod:salt"
+    }
+  ],
+  "result": {
+    "item": "hexcraftmod:attuned_stone"
+  }
+}

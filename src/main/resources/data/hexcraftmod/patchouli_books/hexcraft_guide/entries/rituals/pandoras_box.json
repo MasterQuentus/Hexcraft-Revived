@@ -1,0 +1,42 @@
+{
+  "name": "Pandora’s Box",
+  "category": "rituals",
+  "icon": "hexcraftmod:pandoras_box",
+  "pages": [
+    {
+      "type": "text",
+      "title": "A Box of Endless Possibilities",
+      "text": "Pandora’s Box is a powerful relic, capable of unleashing untold chaos or bestowing great fortune. Once opened, its effects are unpredictable, making it both a treasure and a curse."
+    },
+    {
+      "type": "entity",
+      "entity": "hexcraftmod:pandoras_box",
+      "text": "A mystical artifact of unknown origins. Beware, for opening it comes with great risks and rewards."
+    },
+    {
+      "type": "text",
+      "title": "How to Obtain",
+      "text": "Pandora’s Box cannot be crafted. It must be **summoned through a dark ritual**, requiring: \\n- 1 Totem of Undying \\n- 1 Soul Sand \\n- 1 Nether Star \\n- 1 Eclipsium Block \\n- Surrounding Candles."
+    },
+    {
+      "type": "text",
+      "title": "Opening the Box",
+      "text": "Right-clicking Pandora’s Box will trigger a random event. **Be prepared!** The outcome can be either beneficial or catastrophic."
+    },
+    {
+      "type": "text",
+      "title": "Possible Outcomes",
+      "text": "- **Treasure**: Rare loot such as enchanted gear, potions, or diamonds. \\n- **Chaos Spawn**: Summons waves of powerful creatures. \\n- **Pandora Herself**: A small chance that Pandora, the Keeper of Chaos, emerges instead of a normal event."
+    },
+    {
+      "type": "text",
+      "title": "Summoning Pandora",
+      "text": "If Pandora herself appears, be prepared for an **epic boss battle**. She wields chaotic magic, summoning creatures and altering reality itself!"
+    },
+    {
+      "type": "text",
+      "title": "Rewards for Defeating Pandora",
+      "text": "Players who manage to defeat Pandora may receive: \\n- **Pandora’s Soul** (Used to upgrade weapons with Chaos abilities) \\n- **Pandora’s Contract** (Unlocks new chaotic powers when applied to a weapon) \\n- **Fatebreaker** (A legendary sword that shifts between buffs and debuffs)"
+    }
+  ]
+}

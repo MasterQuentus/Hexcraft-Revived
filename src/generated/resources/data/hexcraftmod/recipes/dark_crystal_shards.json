@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "hexcraftmod:eclipsium_ingot"
+    },
+    {
+      "item": "hexcraftmod:soulstone_ingot"
+    }
+  ],
+  "result": {
+    "count": 3,
+    "item": "hexcraftmod:dark_crystal_shards"
+  }
+}

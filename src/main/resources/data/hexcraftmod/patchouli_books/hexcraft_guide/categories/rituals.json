@@ -1,0 +1,13 @@
+{
+  "name": "Dark Rituals",
+  "description": "Rituals that unlock forbidden power.",
+  "icon": "minecraft:enchanting_table",
+  "sortnum": 3,
+  "entries": [
+    "hexcraftmod:heretic_ritual",
+    "hexcraftmod:hybrid_ritual",
+    "hexcraftmod:original_vampire_ritual",
+    "hexcraftmod:pandoras_box",
+    "hexcraftmod:vampire_ritual"
+  ]
+}

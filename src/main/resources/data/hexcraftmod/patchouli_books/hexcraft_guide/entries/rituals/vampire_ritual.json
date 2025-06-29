@@ -1,0 +1,32 @@
+{
+  "name": "Ritual of the Blood Moon",
+  "category": "rituals",
+  "icon": "hexcraftmod:blood_drop",
+  "pages": [
+    {
+      "type": "text",
+      "title": "Embracing the Night",
+      "text": "The path to vampirism is irreversible. A willing sacrifice must be made, for once you take your first drink of blood, you will be reborn."
+    },
+    {
+      "type": "text",
+      "title": "Requirements",
+      "text": "- Be bitten by a vampire and die, OR \\n- Drink a **Bottle of Vampire Blood** and perish."
+    },
+    {
+      "type": "text",
+      "title": "The Turning",
+      "text": "Upon death, you will awaken as a vampire. You must feed within **a few days** or your body will reject the transformation, causing permanent death."
+    },
+    {
+      "type": "text",
+      "title": "Vampiric Weaknesses",
+      "text": "Newly turned vampires will suffer **sunlight burns** unless they obtain a **Blessed Daylight Ring**. Beware of **Vervain Potions**, as they are deadly."
+    },
+    {
+      "type": "text",
+      "title": "Vampiric Powers",
+      "text": "Unlock supernatural strength, speed, and blood magic through the **Vampire Skill Tree**."
+    }
+  ]
+}

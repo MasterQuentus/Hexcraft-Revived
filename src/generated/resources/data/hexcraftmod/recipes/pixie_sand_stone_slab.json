@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "P": {
+      "item": "hexcraftmod:pixie_sand_stone"
+    }
+  },
+  "pattern": [
+    "PPP"
+  ],
+  "result": {
+    "count": 6,
+    "item": "hexcraftmod:pixie_sand_stone_slab"
+  },
+  "show_notification": true
+}

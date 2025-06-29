@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:campfire_cooking",
+  "category": "food",
+  "cookingtime": 600,
+  "experience": 0.3,
+  "ingredient": {
+    "item": "hexcraftmod:blister_cactus_fruit"
+  },
+  "result": "hexcraftmod:blister_fruit"
+}

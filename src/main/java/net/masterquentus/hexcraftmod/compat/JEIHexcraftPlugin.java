@@ -8,8 +8,9 @@ import mezz.jei.api.registration.IGuiHandlerRegistration;
 import mezz.jei.api.registration.IRecipeCategoryRegistration;
 import mezz.jei.api.registration.IRecipeRegistration;
 import net.masterquentus.hexcraftmod.HexcraftMod;
+import net.masterquentus.hexcraftmod.recipe.WitchesCauldronRecipe;
 import net.masterquentus.hexcraftmod.recipe.WitchesOvenRecipe;
-import net.masterquentus.hexcraftmod.screen.WitchesOvenScreen;
+import net.masterquentus.hexcraftmod.screens.WitchesOvenScreen;
 import net.minecraft.client.Minecraft;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.crafting.RecipeManager;
@@ -33,12 +34,10 @@ public class JEIHexcraftPlugin implements IModPlugin {
 	public void registerRecipes(IRecipeRegistration registration) {
 		RecipeManager manager = Minecraft.getInstance().level.getRecipeManager();
 		List<WitchesOvenRecipe> witchesOvenRecipes = manager.getAllRecipesFor(WitchesOvenRecipe.Type.INSTANCE);
-		// List<WitchesCauldronRecipe> witchesCauldronRecipes = manager
-		// .getAllRecipesFor(WitchesCauldronRecipe.Type.INSTANCE);
+		List<WitchesCauldronRecipe> witchesCauldronRecipes = manager.getAllRecipesFor(WitchesCauldronRecipe.Type.INSTANCE);
 
 		registration.addRecipes(WitchesOvenCategory.WITCHES_OVEN_TYPE, witchesOvenRecipes);
-		// registration.addRecipes(WitchesCauldronCategory.WITCHES_CAULDRON_TYPE,
-		// witchesCauldronRecipes);
+		registration.addRecipes(WitchesCauldronCategory.WITCHES_CAULDRON_TYPE, witchesCauldronRecipes);
 	}
 
 	@Override

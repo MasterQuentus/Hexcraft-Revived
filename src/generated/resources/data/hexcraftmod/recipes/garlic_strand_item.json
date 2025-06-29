@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "G": {
+      "item": "hexcraftmod:garlic"
+    },
+    "S": {
+      "item": "minecraft:string"
+    }
+  },
+  "pattern": [
+    "SGS",
+    "GSG"
+  ],
+  "result": {
+    "item": "hexcraftmod:garlic_strand_item"
+  },
+  "show_notification": true
+}

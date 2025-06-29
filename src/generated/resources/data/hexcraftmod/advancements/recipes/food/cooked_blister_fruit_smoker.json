@@ -1,0 +1,35 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_blister_cactus_fruit": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "hexcraftmod:blister_cactus_fruit"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "hexcraftmod:cooked_blister_fruit_smoker"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_blister_cactus_fruit",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "hexcraftmod:cooked_blister_fruit_smoker"
+    ]
+  },
+  "sends_telemetry_event": false
+}

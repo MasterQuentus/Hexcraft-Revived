@@ -1,0 +1,18 @@
+{
+  "type": "hexcraftmod:witches_cauldron",
+  "brewTime": 100,
+  "ingredients": [
+    {
+      "item": "hexcraftmod:attuned_stone"
+    },
+    {
+      "item": "hexcraftmod:bloody_nykium"
+    },
+    {
+      "item": "hexcraftmod:salt"
+    }
+  ],
+  "result": {
+    "item": "hexcraftmod:attuned_stone_charged"
+  }
+}

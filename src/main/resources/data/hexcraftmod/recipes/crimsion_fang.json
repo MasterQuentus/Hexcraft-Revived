@@ -1,0 +1,23 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        " C ",
+        " S ",
+        " F "
+    ],
+    "key": {
+        "C": {
+            "item": "hexcraftmod:lilith_contract"  // Contract item
+        },
+        "S": {
+            "item": "hexcraftmod:lilith_soul"  // Soul item
+        },
+        "F": {
+            "item": "hexcraftmod:crimson_fang"  // Base Crimson Fang item
+        }
+    },
+    "result": {
+        "item": "hexcraftmod:crimson_fang",  // Same item, but upgraded by NBT tag
+        "count": 1
+    }
+}

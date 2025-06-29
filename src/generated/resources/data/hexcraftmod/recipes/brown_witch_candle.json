@@ -1,0 +1,30 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "C": {
+      "item": "minecraft:candle"
+    },
+    "D": {
+      "item": "minecraft:brown_dye"
+    },
+    "H": {
+      "item": "minecraft:honeycomb"
+    },
+    "O": {
+      "item": "minecraft:cocoa_beans"
+    },
+    "S": {
+      "item": "minecraft:string"
+    }
+  },
+  "pattern": [
+    " S ",
+    "CHO",
+    " D "
+  ],
+  "result": {
+    "item": "hexcraftmod:brown_witch_candle"
+  },
+  "show_notification": true
+}

@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": {
+      "item": "hexcraftmod:ash"
+    },
+    "B": {
+      "item": "minecraft:bone_block"
+    },
+    "D": {
+      "item": "hexcraftmod:dark_crystal_shards"
+    }
+  },
+  "pattern": [
+    " A ",
+    "DBD",
+    " A "
+  ],
+  "result": {
+    "item": "hexcraftmod:necrotic_stone"
+  },
+  "show_notification": true
+}

@@ -1,0 +1,21 @@
+{
+  "name": "Hybrids",
+  "category": "supernatural",
+  "icon": "minecraft:totem_of_undying",
+  "pages": [
+    {
+      "type": "text",
+      "text": "Hybrids are the perfect fusion of Vampire and Werewolf abilities. They are immune to vervain, cannot be compelled, and possess the best of both worlds."
+    },
+    {
+      "type": "text",
+      "title": "Becoming a Hybrid",
+      "text": "A Hybrid can only be created by an Original Vampire through a unique ritual."
+    },
+    {
+      "type": "text",
+      "title": "Abilities",
+      "text": "- Blood Rage Mode \\n- Werewolf Claws \\n- Hybrid Roar (Stuns enemies) \\n- Shadow Leap"
+    }
+  ]
+}

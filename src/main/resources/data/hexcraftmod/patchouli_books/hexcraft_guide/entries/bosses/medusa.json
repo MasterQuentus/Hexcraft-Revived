@@ -1,0 +1,31 @@
+{
+  "name": "Medusa - The Petrifying Gorgon",
+  "category": "bosses",
+  "icon": "minecraft:ender_eye",
+  "pages": [
+    {
+      "type": "text",
+      "text": "Medusa, the cursed queen of stone, waits in her ruined temple. Those who dare meet her gaze do not return unchanged."
+    },
+    {
+      "type": "text",
+      "title": "Petrifying Gaze",
+      "text": "Looking into Medusa’s eyes for more than 3 seconds will turn you into stone and kill you. Returning to the battle location will reveal a stone statue of yourself, containing your inventory."
+    },
+    {
+      "type": "text",
+      "title": "Abilities",
+      "text": "- Snake Strike: Summons venomous serpents. \\n- Stone Wave: Turns mobs to stone. \\n- Blink Dodge: Teleports behind you. \\n- Stone Shard Explosion: AoE damage at 50% health."
+    },
+    {
+      "type": "text",
+      "title": "Battle Environment",
+      "text": "A ruined temple, filled with eerie statues—the frozen remains of past challengers."
+    },
+    {
+      "type": "text",
+      "title": "Rewards",
+      "text": "- Medusa's Soul \\n- Medusa's Contract \\n- Serpent's Wrath (Weapon)"
+    }
+  ]
+}

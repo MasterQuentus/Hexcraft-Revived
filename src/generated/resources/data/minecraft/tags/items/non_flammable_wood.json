@@ -4,6 +4,11 @@
     "hexcraftmod:hell_bark_wood",
     "hexcraftmod:stripped_hell_bark_log",
     "hexcraftmod:stripped_hell_bark_wood",
-    "hexcraftmod:hell_bark_planks"
+    "hexcraftmod:hell_bark_planks",
+    "hexcraftmod:phoenix_log",
+    "hexcraftmod:phoenix_wood",
+    "hexcraftmod:stripped_phoenix_log",
+    "hexcraftmod:stripped_phoenix_wood",
+    "hexcraftmod:phoenix_planks"
   ]
 }

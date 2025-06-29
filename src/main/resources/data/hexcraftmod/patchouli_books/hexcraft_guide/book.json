@@ -1,0 +1,10 @@
+{
+  "name": "Hexcraft Grimoire",
+  "landing_text": "Welcome, seeker of the occult. Within these pages, you will find forbidden knowledge.",
+  "subtitle": "A Guide to Dark Magic",
+  "version": 1,
+  "creative_tab": "hexcraftmod:hexcraft_tab",
+  "model": "patchouli:book_brown",
+  "i18n": true,
+  "advancement": "minecraft:story/root"
+}

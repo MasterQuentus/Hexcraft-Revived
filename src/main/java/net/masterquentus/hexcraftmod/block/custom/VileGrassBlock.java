@@ -2,6 +2,7 @@ package net.masterquentus.hexcraftmod.block.custom;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.function.BiConsumer;
 
 import net.masterquentus.hexcraftmod.block.HexcraftBlockStateProperties;
 import net.masterquentus.hexcraftmod.block.HexcraftBlocks;
@@ -13,20 +14,13 @@ import net.minecraft.core.registries.Registries;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.BonemealableBlock;
-import net.minecraft.world.level.block.GrassBlock;
+import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import net.minecraft.world.level.levelgen.feature.configurations.RandomPatchConfiguration;
 import net.minecraft.world.level.levelgen.feature.configurations.TreeConfiguration;
 import net.minecraft.world.level.levelgen.placement.PlacedFeature;
-
-import java.util.List;
-import java.util.Optional;
-import java.util.function.BiConsumer;
 
 public class VileGrassBlock extends GrassBlock {
 	public VileGrassBlock(Properties properties) {
@@ -46,25 +40,48 @@ public class VileGrassBlock extends GrassBlock {
 		return true;
 	}
 
-	/**
-	 * Based on {@link net.minecraft.world.level.block.SpreadingSnowyDirtBlock#randomTick(BlockState, ServerLevel, BlockPos, RandomSource)}.<br><br>
-	 * Warning for "deprecation" is suppressed due to being copied from what Forge does.
-	 */
 	@Override
 	public void randomTick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
-		if (!SpreadingSnowyDirtBlockAccessor.callCanBeGrass(state, level, pos)) {
-			if (!level.isAreaLoaded(pos, 3))
-				return; // Forge: prevent loading unloaded chunks when checking neighbor's light and spreading
+		// Prevent spreading if the block above is already VILE_GRASS_BLOCK
+		if (level.getBlockState(pos.above()).is(HexcraftBlocks.VILE_GRASS_BLOCK.get())) {
+			return;
+		}
+
+		// Check if the position above is a solid block or flower pot
+		BlockState blockAbove = level.getBlockState(pos.above());
+		if (!blockAbove.isAir() && !(blockAbove.getBlock() instanceof SnowLayerBlock)) {
+			return; // Stop spreading if the block above is occupied
+		}
+
+		// Convert VILE_GRASS_BLOCK back to VILE_DIRT if conditions are bad
+		if (level == null || pos == null || state == null) {
+			return;
+		}
+
+		// Fix: Ensure `invokeCanBeGrass()` works correctly and handle null checks
+		boolean canGrass = false;
+		try {
+			// Create an instance of SpreadingSnowyDirtBlockAccessor to call the method
+			SpreadingSnowyDirtBlockAccessor accessor = new SpreadingSnowyDirtBlockAccessor();
+			canGrass = accessor.invokeCanBeGrass(state, level, pos); // Use the instance method
+		} catch (Exception e) {
+			// Log or handle the exception if invokeCanBeGrass() fails
+			System.err.println("Error in invokeCanBeGrass: " + e.getMessage());
+		}
+
+		if (!canGrass) {
+			if (level != null && !level.isAreaLoaded(pos, 3)) return; // Prevent loading unloaded chunks
 			level.setBlockAndUpdate(pos, HexcraftBlocks.VILE_DIRT.get().defaultBlockState());
 		} else {
-			if (!level.isAreaLoaded(pos, 3))
-				return; // Forge: prevent loading unloaded chunks when checking neighbor's light and spreading
-			if (level.getMaxLocalRawBrightness(pos.above()) >= 9) {
-				BlockState blockstate = this.defaultBlockState();
+			if (level != null && !level.isAreaLoaded(pos, 3)) return; // Prevent loading unloaded chunks
+			if (level.getMaxLocalRawBrightness(pos.above()) >= 9) { // Check if there's enough light
 				for (int i = 0; i < 4; ++i) {
-					BlockPos blockpos = pos.offset(random.nextInt(3) - 1, random.nextInt(5) - 3, random.nextInt(3) - 1);
-					if (level.getBlockState(blockpos).is(HexcraftBlocks.VILE_DIRT.get()) && SpreadingSnowyDirtBlockAccessor.callCanPropagate(blockstate, level, blockpos)) {
-						level.setBlockAndUpdate(blockpos, blockstate.setValue(SNOWY, level.getBlockState(blockpos.above()).is(Blocks.SNOW)));
+					BlockPos targetPos = pos.offset(random.nextInt(3) - 1, random.nextInt(5) - 3, random.nextInt(3) - 1);
+					BlockState targetState = level.getBlockState(targetPos);
+
+					// Only spread to VILE_DIRT, not air
+					if (targetState.is(HexcraftBlocks.VILE_DIRT.get())) {
+						level.setBlockAndUpdate(targetPos, this.defaultBlockState().setValue(SNOWY, level.getBlockState(targetPos.above()).is(Blocks.SNOW)));
 					}
 				}
 			}

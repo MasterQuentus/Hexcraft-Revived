@@ -1,0 +1,34 @@
+{
+  "name": "The Wendigo",
+  "category": "monsters",
+  "icon": "hexcraftmod:wendigo_spawn_egg",
+  "sortnum": 5,
+  "pages": [
+    {
+      "type": "text",
+      "title": "A Cursed Stalker",
+      "text": "The Wendigo is a terrifying, cursed being that lurks in the dark, stalking its prey. It is said to be the result of a human who consumed flesh and became cursed."
+    },
+    {
+      "type": "entity",
+      "entity": "hexcraftmod:wendigo",
+      "scale": 1.2
+    },
+    {
+      "type": "text",
+      "title": "Abilities",
+      "text": "The Wendigo is incredibly fast, able to vanish into the shadows and reappear when least expected. It applies Hunger and Slowness when it strikes its prey."
+    },
+    {
+      "type": "text",
+      "title": "Weaknesses",
+      "text": "While powerful, Wendigos are vulnerable to fire and sunlight. They become slower and weaker when exposed to light."
+    },
+    {
+      "type": "spotlight",
+      "item": "hexcraftmod:wendigo_spawn_egg",
+      "title": "Summoning",
+      "text": "Wendigos can be found in cold, cursed biomes, or summoned using their spawn egg."
+    }
+  ]
+}

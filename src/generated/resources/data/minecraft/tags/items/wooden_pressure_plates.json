@@ -1,9 +1,5 @@
 {
   "values": [
-    "hexcraftmod:pearl_stone_pressure_plate",
-    "hexcraftmod:crimson_stone_pressure_plate",
-    "hexcraftmod:under_world_stone_pressure_plate",
-    "hexcraftmod:charstone_pressure_plate",
     "hexcraftmod:ebony_pressure_plate",
     "hexcraftmod:blood_oak_pressure_plate",
     "hexcraftmod:hell_bark_pressure_plate",
@@ -19,6 +15,7 @@
     "hexcraftmod:rowan_pressure_plate",
     "hexcraftmod:twisted_pressure_plate",
     "hexcraftmod:witch_wood_pressure_plate",
-    "hexcraftmod:echo_wood_pressure_plate"
+    "hexcraftmod:echo_wood_pressure_plate",
+    "hexcraftmod:phoenix_pressure_plate"
   ]
 }

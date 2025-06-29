@@ -2,6 +2,6 @@
   "parent": "minecraft:block/template_glass_pane_noside_alt",
   "render_type": "translucent",
   "textures": {
-    "pane": "hexcraftmod:block/crimson_glass"
+    "pane": "hexcraftmod:block/fairy_glass"
   }
 }

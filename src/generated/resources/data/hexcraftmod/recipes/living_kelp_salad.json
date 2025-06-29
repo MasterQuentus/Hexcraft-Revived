@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "hexcraftmod:living_kelp_item"
+    },
+    {
+      "item": "minecraft:cod"
+    },
+    {
+      "item": "minecraft:seagrass"
+    }
+  ],
+  "result": {
+    "item": "hexcraftmod:living_kelp_salad"
+  }
+}

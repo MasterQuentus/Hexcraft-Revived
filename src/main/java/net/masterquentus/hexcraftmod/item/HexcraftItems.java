@@ -2,21 +2,78 @@ package net.masterquentus.hexcraftmod.item;
 
 import net.masterquentus.hexcraftmod.HexcraftMod;
 import net.masterquentus.hexcraftmod.block.HexcraftBlocks;
+import net.masterquentus.hexcraftmod.block.custom.HexcraftChestBlock;
 import net.masterquentus.hexcraftmod.block.entity.boats.HexcraftBoatEntity;
+import net.masterquentus.hexcraftmod.effects.HexcraftEffects;
+import net.masterquentus.hexcraftmod.entity.HexcraftEntities;
 import net.masterquentus.hexcraftmod.fluid.HexcraftFluids;
+import net.masterquentus.hexcraftmod.item.brews.SimpleEffectBrewItem;
+import net.masterquentus.hexcraftmod.item.brews.SimpleEffectSplashBrewItem;
+import net.masterquentus.hexcraftmod.item.brooms.BroomItem;
+import net.masterquentus.hexcraftmod.item.brooms.traits.*;
 import net.masterquentus.hexcraftmod.item.custom.*;
 import net.masterquentus.hexcraftmod.util.HexcraftTags;
+import net.minecraft.core.Direction;
+import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.effect.MobEffects;
+import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.food.Foods;
 import net.minecraft.world.item.*;
+import net.minecraft.world.item.alchemy.Potion;
+import net.minecraft.world.item.alchemy.PotionUtils;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.ComposterBlock;
+import net.minecraftforge.common.ForgeSpawnEggItem;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 
+import static net.masterquentus.hexcraftmod.potions.HexcraftPotions.POTIONS;
+
 public class HexcraftItems {
     public static final DeferredRegister<Item> ITEMS =
             DeferredRegister.create(ForgeRegistries.ITEMS, HexcraftMod.MOD_ID);
+
+    public static final RegistryObject<Item> HEXCRAFT_GRIMOIRE = ITEMS.register("hexcraft_grimoire",
+            () -> new Item(new Item.Properties().stacksTo(1)));
+
+    public static final RegistryObject<BlockItem> VILE_GRASS_BLOCK_ITEM = ITEMS.register("vile_grass_block",
+            () -> new BlockItem(HexcraftBlocks.VILE_GRASS_BLOCK.get(), new Item.Properties()));
+
+    public static final RegistryObject<Item> VILE_DIRT_ITEM = ITEMS.register("vile_dirt",
+            () -> new BlockItem(HexcraftBlocks.VILE_DIRT.get(), new Item.Properties()));
+
+    public static final RegistryObject<BlockItem> CURSED_SOIL = ITEMS.register("cursed_soil",
+            () -> new BlockItem(HexcraftBlocks.CURSED_SOIL.get(), new Item.Properties()));
+
+    public static final RegistryObject<BlockItem> CURED_SOIL = ITEMS.register("cured_soil",
+            () -> new BlockItem(HexcraftBlocks.CURED_SOIL.get(), new Item.Properties()));
+
+    public static final RegistryObject<BlockItem> FERTILIZED_DIRT = ITEMS.register("fertilized_dirt",
+            () -> new BlockItem(HexcraftBlocks.FERTILIZED_DIRT.get(), new Item.Properties()));
+
+    public static final RegistryObject<Item> FAIRY_LANTERN_ITEM = ITEMS.register("fairy_lantern",
+            () -> new BlockItem(HexcraftBlocks.FAIRY_LANTERN.get(), new Item.Properties()));
+
+    public static final RegistryObject<Item> PIXIE_LANTERN_ITEM = ITEMS.register("pixie_lantern",
+            () -> new BlockItem(HexcraftBlocks.PIXIE_LANTERN.get(), new Item.Properties()));
+
+    public static final RegistryObject<Item> FAIRY_WARD_ITEM = ITEMS.register("fairy_ward",
+            () -> new BlockItem(HexcraftBlocks.FAIRY_WARD.get(), new Item.Properties()));
+
+    public static final RegistryObject<Item> PIXIE_WARD_ITEM = ITEMS.register("pixie_ward",
+            () -> new BlockItem(HexcraftBlocks.PIXIE_WARD.get(), new Item.Properties()));
+
+    public static final RegistryObject<Item> HELLFIRE_CAMP_ITEM = ITEMS.register("hellfire_camp",
+            () -> new BlockItem(HexcraftBlocks.HELLFIRE_CAMPFIRE.get(), new Item.Properties()));
+
+    public static final RegistryObject<Item> FUME_FUNNEL = ITEMS.register("fume_funnel",
+            () -> new BlockItem(HexcraftBlocks.FUME_FUNNEL.get(), new Item.Properties()));
+
+    public static final RegistryObject<BlockItem> ALTAR_BASE_ITEM = ITEMS.register("altar_base", () -> new BlockItem(HexcraftBlocks.ALTAR_BASE.get(), new Item.Properties()));
+
+    public static final RegistryObject<BlockItem> ALTAR_TOP_ITEM = ITEMS.register("altar_top", () -> new BlockItem(HexcraftBlocks.ALTAR_TOP.get(), new Item.Properties()));
 
     public static final RegistryObject<Item> INFUSED_FABRIC = ITEMS.register("infused_fabric",
             () -> new Item(new Item.Properties()));
@@ -27,6 +84,18 @@ public class HexcraftItems {
     public static final RegistryObject<Item> TANNED_LEATHER = ITEMS.register("tanned_leather",
             () -> new Item(new Item.Properties()));
 
+    public static final RegistryObject<Item> DAYLIGHT_RING = ITEMS.register("daylight_ring",
+            () -> new Item(new Item.Properties()));
+
+    public static final RegistryObject<Item> BLESSED_DAYLIGHT_RING = ITEMS.register("blessed_daylight_ring",
+            () -> new BlessedDaylightRing(new Item.Properties().stacksTo(1).rarity(Rarity.RARE)));
+
+    public static final RegistryObject<Item> WITHER_BONE = ITEMS.register("wither_bone",
+            () -> new Item(new Item.Properties()));
+
+    public static final RegistryObject<Item> DREAMWEAVER_CHARM = ITEMS.register("dreamweaver_charm",
+            () -> new DreamweaverCharmItem(new Item.Properties().stacksTo(1).rarity(Rarity.RARE)));
+
     public static final RegistryObject<Item> BONE_NEEDLE = ITEMS.register("bone_needle",
             () -> new Item(new Item.Properties()));
 
@@ -34,12 +103,27 @@ public class HexcraftItems {
             () -> new TagLockKitItem(new Item.Properties()));
 
     public static final RegistryObject<Item> TAGLOCK_KIT_FULL = ITEMS.register("taglock_kit_full",
-            () -> new TagLockKitFilled(new Item.Properties()));
+            () -> new TagLockKitFilled(new Item.Properties().stacksTo(1)));
 
     public static final RegistryObject<Item> WITCHES_SATCHEL = ITEMS.register("witches_satchel",
             () -> new WitchesSatchelItem(new Item.Properties()));
 
+    public static final RegistryObject<Item> FLINT_AND_HELLFIRE = ITEMS.register("flint_and_hellfire",
+            () -> new FlintAndHellfireItem(new Item.Properties().durability(64)));
+
     public static final RegistryObject<Item> UNFIRED_CLAY_POT = ITEMS.register("unfired_clay_pot",
+            () -> new Item(new Item.Properties()));
+
+    public static final RegistryObject<Item> INFERNAL_EMBER = ITEMS.register("infernal_ember",
+            () -> new Item(new Item.Properties()));
+
+    public static final RegistryObject<Item> ASH = ITEMS.register("ash",
+            () -> new Item(new Item.Properties()));
+
+    public static final RegistryObject<Item> TOXIC_FUMES = ITEMS.register("toxic_fumes",
+            () -> new Item(new Item.Properties()));
+
+    public static final RegistryObject<Item> RITUAL_CHALK = ITEMS.register("ritual_chalk",
             () -> new Item(new Item.Properties()));
 
     public static final RegistryObject<Item> CLAY_POT = ITEMS.register("clay_pot",
@@ -48,13 +132,61 @@ public class HexcraftItems {
     public static final RegistryObject<Item> BLOOD_BOTTLE = ITEMS.register("blood_bottle",
             () -> new BloodBottleItem(new Item.Properties().stacksTo(16)));
 
+    public static final RegistryObject<Item> VENOM_BOTTLE = ITEMS.register("venom_bottle",
+            () -> new Item(new Item.Properties()));
+
     public static final RegistryObject<Item> LILITH_CONTRACT = ITEMS.register("lilith_contract",
             () -> new Item(new Item.Properties()));
 
     public static final RegistryObject<Item> LILITH_SOUL = ITEMS.register("lilith_soul",
             () -> new Item(new Item.Properties()));
 
+    public static final RegistryObject<Item> DEATH_CONTRACT = ITEMS.register("death_contract",
+            () -> new Item(new Item.Properties()));
+
+    public static final RegistryObject<Item> DEATH_SOUL = ITEMS.register("death_soul",
+            () -> new Item(new Item.Properties()));
+
+    public static final RegistryObject<Item> ENVY_SOUL = ITEMS.register("envy_soul",
+            () -> new Item(new Item.Properties()));
+
+    public static final RegistryObject<Item> GLUTTONY_SOUL = ITEMS.register("gluttony_soul",
+            () -> new Item(new Item.Properties()));
+
+    public static final RegistryObject<Item> GREED_SOUL = ITEMS.register("greed_soul",
+            () -> new Item(new Item.Properties()));
+
+    public static final RegistryObject<Item> LUST_SOUL = ITEMS.register("lust_soul",
+            () -> new Item(new Item.Properties()));
+
+    public static final RegistryObject<Item> MEDUSA_SOUL = ITEMS.register("medusa_soul",
+            () -> new Item(new Item.Properties()));
+
+    public static final RegistryObject<Item> MIRROR_DEMON_SOUL = ITEMS.register("mirror_demon_soul",
+            () -> new Item(new Item.Properties()));
+
+    public static final RegistryObject<Item> PRIDE_SOUL = ITEMS.register("pride_soul",
+            () -> new Item(new Item.Properties()));
+
+    public static final RegistryObject<Item> SLOTH_SOUL = ITEMS.register("sloth_soul",
+            () -> new Item(new Item.Properties()));
+
+    public static final RegistryObject<Item> WRATH_SOUL = ITEMS.register("wrath_soul",
+            () -> new Item(new Item.Properties()));
+
     public static final RegistryObject<Item> MAGIC_CRYSTAL = ITEMS.register("magic_crystal",
+            () -> new Item(new Item.Properties()));
+
+    public static final RegistryObject<Item> WITCH_SIGIL = ITEMS.register("witch_sigil",
+            () -> new Item(new Item.Properties()));
+
+    public static final RegistryObject<Item> NECROTIC_STONE = ITEMS.register("necrotic_stone",
+            () -> new Item(new Item.Properties()));
+
+    public static final RegistryObject<Item> ENCHANTED_RUNE = ITEMS.register("enchanted_rune",
+            () -> new Item(new Item.Properties()));
+
+    public static final RegistryObject<Item> CORRUPTED_RUNE = ITEMS.register("corrupted_rune",
             () -> new Item(new Item.Properties()));
 
     public static final RegistryObject<Item> BLANK_RUNE = ITEMS.register("blank_rune",
@@ -144,6 +276,12 @@ public class HexcraftItems {
     public static final RegistryObject<Item> BLOODY_NYKIUM_NUGGET = ITEMS.register("bloody_nykium_nugget",
             () -> new Item(new Item.Properties()));
 
+    public static final RegistryObject<Item> NYKIUM_INGOT = ITEMS.register("nykium_ingot",
+            () -> new Item(new Item.Properties()));
+
+    public static final RegistryObject<Item> NYKIUM_NUGGET = ITEMS.register("nykium_nugget",
+            () -> new Item(new Item.Properties()));
+
     public static final RegistryObject<Item> RAW_CUROGEN = ITEMS.register("raw_curogen",
             () -> new Item(new Item.Properties()));
 
@@ -171,6 +309,33 @@ public class HexcraftItems {
     public static final RegistryObject<Item> STEEL_INGOT = ITEMS.register("steel_ingot",
             () -> new Item(new Item.Properties()));
 
+    public static final RegistryObject<Item> RAW_SOULSTONE = ITEMS.register("raw_soulstone",
+            () -> new Item(new Item.Properties()));
+
+    public static final RegistryObject<Item> SOULSTONE_INGOT = ITEMS.register("soulstone_ingot",
+            () -> new Item(new Item.Properties()));
+
+    public static final RegistryObject<Item> SOULSTONE_NUGGET = ITEMS.register("soulstone_nugget",
+            () -> new Item(new Item.Properties()));
+
+    public static final RegistryObject<Item> RAW_ABYSSIUM = ITEMS.register("raw_abyssium",
+            () -> new Item(new Item.Properties()));
+
+    public static final RegistryObject<Item> ABYSSIUM_INGOT = ITEMS.register("abyssium_ingot",
+            () -> new Item(new Item.Properties()));
+
+    public static final RegistryObject<Item> ABYSSIUM_NUGGET = ITEMS.register("abyssium_nugget",
+            () -> new Item(new Item.Properties()));
+
+    public static final RegistryObject<Item> RAW_ECLIPSIUM = ITEMS.register("raw_eclipsium",
+            () -> new Item(new Item.Properties()));
+
+    public static final RegistryObject<Item> ECLIPSIUM_INGOT = ITEMS.register("eclipsium_ingot",
+            () -> new Item(new Item.Properties()));
+
+    public static final RegistryObject<Item> ECLIPSIUM_NUGGET = ITEMS.register("eclipsium_nugget",
+            () -> new Item(new Item.Properties()));
+
     public static final RegistryObject<Item> WHITE_OAK_ASH = ITEMS.register("white_oak_ash",
             () -> new Item(new Item.Properties()));
 
@@ -193,7 +358,10 @@ public class HexcraftItems {
             () -> new Item(new Item.Properties()));
 
     public static final RegistryObject<Item> WOOD_ASH = ITEMS.register("wood_ash",
-            () -> new Item(new Item.Properties()));
+            () -> new HexcraftFuelItem(new Item.Properties(), 200));
+
+    public static final RegistryObject<Item> ABYSSAL_COAL = ITEMS.register("abyssal_coal",
+            () -> new HexcraftFuelItem(new Item.Properties(), 800));
 
     public static final RegistryObject<Item> BREATH_OF_THE_GODDESS = ITEMS.register("breath_of_the_goddess",
             () -> new Item(new Item.Properties()));
@@ -205,13 +373,46 @@ public class HexcraftItems {
     //() -> new BrewOfLoveItem(new Item.Properties()));
 
     public static final RegistryObject<Item> BREW_OF_SPROUTING = ITEMS.register("brew_of_sprouting",
-            () -> new Item(new Item.Properties()));
+            () -> new BrewOfSproutingItem(new Item.Properties()));
 
     //public static final Supplier<SimpleEffectBrewItem> BREW_OF_THE_DEPTHS = registerBrew("brew_of_the_depths",
     //MobEffects.WATER_BREATHING, 6000, 0);
 
     public static final RegistryObject<Item> BREW_OF_THE_GROTESQUE = ITEMS.register("brew_of_the_grotesque",
             () -> new Item(new Item.Properties()));
+
+    public static final RegistryObject<Item> BLISTER_CACTUS_FLOWER = ITEMS.register("blister_cactus_flower_item",
+            () -> new BlockItem(HexcraftBlocks.BLISTER_CACTUS_FLOWER.get(), new Item.Properties()));
+
+    public static final RegistryObject<Item> NUMBING_AGENT = ITEMS.register("numbing_agent",
+            () -> new Item(new Item.Properties()));
+
+    public static final RegistryObject<Item> BLISTERING_VITALITY_POTION = ITEMS.register("blistering_vitality_potion",
+            () -> new PotionItem(new Item.Properties()));
+
+    public static final RegistryObject<Item> IRENIAL_BREW = ITEMS.register("irenial_brew",
+            () -> new SimpleEffectBrewItem(
+                    HexcraftEffects.BLOODHORN.get(),
+                    20 * 15, // 15 seconds
+                    0,
+                    new Item.Properties().stacksTo(1)
+            ));
+
+    public static final RegistryObject<Item> SENIA_BREW = ITEMS.register("senia_brew",
+            () -> new SimpleEffectBrewItem(
+                    HexcraftEffects.PARALYZED.get(),
+                    20 * 10, // 10 seconds
+                    0,
+                    new Item.Properties().stacksTo(1)
+            ));
+
+    public static final RegistryObject<Item> MIRA_BREW = ITEMS.register("mira_brew",
+            () -> new SimpleEffectBrewItem(
+                    HexcraftEffects.MAGICAL_BOOST.get(),
+                    20 * 30, // 30 seconds
+                    0,
+                    new Item.Properties().stacksTo(1)
+            ));
 
     public static final RegistryObject<Item> CONDENSED_FEAR = ITEMS.register("condensed_fear",
             () -> new Item(new Item.Properties()));
@@ -241,58 +442,58 @@ public class HexcraftItems {
             () -> new MutandisItem(HexcraftTags.Blocks.MUTANDIS_EXTREMIS_PLANTS));
 
     public static final RegistryObject<Item> POPPET = ITEMS.register("poppet",
-            () -> new Item(new Item.Properties()));
+            () -> new Item(new Item.Properties().stacksTo(1)));
 
     public static final RegistryObject<Item> VOODOO_POPPET = ITEMS.register("voodoo_poppet",
-            () -> new Item(new Item.Properties()));
+            () -> new Item(new Item.Properties().stacksTo(1)));
 
     public static final RegistryObject<Item> VOODOO_PROTECTION_POPPET = ITEMS.register("voodoo_protection_poppet",
-            () -> new Item(new Item.Properties()));
+            () -> new Item(new Item.Properties().stacksTo(1)));
 
     public static final RegistryObject<Item> FALL_PROTECTION_POPPET = ITEMS.register("fall_protection_poppet",
-            () -> new Item(new Item.Properties().durability(256)));
+            () -> new Item(new Item.Properties().stacksTo(1).durability(256)));
 
     public static final RegistryObject<Item> EXPLOSION_PROTECTION_POPPET = ITEMS.register("explosion_protection_poppet",
-            () -> new Item(new Item.Properties().durability(256)));
+            () -> new Item(new Item.Properties().stacksTo(1).durability(256)));
 
     public static final RegistryObject<Item> PROJECTILE_PROTECTION_POPPET = ITEMS.register("projectile_protection_poppet",
-            () -> new Item(new Item.Properties().durability(256)));
+            () -> new Item(new Item.Properties().stacksTo(1).durability(256)));
 
     public static final RegistryObject<Item> HUNGER_PROTECTION_POPPET = ITEMS.register("hunger_protection_poppet",
-            () -> new Item(new Item.Properties().durability(256)));
+            () -> new Item(new Item.Properties().stacksTo(1).durability(256)));
 
     public static final RegistryObject<Item> POTION_PROTECTION_POPPET = ITEMS.register("potion_protection_poppet",
-            () -> new Item(new Item.Properties().durability(256)));
+            () -> new Item(new Item.Properties().stacksTo(1).durability(256)));
 
     public static final RegistryObject<Item> VOID_PROTECTION_POPPET = ITEMS.register("void_protection_poppet",
             () -> new Item(new Item.Properties().stacksTo(1)));
 
     public static final RegistryObject<Item> CURSE_PROTECTION_POPPET = ITEMS.register("curse_protection_poppet",
-            () -> new Item(new Item.Properties()));
+            () -> new Item(new Item.Properties().stacksTo(1).durability(256)));
 
     public static final RegistryObject<Item> VAMPIRIC_POPPET = ITEMS.register("vampiric_poppet",
-            () -> new Item(new Item.Properties()));
+            () -> new Item(new Item.Properties().stacksTo(1).durability(10)));
 
     public static final RegistryObject<Item> DEATH_PROTECTION_POPPET = ITEMS.register("death_protection_poppet",
             () -> new Item(new Item.Properties().stacksTo(1)));
 
     public static final RegistryObject<Item> FIRE_PROTECTION_POPPET = ITEMS.register("fire_protection_poppet",
-            () -> new Item(new Item.Properties().durability(256)));
+            () -> new Item(new Item.Properties().stacksTo(1).durability(256)));
 
     public static final RegistryObject<Item> WATER_PROTECTION_POPPET = ITEMS.register("water_protection_poppet",
-            () -> new Item(new Item.Properties().durability(256)));
+            () -> new Item(new Item.Properties().stacksTo(1).durability(256)));
 
     public static final RegistryObject<Item> WITHER_PROTECTION_POPPET = ITEMS.register("wither_protection_poppet",
-            () -> new Item(new Item.Properties().durability(256)));
+            () -> new Item(new Item.Properties().stacksTo(1).durability(256)));
 
     public static final RegistryObject<Item> ARMOR_PROTECTION_POPPET = ITEMS.register("armor_protection_poppet",
-            () -> new Item(new Item.Properties()));
+            () -> new Item(new Item.Properties().stacksTo(1).durability(256)));
 
     public static final RegistryObject<Item> TOOL_PROTECTION_POPPET = ITEMS.register("tool_protection_poppet",
-            () -> new Item(new Item.Properties()));
+            () -> new Item(new Item.Properties().stacksTo(1).durability(256)));
 
 
-    //Tools
+    //Tools/Weapons
     public static final RegistryObject<Item> VAMPIRIC_STAFF = ITEMS.register("vampiric_staff",
             () -> new VampiricStaffItem(new Item.Properties().durability(324)));
 
@@ -425,6 +626,11 @@ public class HexcraftItems {
     public static final RegistryObject<Item> VAMPIRIC_PAXEL = ITEMS.register("vampiric_paxel",
             () -> new PaxelItem(HexcraftToolTiers.STEEL, 2, 3, new Item.Properties()));
 
+
+    //Special Weapons
+    public static final RegistryObject<Item> CRIMSON_FANG = ITEMS.register("crimson_fang",
+            CrimsonFang::new);
+
     //Bows
     public static final RegistryObject<Item> STEEL_BOW = ITEMS.register("steel_bow",
             () -> new BowItem(new Item.Properties().durability(384)));
@@ -467,16 +673,16 @@ public class HexcraftItems {
             () -> new ArmorItem(HexcraftArmorMaterials.DARKSTEEL, ArmorItem.Type.BOOTS, new Item.Properties()));
 
     public static final RegistryObject<Item> BLOODY_NYKIUM_HELMET = ITEMS.register("bloody_nykium_helmet",
-            () -> new ArmorItem(HexcraftArmorMaterials.BLOODYNYKIUM, ArmorItem.Type.HELMET, new Item.Properties()));
+            () -> new HexcraftArmorItem(HexcraftArmorMaterials.BLOODYNYKIUM, ArmorItem.Type.HELMET, new Item.Properties()));
 
     public static final RegistryObject<Item> BLOODY_NYKIUM_CHESTPLATE = ITEMS.register("bloody_nykium_chestplate",
-            () -> new ArmorItem(HexcraftArmorMaterials.BLOODYNYKIUM, ArmorItem.Type.CHESTPLATE, new Item.Properties()));
+            () -> new HexcraftArmorItem(HexcraftArmorMaterials.BLOODYNYKIUM, ArmorItem.Type.CHESTPLATE, new Item.Properties()));
 
     public static final RegistryObject<Item> BLOODY_NYKIUM_LEGGING = ITEMS.register("bloody_nykium_leggings",
-            () -> new ArmorItem(HexcraftArmorMaterials.BLOODYNYKIUM, ArmorItem.Type.LEGGINGS, new Item.Properties()));
+            () -> new HexcraftArmorItem(HexcraftArmorMaterials.BLOODYNYKIUM, ArmorItem.Type.LEGGINGS, new Item.Properties()));
 
     public static final RegistryObject<Item> BLOODY_NYKIUM_BOOTS = ITEMS.register("bloody_nykium_boots",
-            () -> new ArmorItem(HexcraftArmorMaterials.BLOODYNYKIUM, ArmorItem.Type.BOOTS, new Item.Properties()));
+            () -> new HexcraftArmorItem(HexcraftArmorMaterials.BLOODYNYKIUM, ArmorItem.Type.BOOTS, new Item.Properties()));
 
     public static final RegistryObject<Item> JORMIUM_HELMET = ITEMS.register("jormium_helmet",
             () -> new ArmorItem(HexcraftArmorMaterials.JORMIUM, ArmorItem.Type.HELMET, new Item.Properties()));
@@ -491,16 +697,16 @@ public class HexcraftItems {
             () -> new ArmorItem(HexcraftArmorMaterials.JORMIUM, ArmorItem.Type.BOOTS, new Item.Properties()));
 
     public static final RegistryObject<Item> CUROGEN_HELMET = ITEMS.register("curogen_helmet",
-            () -> new ArmorItem(HexcraftArmorMaterials.CUROGEN, ArmorItem.Type.HELMET, new Item.Properties()));
+            () -> new HexcraftArmorItem(HexcraftArmorMaterials.CUROGEN, ArmorItem.Type.HELMET, new Item.Properties()));
 
     public static final RegistryObject<Item> CUROGEN_CHESTPLATE = ITEMS.register("curogen_chestplate",
-            () -> new ArmorItem(HexcraftArmorMaterials.CUROGEN, ArmorItem.Type.CHESTPLATE, new Item.Properties()));
+            () -> new HexcraftArmorItem(HexcraftArmorMaterials.CUROGEN, ArmorItem.Type.CHESTPLATE, new Item.Properties()));
 
     public static final RegistryObject<Item> CUROGEN_LEGGING = ITEMS.register("curogen_leggings",
-            () -> new ArmorItem(HexcraftArmorMaterials.CUROGEN, ArmorItem.Type.LEGGINGS, new Item.Properties()));
+            () -> new HexcraftArmorItem(HexcraftArmorMaterials.CUROGEN, ArmorItem.Type.LEGGINGS, new Item.Properties()));
 
     public static final RegistryObject<Item> CUROGEN_BOOTS = ITEMS.register("curogen_boots",
-            () -> new ArmorItem(HexcraftArmorMaterials.CUROGEN, ArmorItem.Type.BOOTS, new Item.Properties()));
+            () -> new HexcraftArmorItem(HexcraftArmorMaterials.CUROGEN, ArmorItem.Type.BOOTS, new Item.Properties()));
 
     public static final RegistryObject<Item> SILVER_HELMET = ITEMS.register("silver_helmet",
             () -> new ArmorItem(HexcraftArmorMaterials.SILVER, ArmorItem.Type.HELMET, new Item.Properties()));
@@ -536,8 +742,20 @@ public class HexcraftItems {
             () -> new BlockItem(HexcraftBlocks.VILEVINE.get(),
                     new Item.Properties()));
 
+    public static final RegistryObject<Item> BLOODTHORN_VINES_ITEM = ITEMS.register("bloodthorn_vines_item",
+            () -> new BlockItem(HexcraftBlocks.BLOODTHORN_VINES.get(),
+                    new Item.Properties()));
+
     public static final RegistryObject<Item> LIVING_KELP_ITEM = ITEMS.register("living_kelp_item",
             () -> new BlockItem(HexcraftBlocks.LIVING_KELP_PLANT.get(),
+                    new Item.Properties()));
+
+    public static final RegistryObject<Item> GARLIC_STRAND_ITEM = ITEMS.register("garlic_strand_item",
+            () -> new BlockItem(HexcraftBlocks.GARLIC_STRAND.get(),
+                    new Item.Properties()));
+
+    public static final RegistryObject<Item> VERVAIN_STRAND_ITEM = ITEMS.register("vervain_strand_item",
+            () -> new BlockItem(HexcraftBlocks.VERVAIN_STRAND.get(),
                     new Item.Properties()));
 
     public static final RegistryObject<Item> MANDRAKE_SEEDS = ITEMS.register("mandrake_seeds",
@@ -642,6 +860,9 @@ public class HexcraftItems {
     public static final RegistryObject<Item> WATER_ARTICHOKE = ITEMS.register("water_artichoke",
             () -> new Item(new Item.Properties()));
 
+    public static final RegistryObject<Item> DUSKROOT = ITEMS.register("duskroot",
+            () -> new Item(new Item.Properties()));
+
     //Foods
     public static final RegistryObject<Item> JUNIPER_BERRIES = ITEMS.register("juniper_berries",
             () -> new Item(new Item.Properties().food(HexcraftFoods.JUNIPER_BERRIES)));
@@ -658,6 +879,16 @@ public class HexcraftItems {
 
     public static final RegistryObject<Item> PIXIE_DUST = ITEMS.register("pixie_dust",
             () -> new Item(new Item.Properties().food(Foods.SUSPICIOUS_STEW)));
+
+    public static final RegistryObject<Item> BLISTER_CACTUS_FRUIT = ITEMS.register("blister_cactus_fruit",
+            () -> new Item(new Item.Properties().food(HexcraftFoods.BLISTER_CACTUS_FRUIT)));
+
+    public static final RegistryObject<Item> BLISTER_FRUIT = ITEMS.register("blister_fruit",
+            () -> new Item(new Item.Properties().food(HexcraftFoods.COOKED_BLISTER_FRUIT)));
+
+    public static final RegistryObject<Item> LIVING_KELP_SALAD = ITEMS.register("living_kelp_salad",
+            () -> new Item(new Item.Properties().food(HexcraftFoods.LIVING_KELP_SALAD_FOOD)));
+
 
 
     //Liquids
@@ -714,6 +945,9 @@ public class HexcraftItems {
     public static final RegistryObject<Item> ECHO_WOOD_SIGN = ITEMS.register("echo_wood_sign",
             () -> new SignItem(new Item.Properties().stacksTo(16), HexcraftBlocks.ECHO_WOOD_SIGN.get(), HexcraftBlocks.ECHO_WOOD_WALL_SIGN.get()));
 
+    public static final RegistryObject<Item> PHOENIX_SIGN = ITEMS.register("phoenix_sign",
+            () -> new SignItem(new Item.Properties().stacksTo(16), HexcraftBlocks.PHOENIX_SIGN.get(), HexcraftBlocks.PHOENIX_WALL_SIGN.get()));
+
     public static final RegistryObject<Item> EBONY_HANGING_SIGN = ITEMS.register("ebony_hanging_sign",
             () ->  new HangingSignItem(HexcraftBlocks.EBONY_HANGING_SIGN.get(), HexcraftBlocks.EBONY_WALL_HANGING_SIGN.get(), new Item.Properties().stacksTo(16)));
 
@@ -761,6 +995,9 @@ public class HexcraftItems {
 
     public static final RegistryObject<Item> ECHO_WOOD_HANGING_SIGN = ITEMS.register("echo_wood_hanging_sign",
             () ->  new HangingSignItem(HexcraftBlocks.ECHO_WOOD_HANGING_SIGN.get(), HexcraftBlocks.ECHO_WOOD_WALL_HANGING_SIGN.get(), new Item.Properties().stacksTo(16)));
+
+    public static final RegistryObject<Item> PHOENIX_HANGING_SIGN = ITEMS.register("phoenix_hanging_sign",
+            () ->  new HangingSignItem(HexcraftBlocks.PHOENIX_HANGING_SIGN.get(), HexcraftBlocks.PHOENIX_WALL_HANGING_SIGN.get(), new Item.Properties().stacksTo(16)));
 
     //Boats
     public static final RegistryObject<Item> EBONY_BOAT = ITEMS.register("ebony_boat",
@@ -859,57 +1096,189 @@ public class HexcraftItems {
     public static final RegistryObject<Item> ECHO_WOOD_CHEST_BOAT = ITEMS.register("echo_wood_chest_boat",
             () -> new HexcraftBoatItem(true, HexcraftBoatEntity.Type.ECHO_WOOD, new Item.Properties()));
 
+    //public static final RegistryObject<Item> PHOENIX_BOAT = ITEMS.register("phoenix_boat",
+            //() -> new HexcraftBoatItem(false, HexcraftBoatEntity.Type.PHOENIX, new Item.Properties()));
+
+    //public static final RegistryObject<Item> PHOENIX_CHEST_BOAT = ITEMS.register("phoenix_chest_boat",
+            //() -> new HexcraftBoatItem(true, HexcraftBoatEntity.Type.PHOENIX, new Item.Properties()));
+
+
     //Chest
-    //public static final RegistryObject<Item> CHEST_EBONY = ITEMS.register("chest_ebony",
-      //      () -> new HexcraftChestBlockItem(HexcraftBlocks.CHEST_EBONY.get(), new Item.Properties()));
 
-    //public static final RegistryObject<Item> CHEST_BLOOD_OAK = ITEMS.register("chest_blood_oak",
-      //      () -> new HexcraftChestBlockItem(HexcraftBlocks.CHEST_BLOOD_OAK.get(), new Item.Properties()));
+    public static final RegistryObject<Item> EBONY_CHEST = registerChestItem("ebony_chest", HexcraftBlocks.EBONY_CHEST);
 
-    //public static final RegistryObject<Item> CHEST_HELL_BARK = ITEMS.register("chest_hell_bark",
-      //      () -> new HexcraftChestBlockItem(HexcraftBlocks.CHEST_HELL_BARK.get(), new Item.Properties()));
+    public static final RegistryObject<Item> BLOOD_OAK_CHEST = registerChestItem("blood_oak_chest", HexcraftBlocks.BLOOD_OAK_CHEST);
 
-    //public  static final RegistryObject<Item> CHEST_WHITE_OAK = ITEMS.register("chest_white_oak",
-     //       () -> new HexcraftChestBlockItem(HexcraftBlocks.CHEST_WHITE_OAK.get(), new Item.Properties()));
+    public static final RegistryObject<Item> HELL_BARK_CHEST = registerChestItem("hell_bark_chest", HexcraftBlocks.HELL_BARK_CHEST);
 
-    //public static final RegistryObject<Item> CHEST_ALDER = ITEMS.register("chest_alder",
-    //        () -> new HexcraftChestBlockItem(HexcraftBlocks.CHEST_ALDER.get(), new Item.Properties()));
+    public static final RegistryObject<Item> WHITE_OAK_CHEST = registerChestItem("white_oak_chest", HexcraftBlocks.WHITE_OAK_CHEST);
 
-   // public static final RegistryObject<Item> CHEST_WITCH_HAZEL = ITEMS.register("chest_witch_hazel",
-     //       () -> new HexcraftChestBlockItem(HexcraftBlocks.CHEST_WITCH_HAZEL.get(), new Item.Properties()));
+    public static final RegistryObject<Item> ALDER_CHEST = registerChestItem("alder_chest", HexcraftBlocks.ALDER_CHEST);
 
-   // public static final RegistryObject<Item> CHEST_WILLOW = ITEMS.register("chest_willow",
-     //       () -> new HexcraftChestBlockItem(HexcraftBlocks.CHEST_WILLOW.get(), new Item.Properties()));
+    public static final RegistryObject<Item> WITCH_HAZEL_CHEST = registerChestItem("witch_hazel_chest", HexcraftBlocks.WITCH_HAZEL_CHEST);
 
-   // public static final RegistryObject<Item> CHEST_HAWTHORN = ITEMS.register("chest_hawthorn",
-       //     () -> new HexcraftChestBlockItem(HexcraftBlocks.CHEST_HAWTHORN.get(), new Item.Properties()));
+    public static final RegistryObject<Item> WILLOW_CHEST = registerChestItem("willow_chest", HexcraftBlocks.WILLOW_CHEST);
 
-    //public static final RegistryObject<Item> CHEST_CEDAR = ITEMS.register("chest_cedar",
-     //       () -> new HexcraftChestBlockItem(HexcraftBlocks.CHEST_CEDAR.get(), new Item.Properties()));
+    public static final RegistryObject<Item> HAWTHORN_CHEST = registerChestItem("hawthorn_chest", HexcraftBlocks.HAWTHORN_CHEST);
 
-    //public static final RegistryObject<Item> CHEST_DISTORTED = ITEMS.register("chest_distorted",
-    //        () -> new HexcraftChestBlockItem(HexcraftBlocks.CHEST_DISTORTED.get(), new Item.Properties()));
+    public static final RegistryObject<Item> CEDAR_CHEST = registerChestItem("cedar_chest", HexcraftBlocks.CEDAR_CHEST);
 
-    //public static final RegistryObject<Item> CHEST_ELDER = ITEMS.register("chest_elder",
-    //        () -> new HexcraftChestBlockItem(HexcraftBlocks.CHEST_ELDER.get(), new Item.Properties()));
+    public static final RegistryObject<Item> DISTORTED_CHEST = registerChestItem("distorted_chest", HexcraftBlocks.DISTORTED_CHEST);
 
-    //public static final RegistryObject<Item> CHEST_JUNIPER = ITEMS.register("chest_juniper",
-     //       () -> new HexcraftChestBlockItem(HexcraftBlocks.CHEST_JUNIPER.get(), new Item.Properties()));
+    public static final RegistryObject<Item> ELDER_CHEST = registerChestItem("elder_chest", HexcraftBlocks.ELDER_CHEST);
 
-    //public static final RegistryObject<Item> CHEST_ROWAN = ITEMS.register("chest_rowan",
-     //       () -> new HexcraftChestBlockItem(HexcraftBlocks.CHEST_ROWAN.get(), new Item.Properties()));
+    public static final RegistryObject<Item> JUNIPER_CHEST = registerChestItem("juniper_chest", HexcraftBlocks.JUNIPER_CHEST);
 
-    //public static final RegistryObject<Item> CHEST_TWISTED = ITEMS.register("chest_twisted",
-    //        () -> new HexcraftChestBlockItem(HexcraftBlocks.CHEST_TWISTED.get(), new Item.Properties()));
+    public static final RegistryObject<Item> ROWAN_CHEST = registerChestItem("rowan_chest", HexcraftBlocks.ROWAN_CHEST);
 
-    //public static final RegistryObject<Item> CHEST_WITCH_WOOD = ITEMS.register("chest_witch_wood",
-    //        () -> new HexcraftChestBlockItem(HexcraftBlocks.CHEST_WITCH_WOOD.get(), new Item.Properties()));
+    public static final RegistryObject<Item> TWISTED_CHEST = registerChestItem("twisted_chest", HexcraftBlocks.TWISTED_CHEST);
 
-    //public static final RegistryObject<Item> CHEST_ECHO_WOOD = ITEMS.register("chest_echo_wood",
-          //  () -> new HexcraftChestBlockItem(HexcraftBlocks.CHEST_ECHO_WOOD.get(), new Item.Properties()));
+    public static final RegistryObject<Item> WITCH_WOOD_CHEST = registerChestItem("witch_wood_chest", HexcraftBlocks.WITCH_WOOD_CHEST);
+
+    public static final RegistryObject<Item> ECHO_WOOD_CHEST = registerChestItem("echo_wood_chest", HexcraftBlocks.ECHO_WOOD_CHEST);
+
+    public static final RegistryObject<Item> PHOENIX_CHEST = registerChestItem("phoenix_chest", HexcraftBlocks.PHOENIX_CHEST);
+
+    public static final RegistryObject<Item> PANDORAS_BOX = ITEMS.register("pandoras_box",
+            () -> new BlockItem(HexcraftBlocks.PANDORAS_BOX.get(), new Item.Properties()));
+
+    public static final RegistryObject<Item> SACRIFICIAL_PILLAR = ITEMS.register("sacrificial_pillar",
+            () -> new BlockItem(HexcraftBlocks.SACRIFICIAL_PILLAR.get(), new Item.Properties()));
+
+    public static final RegistryObject<Item> DEAD_TWILIGHT_CORAL_WALL_FAN_ITEM = ITEMS.register("dead_twilightcoral_wall_fan_item",
+            () -> new StandingAndWallBlockItem(HexcraftBlocks.DEAD_TWILIGHT_CORAL_FAN.get(), HexcraftBlocks.DEAD_TWILIGHT_CORAL_WALL_FAN.get(), new Item.Properties(), Direction.DOWN));
+
+    public static final RegistryObject<Item> TWILIGHT_CORAL_WALL_FAN_ITEM = ITEMS.register("twilightcoral_wall_fan_item",
+            () -> new StandingAndWallBlockItem(HexcraftBlocks.TWILIGHT_CORAL_FAN.get(), HexcraftBlocks.TWILIGHT_CORAL_WALL_FAN.get(), new Item.Properties(), Direction.DOWN));
+
+    public static final RegistryObject<Item> DEAD_SANGUINE_CORAL_WALL_FAN_ITEM = ITEMS.register("dead_sanguine_coral_wall_fan_item",
+            () -> new StandingAndWallBlockItem(HexcraftBlocks.DEAD_SANGUINE_CORAL_FAN.get(), HexcraftBlocks.DEAD_SANGUINE_CORAL_WALL_FAN.get(), new Item.Properties(), Direction.DOWN));
+
+    public static final RegistryObject<Item> SANGUINE_CORAL_WALL_FAN_ITEM = ITEMS.register("sanguine_coral_wall_fan_item",
+            () -> new StandingAndWallBlockItem(HexcraftBlocks.SANGUINE_CORAL_FAN.get(), HexcraftBlocks.SANGUINE_CORAL_WALL_FAN.get(), new Item.Properties(), Direction.DOWN));
+
+    public static final RegistryObject<Item> DEAD_WHISPER_CORAL_WALL_FAN_ITEM = ITEMS.register("dead_whisper_coral_wall_fan_item",
+            () -> new StandingAndWallBlockItem(HexcraftBlocks.DEAD_WHISPER_CORAL_FAN.get(), HexcraftBlocks.DEAD_WHISPER_CORAL_WALL_FAN.get(), new Item.Properties(), Direction.DOWN));
+
+    public static final RegistryObject<Item> WHISPER_CORAL_WALL_FAN_ITEM = ITEMS.register("whisper_coral_wall_fan_item",
+            () -> new StandingAndWallBlockItem(HexcraftBlocks.WHISPER_CORAL_FAN.get(), HexcraftBlocks.WHISPER_CORAL_WALL_FAN.get(), new Item.Properties(), Direction.DOWN));
+
+    public static final RegistryObject<Item> DEAD_EBONFANG_CORAL_WALL_FAN_ITEM = ITEMS.register("dead_ebonfang_coral_wall_fan_item",
+            () -> new StandingAndWallBlockItem(HexcraftBlocks.DEAD_EBONFANG_CORAL_FAN.get(), HexcraftBlocks.DEAD_EBONFANG_CORAL_WALL_FAN.get(), new Item.Properties(), Direction.DOWN));
+
+    public static final RegistryObject<Item> EBONFANG_CORAL_WALL_FAN_ITEM = ITEMS.register("ebonfang_coral_wall_fan_item",
+            () -> new StandingAndWallBlockItem(HexcraftBlocks.EBONFANG_CORAL_FAN.get(), HexcraftBlocks.EBONFANG_CORAL_WALL_FAN.get(), new Item.Properties(), Direction.DOWN));
+
+    public static final RegistryObject<Item> DEAD_SPECTRAL_BLOOM_CORAL_WALL_FAN_ITEM = ITEMS.register("dead_spectral_bloom_coral_wall_fan_item",
+            () -> new StandingAndWallBlockItem(HexcraftBlocks.DEAD_SPECTRAL_BLOOM_CORAL_FAN.get(), HexcraftBlocks.DEAD_SPECTRAL_BLOOM_CORAL_WALL_FAN.get(), new Item.Properties(), Direction.DOWN));
+
+    public static final RegistryObject<Item> SPECTRAL_BLOOM_CORAL_WALL_FAN_ITEM = ITEMS.register("spectral_bloom_coral_wall_fan_item",
+            () -> new StandingAndWallBlockItem(HexcraftBlocks.SPECTRAL_BLOOM_CORAL_FAN.get(), HexcraftBlocks.SPECTRAL_BLOOM_CORAL_WALL_FAN.get(), new Item.Properties(), Direction.DOWN));
+
+    public static final RegistryObject<Item> DEAD_HELLVINE_CORAL_WALL_FAN_ITEM = ITEMS.register("dead_hellvine_coral_wall_fan_item",
+            () -> new StandingAndWallBlockItem(HexcraftBlocks.DEAD_HELLVINE_CORAL_FAN.get(), HexcraftBlocks.DEAD_HELLVINE_CORAL_WALL_FAN.get(), new Item.Properties(), Direction.DOWN));
+
+    public static final RegistryObject<Item> HELLVINE_CORAL_WALL_FAN_ITEM = ITEMS.register("hellvine_coral_wall_fan_item",
+            () -> new StandingAndWallBlockItem(HexcraftBlocks.HELLVINE_CORAL_FAN.get(), HexcraftBlocks.HELLVINE_CORAL_WALL_FAN.get(), new Item.Properties(), Direction.DOWN));
+
+    //Brooms
+    public static final RegistryObject<Item> EBONY_BROOM = ITEMS.register("ebony_broom",
+            () -> new BroomItem(new Item.Properties(), new EbonyTrait()));
+
+    public static final RegistryObject<Item> HAWTHORN_BROOM = ITEMS.register("hawthorn_broom",
+            () -> new BroomItem(new Item.Properties(), new HawthornTrait()));
+
+    public static final RegistryObject<Item> WHITE_OAK_BROOM = ITEMS.register("white_oak_broom",
+            () -> new BroomItem(new Item.Properties(), new WhiteOakTrait()));
+
+    public static final RegistryObject<Item> WILLOW_BROOM = ITEMS.register("willow_broom",
+            () -> new BroomItem(new Item.Properties(), new WillowTrait()));
+
+    public static final RegistryObject<Item> ALDER_BROOM = ITEMS.register("alder_broom",
+            () -> new BroomItem(new Item.Properties(), new AlderTrait()));
+
+    public static final RegistryObject<Item> CEDAR_BROOM = ITEMS.register("cedar_broom",
+            () -> new BroomItem(new Item.Properties(), new CedarTrait()));
+
+    public static final RegistryObject<Item> DISTORTED_BROOM = ITEMS.register("distorted_broom",
+            () -> new BroomItem(new Item.Properties(), new DistortedTrait()));
+
+    public static final RegistryObject<Item> ELDER_BROOM = ITEMS.register("elder_broom",
+            () -> new BroomItem(new Item.Properties(), new ElderTrait()));
+
+    public static final RegistryObject<Item> JUNIPER_BROOM = ITEMS.register("juniper_broom",
+            () -> new BroomItem(new Item.Properties(), new JuniperTrait()));
+
+    public static final RegistryObject<Item> TWISTED_BROOM = ITEMS.register("twisted_broom",
+            () -> new BroomItem(new Item.Properties(), new TwistedTrait()));
+
+    public static final RegistryObject<Item> WITCH_WOOD_BROOM = ITEMS.register("witch_wood_broom",
+            () -> new BroomItem(new Item.Properties(), new WitchWoodTrait()));
+
+    public static final RegistryObject<Item> ECHO_WOOD_BROOM = ITEMS.register("echo_wood_broom",
+            () -> new BroomItem(new Item.Properties(), new EchoWoodTrait()));
+
+    public static final RegistryObject<Item> PHOENIX_BROOM = ITEMS.register("phoenix_broom",
+            () -> new BroomItem(new Item.Properties(), new PhoenixTrait()));
+
+
+    // 🕯 Witch Candles - Item Registration
+    public static final RegistryObject<Item> WHITE_WITCH_CANDLE = registerCandleItem("white_witch_candle", HexcraftBlocks.WHITE_WITCH_CANDLE);
+    public static final RegistryObject<Item> ORANGE_WITCH_CANDLE = registerCandleItem("orange_witch_candle", HexcraftBlocks.ORANGE_WITCH_CANDLE);
+    public static final RegistryObject<Item> MAGENTA_WITCH_CANDLE = registerCandleItem("magenta_witch_candle", HexcraftBlocks.MAGENTA_WITCH_CANDLE);
+    public static final RegistryObject<Item> LIGHT_BLUE_WITCH_CANDLE = registerCandleItem("light_blue_witch_candle", HexcraftBlocks.LIGHT_BLUE_WITCH_CANDLE);
+    public static final RegistryObject<Item> YELLOW_WITCH_CANDLE = registerCandleItem("yellow_witch_candle", HexcraftBlocks.YELLOW_WITCH_CANDLE);
+    public static final RegistryObject<Item> LIME_WITCH_CANDLE = registerCandleItem("lime_witch_candle", HexcraftBlocks.LIME_WITCH_CANDLE);
+    public static final RegistryObject<Item> PINK_WITCH_CANDLE = registerCandleItem("pink_witch_candle", HexcraftBlocks.PINK_WITCH_CANDLE);
+    public static final RegistryObject<Item> GRAY_WITCH_CANDLE = registerCandleItem("gray_witch_candle", HexcraftBlocks.GRAY_WITCH_CANDLE);
+    public static final RegistryObject<Item> LIGHT_GRAY_WITCH_CANDLE = registerCandleItem("light_gray_witch_candle", HexcraftBlocks.LIGHT_GRAY_WITCH_CANDLE);
+    public static final RegistryObject<Item> CYAN_WITCH_CANDLE = registerCandleItem("cyan_witch_candle", HexcraftBlocks.CYAN_WITCH_CANDLE);
+    public static final RegistryObject<Item> PURPLE_WITCH_CANDLE = registerCandleItem("purple_witch_candle", HexcraftBlocks.PURPLE_WITCH_CANDLE);
+    public static final RegistryObject<Item> BLUE_WITCH_CANDLE = registerCandleItem("blue_witch_candle", HexcraftBlocks.BLUE_WITCH_CANDLE);
+    public static final RegistryObject<Item> BROWN_WITCH_CANDLE = registerCandleItem("brown_witch_candle", HexcraftBlocks.BROWN_WITCH_CANDLE);
+    public static final RegistryObject<Item> GREEN_WITCH_CANDLE = registerCandleItem("green_witch_candle", HexcraftBlocks.GREEN_WITCH_CANDLE);
+    public static final RegistryObject<Item> RED_WITCH_CANDLE = registerCandleItem("red_witch_candle", HexcraftBlocks.RED_WITCH_CANDLE);
+    public static final RegistryObject<Item> BLACK_WITCH_CANDLE = registerCandleItem("black_witch_candle", HexcraftBlocks.BLACK_WITCH_CANDLE);
+
+
+    //Coral
+
+
+    //Spawn Eggs
+    public static final RegistryObject<Item> VAMPIRE_EVOKER_SPAWN_EGG = ITEMS.register("vampire_evoker_spawn_egg",
+            () -> new ForgeSpawnEggItem(HexcraftEntities.VAMPIRE_EVOKER, 0x3b1e08, 0x9b2424, new Item.Properties()));
+
+    public static final RegistryObject<Item> VAMPIRE_VINDICATOR_SPAWN_EGG = ITEMS.register("vampire_vindicator_spawn_egg",
+            () -> new ForgeSpawnEggItem(HexcraftEntities.VAMPIRE_VINDICATOR, 0x3b1e08, 0x9b2424, new Item.Properties()));
+
+    public static final RegistryObject<Item> VAMPIRE_PIGLIN_SPAWN_EGG = ITEMS.register("vampire_piglin_spawn_egg",
+            () -> new ForgeSpawnEggItem(HexcraftEntities.VAMPIRE_PIGLIN, 0x3b1e08, 0x9b2424, new Item.Properties()));
+
+    public static final RegistryObject<Item> LILITH_SPAWN_EGG = ITEMS.register("lilith_spawn_egg",
+            () -> new ForgeSpawnEggItem(HexcraftEntities.LILITH, 0x590000, 0x2D0B0B, new Item.Properties()));
+
+    public static final RegistryObject<Item> WENDIGO_SPAWN_EGG = ITEMS.register("wendigo_spawn_egg",
+            () -> new ForgeSpawnEggItem(HexcraftEntities.WENDIGO, 0x8B5A2B, 0xFFFFFF,
+                    new Item.Properties()));
+
+    public static final RegistryObject<Item> FAIRY_SPAWN_EGG = ITEMS.register("fairy_spawn_egg",
+            () -> new ForgeSpawnEggItem(HexcraftEntities.FAIRY, 0xFFC0CB, 0xFF69B4, new Item.Properties()));
 
 
 
+    private static RegistryObject<Item> registerChestItem(String name, RegistryObject<HexcraftChestBlock> block) {
+        return ITEMS.register(name, () -> new HexcraftChestBlockItem(block.get(), new Item.Properties()));
+
+    }
+
+    private static RegistryObject<Item> registerBlockItem(RegistryObject<Block> block) {
+        return ITEMS.register(block.getId().getPath(), () -> new BlockItem(block.get(), new Item.Properties()));
+
+    }
+
+    private static RegistryObject<Item> registerCandleItem(String name, RegistryObject<Block> block) {
+        return ITEMS.register(name, () -> new BlockItem(block.get(), new Item.Properties()));
+    }
 
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);
@@ -950,6 +1319,9 @@ public class HexcraftItems {
         ComposterBlock.COMPOSTABLES.put(WOLFSBANE.get(), 0.65F);
         ComposterBlock.COMPOSTABLES.put(GARLIC.get(), 0.45F);
         ComposterBlock.COMPOSTABLES.put(WITCHES_LADDER_ITEM.get(), 0.5F);
+        ComposterBlock.COMPOSTABLES.put(LIVING_KELP_ITEM.get(), 0.65F);
+        ComposterBlock.COMPOSTABLES.put(DUSKROOT.get(), 0.65F);
+
     }
 
 }

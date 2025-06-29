@@ -1,0 +1,27 @@
+{
+  "name": "The Hybrid Creation",
+  "category": "rituals",
+  "icon": "hexcraftmod:hybrid_blood",
+  "pages": [
+    {
+      "type": "text",
+      "title": "The Forbidden Fusion",
+      "text": "Hybrids are the ultimate evolution, merging the strengths of both Vampires and Werewolves. Only a **powerful Original Vampire** can create them."
+    },
+    {
+      "type": "text",
+      "title": "Creating a Hybrid",
+      "text": "A Vampire must: \\n- Drain the blood of a **Werewolf**. \\n- Feed the werewolf **Hybrid Blood**. \\n- Force the transformation during a **Full Moon**."
+    },
+    {
+      "type": "text",
+      "title": "Hybrid Strengths",
+      "text": "- No weaknesses to Sunlight or Silver. \\n- Enhanced regeneration. \\n- Mastery over both **Vampire** and **Werewolf abilities**."
+    },
+    {
+      "type": "text",
+      "title": "Hybrid Skill Tree",
+      "text": "Unlock **Hybrid Dominance**, **Overpowering Might**, and **Immortal Adaptation** in the **Hybrid Skill Tree**."
+    }
+  ]
+}

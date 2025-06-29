@@ -1,0 +1,21 @@
+{
+  "name": "Witches",
+  "category": "supernatural",
+  "icon": "minecraft:brewing_stand",
+  "pages": [
+    {
+      "type": "text",
+      "text": "Witches are powerful spellcasters who can manipulate the elements, brew potions, and cast deadly curses."
+    },
+    {
+      "type": "text",
+      "title": "Witch Abilities",
+      "text": "- Fireball \\n- Ice Wall \\n- Arcane Storm \\n- Chaos Hex"
+    },
+    {
+      "type": "text",
+      "title": "Rituals & Magic",
+      "text": "Witches can perform powerful rituals, from summoning entities to empowering themselves with dark forces."
+    }
+  ]
+}

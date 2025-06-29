@@ -14,6 +14,9 @@
     "hexcraftmod:trenogen_ore",
     "hexcraftmod:deepslate_trenogen_ore",
     "hexcraftmod:jormuim_ore",
+    "hexcraftmod:soulstone_ore",
+    "hexcraftmod:abyssium_ore",
+    "hexcraftmod:eclipsium_ore",
     "hexcraftmod:moonstone_block",
     "hexcraftmod:silver_block",
     "hexcraftmod:magic_crystal_block",
@@ -21,6 +24,10 @@
     "hexcraftmod:magic_crystal_cluster",
     "hexcraftmod:large_magic_crystal_bud",
     "hexcraftmod:medium_magic_crystal_bud",
-    "hexcraftmod:small_magic_crystal_bud"
+    "hexcraftmod:small_magic_crystal_bud",
+    "hexcraftmod:fairy_ward",
+    "hexcraftmod:fairy_lantern",
+    "hexcraftmod:pixie_ward",
+    "hexcraftmod:pixie_lantern"
   ]
 }

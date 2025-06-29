@@ -1,0 +1,6 @@
+{
+    "parent": "block/template_single_face",
+    "textures": {
+        "texture": "hexcraftmod:block/ghostshroom_block_inside"
+    }
+}

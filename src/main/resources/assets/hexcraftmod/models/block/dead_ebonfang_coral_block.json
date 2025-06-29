@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cube_all",
+  "textures": {
+    "all": "hexcraftmod:block/dead_ebonfang_coral_block"
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "name": "Heretics",
+  "category": "supernatural",
+  "icon": "minecraft:book",
+  "pages": [
+    {
+      "type": "text",
+      "text": "Heretics are rare and feared beings—vampires who have retained their magical abilities. They siphon life force to fuel their spells."
+    },
+    {
+      "type": "text",
+      "title": "Becoming a Heretic",
+      "text": "Only a powerful witch turned into a vampire can become a Heretic."
+    },
+    {
+      "type": "text",
+      "title": "Abilities",
+      "text": "- Blood Siphon \\n- Dark Resurrection (Summon undead) \\n- Mind Rip (Steals XP) \\n- Arcane Vampire (Immortal)"
+    }
+  ]
+}

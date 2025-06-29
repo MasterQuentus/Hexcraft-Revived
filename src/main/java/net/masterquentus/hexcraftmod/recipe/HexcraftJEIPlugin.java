@@ -2,14 +2,11 @@ package net.masterquentus.hexcraftmod.recipe;
 
 import mezz.jei.api.IModPlugin;
 import mezz.jei.api.JeiPlugin;
-import mezz.jei.api.constants.VanillaTypes;
 import mezz.jei.api.registration.*;
 import net.masterquentus.hexcraftmod.HexcraftMod;
-import net.masterquentus.hexcraftmod.block.HexcraftBlocks;
-import net.masterquentus.hexcraftmod.compat.WitchesCauldronCategory;
 import net.masterquentus.hexcraftmod.item.HexcraftItems;
-import net.masterquentus.hexcraftmod.screen.HexcraftMenuTypes;
-import net.masterquentus.hexcraftmod.screen.WitchesOvenMenu;
+import net.masterquentus.hexcraftmod.screens.HexcraftMenuTypes;
+import net.masterquentus.hexcraftmod.screens.WitchesOvenMenu;
 import net.masterquentus.hexcraftmod.util.HexcraftTags;
 import net.minecraft.client.Minecraft;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -17,8 +14,6 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.RecipeManager;
-
-import java.util.List;
 
 @JeiPlugin
 public class HexcraftJEIPlugin implements IModPlugin {

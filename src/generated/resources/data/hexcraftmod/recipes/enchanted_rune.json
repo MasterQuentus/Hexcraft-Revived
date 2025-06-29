@@ -1,0 +1,19 @@
+{
+  "type": "hexcraftmod:witches_oven",
+  "bakeTime": 300,
+  "excessResult": {
+    "item": "hexcraftmod:ash"
+  },
+  "experience": 0.4,
+  "ingredients": [
+    {
+      "item": "hexcraftmod:blank_rune"
+    },
+    {
+      "item": "hexcraftmod:clay_pot"
+    }
+  ],
+  "result": {
+    "item": "hexcraftmod:enchanted_rune"
+  }
+}

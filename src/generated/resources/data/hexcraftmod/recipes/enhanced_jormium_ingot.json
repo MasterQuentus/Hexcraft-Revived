@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "C": {
+      "item": "hexcraftmod:magic_crystal"
+    },
+    "J": {
+      "item": "hexcraftmod:jormium_ingot"
+    }
+  },
+  "pattern": [
+    " C ",
+    "J J",
+    " J "
+  ],
+  "result": {
+    "item": "hexcraftmod:enhanced_jormium_ingot"
+  },
+  "show_notification": true
+}

@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "hexcraftmod:toxic_fumes"
+    },
+    {
+      "item": "hexcraftmod:enchanted_rune"
+    }
+  ],
+  "result": {
+    "item": "hexcraftmod:corrupted_rune"
+  }
+}

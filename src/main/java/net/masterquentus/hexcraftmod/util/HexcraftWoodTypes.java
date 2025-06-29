@@ -21,5 +21,6 @@ public class HexcraftWoodTypes {
     public static final WoodType TWISTED = WoodType.register(new WoodType(HexcraftMod.MOD_ID + ":twisted", BlockSetType.OAK));
     public static final WoodType WITCH_WOOD = WoodType.register(new WoodType(HexcraftMod.MOD_ID + ":witch_wood", BlockSetType.OAK));
     public static final WoodType ECHO_WOOD = WoodType.register(new WoodType(HexcraftMod.MOD_ID + ":echo_wood", BlockSetType.OAK));
+    public static final WoodType PHOENIX = WoodType.register(new WoodType(HexcraftMod.MOD_ID + ":phoenix", BlockSetType.OAK));
 
 }

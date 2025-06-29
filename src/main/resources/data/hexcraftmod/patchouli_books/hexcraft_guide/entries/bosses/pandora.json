@@ -1,0 +1,21 @@
+{
+  "name": "Pandora - The Keeper of Chaos",
+  "category": "bosses",
+  "icon": "minecraft:chest",
+  "pages": [
+    {
+      "type": "text",
+      "text": "Pandora is a chaotic entity summoned from Pandora’s Box. She is unpredictable and dangerous."
+    },
+    {
+      "type": "text",
+      "title": "Abilities",
+      "text": "- Summons minions \\n- Reality Warp: Teleports randomly \\n- Pandora’s Gamble: Random curses/buffs \\n- Seal of the Box: Becomes invulnerable when damaged too fast."
+    },
+    {
+      "type": "text",
+      "title": "Rewards",
+      "text": "- Pandora's Soul \\n- Pandora's Contract \\n- Fatebreaker (Weapon)"
+    }
+  ]
+}

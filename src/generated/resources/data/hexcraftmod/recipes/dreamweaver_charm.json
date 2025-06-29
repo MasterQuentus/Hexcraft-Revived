@@ -1,0 +1,30 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "F": {
+      "item": "hexcraftmod:fairy_dust"
+    },
+    "G": {
+      "item": "minecraft:glowstone_dust"
+    },
+    "M": {
+      "item": "hexcraftmod:moonstone"
+    },
+    "P": {
+      "item": "hexcraftmod:pixie_dust"
+    },
+    "S": {
+      "item": "minecraft:spider_eye"
+    }
+  },
+  "pattern": [
+    " S ",
+    "FMP",
+    " G "
+  ],
+  "result": {
+    "item": "hexcraftmod:dreamweaver_charm"
+  },
+  "show_notification": true
+}

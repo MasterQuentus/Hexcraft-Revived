@@ -1,0 +1,21 @@
+{
+  "name": "Original Vampires",
+  "category": "supernatural",
+  "icon": "minecraft:nether_star",
+  "pages": [
+    {
+      "type": "text",
+      "text": "Original Vampires are the first of their kind—stronger, faster, and nearly immortal. They can only be killed by White Oak weapons."
+    },
+    {
+      "type": "text",
+      "title": "How to Become an Original Vampire",
+      "text": "Perform the Ritual of the Ancients: \\n- Use a Blood Altar. \\n- Place a Block of Eclipsium. \\n- Drink Vampire Blood. \\n- Surround yourself with candles. \\n- Use a dagger to cut yourself and drink the blood."
+    },
+    {
+      "type": "text",
+      "title": "Abilities",
+      "text": "- Immortal Regeneration \\n- Complete Sun Immunity \\n- Summon Thralls \\n- Reality Shift (Phase through walls)"
+    }
+  ]
+}

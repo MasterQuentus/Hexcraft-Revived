@@ -1,0 +1,140 @@
+{
+  "variants": {
+    "candles=1,waterlogged=false": [
+      {
+        "model": "hexcraftmod:block/dead_soulstem_candle"
+      },
+      {
+        "model": "hexcraftmod:block/dead_soulstem_candle",
+        "y": 90
+      },
+      {
+        "model": "hexcraftmod:block/dead_soulstem_candle",
+        "y": 180
+      },
+      {
+        "model": "hexcraftmod:block/dead_soulstem_candle",
+        "y": 270
+      }
+    ],
+    "candles=1,waterlogged=true": [
+      {
+        "model": "hexcraftmod:block/soulstem_candle"
+      },
+      {
+        "model": "hexcraftmod:block/soulstem_candle",
+        "y": 90
+      },
+      {
+        "model": "hexcraftmod:block/soulstem_candle",
+        "y": 180
+      },
+      {
+        "model": "hexcraftmod:block/soulstem_candle",
+        "y": 270
+      }
+    ],
+    "candles=2,waterlogged=false": [
+      {
+        "model": "hexcraftmod:block/two_dead_soulstem_candle"
+      },
+      {
+        "model": "hexcraftmod:block/two_dead_soulstem_candle",
+        "y": 90
+      },
+      {
+        "model": "hexcraftmod:block/two_dead_soulstem_candle",
+        "y": 180
+      },
+      {
+        "model": "hexcraftmod:block/two_dead_soulstem_candle",
+        "y": 270
+      }
+    ],
+    "candles=2,waterlogged=true": [
+      {
+        "model": "hexcraftmod:block/two_soulstem_candle"
+      },
+      {
+        "model": "hexcraftmod:block/two_soulstem_candle",
+        "y": 90
+      },
+      {
+        "model": "hexcraftmod:block/two_soulstem_candle",
+        "y": 180
+      },
+      {
+        "model": "hexcraftmod:block/two_soulstem_candle",
+        "y": 270
+      }
+    ],
+    "candles=3,waterlogged=false": [
+      {
+        "model": "hexcraftmod:block/three_dead_soulstem_candle"
+      },
+      {
+        "model": "hexcraftmod:block/three_dead_soulstem_candle",
+        "y": 90
+      },
+      {
+        "model": "hexcraftmod:block/three_dead_soulstem_candle",
+        "y": 180
+      },
+      {
+        "model": "hexcraftmod:block/three_dead_soulstem_candle",
+        "y": 270
+      }
+    ],
+    "candles=3,waterlogged=true": [
+      {
+        "model": "hexcraftmod:block/three_soulstem_candle"
+      },
+      {
+        "model": "hexcraftmod:block/three_soulstem_candle",
+        "y": 90
+      },
+      {
+        "model": "hexcraftmod:block/three_soulstem_candle",
+        "y": 180
+      },
+      {
+        "model": "hexcraftmod:block/three_soulstem_candle",
+        "y": 270
+      }
+    ],
+    "candles=4,waterlogged=false": [
+      {
+        "model": "hexcraftmod:block/four_dead_soulstem_candle"
+      },
+      {
+        "model": "hexcraftmod:block/four_dead_soulstem_candle",
+        "y": 90
+      },
+      {
+        "model": "hexcraftmod:block/four_dead_soulstem_candle",
+        "y": 180
+      },
+      {
+        "model": "hexcraftmod:block/four_dead_soulstem_candle",
+        "y": 270
+      }
+    ],
+    "candles=4,waterlogged=true": [
+      {
+        "model": "hexcraftmod:block/four_soulstem_candle"
+      },
+      {
+        "model": "hexcraftmod:block/four_soulstem_candle",
+        "y": 90
+      },
+      {
+        "model": "hexcraftmod:block/four_soulstem_candle",
+        "y": 180
+      },
+      {
+        "model": "hexcraftmod:block/four_soulstem_candle",
+        "y": 270
+      }
+    ]
+  }
+}

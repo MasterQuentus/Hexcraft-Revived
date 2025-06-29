@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "hexcraftmod:abyssium_block"
+    }
+  ],
+  "result": {
+    "count": 9,
+    "item": "hexcraftmod:abyssium_ingot"
+  }
+}

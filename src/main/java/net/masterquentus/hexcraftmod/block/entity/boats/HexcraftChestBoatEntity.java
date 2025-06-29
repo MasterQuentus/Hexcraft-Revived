@@ -10,6 +10,7 @@ import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.vehicle.Boat;
 import net.minecraft.world.entity.vehicle.ChestBoat;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 
 public class HexcraftChestBoatEntity extends ChestBoat {
@@ -30,62 +31,59 @@ public class HexcraftChestBoatEntity extends ChestBoat {
 
 	@Override
 	public Item getDropItem() {
-		switch (getModVariant()) {
-		case EBONY -> HexcraftItems.EBONY_CHEST_BOAT.get();
-		case ALDER -> HexcraftItems.ALDER_CHEST_BOAT.get();
-		case BLOOD_OAK -> HexcraftItems.BLOOD_OAK_CHEST_BOAT.get();
-		case CEDAR -> HexcraftItems.CEDAR_CHEST_BOAT.get();
-		case DISTORTED -> HexcraftItems.DISTORTED_CHEST_BOAT.get();
-		case ELDER -> HexcraftItems.ELDER_CHEST_BOAT.get();
-		case HAWTHORN -> HexcraftItems.HAWTHORN_CHEST_BOAT.get();
-		case HELL_BARK -> HexcraftItems.HELL_BARK_CHEST_BOAT.get();
-		case JUNIPER -> HexcraftItems.JUNIPER_CHEST_BOAT.get();
-		case ROWAN -> HexcraftItems.ROWAN_CHEST_BOAT.get();
-		case TWISTED -> HexcraftItems.TWISTED_CHEST_BOAT.get();
-		case WHITE_OAK -> HexcraftItems.WHITE_OAK_CHEST_BOAT.get();
-		case WILLOW -> HexcraftItems.WILLOW_CHEST_BOAT.get();
-		case WITCH_HAZEL -> HexcraftItems.WITCH_HAZEL_CHEST_BOAT.get();
-		case WITCH_WOOD -> HexcraftItems.WITCH_WOOD_CHEST_BOAT.get();
-		case ECHO_WOOD -> HexcraftItems.ECHO_WOOD_CHEST_BOAT.get();
-		}
-		return super.getDropItem();
+		return switch (getModVariant()) {
+			case EBONY -> HexcraftItems.EBONY_CHEST_BOAT.get();
+			case ALDER -> HexcraftItems.ALDER_CHEST_BOAT.get();
+			case BLOOD_OAK -> HexcraftItems.BLOOD_OAK_CHEST_BOAT.get();
+			case CEDAR -> HexcraftItems.CEDAR_CHEST_BOAT.get();
+			case DISTORTED -> HexcraftItems.DISTORTED_CHEST_BOAT.get();
+			case ELDER -> HexcraftItems.ELDER_CHEST_BOAT.get();
+			case HAWTHORN -> HexcraftItems.HAWTHORN_CHEST_BOAT.get();
+			case HELL_BARK -> HexcraftItems.HELL_BARK_CHEST_BOAT.get();
+			case JUNIPER -> HexcraftItems.JUNIPER_CHEST_BOAT.get();
+			case ROWAN -> HexcraftItems.ROWAN_CHEST_BOAT.get();
+			case TWISTED -> HexcraftItems.TWISTED_CHEST_BOAT.get();
+			case WHITE_OAK -> HexcraftItems.WHITE_OAK_CHEST_BOAT.get();
+			case WILLOW -> HexcraftItems.WILLOW_CHEST_BOAT.get();
+			case WITCH_HAZEL -> HexcraftItems.WITCH_HAZEL_CHEST_BOAT.get();
+			case WITCH_WOOD -> HexcraftItems.WITCH_WOOD_CHEST_BOAT.get();
+			case ECHO_WOOD -> HexcraftItems.ECHO_WOOD_CHEST_BOAT.get();
+			//case PHOENIX -> HexcraftItems.PHOENIX_CHEST_BOAT.get();
+		};
 	}
 
-	public void setVariant(HexcraftBoatEntity.Type pVariant) {
-		this.entityData.set(DATA_ID_TYPE, pVariant.ordinal());
+	@Override
+	public ItemStack getPickResult() {
+		return new ItemStack(this.getDropItem());
 	}
 
+
+	public void setVariant(HexcraftBoatEntity.Type variant) {
+		this.entityData.set(DATA_ID_TYPE, variant.ordinal());
+	}
+
+	@Override
 	protected void defineSynchedData() {
 		super.defineSynchedData();
-		this.entityData.define(DATA_ID_TYPE, HexcraftBoatEntity.Type.EBONY.ordinal());
-		/*this.entityData.define(DATA_ID_TYPE, HexcraftBoatEntity.Type.BLOOD_OAK.ordinal());
-		this.entityData.define(DATA_ID_TYPE, HexcraftBoatEntity.Type.HELL_BARK.ordinal());
-		this.entityData.define(DATA_ID_TYPE, HexcraftBoatEntity.Type.WHITE_OAK.ordinal());
-		this.entityData.define(DATA_ID_TYPE, HexcraftBoatEntity.Type.ALDER.ordinal());
-		this.entityData.define(DATA_ID_TYPE, HexcraftBoatEntity.Type.WITCH_HAZEL.ordinal());
-		this.entityData.define(DATA_ID_TYPE, HexcraftBoatEntity.Type.WILLOW.ordinal());
-		this.entityData.define(DATA_ID_TYPE, HexcraftBoatEntity.Type.HAWTHORN.ordinal());
-		this.entityData.define(DATA_ID_TYPE, HexcraftBoatEntity.Type.CEDAR.ordinal());
-		this.entityData.define(DATA_ID_TYPE, HexcraftBoatEntity.Type.DISTORTED.ordinal());
-		this.entityData.define(DATA_ID_TYPE, HexcraftBoatEntity.Type.ELDER.ordinal());
-		this.entityData.define(DATA_ID_TYPE, HexcraftBoatEntity.Type.JUNIPER.ordinal());
-		this.entityData.define(DATA_ID_TYPE, HexcraftBoatEntity.Type.ROWAN.ordinal());
-		this.entityData.define(DATA_ID_TYPE, HexcraftBoatEntity.Type.TWISTED.ordinal());
-		this.entityData.define(DATA_ID_TYPE, HexcraftBoatEntity.Type.WITCH_WOOD.ordinal());
-		this.entityData.define(DATA_ID_TYPE, HexcraftBoatEntity.Type.ECHO_WOOD.ordinal());*/
+		this.entityData.define(DATA_ID_TYPE, -1); // -1 means "undefined"
 	}
 
-	protected void addAdditionalSaveData(CompoundTag pCompound) {
-		pCompound.putString("Type", this.getModVariant().getSerializedName());
+	@Override
+	public void addAdditionalSaveData(CompoundTag compound) {
+		super.addAdditionalSaveData(compound);
+		compound.putInt("BoatType", this.entityData.get(DATA_ID_TYPE)); // Store type as integer
 	}
 
-	protected void readAdditionalSaveData(CompoundTag pCompound) {
-		if (pCompound.contains("Type", 8)) {
-			this.setVariant(HexcraftBoatEntity.Type.byName(pCompound.getString("Type")));
+	@Override
+	public void readAdditionalSaveData(CompoundTag compound) {
+		super.readAdditionalSaveData(compound);
+		if (compound.contains("BoatType")) {
+			this.entityData.set(DATA_ID_TYPE, compound.getInt("BoatType"));
 		}
 	}
 
 	public HexcraftBoatEntity.Type getModVariant() {
-		return HexcraftBoatEntity.Type.byId(this.entityData.get(DATA_ID_TYPE));
+		int id = this.entityData.get(DATA_ID_TYPE);
+		return id >= 0 && id < HexcraftBoatEntity.Type.values().length ? HexcraftBoatEntity.Type.byId(id) : HexcraftBoatEntity.Type.EBONY;
 	}
 }

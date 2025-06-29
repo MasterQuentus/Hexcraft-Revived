@@ -1,0 +1,7 @@
+{
+  "render_type": "cutout",
+  "parent": "minecraft:block/coral_wall_fan",
+  "textures": {
+    "fan": "hexcraftmod:block/ebonfang_coral_fan"
+  }
+}

@@ -1,0 +1,7 @@
+
+{
+  "variants": {
+    "axis=z": { "model": "hexcraftmod:block/underworld_portal_ew" },
+    "axis=x": { "model": "hexcraftmod:block/underworld_portal_ns" }
+  }
+}

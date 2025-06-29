@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cube_all",
+  "textures": {
+    "all": "hexcraftmod:block/spectral_bloom_coral_block"
+  }
+}

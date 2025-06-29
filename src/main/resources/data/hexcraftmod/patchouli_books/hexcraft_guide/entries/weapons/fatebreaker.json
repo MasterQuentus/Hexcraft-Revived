@@ -1,0 +1,23 @@
+{
+  "name": "Fatebreaker",
+  "category": "weapons",
+  "icon": "minecraft:diamond_sword",
+  "sortnum": 1,
+  "pages": [
+    {
+      "type": "text",
+      "title": "A Blade of Chaos",
+      "text": "Fatebreaker is a mystical longsword that shifts unpredictably between buffs and debuffs."
+    },
+    {
+      "type": "text",
+      "title": "Base Form",
+      "text": "When wielded, Fatebreaker randomly grants either Strength or Weakness upon attacking."
+    },
+    {
+      "type": "text",
+      "title": "Upgraded Form",
+      "text": "When infused with dark energy, it gains Chaos Strike, which deals random effects to enemies."
+    }
+  ]
+}

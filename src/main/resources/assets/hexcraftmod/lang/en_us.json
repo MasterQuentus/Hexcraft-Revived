@@ -1,18 +1,42 @@
 {
   //Items
+  "item.hexcraftmod.hexcraft_grimoire": "Hexcraft Grimoire",
   "item.hexcraftmod.infused_fabric": "Infused Fabric",
   "item.hexcraftmod.bound_leather": "Bound Leather",
   "item.hexcraftmod.tanned_leather": "Tanned Leather",
+  "item.hexcraftmod.daylight_ring": "Daylight Ring",
+  "item.hexcraftmod.blessed_daylight_ring": "Blessed Daylight Ringr",
+  "item.hexcraftmod.wither_bone": "Wither Bone",
+  "item.hexcraftmod.dreamweaver_charm": "Dreamweaver Charm",
   "item.hexcraftmod.bone_needle": "Bone Needle",
   "item.hexcraftmod.taglock_kit": "Taglock Kit",
   "item.hexcraftmod.taglock_kit_full": "Taglock Kit",
+  "item.hexcraftmod.flint_and_hellfire": "Flint and Hellfire",
   "item.hexcraftmod.witches_satchel": "Witches Satchel",
   "item.hexcraftmod.unfired_clay_pot": "Unfired Clay Pot",
   "item.hexcraftmod.clay_pot": "Clay Pot",
+  "item.hexcraftmod.infernal_ember": "Infernal Ember",
+  "item.hexcraftmod.ash": "Ash",
+  "item.hexcraftmod.toxic_fumes": "Toxic Fumes",
+  "item.hexcraftmod.ritual_chalk": "Ritual Chalk",
   "item.hexcraftmod.blood_bottle": "Blood Bottle",
   "item.hexcraftmod.lilith_contract": "Lilith Contract",
   "item.hexcraftmod.lilith_soul": "Lilith Soul",
+  "item.hexcraftmod.death_soul": "Death Soul",
+  "item.hexcraftmod.envy_soul": "Envy Soul",
+  "item.hexcraftmod.gluttony_soul": "Gluttony Soul",
+  "item.hexcraftmod.greed_soul": "Greed Soul",
+  "item.hexcraftmod.lust_soul": "Lust Soul",
+  "item.hexcraftmod.medusa_soul": "Medusa Soul",
+  "item.hexcraftmod.mirror_demon_soul": "Mirror Demon Soul",
+  "item.hexcraftmod.pride_soul": "Pride Soul",
+  "item.hexcraftmod.sloth_soul": "Sloth Soul",
+  "item.hexcraftmod.wrath_soul": "Wrath Soul",
   "item.hexcraftmod.magic_crystal": "Magic Crystal",
+  "item.hexcraftmod.witch_sigil": "Witch Sigil",
+  "item.hexcraftmod.necrotic_stone": "Necrotic Stone",
+  "item.hexcraftmod.crystal_trap_item": "Crystal Trap",
+  "item.hexcraftmod.enchanted_rune": "Enchanted Rune",
   "item.hexcraftmod.blank_rune": "Blank Rune",
   "item.hexcraftmod.air_rune": "Air Rune",
   "item.hexcraftmod.earth_rune": "Earth Rune",
@@ -42,6 +66,8 @@
   "item.hexcraftmod.raw_bloody_nykium": "Raw Bloody Nykium",
   "item.hexcraftmod.bloody_nykium": "Bloody Nykium",
   "item.hexcraftmod.bloody_nykium_nugget": "Bloody Nykium Nugget",
+  "item.hexcraftmod.nykium_ingot": "Nykium Ingot",
+  "item.hexcraftmod.nykium_nugget": "Nykium Nugget",
   "item.hexcraftmod.raw_curogen": "Raw Curogen",
   "item.hexcraftmod.curogen": "Curogen",
   "item.hexcraftmod.curogen_nugget": "Curogen Nugget",
@@ -51,6 +77,15 @@
   "item.hexcraftmod.jormium_nugget": "Jormium Nugget",
   "item.hexcraftmod.steel_powder": "Steel Powder",
   "item.hexcraftmod.steel_ingot": "Steel Ingot",
+  "item.hexcraftmod.raw_soulstone": "Raw Soulstone",
+  "item.hexcraftmod.soulstone_ingot": "Soulstone Ingot",
+  "item.hexcraftmod.soulstone_nugget": "Soulstone Nugget",
+  "item.hexcraftmod.raw_abyssium": "Raw Abyssium",
+  "item.hexcraftmod.abyssium_ingot": "Abyssium Ingot",
+  "item.hexcraftmod.abyssium_nugget": "Abyssium Nugget",
+  "item.hexcraftmod.raw_eclipsium": "Raw Eclipsium",
+  "item.hexcraftmod.eclipsium_ingot": "Eclipsium Ingot",
+  "item.hexcraftmod.eclipsium_nugget": "Eclipsium Nugget",
   "item.hexcraftmod.white_oak_ash": "White Oak Ash",
   "item.hexcraftmod.salt": "Salt",
   "item.hexcraftmod.necromantic_stone": "Necromantic Stone",
@@ -59,6 +94,7 @@
   "item.hexcraftmod.blooded_waystone": "Blooded Waystone",
   "item.hexcraftmod.bound_waystone": "Bound Waystone",
   "item.hexcraftmod.wood_ash": "Wood Ash",
+  "item.hexcraftmod.abyssal_coal": "Abyssal Coal",
   "item.hexcraftmod.breath_of_the_goddess": "Breath Of The Goddess",
   "item.hexcraftmod.exhale_of_the_horned_one": "Exhale Of The Horned One",
   "item.hexcraftmod.brew_of_love": "Brew Of Love",
@@ -90,6 +126,7 @@
   "item.hexcraftmod.wither_protection_poppet": "Wither Protection Poppet",
   "item.hexcraftmod.armor_protection_poppet": "Armor Protection Poppet",
   "item.hexcraftmod.tool_protection_poppet": "Tool Protection Poppet",
+  "item.hexcraftmod.hellfire_campfire": "Hellfire Campfire",
 
   //Plants
   "item.hexcraftmod.mandrake_seeds": "Mandrake Seeds",
@@ -122,6 +159,7 @@
   "item.hexcraftmod.wormwood": "Wormwood",
   "item.hexcraftmod.water_artichoke_seeds": "Water Artichoke Seeds",
   "item.hexcraftmod.water_artichoke": "Water Artichoke",
+  "item.hexcraftmod.duskroot": "Duskroot",
   "item.hexcraftmod.blood_bucket": "Blood Bucket",
 
   //Blocks
@@ -141,11 +179,23 @@
   "block.hexcraftmod.potted_wispy_cotton": "Potted Wispy Cotton",
   "block.hexcraftmod.soul_flower": "Soul Flower",
   "block.hexcraftmod.potted_soul_flower": "Potted Soul Flower",
+  "block.hexcraftmod.duskroot_lantern": "Duskroot Lantern",
+  "block.hexcraftmod.potted_duskroot_lantern": "Potted Duskroot Lantern",
+  "block.hexcraftmod.scorchstalks": "Scorchstalks",
+  "block.hexcraftmod.potted_scorchstalks": "Potted Scorchstalks",
+  "block.hexcraftmod.blister_cactus_flower": "Blister Cactus Flower",
+  "block.hexcraftmod.blister_cactus": "Blister Cactus",
   "block.hexcraftmod.black_obsidian": "Black Obsidian",
   "block.hexcraftmod.amethyst_chimes": "Amethyst Chimes",
   "block.hexcraftmod.pure_magic_crystal": "Pure Magic Crystal",
   "block.hexcraftmod.witches_oven": "Witches Oven",
+  "block.hexcraftmod.fume_funnel": "Fume Funnel",
+  "block.hexcraftmod.altar_base": "Altar",
+  "block.hexcraftmod.altar_top": "Altar",
+  "block.hexcraftmod.distillery": "Distillery",
   "block.hexcraftmod.witches_cauldron": "Witches Cauldron",
+  "block.hexcraftmod.fairy_house": "Fairy House",
+  "block.hexcraftmod.pixie_house": "Pixie House",
   "block.hexcraftmod.poppet_table": "Poppet Table",
   "block.hexcraftmod.moonstone_ore": "Moonstone Ore",
   "block.hexcraftmod.end_moonstone_ore": "End Moonstone Ore",
@@ -163,9 +213,17 @@
   "block.hexcraftmod.trenogen_ore": "Trenogen Ore",
   "block.hexcraftmod.deepslate_trenogen_ore": "Deepslate Trenogen Ore",
   "block.hexcraftmod.jormuim_ore": "Jormuim Ore",
+  "block.hexcraftmod.soulstone_ore": "Soulstone Ore",
+  "block.hexcraftmod.abyssium_ore": "Abyssium Ore",
+  "block.hexcraftmod.eclipsium_ore": "Eclipsium Ore",
+  "block.hexcraftmod.abyssal_coal_ore": "Abyssal Coal Ore",
   "block.hexcraftmod.moonstone_block": "Moonstone Block",
   "block.hexcraftmod.silver_block": "Silver Blocks",
   "block.hexcraftmod.vampiric_block": "Vampiric Block",
+  "block.hexcraftmod.soulstone_block": "Soulstone Block",
+  "block.hexcraftmod.abyssium_block": "Abyssium Block",
+  "block.hexcraftmod.eclipsium_block": "Eclipsium Block",
+  "block.hexcraftmod.abyssal_coal_block": "Abyssal Coal Block",
   "block.hexcraftmod.magic_crystal_block": "Magic Crystal Block",
   "block.hexcraftmod.budding_magic_crystal": "Budding Magic Crystal",
   "block.hexcraftmod.magic_crystal_cluster": "Magic Crystal Cluster",
@@ -196,13 +254,13 @@
   "block.hexcraftmod.polished_charstone": "Polished Charstone",
   "block.hexcraftmod.chiseled_charstone": "Chiseled Charstone",
   "block.hexcraftmod.cracked_charstone": "Cracked Charstone",
-  "block.hexcraftmod.crimson_sand": "Crimson Sand",
-  "block.hexcraftmod.crimson_sand_stone": "Crimson Sandstone",
-  "block.hexcraftmod.smooth_crimson_sand_stone": "Smooth Crimson Sandstone",
-  "block.hexcraftmod.chiseled_crimson_sand_stone": "Chiseled Crimson Sandstone",
-  "block.hexcraftmod.cut_crimson_sand_stone": "Cut Crimson Sandstone",
-  "block.hexcraftmod.crimson_glass": "Crimson Glass",
-  "block.hexcraftmod.crimson_glass_pane": "Crimson Glass Pane",
+  "block.hexcraftmod.pixie_sand": "Pixie Sand",
+  "block.hexcraftmod.pixie_sand_stone": "Pixie Sandstone",
+  "block.hexcraftmod.smooth_pixie_sand_stone": "Smooth Pixie Sandstone",
+  "block.hexcraftmod.chiseled_pixie_sand_stone": "Chiseled Pixie Sandstone",
+  "block.hexcraftmod.cut_pixie_sand_stone": "Cut Pixie Sandstone",
+  "block.hexcraftmod.pixie_glass": "Pixie Glass",
+  "block.hexcraftmod.pixie_glass_pane": "Pixie Glass Pane",
   "block.hexcraftmod.fairy_sand": "Fairy Sand",
   "block.hexcraftmod.fairy_sand_stone": "Fairy Sandstone",
   "block.hexcraftmod.smooth_fairy_sand_stone": "Smooth Fairy Sandstone",
@@ -210,12 +268,26 @@
   "block.hexcraftmod.cut_fairy_sand_stone": "Cut Fairy Sandstone",
   "block.hexcraftmod.fairy_glass": "Fairy Glass",
   "block.hexcraftmod.fairy_glass_pane": "Fairy Glass Pane",
+  "block.hexcraftmod.crimson_sand": "Crimson Sand",
+  "block.hexcraftmod.crimson_sand_stone": "Crimson Sandstone",
+  "block.hexcraftmod.smooth_crimson_sand_stone": "Smooth Crimson Sandstone",
+  "block.hexcraftmod.chiseled_crimson_sand_stone": "Chiseled Crimson Sandstone",
+  "block.hexcraftmod.cut_crimson_sand_stone": "Cut Crimson Sandstone",
+  "block.hexcraftmod.crimson_glass": "Crimson Glass",
+  "block.hexcraftmod.crimson_glass_pane": "Crimson Glass Pane",
   "block.hexcraftmod.crimson_ice": "Crimson Ice",
   "block.hexcraftmod.crimson_packed_ice": "Crimson Packed Ice",
   "block.hexcraftmod.glint_weed": "Glint Weed",
   "block.hexcraftmod.ember_moss": "Ember Moss",
   "block.hexcraftmod.spanish_moss": "Spanish Moss",
   "block.hexcraftmod.demon_heart": "Demon Heart",
+  "block.hexcraftmod.pandoras_box": "Pandoras Box",
+  "block.hexcraftmod.sacrificial_pillar": "Sacrificial Pillar",
+  "block.hexcraftmod.ash_block": "Ash Block",
+  "block.hexcraftmod.ash_layer": "Ash",
+  "block.hexcraftmod.fairy_ward": "Fairy Ward",
+  "block.hexcraftmod.pixie_ward": "Pixie Ward",
+  "block.hexcraftmod.hellfire_campfire": "Hellfire Campfire",
   "fluid_type.hexcraftmod.blood_fluid": "Blood",
 
   //Logs
@@ -283,6 +355,10 @@
   "block.hexcraftmod.stripped_echo_wood_log": "Stripped Echo Log",
   "block.hexcraftmod.echo_wood_wood": "Echo Wood",
   "block.hexcraftmod.echo_wood_log": "Echo Log",
+  "block.hexcraftmod.stripped_phoenix_wood": "Stripped Phoenix Wood",
+  "block.hexcraftmod.stripped_phoenix_log": "Stripped Phoenix Log",
+  "block.hexcraftmod.phoenix_wood": "Phoenix Wood",
+  "block.hexcraftmod.phoenix_log": "Phoenix Log",
 
   //Planks
   "block.hexcraftmod.ebony_planks": "Ebony Planks",
@@ -301,6 +377,7 @@
   "block.hexcraftmod.twisted_planks": "Twisted Planks",
   "block.hexcraftmod.witch_wood_planks": "Witchwood Planks",
   "block.hexcraftmod.echo_wood_planks": "Echo Planks",
+  "block.hexcraftmod.phoenix_planks": "Phoenix Planks",
 
   //Signs
   "block.hexcraftmod.ebony_sign": "Ebony Sign",
@@ -319,6 +396,7 @@
   "block.hexcraftmod.twisted_sign": "Twisted Sign",
   "block.hexcraftmod.witch_wood_sign": "Witchwood Sign",
   "block.hexcraftmod.echo_sign": "Echo Wood Sign",
+  "block.hexcraftmod.phoenix_sign": "Phoenix Sign",
   "block.hexcraftmod.ebony_hanging_sign": "Ebony Hanging Sign",
   "block.hexcraftmod.blood_oak_hanging_sign": "Blood Oak Hanging Sign",
   "block.hexcraftmod.hell_bark_hanging_sign": "Hellbark Hanging Sign",
@@ -335,6 +413,7 @@
   "block.hexcraftmod.twisted_hanging_sign": "Twisted Hanging Sign",
   "block.hexcraftmod.witch_wood_hanging_sign": "Witchwood Hanging Sign",
   "block.hexcraftmod.echo_hanging_sign": "Echo Wood Hanging Sign",
+  "block.hexcraftmod.phoenix_hanging_sign": "Phoenix Hanging Sign",
 
   //Boats
   "item.hexcraftmod.ebony_boat": "Ebony Boat",
@@ -353,6 +432,7 @@
   "item.hexcraftmod.twisted_boat": "Twisted Boat",
   "item.hexcraftmod.witch_wood_boat": "Witchwood Boat",
   "item.hexcraftmod.echo_wood_boat": "Echo Wood Boat",
+  "item.hexcraftmod.phoenix_boat": "Phoenix Boat",
   "item.hexcraftmod.ebony_chest_boat": "Ebony Chest Boat",
   "item.hexcraftmod.blood_oak_chest_boat": "Blood Oak Chest Boat",
   "item.hexcraftmod.hell_bark_chest_boat": "Hellbark Chest Boat",
@@ -369,8 +449,9 @@
   "item.hexcraftmod.twisted_chest_boat": "Twisted Chest Boat",
   "item.hexcraftmod.witch_wood_chest_boat": "Witchwood Chest Boat",
   "item.hexcraftmod.echo_wood_chest_boat": "Echo Wood Chest Boat",
+  "item.hexcraftmod.phoenix_chest_boat": "Phoenix Chest Boat",
 
-  //Boats
+  //Chest
   "item.hexcraftmod.chest_ebony": "Ebony Chest",
   "item.hexcraftmod.chest_blood_oak": "Blood Oak Chest",
   "item.hexcraftmod.chest_hell_bark": "Hellbark Chest",
@@ -387,6 +468,7 @@
   "item.hexcraftmod.chest_twisted": "Twisted Chest",
   "item.hexcraftmod.chest_witch_wood": "Witchwood Chest",
   "item.hexcraftmod.chest_echo_wood": "Echo Wood Chest",
+  "item.hexcraftmod.chest_phoenix": "Phoenix Chest",
 
   //Saplings
   "block.hexcraftmod.potted_ebony_sapling": "Potted Ebony Sapling",
@@ -420,6 +502,7 @@
   "block.hexcraftmod.potted_witch_wood_sapling": "Potted Witch Wood Sapling",
   "block.hexcraftmod.witch_wood_sapling": "Witchwood Sapling",
   "block.hexcraftmod.echo_sapling": "Echo Sapling",
+  "block.hexcraftmod.phoenix_sapling": "Phoenix Sapling",
 
   //Leaves
   "block.hexcraftmod.ebony_leaves": "Ebony Leaves",
@@ -438,6 +521,7 @@
   "block.hexcraftmod.twisted_leaves": "Twisted Leaves",
   "block.hexcraftmod.witch_wood_leaves": "Witchwood Leaves",
   "block.hexcraftmod.echo_wood_leaves": "Echo Leaves",
+  "block.hexcraftmod.phoenix_leaves": "Phoenix Leaves",
 
   //Leaf Pile
   "block.hexcraftmod.ebony_leaves_pile": "Ebony Leaves",
@@ -456,6 +540,7 @@
   "block.hexcraftmod.twisted_leaves_pile": "Twisted Leaves",
   "block.hexcraftmod.witch_wood_leaves_pile": "Witchwood Leaves",
   "block.hexcraftmod.echo_wood_leaves_pile": "Echo Leaves",
+  "block.hexcraftmod.phoenix_leaves_pile": "Phoenix Leaves",
 
   //Bookshelfs
   "block.hexcraftmod.ebony_bookshelf": "Ebony Bookshelf",
@@ -474,6 +559,26 @@
   "block.hexcraftmod.twisted_bookshelf": "Twisted Bookshelf",
   "block.hexcraftmod.witch_wood_bookshelf": "Witchwood Bookshelf",
   "block.hexcraftmod.echo_wood_bookshelf": "Echo Bookshelf",
+  "block.hexcraftmod.phoenix_bookshelf": "Phoenix Bookshelf",
+
+  //Candles
+  "block.hexcraftmod.soulstem_candle": "Soulstem Candle",
+  "block.hexcraftmod.white_witch_candle": "Witch Candle White",
+  "block.hexcraftmod.orange_witch_candle": "Witch Candle Orange",
+  "block.hexcraftmod.magenta_witch_candle": "Witch Candle Magenta",
+  "block.hexcraftmod.light_blue_witch_candle": "Witches Candle Light Blue",
+  "block.hexcraftmod.yellow_witch_candle": "Witch Candle Yellow",
+  "block.hexcraftmod.lime_witch_candle": "Witch Candle Lime",
+  "block.hexcraftmod.pink_witch_candle": "Witch Candle Pink",
+  "block.hexcraftmod.gray_witch_candle": "Witch Candle Gray",
+  "block.hexcraftmod.light_gray_witch_candle": "Witch Candle Light Gray",
+  "block.hexcraftmod.cyan_witch_candle": "Witch Candle Cyan",
+  "block.hexcraftmod.purple_witch_candle": "Witch Candle Purple",
+  "block.hexcraftmod.blue_witch_candle": "Witch Candle Blue",
+  "block.hexcraftmod.brown_witch_candle": "Witch Candle Brown",
+  "block.hexcraftmod.green_witch_candle": "Witch Candle Green",
+  "block.hexcraftmod.red_witch_candle": "Witch Candle Red",
+  "block.hexcraftmod.black_witch_candle": "Witch Candle Black",
 
   //Walls
   "block.hexcraftmod.pearl_stone_wall": "Pearlstone Wall",
@@ -482,6 +587,7 @@
   "block.hexcraftmod.charstone_wall": "Charstone Wall",
   "block.hexcraftmod.crimson_sand_stone_wall": "Crimson Sandstone Wall",
   "block.hexcraftmod.fairy_sand_stone_wall": "Fairy Sandstone Wall",
+  "block.hexcraftmod.pixie_sand_stone_wall": "Pixie Sandstone Wall",
 
   //Stairs
   "block.hexcraftmod.pearl_stone_stairs": "Pearlstone Stairs",
@@ -522,6 +628,7 @@
   "block.hexcraftmod.twisted_stairs": "Twisted Stairs",
   "block.hexcraftmod.witch_wood_stairs": "Witchwood Stairs",
   "block.hexcraftmod.echo_wood_stairs": "Echo Stairs",
+  "block.hexcraftmod.phoenix_stairs": "Phoenix Stairs",
 
   //Pressure Plates
   "block.hexcraftmod.pearl_stone_pressure_plate": "Pearl Stone Pressure Plate",
@@ -544,6 +651,7 @@
   "block.hexcraftmod.twisted_pressure_plate": "Twisted Pressure Plate",
   "block.hexcraftmod.witch_wood_pressure_plate": "Witchwood Pressure Plate",
   "block.hexcraftmod.echo_wood_pressure_plate": "Echo Pressure Plate",
+  "block.hexcraftmod.phoenix_pressure_plate": "Phoenix Pressure Plate",
 
   //Buttons
   "block.hexcraftmod.pearl_stone_button": "Pearl Stone Button",
@@ -566,6 +674,7 @@
   "block.hexcraftmod.twisted_button": "Twisted Button",
   "block.hexcraftmod.witch_wood_button": "Witchwood Button",
   "block.hexcraftmod.echo_wood_button": "Echo Button",
+  "block.hexcraftmod.phoenix_button": "Phoenix Button",
 
   //Fence
   "block.hexcraftmod.ebony_fence": "Ebony Fence",
@@ -584,6 +693,7 @@
   "block.hexcraftmod.twisted_fence": "Twisted Fence",
   "block.hexcraftmod.witch_wood_fence": "Witchwood Fence",
   "block.hexcraftmod.echo_wood_fence": "Echo Fence",
+  "block.hexcraftmod.phoenix_fence": "Phoenix Fence",
 
   //Fence Gate
   "block.hexcraftmod.ebony_fence_gate": "Ebony Fence Gate",
@@ -602,6 +712,7 @@
   "block.hexcraftmod.twisted_fence_gate": "Twisted Fence Gate",
   "block.hexcraftmod.witch_wood_fence_gate": "Witchwood Fence Gate",
   "block.hexcraftmod.echo_wood_fence_gate": "Echo Fence Gate",
+  "block.hexcraftmod.phoenix_fence_gate": "Phoenix Fence Gate",
 
   //Doors
   "block.hexcraftmod.ebony_door": "Ebony Door",
@@ -620,6 +731,7 @@
   "block.hexcraftmod.twisted_door": "Twisted Door",
   "block.hexcraftmod.witch_wood_door": "Witchwood Door",
   "block.hexcraftmod.echo_wood_door": "Echo Door",
+  "block.hexcraftmod.phoenix_door": "Phoenix Door",
 
   //Trapdoor
   "block.hexcraftmod.ebony_trapdoor": "Ebony Trapdoor",
@@ -638,6 +750,7 @@
   "block.hexcraftmod.twisted_trapdoor": "Twisted Trapdoor",
   "block.hexcraftmod.witch_wood_trapdoor": "Witchwood Trapdoor",
   "block.hexcraftmod.echo_wood_trapdoor": "Echo Trapdoor",
+  "block.hexcraftmod.phoenix_trapdoor": "Phoenix Trapdoor",
 
 
   //Slabs
@@ -663,6 +776,9 @@
   "block.hexcraftmod.fairy_sand_stone_slab": "Fairy Sandstone Slab",
   "block.hexcraftmod.cut_fairy_sand_stone_slab": "Cut Fairy Sandstone Slab",
   "block.hexcraftmod.smooth_fairy_sand_stone_slab": "Smooth Fairy Sandstone Slab",
+  "block.hexcraftmod.pixie_sand_stone_slab": "Pixie Sandstone Slab",
+  "block.hexcraftmod.cut_pixie_sand_stone_slab": "Cut Pixie Sandstone Slab",
+  "block.hexcraftmod.smooth_pixie_sand_stone_slab": "Smooth Pixie Sandstone Slab",
   "block.hexcraftmod.ebony_slab": "Ebony Slab",
   "block.hexcraftmod.blood_oak_slab": "Blood Oak Slab",
   "block.hexcraftmod.hell_bark_slab": "Hellbark Slab",
@@ -679,6 +795,26 @@
   "block.hexcraftmod.twisted_slab": "Twisted Slab",
   "block.hexcraftmod.witch_wood_slab": "Witchwood Slab",
   "block.hexcraftmod.echo_wood_slab": "Echo Slab",
+  "block.hexcraftmod.phoenix_slab": "Phoenix Slab",
+
+  //Chests
+  "block.hexcraftmod.alder_chest": "Alder Chest",
+  "block.hexcraftmod.blood_oak_chest": "Blood Oak Chest",
+  "block.hexcraftmod.cedar_chest": "Cedar Chest",
+  "block.hexcraftmod.distorted_chest": "Distorted Chest",
+  "block.hexcraftmod.ebony_chest": "Ebony Chest",
+  "block.hexcraftmod.echo_wood_chest": "Echo Chest",
+  "block.hexcraftmod.elder_chest": "Elder Chest",
+  "block.hexcraftmod.hawthorn_chest": "Hawthorn Chest",
+  "block.hexcraftmod.hell_bark_chest": "Hell Bark Chest",
+  "block.hexcraftmod.juniper_chest": "Juniper Chest",
+  "block.hexcraftmod.rowan_chest": "Rowan Chest",
+  "block.hexcraftmod.twisted_chest": "Twisted Chest",
+  "block.hexcraftmod.white_oak_chest": "White Oak Chest",
+  "block.hexcraftmod.willow_chest": "Willow Chest",
+  "block.hexcraftmod.witch_wood_chest": "Witch Wood Chest",
+  "block.hexcraftmod.witch_hazel_chest": "Witch Hazel Chest",
+  "block.hexcraftmod.phoenix_chest": "Phoenix Chest",
 
   //Lanterns
   "block.hexcraftmod.fairy_lantern": "Fairy Lantern",
@@ -688,12 +824,24 @@
   "block.hexcraftmod.vileshroom_lamp": "Vileshroom Lamp",
   "block.hexcraftmod.ghostshroom_lamp": "Ghostshroom Lamp",
 
+
   //Foods
   "item.hexcraftmod.juniper_berries": "Juniper Berries",
   "item.hexcraftmod.blood_apple": "Blood Apple",
   "item.hexcraftmod.blood_berries": "Blood Berries",
+  "item.hexcraftmod.blister_cactus_fruit": "Blister Cactus Fruit",
+  "item.hexcraftmod.blister_fruit": "Blister Fruit",
   "item.hexcraftmod.fairy_dust": "Fairy Dust",
   "item.hexcraftmod.pixie_dust": "Pixie Dust",
+  "item.hexcraftmod.living_kelp_salad": "Living Kelp Salad",
+
+  //Potions
+  "item.hexcraftmod.blistering_vitality_potion.effect.empty": "Potion Of Vitality",
+  "item.hexcraftmod.venom_bottle": "Venom Bottle",
+  "item.hexcraftmod.irenial_brew": "Irenial Brew",
+  "item.hexcraftmod.senia_brew": "Senia Brew",
+  "item.hexcraftmod.mira_brew": "Mira Brew",
+  "item.hexcraftmod.xerifae_brew": "Xerifae Brew",
 
   //Bows
   "item.hexcraftmod.steel_bow": "Steel Bow",
@@ -784,12 +932,17 @@
   "block.hexcraftmod.witches_ladder_plant": "Witches Ladder",
   "item.hexcraftmod.vilevine": "Vilevine",
   "block.hexcraftmod.vilevine": "Vilevine",
+  "item.hexcraftmod.bloodthorn_vines_item": "Bloodthorn Vine",
+  "block.hexcraftmod.bloodthorn_vines": "Bloodthorn Vine",
   "block.hexcraftmod.wild_bramble": "Wild Bramble",
   "block.hexcraftmod.ender_bramble": "Ender Bramble",
   "block.hexcraftmod.living_kelp": "Living Kelp",
   "block.hexcraftmod.living_kelp_plant": "Living Kelp",
   "block.hexcraftmod.living_kelp_block": "Living Kelp Block",
   "item.hexcraftmod.living_kelp_item": "Living Kelp",
+  "block.hexcraftmod.garlic_strand": "Garlic Strand",
+  "item.hexcraftmod.garlic_strand": "Garlic Strand Item",
+  "block.hexcraftmod.vervain_strand": "Vervain Strand",
   "block.hexcraftmod.blood_mushroom": "Blood Mushroom",
   "block.hexcraftmod.blood_mushroom_block": "Blood Mushroom Block",
   "block.hexcraftmod.blood_mushroom_stem": "Blood Mushroom Stem",
@@ -801,6 +954,58 @@
   "block.hexcraftmod.ghostshroom_stem": "Ghostshroom Stem",
   "block.hexcraftmod.vile_grass": "Vile Grass",
 
+  //Coral
+  "block.hexcraftmod.dead_twilightcoral": "Dead Twilight Coral",
+  "block.hexcraftmod.twilightcoral": "Twilight Coral",
+  "block.hexcraftmod.dead_twilightcoral_block": "Dead Twilight Coral Block",
+  "block.hexcraftmod.twilightcoral_block": "Twilight Coral Block",
+  "block.hexcraftmod.dead_twilightcoral_fan": "Dead Twilight Coral Fan",
+  "block.hexcraftmod.twilightcoral_fan": "Twilight Coral Fan",
+  "block.hexcraftmod.dead_twilightcoral_wall_fan": "Dead Twilight Coral Fan",
+  "block.hexcraftmod.twilightcoral_wall_fan": "Twilight Coral Fan",
+  "block.hexcraftmod.dead_sanguine_coral": "Dead Sanguine Coral",
+  "block.hexcraftmod.sanguine_coral": "Sanguine Coral",
+  "block.hexcraftmod.dead_sanguine_coral_block": "Dead Sanguine Coral Block",
+  "block.hexcraftmod.sanguine_coral_block": "Sanguine Coral Block",
+  "block.hexcraftmod.dead_sanguine_coral_fan": "Dead Sanguine Coral Fan",
+  "block.hexcraftmod.sanguine_coral_fan": "Sanguine Coral Fan",
+  "block.hexcraftmod.dead_sanguine_coral_wall_fan": "Dead Sanguine Coral Fan",
+  "block.hexcraftmod.sanguine_coral_wall_fan": "Sanguine Coral Fan",
+  "block.hexcraftmod.dead_whisper_coral": "Dead Whisper Coral",
+  "block.hexcraftmod.whisper_coral": "Whisper Coral",
+  "block.hexcraftmod.dead_whisper_coral_block": "Dead Whisper Coral Block",
+  "block.hexcraftmod.whisper_coral_block": "Whisper Coral Block",
+  "block.hexcraftmod.dead_whisper_coral_fan": "Dead Whisper Coral Fan",
+  "block.hexcraftmod.whisper_coral_fan": "Whisper Coral Fan",
+  "block.hexcraftmod.dead_whisper_coral_wall_fan": "Dead Whisper Coral Fan",
+  "block.hexcraftmod.whisper_coral_wall_fan": "Whisper Coral Fan",
+  "block.hexcraftmod.dead_ebonfang_coral": "Dead Ebonfang Coral",
+  "block.hexcraftmod.ebonfang_coral": "Ebonfang Coral",
+  "block.hexcraftmod.dead_ebonfang_coral_block": "Dead Ebonfang Coral Block",
+  "block.hexcraftmod.ebonfang_coral_block": "Ebonfang Coral Block",
+  "block.hexcraftmod.dead_ebonfang_coral_fan": "Dead Ebonfang Coral Fan",
+  "block.hexcraftmod.ebonfang_coral_fan": "Ebonfang Coral Fan",
+  "block.hexcraftmod.dead_ebonfang_coral_wall_fan": "Dead Ebonfang Coral Fan",
+  "block.hexcraftmod.ebonfang_coral_wall_fan": "Ebonfang Coral Fan",
+  "block.hexcraftmod.dead_spectral_bloom_coral": "Dead Spectral Bloom Coral",
+  "block.hexcraftmod.spectral_bloom_coral": "Spectral Bloom Coral",
+  "block.hexcraftmod.dead_spectral_bloom_coral_block": "Dead Spectral Bloom Coral Block",
+  "block.hexcraftmod.spectral_bloom_coral_block": "Spectral Bloom Coral Block",
+  "block.hexcraftmod.dead_spectral_bloom_coral_fan": "Dead Spectral Bloom Coral Fan",
+  "block.hexcraftmod.spectral_bloom_coral_fan": "Spectral Bloom Coral Fan",
+  "block.hexcraftmod.dead_spectral_bloom_coral_wall_fan": "Dead Spectral Bloom Coral Fan",
+  "block.hexcraftmod.spectral_bloom_coral_wall_fan": "Spectral Bloom Coral Fan",
+  "block.hexcraftmod.dead_hellvine_coral": "Dead Hellvine Coral",
+  "block.hexcraftmod.hellvine_coral": "Hellvine Coral",
+  "block.hexcraftmod.dead_hellvine_coral_block": "Dead Hellvine Coral Block",
+  "block.hexcraftmod.hellvine_coral_block": "Hellvine Coral Block",
+  "block.hexcraftmod.dead_hellvine_coral_fan": "Dead Hellvine Coral Fan",
+  "block.hexcraftmod.hellvine_coral_fan": "Hellvine Coral Fan",
+  "block.hexcraftmod.dead_hellvine_coral_wall_fan": "Dead Hellvine Coral Fan",
+  "block.hexcraftmod.hellvine_coral_wall_fan": "Hellvine Coral Fan",
+  "block.hexcraftmod.soulstem_candle": "Soulstem Candle",
+
+
   //Tools
   "item.hexcraftmod.vampiric_staff": "Vampiric Staff",
   "item.hexcraftmod.vampiric_staff_projectile": "Vampiric Staff Projectile",
@@ -810,6 +1015,67 @@
 
   //Entities
   "entity.hexcraftmod.hexcraft_chest_boat": "Chest Boat",
+
+  //Boss Mobs
+  "boss.hexcraft.lilith": "Lilith, Queen of Darkness",
+
+  //Spawn Eggs
+  "item.hexcraftmod.vampire_evoker_spawn_egg": "Vampire Evoker Spawn Egg",
+  "item.hexcraftmod.vampire_vindicator_spawn_egg": "Vampire Vindicator Spawn Egg",
+  "item.hexcraftmod.vampire_piglin_spawn_egg": "Vampire Piglin Spawn Egg",
+  "item.hexcraftmod.lilith_spawn_egg": "Lilith Spawn Egg",
+  "item.hexcraftmod.wendigo_spawn_egg": "Wendigo Spawn Egg",
+  "item.hexcraftmod.fairy_spawn_egg": "Fairy Spawn Egg",
+
+  //Patchouli
+  "patchouli.entry.hexcraftmod.wendigo": "The Wendigo",
+  "patchouli.entry.hexcraftmod.wendigo.desc": "A cursed stalker that hunts its prey in the darkness.",
+
+  "patchouli.page.hexcraftmod.wendigo.1": "The Wendigo is a terrifying entity that lurks in cold, cursed forests. It is said to be born from those who consume flesh, transforming them into relentless hunters.",
+  "patchouli.page.hexcraftmod.wendigo.2": "Fast and unpredictable, the Wendigo disappears into the shadows, only to reappear behind its prey. It can summon illusions of itself to disorient enemies.",
+  "patchouli.page.hexcraftmod.wendigo.3": "The Wendigo’s attacks inflict Hunger and Slowness, weakening its victims before the final strike.",
+  "patchouli.page.hexcraftmod.wendigo.4": "Weakness: Wendigos are vulnerable to fire and sunlight. They slow down in bright areas, making them easier to defeat.",
+  "patchouli.page.hexcraftmod.wendigo.5": "Summoning: Wendigos can be found in cursed biomes, or summoned using a ritual with Bone, Rotten Flesh, and Soul Sand.",
+  "patchouli.book.hexcraftmod.title": "Hexcraft Grimoire",
+  "patchouli.book.hexcraftmod.landing_text": "Welcome, seeker of the occult. Within these pages, you will find forbidden knowledge of dark magic, creatures of the night, and ancient rituals. Proceed with caution...",
+  "patchouli.category.hexcraftmod.monsters": "Monsters",
+  "patchouli.category.hexcraftmod.monsters.desc": "A collection of terrifying creatures that roam the lands.",
+
+  "patchouli.category.hexcraftmod.rituals": "Dark Rituals",
+  "patchouli.category.hexcraftmod.rituals.desc": "Rituals that unlock forbidden power.",
+
+  "patchouli.category.hexcraftmod.items": "Magical Artifacts",
+  "patchouli.category.hexcraftmod.items.desc": "Relics of immense power, scattered throughout the world.",
+  "patchouli.entry.hexcraftmod.lilith": "Lilith, Queen of Darkness",
+  "patchouli.entry.hexcraftmod.lilith.desc": "The Dark Queen who rules over vampires and dark magic.",
+
+  "patchouli.page.hexcraftmod.lilith.1": "Lilith, the first of her kind, is a powerful vampiric entity that feeds on the life force of mortals.",
+  "patchouli.page.hexcraftmod.lilith.2": "Abilities: She summons vampire minions, drains health from her enemies, and can vanish into the shadows.",
+  "patchouli.page.hexcraftmod.lilith.3": "During battle, she shrouds the land in darkness and grows stronger under a Blood Moon.",
+  "patchouli.page.hexcraftmod.lilith.4": "To defeat Lilith, one must use enchanted weapons and fire-based attacks, as she is highly resistant to normal weapons.",
+  "patchouli.page.hexcraftmod.lilith.5": "Defeating Lilith grants her soul and contract, which can be used to unlock powerful vampiric abilities.",
+
+  "patchouli.entry.hexcraftmod.pandoras_box": "Pandora’s Box",
+  "patchouli.entry.hexcraftmod.pandoras_box.desc": "A mysterious artifact that can bring fortune… or destruction.",
+
+  "patchouli.page.hexcraftmod.pandoras_box.1": "Pandora’s Box is an ancient relic, sealed with magic. Those who dare open it will face unpredictable consequences.",
+  "patchouli.page.hexcraftmod.pandoras_box.2": "When opened, it can summon hordes of monsters, bestow rare treasures, or even summon the entity known as Pandora herself.",
+  "patchouli.page.hexcraftmod.pandoras_box.3": "Warning: The box’s power is unstable. Once opened, its effects cannot be reversed.",
+  "patchouli.page.hexcraftmod.pandoras_box.4": "To craft Pandora’s Box, one must gather Soul Sand, a Nether Star, and an Eclipsium Block, then perform a ritual under a Blood Moon.",
+  "patchouli.entry.hexcraftmod.vampirism": "The Curse of Vampirism",
+  "patchouli.entry.hexcraftmod.vampirism.desc": "The path of the vampire, a life of blood and darkness.",
+
+  "patchouli.page.hexcraftmod.vampirism.1": "Those who are bitten by a vampire or drink tainted blood may find themselves transformed into a creature of the night.",
+  "patchouli.page.hexcraftmod.vampirism.2": "As a vampire, normal food becomes useless. The player must feed on villagers or other players to survive.",
+  "patchouli.page.hexcraftmod.vampirism.3": "Vampires gain enhanced strength, speed, and regeneration, but are vulnerable to sunlight and fire.",
+  "patchouli.page.hexcraftmod.vampirism.4": "A vampire can become stronger through rituals and skill trees, unlocking powerful abilities over time.",
+  "patchouli.page.hexcraftmod.vampirism.5": "To cure vampirism, one must obtain a rare potion made from the Blood of an Original Vampire.",
+  "patchouli.entry.hexcraftmod.witch_satchel": "The Witch’s Satchel",
+  "patchouli.entry.hexcraftmod.witch_satchel.desc": "A magical bag that holds various plant-based ingredients.",
+
+  "patchouli.page.hexcraftmod.witch_satchel.1": "The Witch’s Satchel is a special storage item used by witches to hold herbs, seeds, and enchanted plants.",
+  "patchouli.page.hexcraftmod.witch_satchel.2": "It has 16 slots and can only store plant-related items, excluding cactus blocks.",
+  "patchouli.page.hexcraftmod.witch_satchel.3": "The satchel is dyeable, allowing players to customize its appearance.",
 
   //Creative Mod Tab
   "creativetab.hexcraft_tab": "Hexcraft Tab"

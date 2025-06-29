@@ -1,0 +1,6 @@
+{
+  "parent": "item/chest",
+  "textures": {
+    "particle": "hexcraftmod:block/blood_oak_planks"
+  }
+}

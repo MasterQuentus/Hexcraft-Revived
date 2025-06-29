@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "B": {
+      "item": "hexcraftmod:blood_drop"
+    },
+    "G": {
+      "item": "minecraft:gold_ingot"
+    },
+    "M": {
+      "item": "hexcraftmod:moonstone"
+    },
+    "W": {
+      "item": "hexcraftmod:wither_bone"
+    }
+  },
+  "pattern": [
+    "GBG",
+    "MWM",
+    "GGG"
+  ],
+  "result": {
+    "item": "hexcraftmod:daylight_ring"
+  },
+  "show_notification": true
+}

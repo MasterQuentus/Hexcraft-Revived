@@ -1,0 +1,21 @@
+{
+  "name": "Lilith - The Dark Queen",
+  "category": "bosses",
+  "icon": "minecraft:nether_star",
+  "pages": [
+    {
+      "type": "text",
+      "text": "Lilith, the mother of vampires, is a master of blood magic. Her presence alone weakens mortals."
+    },
+    {
+      "type": "text",
+      "title": "Abilities",
+      "text": "- Blood Moon Curse: Vampires enter frenzy, mortals suffer Wither II. \\n- Bat Swarm: Becomes invulnerable. \\n- Dark Dominion: Steals health from all around her."
+    },
+    {
+      "type": "text",
+      "title": "Rewards",
+      "text": "- Lilith’s Soul \\n- Lilith’s Contract \\n- Crimson Fang (Weapon)"
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "name": "The Blood Mage's Ascension",
+  "category": "rituals",
+  "icon": "hexcraftmod:dark_grimoire",
+  "pages": [
+    {
+      "type": "text",
+      "title": "Vampiric Witchcraft",
+      "text": "A Heretic is a Vampire who has **awakened their magical potential**, becoming a true Blood Mage."
+    },
+    {
+      "type": "text",
+      "title": "Requirements",
+      "text": "- Must be a **Vampire**. \\n- Must consume a **Witch’s Heart**. \\n- Must absorb power from a **Dark Grimoire**."
+    },
+    {
+      "type": "text",
+      "title": "Powers of a Heretic",
+      "text": "A Heretic can **use magic** unlike normal Vampires, unlocking **Blood Siphon, Necrotic Shield, and Arcane Vampire** abilities."
+    },
+    {
+      "type": "text",
+      "title": "Weaknesses",
+      "text": "Heretics consume **Blood and Mana** to cast spells. Running out of either weakens them greatly."
+    }
+  ]
+}

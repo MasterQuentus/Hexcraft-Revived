@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:smithing_transform",
+  "addition": {
+    "item": "hexcraftmod:infernal_ember"
+  },
+  "base": {
+    "item": "minecraft:flint_and_steel"
+  },
+  "result": {
+    "item": "hexcraftmod:flint_and_hellfire"
+  },
+  "template": []
+}

@@ -7,20 +7,23 @@ import com.google.common.collect.Lists;
 
 import it.unimi.dsi.fastutil.objects.Object2IntMap;
 import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
+import net.masterquentus.hexcraftmod.block.HexcraftBlocks;
 import net.masterquentus.hexcraftmod.block.custom.WitchesOven;
 import net.masterquentus.hexcraftmod.recipe.HexcraftRecipeTypes;
 import net.masterquentus.hexcraftmod.recipe.WitchesOvenRecipe;
-import net.masterquentus.hexcraftmod.screen.WitchesOvenMenu;
+import net.masterquentus.hexcraftmod.screens.WitchesOvenMenu;
 import net.masterquentus.hexcraftmod.util.ITickableBlockEntity;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.NonNullList;
+import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.util.Mth;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.Containers;
 import net.minecraft.world.MenuProvider;
 import net.minecraft.world.SimpleContainer;
@@ -156,6 +159,17 @@ public class WitchesOvenBlockEntity extends BlockEntity implements ITickableBloc
 					needsUpdating = true;
 				}
 			}
+
+			// 🔥 Add Green Smoke Effect (30% Chance)
+			if (this.level != null) {
+				RandomSource random = this.level.getRandom();
+				if (random.nextFloat() < 0.3F) { // 30% chance to emit green smoke
+					double x = worldPosition.getX() + 0.5;
+					double y = worldPosition.getY() + 1.0;
+					double z = worldPosition.getZ() + 0.5;
+					this.level.addParticle(ParticleTypes.SMOKE, x, y, z, 0.0, 0.1, 0.0);
+				}
+			}
 		}
 
 		ItemStack fuelStack = this.itemHandler.getStackInSlot(FUEL_SLOT);
@@ -224,6 +238,15 @@ public class WitchesOvenBlockEntity extends BlockEntity implements ITickableBloc
 		this.bakeProgress = 0;
 	}
 
+	private boolean hasFumeFunnel() {
+		BlockPos above = this.worldPosition.above();
+		return this.level.getBlockState(above).is(HexcraftBlocks.FUME_FUNNEL.get());
+	}
+
+	private float getFumeChance() {
+		return this.hasFumeFunnel() ? 0.85F : 0.55F; // 85% chance with funnel, 55% without
+	}
+
 	private void setLit() {
 		BlockState state = this.getBlockState();
 		state.setValue(WitchesOven.LIT, Boolean.valueOf(this.isLit()));
@@ -256,18 +279,41 @@ public class WitchesOvenBlockEntity extends BlockEntity implements ITickableBloc
 
 	private void makeResult() {
 		Optional<WitchesOvenRecipe> recipe = this.getRecipe();
+		if (recipe.isEmpty()) return;
+
 		ItemStack result = recipe.get().getResultItem(null);
 		ItemStack excessResult = recipe.get().getExcessResultItem(null);
+
+		// 🏗️ **Check for Fume Funnel Above**
+		int funnelCount = 0;
+		BlockPos checkPos = this.worldPosition.above();
+		while (this.level.getBlockState(checkPos).is(HexcraftBlocks.FUME_FUNNEL.get())) {
+			funnelCount++;
+			checkPos = checkPos.above();
+		}
+
+		// 🎲 **Calculate Chance of Capturing the Fume**
+		RandomSource random = this.level.getRandom();
+		float baseChance = 0.6F; // 60% Base Chance (Adjustable)
+		float funnelBonus = 0.15F * funnelCount; // +15% per Fume Funnel
+		float finalChance = Math.min(1.0F, baseChance + funnelBonus); // Max 100% Chance
 
 		this.itemHandler.extractItem(INPUT_SLOT, 1, false);
 		this.itemHandler.extractItem(ACCESSORY_SLOT, 1, false);
 
+		// ✅ **Always Process Main Result**
 		this.itemHandler.setStackInSlot(RESULT_SLOT, new ItemStack(result.getItem(),
 				this.itemHandler.getStackInSlot(RESULT_SLOT).getCount() + result.getCount()));
 
-		this.itemHandler.setStackInSlot(EXCESS_RESULT_SLOT, new ItemStack(excessResult.getItem(),
-				this.itemHandler.getStackInSlot(EXCESS_RESULT_SLOT).getCount() + excessResult.getCount()));
+		// 🎭 **Process Excess Fume with Chance**
+		if (random.nextFloat() < finalChance) {
+			this.itemHandler.setStackInSlot(EXCESS_RESULT_SLOT, new ItemStack(excessResult.getItem(),
+					this.itemHandler.getStackInSlot(EXCESS_RESULT_SLOT).getCount() + excessResult.getCount()));
+
+			spawnFumeParticles(); // ✔ Spawn green particles when fume is collected
+		}
 	}
+
 
 	private boolean hasSpaceToInsert(int outputSlotCount, int excessOutputSlotCount) {
 		boolean outputCount = this.itemHandler.getStackInSlot(RESULT_SLOT).getCount()
@@ -275,6 +321,16 @@ public class WitchesOvenBlockEntity extends BlockEntity implements ITickableBloc
 		boolean excessOutputCount = this.itemHandler.getStackInSlot(EXCESS_RESULT_SLOT).getCount()
 				+ excessOutputSlotCount <= this.itemHandler.getStackInSlot(EXCESS_RESULT_SLOT).getMaxStackSize();
 		return outputCount && excessOutputCount;
+	}
+
+	private void spawnFumeParticles() {
+		if (this.level != null) {
+			double x = worldPosition.getX() + 0.5;
+			double y = worldPosition.getY() + 1.0;
+			double z = worldPosition.getZ() + 0.5;
+
+			this.level.addParticle(ParticleTypes.SMOKE, x, y, z, 0.0, 0.1, 0.0);
+		}
 	}
 
 	private boolean canInputItems(Item outputItem, Item excessOutputItem) {

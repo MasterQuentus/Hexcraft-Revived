@@ -59,6 +59,10 @@
     "hexcraftmod:echo_wood_log",
     "hexcraftmod:echo_wood_wood",
     "hexcraftmod:stripped_echo_wood_log",
-    "hexcraftmod:stripped_echo_wood_wood"
+    "hexcraftmod:stripped_echo_wood_wood",
+    "hexcraftmod:phoenix_log",
+    "hexcraftmod:phoenix_wood",
+    "hexcraftmod:stripped_phoenix_log",
+    "hexcraftmod:stripped_phoenix_wood"
   ]
 }

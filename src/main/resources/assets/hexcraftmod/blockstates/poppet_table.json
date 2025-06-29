@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "hexcraftmod:block/poppet_table",
+      "y": 90
+    },
+    "facing=north": {
+      "model": "hexcraftmod:block/poppet_table"
+    },
+    "facing=south": {
+      "model": "hexcraftmod:block/poppet_table",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "hexcraftmod:block/poppet_table",
+      "y": 270
+    }
+  }
+}

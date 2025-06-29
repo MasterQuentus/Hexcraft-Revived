@@ -20,17 +20,37 @@ public class HexcraftItemModelProvider extends ItemModelProvider {
 
 	@Override
 	protected void registerModels() {
+		simpleItem(HexcraftItems.HEXCRAFT_GRIMOIRE);
 		simpleItem(HexcraftItems.INFUSED_FABRIC);
 		simpleItem(HexcraftItems.BOUND_LEATHER);
 		simpleItem(HexcraftItems.TANNED_LEATHER);
+		simpleItem(HexcraftItems.DAYLIGHT_RING);
+		//simpleItem(HexcraftItems.BLESSED_DAYLIGHT_RING);
+		simpleItem(HexcraftItems.WITHER_BONE);
+		simpleItem(HexcraftItems.DREAMWEAVER_CHARM);
 		simpleItem(HexcraftItems.BONE_NEEDLE);
 		simpleItem(HexcraftItems.TAGLOCK_KIT);
 		simpleItem(HexcraftItems.TAGLOCK_KIT_FULL);
 		simpleItem(HexcraftItems.UNFIRED_CLAY_POT);
 		simpleItem(HexcraftItems.CLAY_POT);
+		simpleItem(HexcraftItems.INFERNAL_EMBER);
+		simpleItem(HexcraftItems.ASH);
+		simpleItem(HexcraftItems.TOXIC_FUMES);
+		//simpleItem(HexcraftItems.RITUAL_CHALK);
 		simpleItem(HexcraftItems.BLOOD_BOTTLE);
 		simpleItem(HexcraftItems.LILITH_CONTRACT);
 		simpleItem(HexcraftItems.LILITH_SOUL);
+		simpleItem(HexcraftItems.DEATH_CONTRACT);
+		simpleItem(HexcraftItems.DEATH_SOUL);
+		simpleItem(HexcraftItems.ENVY_SOUL);
+		simpleItem(HexcraftItems.GLUTTONY_SOUL);
+		simpleItem(HexcraftItems.GREED_SOUL);
+		simpleItem(HexcraftItems.LUST_SOUL);
+		simpleItem(HexcraftItems.MEDUSA_SOUL);
+		simpleItem(HexcraftItems.MIRROR_DEMON_SOUL);
+		simpleItem(HexcraftItems.PRIDE_SOUL);
+		simpleItem(HexcraftItems.SLOTH_SOUL);
+		simpleItem(HexcraftItems.WRATH_SOUL);
 		simpleItem(HexcraftItems.MAGIC_CRYSTAL);
 		simpleItem(HexcraftItems.BLANK_RUNE);
 		simpleItem(HexcraftItems.AIR_RUNE);
@@ -61,6 +81,8 @@ public class HexcraftItemModelProvider extends ItemModelProvider {
 		simpleItem(HexcraftItems.RAW_BLOODY_NYKIUM);
 		simpleItem(HexcraftItems.BLOODY_NYKIUM);
 		simpleItem(HexcraftItems.BLOODY_NYKIUM_NUGGET);
+		//simpleItem(HexcraftItems.NYKIUM_INGOT);
+		//simpleItem(HexcraftItems.NYKIUM_NUGGET);
 		simpleItem(HexcraftItems.RAW_CUROGEN);
 		simpleItem(HexcraftItems.CUROGEN);
 		simpleItem(HexcraftItems.CUROGEN_NUGGET);
@@ -70,6 +92,15 @@ public class HexcraftItemModelProvider extends ItemModelProvider {
 		simpleItem(HexcraftItems.JORMIUM_NUGGET);
 		simpleItem(HexcraftItems.STEEL_POWDER);
 		simpleItem(HexcraftItems.STEEL_INGOT);
+		simpleItem(HexcraftItems.RAW_SOULSTONE);
+		simpleItem(HexcraftItems.SOULSTONE_INGOT);
+		simpleItem(HexcraftItems.SOULSTONE_NUGGET);
+		simpleItem(HexcraftItems.RAW_ABYSSIUM);
+		simpleItem(HexcraftItems.ABYSSIUM_INGOT);
+		simpleItem(HexcraftItems.ABYSSIUM_NUGGET);
+		simpleItem(HexcraftItems.RAW_ECLIPSIUM);
+		simpleItem(HexcraftItems.ECLIPSIUM_INGOT);
+		simpleItem(HexcraftItems.ECLIPSIUM_NUGGET);
 		simpleItem(HexcraftItems.WHITE_OAK_ASH);
 		simpleItem(HexcraftItems.SALT);
 		simpleItem(HexcraftItems.NECROMANTIC_STONE);
@@ -79,6 +110,7 @@ public class HexcraftItemModelProvider extends ItemModelProvider {
 		simpleItem(HexcraftItems.BLOODED_WAYSTONE);
 		simpleItem(HexcraftItems.BOUND_WAYSTONE);
 		simpleItem(HexcraftItems.WOOD_ASH);
+		simpleItem(HexcraftItems.ABYSSAL_COAL);
 		simpleItem(HexcraftItems.BREATH_OF_THE_GODDESS);
 		simpleItem(HexcraftItems.EXHALE_OF_THE_HORNED_ONE);
 		//simpleItem(HexcraftItems.BREW_OF_LOVE);
@@ -86,6 +118,7 @@ public class HexcraftItemModelProvider extends ItemModelProvider {
 		simpleItem(HexcraftItems.BREW_OF_THE_GROTESQUE);
 		simpleItem(HexcraftItems.CONDENSED_FEAR);
 		simpleItem(HexcraftItems.DIAMOND_VAPOUR);
+		//simpleItem(HexcraftItems.BLISTERING_VITALITY_POTION);
 		simpleItem(HexcraftItems.DROP_OF_LUCK);
 		simpleItem(HexcraftItems.REEK_OF_MISFORTUNE);
 		simpleItem(HexcraftItems.WOOL_OF_BAT);
@@ -109,13 +142,18 @@ public class HexcraftItemModelProvider extends ItemModelProvider {
 		saplingItem(HexcraftBlocks.TWISTED_SAPLING);
 		saplingItem(HexcraftBlocks.WITCH_WOOD_SAPLING);
 		saplingItem(HexcraftBlocks.ECHO_WOOD_SAPLING);
+		saplingItem(HexcraftBlocks.PHOENIX_SAPLING);
 		simpleItem(HexcraftItems.BLOOD_APPLE);
 		simpleItem(HexcraftItems.BLOOD_BERRIES);
+		simpleItem(HexcraftItems.BLISTER_CACTUS_FRUIT);
+		simpleItem(HexcraftItems.BLISTER_FRUIT);
 		simpleItem(HexcraftItems.FAIRY_DUST);
 		simpleItem(HexcraftItems.PIXIE_DUST);
 		simpleItem(HexcraftItems.WITCHES_LADDER_ITEM);
 		simpleItem(HexcraftItems.VILEVINE_ITEM);
+		//simpleItem(HexcraftItems.BLOODTHORN_VINES_ITEM);
 		simpleItem(HexcraftItems.WITCHES_SATCHEL);
+		simpleItem(HexcraftItems.FLINT_AND_HELLFIRE);
 		simpleItem(HexcraftItems.MUTANDIS);
 		simpleItem(HexcraftItems.MUTANDIS_EXTREMIS);
 		simpleItem(HexcraftItems.POPPET);
@@ -126,7 +164,7 @@ public class HexcraftItemModelProvider extends ItemModelProvider {
 		simpleItem(HexcraftItems.PROJECTILE_PROTECTION_POPPET);
 		simpleItem(HexcraftItems.HUNGER_PROTECTION_POPPET);
 		simpleItem(HexcraftItems.POTION_PROTECTION_POPPET);
-		//simpleItem(HexcraftItems.VOID_PROTECTION_POPPET);
+		simpleItem(HexcraftItems.VOID_PROTECTION_POPPET);
 		simpleItem(HexcraftItems.CURSE_PROTECTION_POPPET);
 		simpleItem(HexcraftItems.VAMPIRIC_POPPET);
 		simpleItem(HexcraftItems.DEATH_PROTECTION_POPPET);
@@ -135,6 +173,7 @@ public class HexcraftItemModelProvider extends ItemModelProvider {
 		simpleItem(HexcraftItems.WITHER_PROTECTION_POPPET);
 		simpleItem(HexcraftItems.ARMOR_PROTECTION_POPPET);
 		simpleItem(HexcraftItems.TOOL_PROTECTION_POPPET);
+		simpleItem(HexcraftItems.LIVING_KELP_SALAD);
 		simpleItem(HexcraftItems.MANDRAKE_SEEDS);
 		simpleItem(HexcraftItems.MANDRAKE_ROOT);
 		simpleItem(HexcraftItems.GARLIC);
@@ -164,12 +203,17 @@ public class HexcraftItemModelProvider extends ItemModelProvider {
 		simpleItem(HexcraftItems.WORMWOOD);
 		simpleItem(HexcraftItems.WATER_ARTICHOKE_SEEDS);
 		simpleItem(HexcraftItems.WATER_ARTICHOKE);
+
+
 		wallItem(HexcraftBlocks.PEARL_STONE_WALL, HexcraftBlocks.PEARL_STONE);
 		wallItem(HexcraftBlocks.CRIMSON_STONE_WALL, HexcraftBlocks.CRIMSON_STONE);
 		wallItem(HexcraftBlocks.UNDER_WORLD_STONE_WALL, HexcraftBlocks.UNDER_WORLD_STONE);
 		wallItem(HexcraftBlocks.CHARSTONE_WALL, HexcraftBlocks.CHARSTONE);
 		wallItem(HexcraftBlocks.CRIMSON_SAND_STONE_WALL, HexcraftBlocks.CRIMSON_SAND_STONE);
 		wallItem(HexcraftBlocks.FAIRY_SAND_STONE_WALL, HexcraftBlocks.FAIRY_SAND_STONE);
+		wallItem(HexcraftBlocks.PIXIE_SAND_STONE_WALL, HexcraftBlocks.PIXIE_SAND_STONE);
+
+
 		evenSimplerBlockItem(HexcraftBlocks.PEARL_STONE_STAIRS);
 		evenSimplerBlockItem(HexcraftBlocks.PEARL_STONE_STAIRS);
 		evenSimplerBlockItem(HexcraftBlocks.PEARL_COBBLESTONE_STAIRS);
@@ -205,6 +249,9 @@ public class HexcraftItemModelProvider extends ItemModelProvider {
 		evenSimplerBlockItem(HexcraftBlocks.TWISTED_STAIRS);
 		evenSimplerBlockItem(HexcraftBlocks.WITCH_WOOD_STAIRS);
 		evenSimplerBlockItem(HexcraftBlocks.ECHO_WOOD_STAIRS);
+		evenSimplerBlockItem(HexcraftBlocks.PHOENIX_STAIRS);
+
+
 		evenSimplerBlockItem(HexcraftBlocks.PEARL_STONE_SLAB);
 		evenSimplerBlockItem(HexcraftBlocks.PEARL_COBBLESTONE_SLAB);
 		evenSimplerBlockItem(HexcraftBlocks.PEARL_STONE_BRICKS_SLAB);
@@ -240,6 +287,9 @@ public class HexcraftItemModelProvider extends ItemModelProvider {
 		evenSimplerBlockItem(HexcraftBlocks.TWISTED_SLAB);
 		evenSimplerBlockItem(HexcraftBlocks.WITCH_WOOD_SLAB);
 		evenSimplerBlockItem(HexcraftBlocks.ECHO_WOOD_SLAB);
+		evenSimplerBlockItem(HexcraftBlocks.PHOENIX_SLAB);
+
+
 		buttonItem(HexcraftBlocks.PEARL_STONE_BUTTON, HexcraftBlocks.PEARL_STONE);
 		buttonItem(HexcraftBlocks.CRIMSON_STONE_BUTTON, HexcraftBlocks.CRIMSON_STONE);
 		buttonItem(HexcraftBlocks.UNDER_WORLD_STONE_BUTTON, HexcraftBlocks.UNDER_WORLD_STONE);
@@ -258,8 +308,11 @@ public class HexcraftItemModelProvider extends ItemModelProvider {
 		buttonItem(HexcraftBlocks.JUNIPER_BUTTON, HexcraftBlocks.JUNIPER_PLANKS);
 		buttonItem(HexcraftBlocks.ROWAN_BUTTON, HexcraftBlocks.ROWAN_PLANKS);
 		buttonItem(HexcraftBlocks.TWISTED_BUTTON, HexcraftBlocks.TWISTED_PLANKS);
-		buttonItem(HexcraftBlocks.WITCH_WOOD_BUTTON, HexcraftBlocks.WITCH_HAZEL_PLANKS);
+		buttonItem(HexcraftBlocks.WITCH_WOOD_BUTTON, HexcraftBlocks.WITCH_WOOD_PLANKS);
 		buttonItem(HexcraftBlocks.ECHO_WOOD_BUTTON, HexcraftBlocks.ECHO_WOOD_PLANKS);
+		buttonItem(HexcraftBlocks.PHOENIX_BUTTON, HexcraftBlocks.PHOENIX_PLANKS);
+
+
 		fenceItem(HexcraftBlocks.EBONY_FENCE, HexcraftBlocks.EBONY_PLANKS);
 		fenceItem(HexcraftBlocks.BLOOD_OAK_FENCE, HexcraftBlocks.BLOOD_OAK_PLANKS);
 		fenceItem(HexcraftBlocks.HELL_BARK_FENCE, HexcraftBlocks.HELL_BARK_PLANKS);
@@ -274,8 +327,11 @@ public class HexcraftItemModelProvider extends ItemModelProvider {
 		fenceItem(HexcraftBlocks.JUNIPER_FENCE, HexcraftBlocks.JUNIPER_PLANKS);
 		fenceItem(HexcraftBlocks.ROWAN_FENCE, HexcraftBlocks.ROWAN_PLANKS);
 		fenceItem(HexcraftBlocks.TWISTED_FENCE, HexcraftBlocks.TWISTED_PLANKS);
-		fenceItem(HexcraftBlocks.WITCH_WOOD_FENCE, HexcraftBlocks.WITCH_HAZEL_PLANKS);
+		fenceItem(HexcraftBlocks.WITCH_WOOD_FENCE, HexcraftBlocks.WITCH_WOOD_PLANKS);
 		fenceItem(HexcraftBlocks.ECHO_WOOD_FENCE, HexcraftBlocks.ECHO_WOOD_PLANKS);
+		fenceItem(HexcraftBlocks.PHOENIX_FENCE, HexcraftBlocks.PHOENIX_PLANKS);
+
+
 		simpleBlockItem(HexcraftBlocks.EBONY_DOOR);
 		simpleBlockItem(HexcraftBlocks.BLOOD_OAK_DOOR);
 		simpleBlockItem(HexcraftBlocks.HELL_BARK_DOOR);
@@ -292,11 +348,14 @@ public class HexcraftItemModelProvider extends ItemModelProvider {
 		simpleBlockItem(HexcraftBlocks.TWISTED_DOOR);
 		simpleBlockItem(HexcraftBlocks.WITCH_WOOD_DOOR);
 		simpleBlockItem(HexcraftBlocks.ECHO_WOOD_DOOR);
+		simpleBlockItem(HexcraftBlocks.PHOENIX_DOOR);
+
+
 		simpleItem(HexcraftItems.BLOOD_BUCKET);
 		simpleItem(HexcraftItems.EBONY_SIGN);
 		//simpleItem(HexcraftItems.EBONY_HANGING_SIGN);
 		simpleItem(HexcraftItems.BLOOD_OAK_SIGN);
-		//simpleItem(HexcraftItems.BLOOD_OAK_HANGING_SIGN);
+		simpleItem(HexcraftItems.BLOOD_OAK_HANGING_SIGN);
 		simpleItem(HexcraftItems.HELL_BARK_SIGN);
 		//simpleItem(HexcraftItems.HELL_BARK_HANGING_SIGN);
 		simpleItem(HexcraftItems.WHITE_OAK_SIGN);
@@ -325,6 +384,9 @@ public class HexcraftItemModelProvider extends ItemModelProvider {
 		//simpleItem(HexcraftItems.WITCH_WOOD_HANGING_SIGN);
 		simpleItem(HexcraftItems.ECHO_WOOD_SIGN);
 		//simpleItem(HexcraftItems.ECHO_WOOD_HANGING_SIGN);
+		simpleItem(HexcraftItems.PHOENIX_SIGN);
+		simpleItem(HexcraftItems.PHOENIX_HANGING_SIGN);
+
 		//simpleItem(HexcraftItems.EBONY_BOAT);
 		//simpleItem(HexcraftItems.EBONY_CHEST_BOAT);
 		simpleItem(HexcraftItems.BLOOD_OAK_BOAT);
@@ -357,6 +419,9 @@ public class HexcraftItemModelProvider extends ItemModelProvider {
 		//simpleItem(HexcraftItems.WITCH_WOOD_CHEST_BOAT);
 		//simpleItem(HexcraftItems.ECHO_WOOD_BOAT);
 		//simpleItem(HexcraftItems.ECHO_WOOD_CHEST_BOAT);
+		//simpleItem(HexcraftItems.PHOENIX_BOAT);
+		//simpleItem(HexcraftItems.PHOENIX_CHEST_BOAT);
+
 		//handheldItem(HexcraftItems.STEEL_SWORD);
 		//handheldItem(HexcraftItems.STEEL_PICKAXE);
 		//handheldItem(HexcraftItems.STEEL_SHOVEL);

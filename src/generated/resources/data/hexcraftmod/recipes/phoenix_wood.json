@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "P": {
+      "item": "hexcraftmod:phoenix_log"
+    }
+  },
+  "pattern": [
+    "PP ",
+    "PP ",
+    "   "
+  ],
+  "result": {
+    "count": 4,
+    "item": "hexcraftmod:phoenix_wood"
+  },
+  "show_notification": true
+}

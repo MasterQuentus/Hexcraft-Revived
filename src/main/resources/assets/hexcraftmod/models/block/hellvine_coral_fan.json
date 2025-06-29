@@ -1,0 +1,7 @@
+{
+  "render_type": "cutout",
+  "parent": "minecraft:block/coral_fan",
+  "textures": {
+    "fan": "hexcraftmod:block/hellvine_coral_fan"
+  }
+}

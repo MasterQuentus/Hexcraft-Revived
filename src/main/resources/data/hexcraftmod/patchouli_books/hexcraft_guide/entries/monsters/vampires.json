@@ -1,0 +1,26 @@
+{
+  "name": "Vampires",
+  "category": "supernatural",
+  "icon": "minecraft:fermented_spider_eye",
+  "pages": [
+    {
+      "type": "text",
+      "text": "Vampires are undead creatures with supernatural strength, speed, and thirst for blood. They are powerful but suffer from deadly weaknesses."
+    },
+    {
+      "type": "text",
+      "title": "Becoming a Vampire",
+      "text": "Players can become vampires by: \\n- Being bitten by a vampire and dying. \\n- Drinking Vampire Blood and dying."
+    },
+    {
+      "type": "text",
+      "title": "Weaknesses",
+      "text": "- Sunlight burns unless protected. \\n- Wooden weapons deal extra damage. \\n- Vervain weakens and burns vampires. \\n- Cannot use magic unless they become a Heretic."
+    },
+    {
+      "type": "text",
+      "title": "Vampire Abilities",
+      "text": "Vampires gain enhanced speed, strength, and regeneration. With training, they unlock abilities such as Compulsion, Blood Vision, and Shadow Dash."
+    }
+  ]
+}

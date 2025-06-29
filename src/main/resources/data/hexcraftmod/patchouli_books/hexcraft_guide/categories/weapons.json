@@ -1,0 +1,11 @@
+{
+  "name": "Supernatural Weapons",
+  "description": "Weapons infused with supernatural power, forged with curses, blood, and ancient souls.",
+  "icon": "minecraft:iron_sword",
+  "sortnum": 2,
+  "entries": [
+    "hexcraftmod:serpents_wrath",
+    "hexcraftmod:fatebreaker",
+    "hexcraftmod:crimson_fang"
+  ]
+}

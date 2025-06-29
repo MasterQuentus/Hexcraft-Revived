@@ -39,4 +39,15 @@ public class EmberMossBlock extends AbstractSpreadingBlock {
         return block == Blocks.GRASS_BLOCK || block == Blocks.DIRT || block == Blocks.SAND;
     }
 
+    @Override
+    public void neighborChanged(BlockState state, Level level, BlockPos pos, Block block, BlockPos neighborPos, boolean isMoving) {
+        super.neighborChanged(state, level, pos, block, neighborPos, isMoving);
+
+        // If the block below is removed or is no longer a valid support, destroy the moss
+        if (!canSurvive(state, level, pos)) {
+            level.destroyBlock(pos, true); // 'true' drops the item
+            System.out.println("🔥 Ember Moss broke due to missing support at " + pos);
+        }
+    }
+
 }

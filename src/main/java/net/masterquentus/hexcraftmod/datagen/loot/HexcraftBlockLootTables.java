@@ -2,29 +2,33 @@ package net.masterquentus.hexcraftmod.datagen.loot;
 
 import net.masterquentus.hexcraftmod.block.HexcraftBlocks;
 import net.masterquentus.hexcraftmod.block.custom.plants.AerpinePlantBlock;
-import net.masterquentus.hexcraftmod.block.custom.plants.MandrakePlantBlock;
 import net.masterquentus.hexcraftmod.item.HexcraftItems;
+import net.minecraft.advancements.critereon.EnchantmentPredicate;
+import net.minecraft.advancements.critereon.ItemPredicate;
+import net.minecraft.advancements.critereon.MinMaxBounds;
 import net.minecraft.advancements.critereon.StatePropertiesPredicate;
 import net.minecraft.data.loot.BlockLootSubProvider;
-import net.minecraft.world.flag.FeatureFlagSet;
 import net.minecraft.world.flag.FeatureFlags;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.storage.loot.LootPool;
 import net.minecraft.world.level.storage.loot.LootTable;
 import net.minecraft.world.level.storage.loot.entries.LootItem;
-import net.minecraft.world.level.storage.loot.entries.LootPoolEntryContainer;
 import net.minecraft.world.level.storage.loot.functions.ApplyBonusCount;
+import net.minecraft.world.level.storage.loot.functions.ApplyExplosionDecay;
+import net.minecraft.world.level.storage.loot.functions.CopyNameFunction;
 import net.minecraft.world.level.storage.loot.functions.SetItemCountFunction;
-import net.minecraft.world.level.storage.loot.predicates.LootItemBlockStatePropertyCondition;
-import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
-import net.minecraft.world.level.storage.loot.predicates.MatchTool;
+import net.minecraft.world.level.storage.loot.predicates.*;
+import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
 import net.minecraft.world.level.storage.loot.providers.number.UniformGenerator;
 import net.minecraftforge.registries.RegistryObject;
 
 import java.util.Set;
+import java.util.function.Supplier;
+
 
 public class HexcraftBlockLootTables extends BlockLootSubProvider {
 	protected static final LootItemCondition.Builder HAS_SHEARS;
@@ -32,13 +36,29 @@ public class HexcraftBlockLootTables extends BlockLootSubProvider {
 		super(Set.of(), FeatureFlags.REGISTRY.allFlags());
 	}
 
+	public static final float[] NORMAL_LEAVES_SAPLING_CHANCES = {0.05F};  // 5% chance
+
 	@Override
 	protected void generate() {
 		this.dropSelf(HexcraftBlocks.MOONSTONE_BLOCK.get());
 
+		this.dropSelf(HexcraftBlocks.ALTAR_BASE.get());
+
+		this.dropSelf(HexcraftBlocks.CHALICE.get());
+
+		this.dropSelf(HexcraftBlocks.CANDELABRA.get());
+
+		this.dropSelf(HexcraftBlocks.SKULL.get());
+
 		this.dropSelf(HexcraftBlocks.SILVER_BLOCK.get());
 
 		this.dropSelf(HexcraftBlocks.VAMPIRIC_BLOCK.get());
+
+		this.dropSelf(HexcraftBlocks.SOULSTONE_BLOCK.get());
+
+		this.dropSelf(HexcraftBlocks.ABYSSIUM_BLOCK.get());
+
+		this.dropSelf(HexcraftBlocks.ECLIPSIUM_BLOCK.get());
 
 		this.dropSelf(HexcraftBlocks.BLACK_OBSIDIAN.get());
 
@@ -46,11 +66,21 @@ public class HexcraftBlockLootTables extends BlockLootSubProvider {
 
 		this.dropSelf(HexcraftBlocks.PURE_MAGIC_CRYSTAL.get());
 
+		this.dropSelf(HexcraftBlocks.FAIRY_WARD.get());
+
+		this.dropSelf(HexcraftBlocks.PIXIE_WARD.get());
+
 		this.dropSelf(HexcraftBlocks.WITCHES_OVEN.get());
+
+		this.dropSelf(HexcraftBlocks.FUME_FUNNEL.get());
 
 		this.dropSelf(HexcraftBlocks.WITCHES_CAULDRON.get());
 
-		this.dropSelf(HexcraftBlocks.POPPET_TABLE.get());
+		//this.dropSelf(HexcraftBlocks.FAIRY_HOUSE.get());
+
+		//this.dropSelf(HexcraftBlocks.PIXIE_HOUSE.get());
+
+		//this.dropSelf(HexcraftBlocks.POPPET_TABLE.get());
 
 		this.dropSelf(HexcraftBlocks.CURSED_SOIL.get());
 
@@ -89,6 +119,16 @@ public class HexcraftBlockLootTables extends BlockLootSubProvider {
 		this.add(HexcraftBlocks.POTTED_BLOOD_MUSHROOM.get(),
 				createPotFlowerItemTable(HexcraftBlocks.POTTED_BLOOD_MUSHROOM.get()));
 
+		this.dropSelf(HexcraftBlocks.DUSKROOT_LANTERN.get());
+
+		this.add(HexcraftBlocks.POTTED_DUSKROOT_LANTERN.get(),
+				createPotFlowerItemTable(HexcraftBlocks.POTTED_DUSKROOT_LANTERN.get()));
+
+		this.add(HexcraftBlocks.BLISTER_CACTUS_FLOWER.get(),
+				block -> createSilkTouchDispatchTable(
+						HexcraftBlocks.BLISTER_CACTUS_FLOWER.get(),
+						applyExplosionDecay(block, LootItem.lootTableItem(HexcraftItems.BLISTER_CACTUS_FRUIT.get()))));
+
 		this.dropSelf(HexcraftBlocks.VILESHROOM.get());
 
 		this.add(HexcraftBlocks.POTTED_VILESHROOM.get(),
@@ -107,6 +147,11 @@ public class HexcraftBlockLootTables extends BlockLootSubProvider {
 
 		this.dropSelf(HexcraftBlocks.GLINT_WEED.get());
 
+		this.dropSelf(HexcraftBlocks.SCORCHSTALKS.get());
+
+		this.add(HexcraftBlocks.POTTED_SCORCHASTALKS.get(),
+				createPotFlowerItemTable(HexcraftBlocks.POTTED_VAMPIRE_ORCHID.get()));
+
 		add(HexcraftBlocks.SPANISH_MOSS.get(), block -> createSilkTouchOrShearsDispatchTable(block, applyExplosionCondition(block, LootItem.lootTableItem(HexcraftBlocks.SPANISH_MOSS.get()))));
 
 		this.dropSelf(HexcraftBlocks.EMBER_MOSS_BLOCK.get());
@@ -119,7 +164,27 @@ public class HexcraftBlockLootTables extends BlockLootSubProvider {
 
 		this.dropSelf(HexcraftBlocks.VILEVINE.get());
 
+		this.dropSelf(HexcraftBlocks.BLOODTHORN_VINES.get());
+
+		this.add(HexcraftBlocks.BLISTER_CACTUS.get(),
+				block -> LootTable.lootTable()
+						.withPool(LootPool.lootPool()
+								.setRolls(ConstantValue.exactly(1))
+								.add(LootItem.lootTableItem(HexcraftBlocks.BLISTER_CACTUS.get()))));
+
+		this.add(HexcraftBlocks.GARLIC_STRAND.get(), block ->
+				createSilkTouchOrShearsDispatchTable(block,
+						applyExplosionCondition(block, LootItem.lootTableItem(HexcraftItems.GARLIC_STRAND_ITEM.get()))));
+
+		this.add(HexcraftBlocks.VERVAIN_STRAND.get(), block ->
+				createSilkTouchOrShearsDispatchTable(block,
+						applyExplosionCondition(block, LootItem.lootTableItem(HexcraftItems.VERVAIN_STRAND_ITEM.get()))));
+
 		this.dropSelf(HexcraftBlocks.DEMON_HEART.get());
+
+		this.dropSelf(HexcraftBlocks.PANDORAS_BOX.get());
+
+		this.dropSelf(HexcraftBlocks.SACRIFICIAL_PILLAR.get());
 
 		this.dropSelf(HexcraftBlocks.EBONY_LOG.get());
 
@@ -153,6 +218,8 @@ public class HexcraftBlockLootTables extends BlockLootSubProvider {
 
 		this.dropSelf(HexcraftBlocks.ECHO_WOOD_LOG.get());
 
+		this.dropSelf(HexcraftBlocks.PHOENIX_LOG.get());
+
 		this.dropSelf(HexcraftBlocks.EBONY_WOOD.get());
 
 		this.dropSelf(HexcraftBlocks.BLOOD_OAK_WOOD.get());
@@ -184,6 +251,8 @@ public class HexcraftBlockLootTables extends BlockLootSubProvider {
 		this.dropSelf(HexcraftBlocks.WITCH_WOOD_WOOD.get());
 
 		this.dropSelf(HexcraftBlocks.ECHO_WOOD_WOOD.get());
+
+		this.dropSelf(HexcraftBlocks.PHOENIX_WOOD.get());
 
 		this.dropSelf(HexcraftBlocks.STRIPPED_EBONY_LOG.get());
 
@@ -217,6 +286,8 @@ public class HexcraftBlockLootTables extends BlockLootSubProvider {
 
 		this.dropSelf(HexcraftBlocks.STRIPPED_ECHO_WOOD_LOG.get());
 
+		this.dropSelf(HexcraftBlocks.STRIPPED_PHOENIX_LOG.get());
+
 		this.dropSelf(HexcraftBlocks.STRIPPED_EBONY_WOOD.get());
 
 		this.dropSelf(HexcraftBlocks.STRIPPED_BLOOD_OAK_WOOD.get());
@@ -249,6 +320,8 @@ public class HexcraftBlockLootTables extends BlockLootSubProvider {
 
 		this.dropSelf(HexcraftBlocks.STRIPPED_ECHO_WOOD_WOOD.get());
 
+		this.dropSelf(HexcraftBlocks.STRIPPED_PHOENIX_WOOD.get());
+
 		this.dropSelf(HexcraftBlocks.EBONY_PLANKS.get());
 
 		this.dropSelf(HexcraftBlocks.BLOOD_OAK_PLANKS.get());
@@ -280,6 +353,8 @@ public class HexcraftBlockLootTables extends BlockLootSubProvider {
 		this.dropSelf(HexcraftBlocks.WITCH_WOOD_PLANKS.get());
 
 		this.dropSelf(HexcraftBlocks.ECHO_WOOD_PLANKS.get());
+
+		this.dropSelf(HexcraftBlocks.PHOENIX_PLANKS.get());
 
 		this.dropSelf(HexcraftBlocks.EBONY_SAPLING.get());
 
@@ -361,11 +436,16 @@ public class HexcraftBlockLootTables extends BlockLootSubProvider {
 		this.add(HexcraftBlocks.POTTED_ECHO_WOOD_SAPLING.get(),
 				createPotFlowerItemTable(HexcraftBlocks.POTTED_ECHO_WOOD_SAPLING.get()));
 
+		this.dropSelf(HexcraftBlocks.PHOENIX_SAPLING.get());
+
+		this.add(HexcraftBlocks.POTTED_PHOENIX_SAPLING.get(),
+				createPotFlowerItemTable(HexcraftBlocks.POTTED_PHOENIX_SAPLING.get()));
+
 		this.add(HexcraftBlocks.EBONY_LEAVES.get(), block ->
 				createLeavesDrops(block, HexcraftBlocks.EBONY_SAPLING.get(), NORMAL_LEAVES_SAPLING_CHANCES));
 
 		this.add(HexcraftBlocks.BLOOD_OAK_LEAVES.get(), block ->
-				createOakLeavesDrops(block, HexcraftBlocks.BLOOD_OAK_SAPLING.get(), NORMAL_LEAVES_SAPLING_CHANCES));
+				createBloodOakLeavesDrops(block, () -> HexcraftBlocks.BLOOD_OAK_SAPLING.get().asItem(), HexcraftItems.BLOOD_APPLE::get));
 
 		this.add(HexcraftBlocks.HELL_BARK_LEAVES.get(), block ->
 				createLeavesDrops(block, HexcraftBlocks.HELL_BARK_SAPLING.get(), NORMAL_LEAVES_SAPLING_CHANCES));
@@ -395,7 +475,7 @@ public class HexcraftBlockLootTables extends BlockLootSubProvider {
 				createLeavesDrops(block, HexcraftBlocks.ELDER_SAPLING.get(), NORMAL_LEAVES_SAPLING_CHANCES));
 
 		this.add(HexcraftBlocks.JUNIPER_LEAVES.get(), block ->
-				createLeavesDrops(block, HexcraftBlocks.JUNIPER_SAPLING.get(), NORMAL_LEAVES_SAPLING_CHANCES));
+				createJuniperLeavesDrops(block, () -> HexcraftBlocks.JUNIPER_SAPLING.get().asItem(), HexcraftItems.JUNIPER_BERRIES::get));
 
 		this.add(HexcraftBlocks.ROWAN_LEAVES.get(), block ->
 				createLeavesDrops(block, HexcraftBlocks.ROWAN_SAPLING.get(), NORMAL_LEAVES_SAPLING_CHANCES));
@@ -409,6 +489,13 @@ public class HexcraftBlockLootTables extends BlockLootSubProvider {
 		this.add(HexcraftBlocks.ECHO_WOOD_LEAVES.get(), block ->
 				createLeavesDrops(block, HexcraftBlocks.ECHO_WOOD_SAPLING.get(), NORMAL_LEAVES_SAPLING_CHANCES));
 
+		this.add(HexcraftBlocks.PHOENIX_LEAVES.get(), block ->
+				createLeavesDrops(block, HexcraftBlocks.PHOENIX_SAPLING.get(), NORMAL_LEAVES_SAPLING_CHANCES));
+
+		this.dropSelf(HexcraftBlocks.FAIRY_LANTERN.get());
+
+		this.dropSelf(HexcraftBlocks.PIXIE_LANTERN.get());
+
 		this.dropSelf(HexcraftBlocks.HELL_FUNGAL_LAMP.get());
 
 		this.dropSelf(HexcraftBlocks.ECHO_FUNGAL_LAMP.get());
@@ -416,6 +503,40 @@ public class HexcraftBlockLootTables extends BlockLootSubProvider {
 		this.dropSelf(HexcraftBlocks.VILESHROOM_LAMP.get());
 
 		this.dropSelf(HexcraftBlocks.GHOSTSHROOM_LAMP.get());
+
+		this.dropSelf(HexcraftBlocks.SOULSTEM_CANDLE.get());
+
+		this.dropSelf(HexcraftBlocks.WHITE_WITCH_CANDLE.get());
+
+		this.dropSelf(HexcraftBlocks.ORANGE_WITCH_CANDLE.get());
+
+		this.dropSelf(HexcraftBlocks.MAGENTA_WITCH_CANDLE.get());
+
+		this.dropSelf(HexcraftBlocks.LIGHT_BLUE_WITCH_CANDLE.get());
+
+		this.dropSelf(HexcraftBlocks.YELLOW_WITCH_CANDLE.get());
+
+		this.dropSelf(HexcraftBlocks.LIME_WITCH_CANDLE.get());
+
+		this.dropSelf(HexcraftBlocks.PINK_WITCH_CANDLE.get());
+
+		this.dropSelf(HexcraftBlocks.GRAY_WITCH_CANDLE.get());
+
+		this.dropSelf(HexcraftBlocks.LIGHT_GRAY_WITCH_CANDLE.get());
+
+		this.dropSelf(HexcraftBlocks.CYAN_WITCH_CANDLE.get());
+
+		this.dropSelf(HexcraftBlocks.PURPLE_WITCH_CANDLE.get());
+
+		this.dropSelf(HexcraftBlocks.BLUE_WITCH_CANDLE.get());
+
+		this.dropSelf(HexcraftBlocks.BROWN_WITCH_CANDLE.get());
+
+		this.dropSelf(HexcraftBlocks.GREEN_WITCH_CANDLE.get());
+
+		this.dropSelf(HexcraftBlocks.RED_WITCH_CANDLE.get());
+
+		this.dropSelf(HexcraftBlocks.BLACK_WITCH_CANDLE.get());
 
 		this.dropSelf(HexcraftBlocks.PEARL_COBBLESTONE.get());
 
@@ -477,6 +598,16 @@ public class HexcraftBlockLootTables extends BlockLootSubProvider {
 
 		this.dropSelf(HexcraftBlocks.CUT_FAIRY_SAND_STONE.get());
 
+		this.dropSelf(HexcraftBlocks.PIXIE_SAND.get());
+
+		this.dropSelf(HexcraftBlocks.PIXIE_SAND_STONE.get());
+
+		this.dropSelf(HexcraftBlocks.SMOOTH_PIXIE_SAND_STONE.get());
+
+		this.dropSelf(HexcraftBlocks.CHISELED_PIXIE_SAND_STONE.get());
+
+		this.dropSelf(HexcraftBlocks.CUT_PIXIE_SAND_STONE.get());
+
 		this.dropWhenSilkTouch(HexcraftBlocks.CRIMSON_GLASS.get());
 
 		this.dropWhenSilkTouch(HexcraftBlocks.CRIMSON_GLASS_PANE.get());
@@ -484,6 +615,10 @@ public class HexcraftBlockLootTables extends BlockLootSubProvider {
 		this.dropWhenSilkTouch(HexcraftBlocks.FAIRY_GLASS.get());
 
 		this.dropWhenSilkTouch(HexcraftBlocks.FAIRY_GLASS_PANE.get());
+
+		this.dropWhenSilkTouch(HexcraftBlocks.PIXIE_GLASS.get());
+
+		this.dropWhenSilkTouch(HexcraftBlocks.PIXIE_GLASS_PANE.get());
 
 		this.dropWhenSilkTouch(HexcraftBlocks.CRIMSON_ICE.get());
 
@@ -500,6 +635,8 @@ public class HexcraftBlockLootTables extends BlockLootSubProvider {
 		this.dropSelf(HexcraftBlocks.CRIMSON_SAND_STONE_WALL.get());
 
 		this.dropSelf(HexcraftBlocks.FAIRY_SAND_STONE_WALL.get());
+
+		this.dropSelf(HexcraftBlocks.PIXIE_SAND_STONE_WALL.get());
 
 		this.dropSelf(HexcraftBlocks.PEARL_STONE_STAIRS.get());
 
@@ -541,6 +678,10 @@ public class HexcraftBlockLootTables extends BlockLootSubProvider {
 
 		this.dropSelf(HexcraftBlocks.SMOOTH_FAIRY_SAND_STONE_STAIRS.get());
 
+		this.dropSelf(HexcraftBlocks.PIXIE_SAND_STONE_STAIRS.get());
+
+		this.dropSelf(HexcraftBlocks.SMOOTH_PIXIE_SAND_STONE_STAIRS.get());
+
 		this.dropSelf(HexcraftBlocks.EBONY_STAIRS.get());
 
 		this.dropSelf(HexcraftBlocks.BLOOD_OAK_STAIRS.get());
@@ -572,6 +713,8 @@ public class HexcraftBlockLootTables extends BlockLootSubProvider {
 		this.dropSelf(HexcraftBlocks.WITCH_WOOD_STAIRS.get());
 
 		this.dropSelf(HexcraftBlocks.ECHO_WOOD_STAIRS.get());
+
+		this.dropSelf(HexcraftBlocks.PHOENIX_STAIRS.get());
 
 		this.dropSelf(HexcraftBlocks.PEARL_STONE_SLAB.get());
 
@@ -617,6 +760,12 @@ public class HexcraftBlockLootTables extends BlockLootSubProvider {
 
 		this.dropSelf(HexcraftBlocks.CUT_FAIRY_SAND_STONE_SLAB.get());
 
+		this.dropSelf(HexcraftBlocks.PIXIE_SAND_STONE_SLAB.get());
+
+		this.dropSelf(HexcraftBlocks.SMOOTH_PIXIE_SAND_STONE_SLAB.get());
+
+		this.dropSelf(HexcraftBlocks.CUT_PIXIE_SAND_STONE_SLAB.get());
+
 		this.dropSelf(HexcraftBlocks.EBONY_SLAB.get());
 
 		this.dropSelf(HexcraftBlocks.BLOOD_OAK_SLAB.get());
@@ -648,6 +797,8 @@ public class HexcraftBlockLootTables extends BlockLootSubProvider {
 		this.dropSelf(HexcraftBlocks.WITCH_WOOD_SLAB.get());
 
 		this.dropSelf(HexcraftBlocks.ECHO_WOOD_SLAB.get());
+
+		this.dropSelf(HexcraftBlocks.PHOENIX_SLAB.get());
 
 		this.dropSelf(HexcraftBlocks.PEARL_STONE_BUTTON.get());
 
@@ -689,6 +840,8 @@ public class HexcraftBlockLootTables extends BlockLootSubProvider {
 
 		this.dropSelf(HexcraftBlocks.ECHO_WOOD_BUTTON.get());
 
+		this.dropSelf(HexcraftBlocks.PHOENIX_BUTTON.get());
+
 		this.dropSelf(HexcraftBlocks.EBONY_FENCE.get());
 
 		this.dropSelf(HexcraftBlocks.BLOOD_OAK_FENCE.get());
@@ -723,6 +876,8 @@ public class HexcraftBlockLootTables extends BlockLootSubProvider {
 
 		this.dropSelf(HexcraftBlocks.EBONY_FENCE_GATE.get());
 
+		this.dropSelf(HexcraftBlocks.PHOENIX_FENCE.get());
+
 		this.dropSelf(HexcraftBlocks.BLOOD_OAK_FENCE_GATE.get());
 
 		this.dropSelf(HexcraftBlocks.HELL_BARK_FENCE_GATE.get());
@@ -752,6 +907,8 @@ public class HexcraftBlockLootTables extends BlockLootSubProvider {
 		this.dropSelf(HexcraftBlocks.WITCH_WOOD_FENCE_GATE.get());
 
 		this.dropSelf(HexcraftBlocks.ECHO_WOOD_FENCE_GATE.get());
+
+		this.dropSelf(HexcraftBlocks.PHOENIX_FENCE_GATE.get());
 
 		this.add(HexcraftBlocks.EBONY_DOOR.get(),
 				block -> createDoorTable(HexcraftBlocks.EBONY_DOOR.get()));
@@ -801,6 +958,9 @@ public class HexcraftBlockLootTables extends BlockLootSubProvider {
 		this.add(HexcraftBlocks.ECHO_WOOD_DOOR.get(),
 				block -> createDoorTable(HexcraftBlocks.ECHO_WOOD_DOOR.get()));
 
+		this.add(HexcraftBlocks.PHOENIX_DOOR.get(),
+				block -> createDoorTable(HexcraftBlocks.PHOENIX_DOOR.get()));
+
 		this.dropSelf(HexcraftBlocks.EBONY_TRAPDOOR.get());
 
 		this.dropSelf(HexcraftBlocks.BLOOD_OAK_TRAPDOOR.get());
@@ -832,6 +992,8 @@ public class HexcraftBlockLootTables extends BlockLootSubProvider {
 		this.dropSelf(HexcraftBlocks.WITCH_WOOD_TRAPDOOR.get());
 
 		this.dropSelf(HexcraftBlocks.ECHO_WOOD_TRAPDOOR.get());
+
+		this.dropSelf(HexcraftBlocks.PHOENIX_TRAPDOOR.get());
 
 		this.dropSelf(HexcraftBlocks.PEARL_STONE_PRESSURE_PLATE.get());
 
@@ -873,7 +1035,146 @@ public class HexcraftBlockLootTables extends BlockLootSubProvider {
 
 		this.dropSelf(HexcraftBlocks.ECHO_WOOD_PRESSURE_PLATE.get());
 
+		this.dropSelf(HexcraftBlocks.PHOENIX_PRESSURE_PLATE.get());
+
 		this.dropSelf(HexcraftBlocks.MAGIC_CRYSTAL_BLOCK.get());
+
+		this.dropSelf(HexcraftBlocks.TWILIGHT_CORAL_BLOCK.get());
+
+		this.dropSelf(HexcraftBlocks.DEAD_TWILIGHT_CORAL_BLOCK.get());
+
+		this.dropSelf(HexcraftBlocks.SANGUINE_CORAL_BLOCK.get());
+
+		this.dropSelf(HexcraftBlocks.DEAD_SANGUINE_CORAL_BLOCK.get());
+
+		this.dropSelf(HexcraftBlocks.WHISPER_CORAL_BLOCK.get());
+
+		this.dropSelf(HexcraftBlocks.DEAD_WHISPER_CORAL_BLOCK.get());
+
+		this.dropSelf(HexcraftBlocks.WHISPER_CORAL_BLOCK.get());
+
+		this.dropSelf(HexcraftBlocks.EBONFANG_CORAL_BLOCK.get());
+
+		this.dropSelf(HexcraftBlocks.DEAD_EBONFANG_CORAL_BLOCK.get());
+
+		this.dropSelf(HexcraftBlocks.SPECTRAL_BLOOM_CORAL_BLOCK.get());
+
+		this.dropSelf(HexcraftBlocks.DEAD_SPECTRAL_BLOOM_CORAL_BLOCK.get());
+
+		this.dropSelf(HexcraftBlocks.WHISPER_CORAL_BLOCK.get());
+
+		this.dropSelf(HexcraftBlocks.DEAD_HELLVINE_CORAL_BLOCK.get());
+
+		this.dropSelf(HexcraftBlocks.HELLVINE_CORAL_BLOCK.get());
+
+
+		this.add(HexcraftBlocks.TWILIGHT_CORAL.get(),
+				block -> createSilkTouchOnlyTable(block));
+
+		this.add(HexcraftBlocks.TWILIGHT_CORAL_FAN.get(),
+				block -> createSilkTouchOnlyTable(block));
+
+		this.add(HexcraftBlocks.TWILIGHT_CORAL_WALL_FAN.get(),
+				block -> createSilkTouchOnlyTable(block));
+
+		this.add(HexcraftBlocks.DEAD_TWILIGHT_CORAL.get(),
+				block -> createSilkTouchOnlyTable(block));
+
+		this.add(HexcraftBlocks.DEAD_TWILIGHT_CORAL_FAN.get(),
+				block -> createSilkTouchOnlyTable(block));
+
+		this.add(HexcraftBlocks.DEAD_TWILIGHT_CORAL_WALL_FAN.get(),
+				block -> createSilkTouchOnlyTable(block));
+
+		this.add(HexcraftBlocks.SANGUINE_CORAL.get(),
+				block -> createSilkTouchOnlyTable(block));
+
+		this.add(HexcraftBlocks.SANGUINE_CORAL_FAN.get(),
+				block -> createSilkTouchOnlyTable(block));
+
+		this.add(HexcraftBlocks.SANGUINE_CORAL_WALL_FAN.get(),
+				block -> createSilkTouchOnlyTable(block));
+
+		this.add(HexcraftBlocks.DEAD_SANGUINE_CORAL.get(),
+				block -> createSilkTouchOnlyTable(block));
+
+		this.add(HexcraftBlocks.DEAD_SANGUINE_CORAL_FAN.get(),
+				block -> createSilkTouchOnlyTable(block));
+
+		this.add(HexcraftBlocks.DEAD_SANGUINE_CORAL_WALL_FAN.get(),
+				block -> createSilkTouchOnlyTable(block));
+
+		this.add(HexcraftBlocks.WHISPER_CORAL.get(),
+				block -> createSilkTouchOnlyTable(block));
+
+		this.add(HexcraftBlocks.WHISPER_CORAL_FAN.get(),
+				block -> createSilkTouchOnlyTable(block));
+
+		this.add(HexcraftBlocks.WHISPER_CORAL_WALL_FAN.get(),
+				block -> createSilkTouchOnlyTable(block));
+
+		this.add(HexcraftBlocks.DEAD_WHISPER_CORAL.get(),
+				block -> createSilkTouchOnlyTable(block));
+
+		this.add(HexcraftBlocks.DEAD_WHISPER_CORAL_FAN.get(),
+				block -> createSilkTouchOnlyTable(block));
+
+		this.add(HexcraftBlocks.DEAD_WHISPER_CORAL_WALL_FAN.get(),
+				block -> createSilkTouchOnlyTable(block));
+
+		this.add(HexcraftBlocks.EBONFANG_CORAL.get(),
+				block -> createSilkTouchOnlyTable(block));
+
+		this.add(HexcraftBlocks.EBONFANG_CORAL_FAN.get(),
+				block -> createSilkTouchOnlyTable(block));
+
+		this.add(HexcraftBlocks.EBONFANG_CORAL_WALL_FAN.get(),
+				block -> createSilkTouchOnlyTable(block));
+
+		this.add(HexcraftBlocks.DEAD_EBONFANG_CORAL.get(),
+				block -> createSilkTouchOnlyTable(block));
+
+		this.add(HexcraftBlocks.DEAD_EBONFANG_CORAL_FAN.get(),
+				block -> createSilkTouchOnlyTable(block));
+
+		this.add(HexcraftBlocks.DEAD_EBONFANG_CORAL_WALL_FAN.get(),
+				block -> createSilkTouchOnlyTable(block));
+
+		this.add(HexcraftBlocks.SPECTRAL_BLOOM_CORAL.get(),
+				block -> createSilkTouchOnlyTable(block));
+
+		this.add(HexcraftBlocks.SPECTRAL_BLOOM_CORAL_FAN.get(),
+				block -> createSilkTouchOnlyTable(block));
+
+		this.add(HexcraftBlocks.SPECTRAL_BLOOM_CORAL_WALL_FAN.get(),
+				block -> createSilkTouchOnlyTable(block));
+
+		this.add(HexcraftBlocks.DEAD_SPECTRAL_BLOOM_CORAL.get(),
+				block -> createSilkTouchOnlyTable(block));
+
+		this.add(HexcraftBlocks.DEAD_SPECTRAL_BLOOM_CORAL_FAN.get(),
+				block -> createSilkTouchOnlyTable(block));
+
+		this.add(HexcraftBlocks.DEAD_SPECTRAL_BLOOM_CORAL_WALL_FAN.get(),
+				block -> createSilkTouchOnlyTable(block));
+
+		this.add(HexcraftBlocks.HELLVINE_CORAL.get(),
+				block -> createSilkTouchOnlyTable(block));
+
+		this.add(HexcraftBlocks.HELLVINE_CORAL_FAN.get(),
+				block -> createSilkTouchOnlyTable(block));
+
+		this.add(HexcraftBlocks.HELLVINE_CORAL_WALL_FAN.get(),
+				block -> createSilkTouchOnlyTable(block));
+
+		this.add(HexcraftBlocks.DEAD_HELLVINE_CORAL.get(),
+				block -> createSilkTouchOnlyTable(block));
+
+		this.add(HexcraftBlocks.DEAD_HELLVINE_CORAL_FAN.get(),
+				block -> createSilkTouchOnlyTable(block));
+
+		this.add(HexcraftBlocks.DEAD_HELLVINE_CORAL_WALL_FAN.get(),
+				block -> createSilkTouchOnlyTable(block));
 
 		this.dropOther(HexcraftBlocks.MAGIC_CRYSTAL_CLUSTER.get(), HexcraftItems.MAGIC_CRYSTAL.get());
 
@@ -885,125 +1186,246 @@ public class HexcraftBlockLootTables extends BlockLootSubProvider {
 		;
 		add(HexcraftBlocks.VILEVINE.get(), block -> createSilkTouchOrShearsDispatchTable(block, applyExplosionCondition(block, LootItem.lootTableItem(HexcraftItems.VILEVINE_ITEM.get()))));
 		;
-		this.dropOther(HexcraftBlocks.BLOOD_MUSHROOM_BLOCK.get(), HexcraftBlocks.BLOOD_MUSHROOM.get());
+		this.add(HexcraftBlocks.BLOOD_MUSHROOM_BLOCK.get(),
+				createSilkTouchDispatchTable(
+						HexcraftBlocks.BLOOD_MUSHROOM_BLOCK.get(),
+						applyExplosionDecay(HexcraftBlocks.BLOOD_MUSHROOM_BLOCK.get(),
+								LootItem.lootTableItem(HexcraftBlocks.BLOOD_MUSHROOM.get())
+										.apply(SetItemCountFunction.setCount(UniformGenerator.between(0.0F, 2.0F)))
+						)
+				)
+		);
 
-		this.dropOther(HexcraftBlocks.BLOOD_MUSHROOM_STEM.get(), HexcraftBlocks.BLOOD_MUSHROOM.get());
+		this.add(HexcraftBlocks.BLOOD_MUSHROOM_STEM.get(),
+				createSilkTouchDispatchTable(
+						HexcraftBlocks.BLOOD_MUSHROOM_STEM.get(),
+						applyExplosionDecay(HexcraftBlocks.BLOOD_MUSHROOM_STEM.get(),
+								LootItem.lootTableItem(HexcraftBlocks.BLOOD_MUSHROOM.get())
+										.apply(SetItemCountFunction.setCount(UniformGenerator.between(0.0F, 2.0F)))
+						)
+				)
+		);
 
-		this.dropOther(HexcraftBlocks.VILESHROOM_BLOCK.get(), HexcraftBlocks.VILESHROOM.get());
+		this.add(HexcraftBlocks.VILESHROOM_BLOCK.get(),
+				createSilkTouchDispatchTable(
+						HexcraftBlocks.VILESHROOM_BLOCK.get(),
+						applyExplosionDecay(HexcraftBlocks.VILESHROOM_BLOCK.get(),
+								LootItem.lootTableItem(HexcraftBlocks.VILESHROOM.get())
+										.apply(SetItemCountFunction.setCount(UniformGenerator.between(0.0F, 2.0F)))
+						)
+				)
+		);
 
-		this.dropOther(HexcraftBlocks.VILESHROOM_STEM.get(), HexcraftBlocks.VILESHROOM.get());
+		this.add(HexcraftBlocks.VILESHROOM_STEM.get(),
+				createSilkTouchDispatchTable(
+						HexcraftBlocks.VILESHROOM_STEM.get(),
+						applyExplosionDecay(HexcraftBlocks.VILESHROOM_STEM.get(),
+								LootItem.lootTableItem(HexcraftBlocks.VILESHROOM.get())
+										.apply(SetItemCountFunction.setCount(UniformGenerator.between(0.0F, 2.0F)))
+						)
+				)
+		);
 
-		this.dropOther(HexcraftBlocks.GHOSTSHROOM_BLOCK.get(), HexcraftBlocks.GHOSTSHROOM.get());
+		this.add(HexcraftBlocks.GHOSTSHROOM_BLOCK.get(),
+				createSilkTouchDispatchTable(
+						HexcraftBlocks.GHOSTSHROOM_BLOCK.get(),
+						applyExplosionDecay(HexcraftBlocks.GHOSTSHROOM_BLOCK.get(),
+								LootItem.lootTableItem(HexcraftBlocks.GHOSTSHROOM.get())
+										.apply(SetItemCountFunction.setCount(UniformGenerator.between(0.0F, 2.0F)))
+						)
+				)
+		);
 
-		this.dropOther(HexcraftBlocks.GHOSTSHROOM_STEM.get(), HexcraftBlocks.GHOSTSHROOM.get());
+		this.add(HexcraftBlocks.GHOSTSHROOM_STEM.get(),
+				createSilkTouchDispatchTable(
+						HexcraftBlocks.GHOSTSHROOM_STEM.get(),
+						applyExplosionDecay(HexcraftBlocks.GHOSTSHROOM_STEM.get(),
+								LootItem.lootTableItem(HexcraftBlocks.GHOSTSHROOM.get())
+										.apply(SetItemCountFunction.setCount(UniformGenerator.between(0.0F, 2.0F)))
+						)
+				)
+		);
+
+		this.dropOther(HexcraftBlocks.HELLFIRE_CAMPFIRE.get(), HexcraftItems.ABYSSAL_COAL.get());
+
+		this.dropOther(HexcraftBlocks.ALTAR_TOP.get(), HexcraftItems.ALTAR_BASE_ITEM.get());
+
 
 		this.add(HexcraftBlocks.EBONY_BOOKSHELF.get(),
-				block -> createCopperLikeOreDrops(HexcraftBlocks.EBONY_BOOKSHELF.get(), Item.byBlock(HexcraftBlocks.EBONY_PLANKS.get())));
+				block -> createSilkTouchDispatchTable(block,
+						LootItem.lootTableItem(Items.BOOK)
+								.apply(SetItemCountFunction.setCount(ConstantValue.exactly(3)))
+								.apply(ApplyExplosionDecay.explosionDecay())));
 
 		this.add(HexcraftBlocks.BLOOD_OAK_BOOKSHELF.get(),
-				block -> createCopperLikeOreDrops(HexcraftBlocks.BLOOD_OAK_BOOKSHELF.get(), Item.byBlock(HexcraftBlocks.BLOOD_OAK_PLANKS.get())));
+				block -> createSilkTouchDispatchTable(block,
+						LootItem.lootTableItem(Items.BOOK)
+								.apply(SetItemCountFunction.setCount(ConstantValue.exactly(3)))
+								.apply(ApplyExplosionDecay.explosionDecay())));
 
 		this.add(HexcraftBlocks.HELL_BARK_BOOKSHELF.get(),
-				block -> createCopperLikeOreDrops(HexcraftBlocks.HELL_BARK_BOOKSHELF.get(), Item.byBlock(HexcraftBlocks.HELL_BARK_PLANKS.get())));
+				block -> createSilkTouchDispatchTable(block,
+						LootItem.lootTableItem(Items.BOOK)
+								.apply(SetItemCountFunction.setCount(ConstantValue.exactly(3)))
+								.apply(ApplyExplosionDecay.explosionDecay())));
 
 		this.add(HexcraftBlocks.WHITE_OAK_BOOKSHELF.get(),
-				block -> createCopperLikeOreDrops(HexcraftBlocks.WHITE_OAK_BOOKSHELF.get(), Item.byBlock(HexcraftBlocks.WHITE_OAK_PLANKS.get())));
+				block -> createSilkTouchDispatchTable(block,
+						LootItem.lootTableItem(Items.BOOK)
+								.apply(SetItemCountFunction.setCount(ConstantValue.exactly(3)))
+								.apply(ApplyExplosionDecay.explosionDecay())));
 
 		this.add(HexcraftBlocks.ALDER_BOOKSHELF.get(),
-				block -> createCopperLikeOreDrops(HexcraftBlocks.ALDER_BOOKSHELF.get(), Item.byBlock(HexcraftBlocks.ALDER_PLANKS.get())));
+				block -> createSilkTouchDispatchTable(block,
+						LootItem.lootTableItem(Items.BOOK)
+								.apply(SetItemCountFunction.setCount(ConstantValue.exactly(3)))
+								.apply(ApplyExplosionDecay.explosionDecay())));
 
 		this.add(HexcraftBlocks.WITCH_HAZEL_BOOKSHELF.get(),
-				block -> createCopperLikeOreDrops(HexcraftBlocks.WITCH_HAZEL_BOOKSHELF.get(), Item.byBlock(HexcraftBlocks.WITCH_HAZEL_PLANKS.get())));
+				block -> createSilkTouchDispatchTable(block,
+						LootItem.lootTableItem(Items.BOOK)
+								.apply(SetItemCountFunction.setCount(ConstantValue.exactly(3)))
+								.apply(ApplyExplosionDecay.explosionDecay())));
 
 		this.add(HexcraftBlocks.WILLOW_BOOKSHELF.get(),
-				block -> createCopperLikeOreDrops(HexcraftBlocks.WILLOW_BOOKSHELF.get(), Item.byBlock(HexcraftBlocks.WILLOW_PLANKS.get())));
+				block -> createSilkTouchDispatchTable(block,
+						LootItem.lootTableItem(Items.BOOK)
+								.apply(SetItemCountFunction.setCount(ConstantValue.exactly(3)))
+								.apply(ApplyExplosionDecay.explosionDecay())));
 
 		this.add(HexcraftBlocks.HAWTHORN_BOOKSHELF.get(),
-				block -> createCopperLikeOreDrops(HexcraftBlocks.HAWTHORN_BOOKSHELF.get(), Item.byBlock(HexcraftBlocks.HAWTHORN_PLANKS.get())));
+				block -> createSilkTouchDispatchTable(block,
+						LootItem.lootTableItem(Items.BOOK)
+								.apply(SetItemCountFunction.setCount(ConstantValue.exactly(3)))
+								.apply(ApplyExplosionDecay.explosionDecay())));
 
 		this.add(HexcraftBlocks.CEDAR_BOOKSHELF.get(),
-				block -> createCopperLikeOreDrops(HexcraftBlocks.CEDAR_BOOKSHELF.get(), Item.byBlock(HexcraftBlocks.CEDAR_PLANKS.get())));
+				block -> createSilkTouchDispatchTable(block,
+						LootItem.lootTableItem(Items.BOOK)
+								.apply(SetItemCountFunction.setCount(ConstantValue.exactly(3)))
+								.apply(ApplyExplosionDecay.explosionDecay())));
 
 		this.add(HexcraftBlocks.DISTORTED_BOOKSHELF.get(),
-				block -> createCopperLikeOreDrops(HexcraftBlocks.DISTORTED_BOOKSHELF.get(), Item.byBlock(HexcraftBlocks.DISTORTED_BOOKSHELF.get())));
+				block -> createSilkTouchDispatchTable(block,
+						LootItem.lootTableItem(Items.BOOK)
+								.apply(SetItemCountFunction.setCount(ConstantValue.exactly(3)))
+								.apply(ApplyExplosionDecay.explosionDecay())));
 
 		this.add(HexcraftBlocks.ELDER_BOOKSHELF.get(),
-				block -> createCopperLikeOreDrops(HexcraftBlocks.ELDER_BOOKSHELF.get(), Item.byBlock(HexcraftBlocks.ELDER_PLANKS.get())));
+				block -> createSilkTouchDispatchTable(block,
+						LootItem.lootTableItem(Items.BOOK)
+								.apply(SetItemCountFunction.setCount(ConstantValue.exactly(3)))
+								.apply(ApplyExplosionDecay.explosionDecay())));
 
 		this.add(HexcraftBlocks.JUNIPER_BOOKSHELF.get(),
-				block -> createCopperLikeOreDrops(HexcraftBlocks.JUNIPER_BOOKSHELF.get(), Item.byBlock(HexcraftBlocks.JUNIPER_PLANKS.get())));
+				block -> createSilkTouchDispatchTable(block,
+						LootItem.lootTableItem(Items.BOOK)
+								.apply(SetItemCountFunction.setCount(ConstantValue.exactly(3)))
+								.apply(ApplyExplosionDecay.explosionDecay())));
 
 		this.add(HexcraftBlocks.ROWAN_BOOKSHELF.get(),
-				block -> createCopperLikeOreDrops(HexcraftBlocks.ROWAN_BOOKSHELF.get(), Item.byBlock(HexcraftBlocks.ROWAN_PLANKS.get())));
+				block -> createSilkTouchDispatchTable(block,
+						LootItem.lootTableItem(Items.BOOK)
+								.apply(SetItemCountFunction.setCount(ConstantValue.exactly(3)))
+								.apply(ApplyExplosionDecay.explosionDecay())));
 
 		this.add(HexcraftBlocks.TWISTED_BOOKSHELF.get(),
-				block -> createCopperLikeOreDrops(HexcraftBlocks.TWISTED_BOOKSHELF.get(), Item.byBlock(HexcraftBlocks.TWISTED_PLANKS.get())));
+				block -> createSilkTouchDispatchTable(block,
+						LootItem.lootTableItem(Items.BOOK)
+								.apply(SetItemCountFunction.setCount(ConstantValue.exactly(3)))
+								.apply(ApplyExplosionDecay.explosionDecay())));
 
 		this.add(HexcraftBlocks.WITCH_WOOD_BOOKSHELF.get(),
-				block -> createCopperLikeOreDrops(HexcraftBlocks.WITCH_WOOD_BOOKSHELF.get(), Item.byBlock(HexcraftBlocks.WITCH_WOOD_PLANKS.get())));
+				block -> createSilkTouchDispatchTable(block,
+						LootItem.lootTableItem(Items.BOOK)
+								.apply(SetItemCountFunction.setCount(ConstantValue.exactly(3)))
+								.apply(ApplyExplosionDecay.explosionDecay())));
 
 		this.add(HexcraftBlocks.ECHO_WOOD_BOOKSHELF.get(),
-				block -> createCopperLikeOreDrops(HexcraftBlocks.ECHO_WOOD_BOOKSHELF.get(), Item.byBlock(HexcraftBlocks.ECHO_WOOD_PLANKS.get())));
+				block -> createSilkTouchDispatchTable(block,
+						LootItem.lootTableItem(Items.BOOK)
+								.apply(SetItemCountFunction.setCount(ConstantValue.exactly(3)))
+								.apply(ApplyExplosionDecay.explosionDecay())));
+
+		this.add(HexcraftBlocks.PHOENIX_BOOKSHELF.get(),
+				block -> createSilkTouchDispatchTable(block,
+						LootItem.lootTableItem(Items.BOOK)
+								.apply(SetItemCountFunction.setCount(ConstantValue.exactly(3)))
+								.apply(ApplyExplosionDecay.explosionDecay())));
 
 		this.add(HexcraftBlocks.PEARL_STONE.get(),
-				block -> createCopperLikeOreDrops(HexcraftBlocks.PEARL_STONE.get(), Item.byBlock(HexcraftBlocks.PEARL_COBBLESTONE.get())));
+				block -> createSingleItemTableWithSilkTouch(HexcraftBlocks.PEARL_STONE.get(), HexcraftBlocks.PEARL_COBBLESTONE.get()));
 
 		this.add(HexcraftBlocks.CRIMSON_STONE.get(),
-				block -> createCopperLikeOreDrops(HexcraftBlocks.CRIMSON_STONE.get(), Item.byBlock(HexcraftBlocks.CRIMSON_COBBLESTONE.get())));
+				block -> createSingleItemTableWithSilkTouch(HexcraftBlocks.CRIMSON_STONE.get(), HexcraftBlocks.CRIMSON_COBBLESTONE.get()));
 
 		this.add(HexcraftBlocks.UNDER_WORLD_STONE.get(),
-				block -> createCopperLikeOreDrops(HexcraftBlocks.UNDER_WORLD_STONE.get(), Item.byBlock(HexcraftBlocks.UNDER_WORLD_COBBLESTONE.get())));
+				block -> createSingleItemTableWithSilkTouch(HexcraftBlocks.UNDER_WORLD_STONE.get(), HexcraftBlocks.UNDER_WORLD_COBBLESTONE.get()));
 
 		this.add(HexcraftBlocks.CHARSTONE.get(),
-				block -> createCopperLikeOreDrops(HexcraftBlocks.CHARSTONE.get(), Item.byBlock(HexcraftBlocks.CHARSTONE_COBBLESTONE.get())));
+				block -> createSingleItemTableWithSilkTouch(HexcraftBlocks.CHARSTONE.get(), HexcraftBlocks.CHARSTONE_COBBLESTONE.get()));
 
 		this.add(HexcraftBlocks.MOONSTONE_ORE.get(),
-				block -> createCopperLikeOreDrops(HexcraftBlocks.MOONSTONE_ORE.get(), HexcraftItems.MOONSTONE.get()));
+				block -> createOreDrop(HexcraftBlocks.MOONSTONE_ORE.get(), HexcraftItems.MOONSTONE.get()));
 
 		this.add(HexcraftBlocks.DEEPSLATE_MOONSTONE_ORE.get(),
-				block -> createCopperLikeOreDrops(HexcraftBlocks.DEEPSLATE_MOONSTONE_ORE.get(), HexcraftItems.MOONSTONE.get()));
+				block -> createOreDrop(HexcraftBlocks.DEEPSLATE_MOONSTONE_ORE.get(), HexcraftItems.MOONSTONE.get()));
 
 		this.add(HexcraftBlocks.NETHER_MOONSTONE_ORE.get(),
-				block -> createCopperLikeOreDrops(HexcraftBlocks.NETHER_MOONSTONE_ORE.get(), HexcraftItems.MOONSTONE.get()));
+				block -> createOreDrop(HexcraftBlocks.NETHER_MOONSTONE_ORE.get(), HexcraftItems.MOONSTONE.get()));
 
 		this.add(HexcraftBlocks.END_MOONSTONE_ORE.get(),
-				block -> createCopperLikeOreDrops(HexcraftBlocks.END_MOONSTONE_ORE.get(), HexcraftItems.MOONSTONE.get()));
+				block -> createOreDrop(HexcraftBlocks.END_MOONSTONE_ORE.get(), HexcraftItems.MOONSTONE.get()));
 
 		this.add(HexcraftBlocks.SILVER_ORE.get(),
-				block -> createCopperLikeOreDrops(HexcraftBlocks.SILVER_ORE.get(), HexcraftItems.RAW_SILVER.get()));
+				block -> createOreDrop(HexcraftBlocks.SILVER_ORE.get(), HexcraftItems.RAW_SILVER.get()));
 
 		this.add(HexcraftBlocks.DEEPSLATE_SILVER_ORE.get(),
-				block -> createCopperLikeOreDrops(HexcraftBlocks.DEEPSLATE_SILVER_ORE.get(), HexcraftItems.RAW_SILVER.get()));
+				block -> createOreDrop(HexcraftBlocks.DEEPSLATE_SILVER_ORE.get(), HexcraftItems.RAW_SILVER.get()));
 
 		this.add(HexcraftBlocks.NETHER_SILVER_ORE.get(),
-				block -> createCopperLikeOreDrops(HexcraftBlocks.NETHER_SILVER_ORE.get(), HexcraftItems.RAW_SILVER.get()));
+				block -> createOreDrop(HexcraftBlocks.NETHER_SILVER_ORE.get(), HexcraftItems.RAW_SILVER.get()));
 
 		this.add(HexcraftBlocks.END_SILVER_ORE.get(),
-				block -> createCopperLikeOreDrops(HexcraftBlocks.END_SILVER_ORE.get(), HexcraftItems.RAW_SILVER.get()));
+				block -> createOreDrop(HexcraftBlocks.END_SILVER_ORE.get(), HexcraftItems.RAW_SILVER.get()));
 
 		this.add(HexcraftBlocks.VAMPIRIC_ORE.get(),
-				block -> createCopperLikeOreDrops(HexcraftBlocks.VAMPIRIC_ORE.get(), HexcraftItems.VAMPIRIC_GEM.get()));
+				block -> createOreDrop(HexcraftBlocks.VAMPIRIC_ORE.get(), HexcraftItems.VAMPIRIC_GEM.get()));
 
 		this.add(HexcraftBlocks.DEEPSLATE_VAMPIRIC_ORE.get(),
-				block -> createCopperLikeOreDrops(HexcraftBlocks.DEEPSLATE_VAMPIRIC_ORE.get(), HexcraftItems.VAMPIRIC_GEM.get()));
+				block -> createOreDrop(HexcraftBlocks.DEEPSLATE_VAMPIRIC_ORE.get(), HexcraftItems.VAMPIRIC_GEM.get()));
 
 		this.add(HexcraftBlocks.NETHER_VAMPIRIC_ORE.get(),
-				block -> createCopperLikeOreDrops(HexcraftBlocks.NETHER_VAMPIRIC_ORE.get(), HexcraftItems.VAMPIRIC_GEM.get()));
+				block -> createOreDrop(HexcraftBlocks.NETHER_VAMPIRIC_ORE.get(), HexcraftItems.VAMPIRIC_GEM.get()));
 
 		this.add(HexcraftBlocks.END_VAMPIRIC_ORE.get(),
-				block -> createCopperLikeOreDrops(HexcraftBlocks.END_VAMPIRIC_ORE.get(), HexcraftItems.VAMPIRIC_GEM.get()));
+				block -> createOreDrop(HexcraftBlocks.END_VAMPIRIC_ORE.get(), HexcraftItems.VAMPIRIC_GEM.get()));
 
 		this.add(HexcraftBlocks.NYKIUM_ORE.get(),
-				block -> createCopperLikeOreDrops(HexcraftBlocks.NYKIUM_ORE.get(), HexcraftItems.RAW_BLOODY_NYKIUM.get()));
+				block -> createOreDrop(HexcraftBlocks.NYKIUM_ORE.get(), HexcraftItems.RAW_BLOODY_NYKIUM.get()));
 
 		this.add(HexcraftBlocks.TRENOGEN_ORE.get(),
-				block -> createCopperLikeOreDrops(HexcraftBlocks.TRENOGEN_ORE.get(), HexcraftItems.RAW_CUROGEN.get()));
+				block -> createOreDrop(HexcraftBlocks.TRENOGEN_ORE.get(), HexcraftItems.RAW_CUROGEN.get()));
 
 		this.add(HexcraftBlocks.DEEPSLATE_TRENOGEN_ORE.get(),
-				block -> createCopperLikeOreDrops(HexcraftBlocks.DEEPSLATE_TRENOGEN_ORE.get(), HexcraftItems.RAW_CUROGEN.get()));
+				block -> createOreDrop(HexcraftBlocks.DEEPSLATE_TRENOGEN_ORE.get(), HexcraftItems.RAW_CUROGEN.get()));
 
 		this.add(HexcraftBlocks.JORMUIM_ORE.get(),
-				block -> createCopperLikeOreDrops(HexcraftBlocks.JORMUIM_ORE.get(), HexcraftItems.RAW_JORMIUM.get()));
+				block -> createOreDrop(HexcraftBlocks.JORMUIM_ORE.get(), HexcraftItems.RAW_JORMIUM.get()));
+
+		this.add(HexcraftBlocks.SOULSTONE_ORE.get(),
+				block -> createOreDrop(HexcraftBlocks.SOULSTONE_ORE.get(), HexcraftItems.RAW_SOULSTONE.get()));
+
+		this.add(HexcraftBlocks.ABYSSIUM_ORE.get(),
+				block -> createOreDrop(HexcraftBlocks.ABYSSIUM_ORE.get(), HexcraftItems.RAW_ABYSSIUM.get()));
+
+		this.add(HexcraftBlocks.ECLIPSIUM_ORE.get(),
+				block -> createOreDrop(HexcraftBlocks.ECLIPSIUM_ORE.get(), HexcraftItems.RAW_ECLIPSIUM.get()));
+
+		this.add(HexcraftBlocks.ABYSSAL_COAL_ORE.get(),
+				block -> createOreDropsWithCount(HexcraftBlocks.ABYSSAL_COAL_ORE.get(), HexcraftItems.ABYSSAL_COAL.get(), 1, 2));
+
+		this.dropSelf(HexcraftBlocks.ABYSSAL_COAL_BLOCK.get());
 
 
 		LootItemCondition.Builder lootitemcondition$builder = LootItemBlockStatePropertyCondition
@@ -1302,6 +1724,33 @@ public class HexcraftBlockLootTables extends BlockLootSubProvider {
 		this.add(HexcraftBlocks.ECHO_WOOD_WALL_HANGING_SIGN.get(), block ->
 				createSingleItemTable(HexcraftItems.ECHO_WOOD_HANGING_SIGN.get()));
 
+		this.add(HexcraftBlocks.PHOENIX_SIGN.get(), block ->
+				createSingleItemTable(HexcraftItems.PHOENIX_SIGN.get()));
+		this.add(HexcraftBlocks.PHOENIX_WALL_SIGN.get(), block ->
+				createSingleItemTable(HexcraftItems.PHOENIX_SIGN.get()));
+		this.add(HexcraftBlocks.PHOENIX_HANGING_SIGN.get(), block ->
+				createSingleItemTable(HexcraftItems.PHOENIX_HANGING_SIGN.get()));
+		this.add(HexcraftBlocks.PHOENIX_WALL_HANGING_SIGN.get(), block ->
+				createSingleItemTable(HexcraftItems.PHOENIX_HANGING_SIGN.get()));
+
+		addChestLootTable(HexcraftBlocks.EBONY_CHEST.get());
+		addChestLootTable(HexcraftBlocks.BLOOD_OAK_CHEST.get());
+		addChestLootTable(HexcraftBlocks.HELL_BARK_CHEST.get());
+		addChestLootTable(HexcraftBlocks.WHITE_OAK_CHEST.get());
+		addChestLootTable(HexcraftBlocks.ALDER_CHEST.get());
+		addChestLootTable(HexcraftBlocks.WITCH_HAZEL_CHEST.get());
+		addChestLootTable(HexcraftBlocks.WILLOW_CHEST.get());
+		addChestLootTable(HexcraftBlocks.HAWTHORN_CHEST.get());
+		addChestLootTable(HexcraftBlocks.CEDAR_CHEST.get());
+		addChestLootTable(HexcraftBlocks.DISTORTED_CHEST.get());
+		addChestLootTable(HexcraftBlocks.ELDER_CHEST.get());
+		addChestLootTable(HexcraftBlocks.JUNIPER_CHEST.get());
+		addChestLootTable(HexcraftBlocks.ROWAN_CHEST.get());
+		addChestLootTable(HexcraftBlocks.TWISTED_CHEST.get());
+		addChestLootTable(HexcraftBlocks.WITCH_WOOD_CHEST.get());
+		addChestLootTable(HexcraftBlocks.ECHO_WOOD_CHEST.get());
+		addChestLootTable(HexcraftBlocks.PHOENIX_CHEST.get());
+
 	}
 
 	private void dropOther(Item item) {
@@ -1313,6 +1762,52 @@ public class HexcraftBlockLootTables extends BlockLootSubProvider {
 						LootItem.lootTableItem(item)
 								.apply(SetItemCountFunction.setCount(UniformGenerator.between(2.0F, 5.0F)))
 								.apply(ApplyBonusCount.addOreBonusCount(Enchantments.SILK_TOUCH))));
+
+	}
+
+	private static LootTable.Builder createBloodOakLeavesDrops(Block block, Supplier<Item> saplingSupplier, Supplier<Item> bloodAppleSupplier) {
+		return LootTable.lootTable()
+				.withPool(
+						LootPool.lootPool()
+								.setRolls(UniformGenerator.between(1, 2)) // Mimics vanilla leaf drop behavior
+								.add(LootItem.lootTableItem(saplingSupplier.get())
+										.when(LootItemRandomChanceCondition.randomChance(0.05f))) // 5% sapling drop chance
+								.add(LootItem.lootTableItem(Items.STICK)
+										.when(LootItemRandomChanceCondition.randomChance(0.02f))) // 2% stick drop chance
+								.add(LootItem.lootTableItem(bloodAppleSupplier.get())
+										.when(LootItemRandomChanceCondition.randomChance(0.005f))) // 0.5% Blood Apple drop chance
+				);
+	}
+
+	private static LootTable.Builder createJuniperLeavesDrops(Block block, Supplier<Item> saplingSupplier, Supplier<Item> juniperBerriesSupplier) {
+		return LootTable.lootTable()
+				.withPool(
+						LootPool.lootPool()
+								.setRolls(UniformGenerator.between(1, 2)) // Mimics vanilla leaf drop behavior
+								.add(LootItem.lootTableItem(saplingSupplier.get())
+										.when(LootItemRandomChanceCondition.randomChance(0.05f))) // 5% sapling drop chance
+								.add(LootItem.lootTableItem(Items.STICK)
+										.when(LootItemRandomChanceCondition.randomChance(0.02f))) // 2% stick drop chance
+								.add(LootItem.lootTableItem(juniperBerriesSupplier.get())
+										.when(LootItemRandomChanceCondition.randomChance(0.05f))) // 5% Juniper Berries drop chance
+				);
+	}
+
+	private void addChestLootTable(Block chestBlock) {
+		add(chestBlock, LootTable.lootTable()
+				.withPool(LootPool.lootPool()
+						.setRolls(ConstantValue.exactly(1))
+						.add(LootItem.lootTableItem(chestBlock)))
+				.withPool(LootPool.lootPool()
+						.setRolls(ConstantValue.exactly(1))
+						.add(LootItem.lootTableItem(Items.CHEST))
+						.when(ExplosionCondition.survivesExplosion()))
+				.withPool(LootPool.lootPool()
+						.setRolls(ConstantValue.exactly(1))
+						.add(LootItem.lootTableItem(Items.CHEST)
+								.apply(CopyNameFunction.copyName(CopyNameFunction.NameSource.BLOCK_ENTITY)))
+						.when(LootItemBlockStatePropertyCondition.hasBlockStateProperties(chestBlock)))
+		);
 
 	}
 
@@ -1328,6 +1823,42 @@ public class HexcraftBlockLootTables extends BlockLootSubProvider {
 	protected Iterable<Block> getKnownBlocks() {
 		return HexcraftBlocks.BLOCKS.getEntries().stream().map(RegistryObject::get)::iterator;
 	}
+
+	public LootTable.Builder createOreDropsWithCount(Block block, ItemLike drop, int min, int max) {
+		return LootTable.lootTable()
+				.withPool(LootPool.lootPool()
+						.setRolls(ConstantValue.exactly(1))
+						// If mined with Silk Touch, drop the ore block instead
+						.when(MatchTool.toolMatches(ItemPredicate.Builder.item()
+								.hasEnchantment(new EnchantmentPredicate(Enchantments.SILK_TOUCH, MinMaxBounds.Ints.atLeast(1)))))
+						.add(LootItem.lootTableItem(block)) // Drops the ore block when Silk Touch is applied
+				)
+				.withPool(LootPool.lootPool()
+						.setRolls(ConstantValue.exactly(1))
+						.when(InvertedLootItemCondition.invert(
+								MatchTool.toolMatches(ItemPredicate.Builder.item()
+										.hasEnchantment(new EnchantmentPredicate(Enchantments.SILK_TOUCH, MinMaxBounds.Ints.atLeast(1))))))
+						.add(LootItem.lootTableItem(drop) // Drops raw item when not using Silk Touch
+								.apply(SetItemCountFunction.setCount(UniformGenerator.between(min, max))) // Drops between min-max
+								.apply(ApplyBonusCount.addOreBonusCount(Enchantments.BLOCK_FORTUNE)) // Fortune applies to drops
+								.apply(ApplyExplosionDecay.explosionDecay()) // Handles explosion logic
+						)
+				);
+	}
+
+	private void dropMushroomLike(RegistryObject<Block> block, RegistryObject<Block> mushroom) {
+		this.add(block.get(),
+				createSilkTouchDispatchTable(
+						block.get(),
+						applyExplosionDecay(block.get(),
+								LootItem.lootTableItem(mushroom.get())
+										.apply(SetItemCountFunction.setCount(UniformGenerator.between(0.0F, 2.0F)))
+						)
+				)
+		);
+
+	}
+
 
 	protected void add(Block pBlock, LootTable.Builder pBuilder) {
 		this.map.put(pBlock.getLootTable(), pBuilder);

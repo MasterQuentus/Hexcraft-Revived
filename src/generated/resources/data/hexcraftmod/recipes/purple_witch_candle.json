@@ -1,0 +1,30 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "B": {
+      "item": "minecraft:beetroot"
+    },
+    "C": {
+      "item": "minecraft:candle"
+    },
+    "D": {
+      "item": "minecraft:purple_dye"
+    },
+    "H": {
+      "item": "minecraft:honeycomb"
+    },
+    "S": {
+      "item": "minecraft:string"
+    }
+  },
+  "pattern": [
+    " S ",
+    "CHB",
+    " D "
+  ],
+  "result": {
+    "item": "hexcraftmod:purple_witch_candle"
+  },
+  "show_notification": true
+}

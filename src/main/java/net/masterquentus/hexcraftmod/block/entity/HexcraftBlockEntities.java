@@ -2,6 +2,9 @@ package net.masterquentus.hexcraftmod.block.entity;
 
 import net.masterquentus.hexcraftmod.HexcraftMod;
 import net.masterquentus.hexcraftmod.block.HexcraftBlocks;
+import net.masterquentus.hexcraftmod.block.entity.custom.AltarTopBlockEntity;
+import net.masterquentus.hexcraftmod.block.entity.custom.HexcraftChestBlockEntity;
+import net.masterquentus.hexcraftmod.block.entity.custom.PandorasBoxBlockEntity;
 import net.masterquentus.hexcraftmod.block.entity.signs.HexcraftHangingSignBlockEntity;
 import net.masterquentus.hexcraftmod.block.entity.signs.HexcraftSignBlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
@@ -9,8 +12,6 @@ import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
-
-import java.util.function.Supplier;
 
 public class HexcraftBlockEntities {
 	public static final DeferredRegister<BlockEntityType<?>> BLOCK_ENTITIES = DeferredRegister
@@ -27,6 +28,9 @@ public class HexcraftBlockEntities {
 	public static final RegistryObject<BlockEntityType<BloodyRoseBlockEntity>> BLOODY_ROSE = BLOCK_ENTITIES
 			.register("bloody_rose", () -> BlockEntityType.Builder
 					.of(BloodyRoseBlockEntity::new, HexcraftBlocks.WITCHES_OVEN.get()).build(null));
+
+	public static final RegistryObject<BlockEntityType<AltarTopBlockEntity>> ALTAR_TOP = BLOCK_ENTITIES.register("altar_top",
+			() -> BlockEntityType.Builder.of(AltarTopBlockEntity::new, HexcraftBlocks.ALTAR_TOP.get()).build(null));
 
 	public static final RegistryObject<BlockEntityType<HexcraftSignBlockEntity>> Hexcraft_SIGN = BLOCK_ENTITIES
 			.register("hexcraft_sign", () -> BlockEntityType.Builder
@@ -45,7 +49,8 @@ public class HexcraftBlockEntities {
 							HexcraftBlocks.ROWAN_SIGN.get(), HexcraftBlocks.ROWAN_WALL_SIGN.get(),
 							HexcraftBlocks.TWISTED_SIGN.get(), HexcraftBlocks.TWISTED_WALL_SIGN.get(),
 							HexcraftBlocks.WITCH_WOOD_SIGN.get(), HexcraftBlocks.WITCH_WOOD_WALL_SIGN.get(),
-							HexcraftBlocks.ECHO_WOOD_SIGN.get(), HexcraftBlocks.ECHO_WOOD_WALL_SIGN.get()).build(null));
+							HexcraftBlocks.ECHO_WOOD_SIGN.get(), HexcraftBlocks.ECHO_WOOD_WALL_SIGN.get(),
+							HexcraftBlocks.PHOENIX_SIGN.get(), HexcraftBlocks.PHOENIX_WALL_SIGN.get()).build(null));
 
 	public static final RegistryObject<BlockEntityType<HexcraftHangingSignBlockEntity>> Hexcraft_HANGING_SIGN = BLOCK_ENTITIES
 			.register("hexcraft_hanging_sign", () -> BlockEntityType.Builder
@@ -64,17 +69,34 @@ public class HexcraftBlockEntities {
 							HexcraftBlocks.ROWAN_HANGING_SIGN.get(), HexcraftBlocks.ROWAN_WALL_HANGING_SIGN.get(),
 							HexcraftBlocks.TWISTED_HANGING_SIGN.get(), HexcraftBlocks.TWISTED_WALL_HANGING_SIGN.get(),
 							HexcraftBlocks.WITCH_WOOD_HANGING_SIGN.get(), HexcraftBlocks.WITCH_WOOD_WALL_HANGING_SIGN.get(),
-							HexcraftBlocks.ECHO_WOOD_HANGING_SIGN.get(), HexcraftBlocks.ECHO_WOOD_WALL_HANGING_SIGN.get()).build(null));
+							HexcraftBlocks.ECHO_WOOD_HANGING_SIGN.get(), HexcraftBlocks.ECHO_WOOD_WALL_HANGING_SIGN.get(),
+							HexcraftBlocks.PHOENIX_HANGING_SIGN.get(), HexcraftBlocks.PHOENIX_WALL_HANGING_SIGN.get()).build(null));
 
 
-	//public static final RegistryObject<BlockEntityType<HexcraftChestBlockEntity>> CHEST = BLOCK_ENTITIES.register("chest",
-			//() -> BlockEntityType.Builder.of(HexcraftChestBlockEntity::new,
-					//HexcraftBlocks.CHEST_ALDER.get(), HexcraftBlocks.CHEST_BLOOD_OAK.get(), HexcraftBlocks.CHEST_CEDAR.get(),
-					//HexcraftBlocks.CHEST_DISTORTED.get(), HexcraftBlocks.CHEST_EBONY.get(), HexcraftBlocks.CHEST_ECHO_WOOD.get(),
-					//HexcraftBlocks.CHEST_ELDER.get(), HexcraftBlocks.CHEST_HAWTHORN.get(), HexcraftBlocks.CHEST_HELL_BARK.get(),
-					//HexcraftBlocks.CHEST_JUNIPER.get(), HexcraftBlocks.CHEST_ROWAN.get(), HexcraftBlocks.CHEST_TWISTED.get(),
-					//HexcraftBlocks.CHEST_WHITE_OAK.get(), HexcraftBlocks.CHEST_WILLOW.get(), HexcraftBlocks.CHEST_WITCH_HAZEL.get(),
-					//HexcraftBlocks.CHEST_WITCH_WOOD.get()).build(null));
+	public static final RegistryObject<BlockEntityType<PandorasBoxBlockEntity>> PANDORAS_BOX_ENTITY =
+			BLOCK_ENTITIES.register("pandoras_box",
+					() -> BlockEntityType.Builder.of(PandorasBoxBlockEntity::new, HexcraftBlocks.PANDORAS_BOX.get()).build(null));
+
+	public static final RegistryObject<BlockEntityType<SacrificialPillarBlockEntity>> SACRIFICIAL_PILLAR_ENTITY =
+			BLOCK_ENTITIES.register("sacrificial_pillar",
+					() -> BlockEntityType.Builder.of(SacrificialPillarBlockEntity::new, HexcraftBlocks.SACRIFICIAL_PILLAR.get()).build(null));
+
+
+
+
+
+	//public static final RegistryObject<BlockEntityType<LeachChestBlockEntity>> LEACH_CHEST_BLOCK_ENTITY = BLOCK_ENTITIES.register("leach_chest",
+			//() -> BlockEntityType.Builder.of(LeachChestBlockEntity::new, HexcraftBlocks.LEACH_CHEST.get()).build(null));
+
+
+	public static final RegistryObject<BlockEntityType<HexcraftChestBlockEntity>> CHEST = BLOCK_ENTITIES.register("chest",
+			() -> BlockEntityType.Builder.of(HexcraftChestBlockEntity::new,
+					HexcraftBlocks.ALDER_CHEST.get(), HexcraftBlocks.BLOOD_OAK_CHEST.get(), HexcraftBlocks.CEDAR_CHEST.get(),
+					HexcraftBlocks.DISTORTED_CHEST.get(), HexcraftBlocks.EBONY_CHEST.get(), HexcraftBlocks.ECHO_WOOD_CHEST.get(),
+					HexcraftBlocks.ELDER_CHEST.get(), HexcraftBlocks.HAWTHORN_CHEST.get(), HexcraftBlocks.HELL_BARK_CHEST.get(),
+					HexcraftBlocks.JUNIPER_CHEST.get(), HexcraftBlocks.ROWAN_CHEST.get(), HexcraftBlocks.TWISTED_CHEST.get(),
+					HexcraftBlocks.WHITE_OAK_CHEST.get(), HexcraftBlocks.WILLOW_CHEST.get(), HexcraftBlocks.WITCH_HAZEL_CHEST.get(),
+					HexcraftBlocks.WITCH_WOOD_CHEST.get(),HexcraftBlocks.PHOENIX_CHEST.get()).build(null));
 
 	//Crates
 

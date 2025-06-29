@@ -10,6 +10,7 @@ import net.masterquentus.hexcraftmod.block.custom.signs.HexcraftStadingSignBlock
 import net.masterquentus.hexcraftmod.block.custom.signs.HexcraftWallHangingSignBlock;
 import net.masterquentus.hexcraftmod.block.custom.signs.HexcraftWallSignBlock;
 import net.masterquentus.hexcraftmod.block.custom.signs.HexcraftlHangingSignBlock;
+import net.masterquentus.hexcraftmod.block.entity.custom.UnderworldPortalBlock;
 import net.masterquentus.hexcraftmod.fluid.HexcraftFluids;
 import net.masterquentus.hexcraftmod.item.HexcraftItems;
 import net.masterquentus.hexcraftmod.util.HexcraftWoodTypes;
@@ -51,26 +52,27 @@ public class HexcraftBlocks {
 			DeferredRegister.create(ForgeRegistries.BLOCKS, HexcraftMod.MOD_ID);
 
 
-	public static final RegistryObject<Block> VILE_GRASS_BLOCK = registerBlock("vile_grass_block",
-			() -> new VileGrassBlock(BlockBehaviour.Properties.copy(Blocks.GRASS_BLOCK)
-					.strength(0.6F).randomTicks().sound(SoundType.GRASS)));
+	public static final RegistryObject<Block> VILE_GRASS_BLOCK = BLOCKS.register("vile_grass_block",
+			() -> new VileGrassBlock(BlockBehaviour.Properties.copy(Blocks.GRASS_BLOCK)));
 
-	public static final RegistryObject<Block> VILE_DIRT = registerBlock("vile_dirt",
-			() -> new HexcraftDoubleDropBlock (BlockBehaviour.Properties.copy(Blocks.DIRT)
-					.strength(0.5F)));
+	public static final RegistryObject<Block> VILE_DIRT = BLOCKS.register("vile_dirt",
+			() -> new Block(BlockBehaviour.Properties.copy(Blocks.DIRT)));
 
 	public static final RegistryObject <Block> CRIMSON_MAGMA = registerBlock("crimson_magma",
 			() -> new MagmaBlock(BlockBehaviour.Properties.copy(Blocks.STONE)
 					.sound(SoundType.NETHER_BRICKS)));
 
-	public static final RegistryObject <Block> CURSED_SOIL = registerBlock("cursed_soil",
-			() -> new CursedSoilBlock(BlockBehaviour.Properties.copy(Blocks.MOSS_BLOCK).strength(0.6F).sound(SoundType.SOUL_SAND)));
+	public static final RegistryObject<Block> CURSED_SOIL = BLOCKS.register("cursed_soil",
+			() -> new CursedSoilBlock(BlockBehaviour.Properties.of().strength(1.5f).sound(SoundType.SOUL_SAND)
+					.requiresCorrectToolForDrops()));
 
-	public static final RegistryObject <Block> CURED_SOIL = registerBlock("cured_soil",
-			() -> new CuredSoilBlock(BlockBehaviour.Properties.copy(Blocks.DIRT).strength(0.6F).sound(SoundType.SOUL_SOIL)));
+	public static final RegistryObject<Block> CURED_SOIL = BLOCKS.register("cured_soil",
+			() -> new CuredSoilBlock(BlockBehaviour.Properties.of().strength(1.5f).sound(SoundType.GRASS)
+					.requiresCorrectToolForDrops().lightLevel((state) -> 4))); // Emits a slight glow
 
-	public static final RegistryObject <Block> FERTILIZED_DIRT = registerBlock("fertilized_dirt",
-			() -> new FertilizedDirtBlock(BlockBehaviour.Properties.copy(Blocks.DIRT).strength(0.6F).sound(SoundType.GRAVEL)));
+	public static final RegistryObject<Block> FERTILIZED_DIRT = BLOCKS.register("fertilized_dirt",
+			() -> new FertilizedDirtBlock(BlockBehaviour.Properties.of().strength(1.5f).sound(SoundType.GRASS)
+					.requiresCorrectToolForDrops()));
 
 	public static final RegistryObject <Block> VAMPIRE_ORCHID = registerBlock("vampire_orchid",
 			() -> new FlowerBlock(() -> MobEffects.HEALTH_BOOST, 4, BlockBehaviour.Properties.copy(Blocks.ALLIUM)));
@@ -84,6 +86,18 @@ public class HexcraftBlocks {
 	public static final RegistryObject <Block> POTTED_BLOODY_ROSE = BLOCKS.register("potted_bloody_rose",
 			() -> new FlowerPotBlock((() -> (FlowerPotBlock) Blocks.FLOWER_POT), BLOODY_ROSE, BlockBehaviour.Properties.copy(Blocks.POTTED_ALLIUM)));
 
+	public static final RegistryObject <Block> DUSKROOT_LANTERN = registerBlock("duskroot_lantern",
+			() -> new FlowerBlock(() -> MobEffects.HUNGER, 3, BlockBehaviour.Properties.copy(Blocks.POPPY).lightLevel((state) -> 15)));
+
+	public static final RegistryObject <Block> POTTED_DUSKROOT_LANTERN = BLOCKS.register("potted_duskroot_lantern",
+			() -> new FlowerPotBlock((() -> (FlowerPotBlock) Blocks.FLOWER_POT), DUSKROOT_LANTERN, BlockBehaviour.Properties.copy(Blocks.POTTED_ALLIUM)));
+
+	public static final RegistryObject <Block> SCORCHSTALKS = registerBlock("scorchstalks",
+			() -> new FlowerBlock(() -> MobEffects.FIRE_RESISTANCE, 2, BlockBehaviour.Properties.copy(Blocks.POPPY)));
+
+	public static final RegistryObject <Block> POTTED_SCORCHASTALKS = BLOCKS.register("potted_scorchstalks",
+			() -> new FlowerPotBlock((() -> (FlowerPotBlock) Blocks.FLOWER_POT), DUSKROOT_LANTERN, BlockBehaviour.Properties.copy(Blocks.POTTED_ALLIUM)));
+
 	public static final Supplier<Block> GLINT_WEED = registerBlock("glint_weed",
 			GlintWeedBlock::new);
 
@@ -96,6 +110,14 @@ public class HexcraftBlocks {
 	public static final RegistryObject<Block> WISPY_COTTON = registerBlock("wispy_cotton",
 			WispyCottenBlock::new);
 
+	public static final Supplier<Block> BLISTER_CACTUS_FLOWER = registerBlock("blister_cactus_flower",
+			() -> new BlisterCactusFlowerBlock(BlockBehaviour.Properties.copy(Blocks.SPORE_BLOSSOM)
+					.instabreak().noCollission().sound(SoundType.SPORE_BLOSSOM).pushReaction(PushReaction.DESTROY)));
+
+	public static final Supplier<Block> BLISTER_CACTUS = registerBlock("blister_cactus",
+			() -> new BlisterCactusBlock(BlockBehaviour.Properties.copy(Blocks.CACTUS)
+					.sound(SoundType.MOSS).strength(0.1f)));
+
 	public static final RegistryObject <Block> POTTED_WISPY_COTTON = BLOCKS.register("potted_wispy_cotton",
 			() -> new FlowerPotBlock((() -> (FlowerPotBlock) Blocks.FLOWER_POT), WISPY_COTTON, BlockBehaviour.Properties.copy(Blocks.POTTED_ALLIUM)));
 
@@ -105,7 +127,6 @@ public class HexcraftBlocks {
 
 	public static final RegistryObject <Block> POTTED_SOUL_FLOWER = BLOCKS.register("potted_soul_flower",
 			() -> new FlowerPotBlock((() -> (FlowerPotBlock) Blocks.FLOWER_POT), SOUL_FLOWER, BlockBehaviour.Properties.copy(Blocks.POTTED_ALLIUM)));
-
 
 	public static final Supplier<Block> EMBER_MOSS_BLOCK = registerBlock("ember_moss_block",
 			() -> new EmberMoss(BlockBehaviour.Properties.copy(Blocks.MOSS_BLOCK)
@@ -133,6 +154,14 @@ public class HexcraftBlocks {
 
 	public static final RegistryObject<Block> VILEVINE_PLANT = BLOCKS.register("vilevine_plant",
 			() -> new VleVinePlant(BlockBehaviour.Properties.copy(Blocks.WEEPING_VINES)
+					.instabreak().noOcclusion().noLootTable()));
+
+	public static final RegistryObject<Block> BLOODTHORN_VINES = BLOCKS.register("bloodthorn_vines",
+			() -> new BloodthronVineBlock(BlockBehaviour.Properties.copy(Blocks.TWISTING_VINES)
+					.instabreak().noOcclusion().randomTicks()));
+
+	public static final RegistryObject<Block> BLOODTHORN_VINES_PLANT = BLOCKS.register("bloodthorn_vines_plant",
+			() -> new BloodthronVinePlantBlock(BlockBehaviour.Properties.copy(Blocks.TWISTING_VINES_PLANT)
 					.instabreak().noOcclusion().noLootTable()));
 
 	public static final RegistryObject<Block> WILD_BRAMBLE = registerBlock("wild_bramble",
@@ -164,9 +193,34 @@ public class HexcraftBlocks {
 	public static final RegistryObject<Block> BLOOD_BERRIES_PLANT = registerBlockWithoutBlockItem("blood_berries_plant",
 			() -> new BloodBerryBush(BlockBehaviour.Properties.copy(Blocks.SWEET_BERRY_BUSH).noOcclusion().randomTicks().noLootTable()));
 
+	public static final RegistryObject<Block> GARLIC_STRAND = registerBlock("garlic_strand",
+			() -> new GarlicStrandBlock(BlockBehaviour.Properties.copy(Blocks.VINE).noCollission()));
+
+	public static final RegistryObject<Block> VERVAIN_STRAND = registerBlock("vervain_strand",
+			() -> new VervainStrandBlock(BlockBehaviour.Properties.copy(Blocks.VINE).noCollission()));
+
+	//public static final RegistryObject<Block> PHOENIX_EMBER = registerBlock("phoenix_ember",
+			//() -> new Block(BlockBehaviour.Properties.copy(Blocks.MAGMA_BLOCK)
+					//.strength(0.4F)
+					//.sound(SoundType.BASALT)
+					//.lightLevel(state -> 12))); // Slightly dimmer glow
+
+	//public static final RegistryObject<Block> ASH_BLOCK = registerBlock("ash_block",
+			//() -> new Block(BlockBehaviour.Properties.copy(Blocks.SNOW)
+					//.strength(0.1F)
+					//.sound(SoundType.SAND)));
+
 	public static final RegistryObject <Block> BLACK_OBSIDIAN = registerBlock("black_obsidian",
 			() -> new Block(BlockBehaviour.Properties.copy(Blocks.OBSIDIAN).requiresCorrectToolForDrops()
 					.strength(50.0F, 1200.0F).sound(SoundType.STONE)));
+
+
+	public static final RegistryObject<Block> HELLFIRE_CAMPFIRE = BLOCKS.register("hellfire_campfire",
+			() -> new CampfireBlock(true, 2, BlockBehaviour.Properties.copy(Blocks.CAMPFIRE)
+					.strength(2.0F)
+					.lightLevel(state -> state.getValue(BlockStateProperties.LIT) ? 15 : 0)
+					.sound(SoundType.WOOD)));
+
 
 	//Light Blocks
 	public static final RegistryObject<Block> ECHO_FUNGAL_LAMP = registerBlock("echo_fungal_lamp",
@@ -189,6 +243,19 @@ public class HexcraftBlocks {
 					.strength(0.3F).sound(SoundType.FROGLIGHT)
 					.lightLevel((state) -> 15)));
 
+	public static final RegistryObject<Block> FAIRY_LANTERN = BLOCKS.register("fairy_lantern",
+			() -> new FairyLanternBlock(BlockBehaviour.Properties.copy(Blocks.LANTERN)
+					.strength(1.5F).requiresCorrectToolForDrops()
+					.lightLevel(state -> 10)
+					.sound(SoundType.LANTERN)));
+
+	public static final RegistryObject<Block> PIXIE_LANTERN = BLOCKS.register("pixie_lantern",
+			() -> new PixieLanternBlock(BlockBehaviour.Properties.copy(Blocks.LANTERN)
+					.strength(1.5F)
+					.lightLevel(state -> 12)
+					.sound(SoundType.LANTERN)));
+
+
 	//Mushrooms
 	public static final RegistryObject<Block> BLOOD_MUSHROOM = registerBlock("blood_mushroom",
 			() -> new SaplingBlock (new BloodMushroomGrower(),BlockBehaviour.Properties.copy(Blocks.BROWN_MUSHROOM)
@@ -196,7 +263,6 @@ public class HexcraftBlocks {
 
 	public static final RegistryObject <Block> POTTED_BLOOD_MUSHROOM = BLOCKS.register("potted_blood_mushroom",
 			() -> new FlowerPotBlock((() -> (FlowerPotBlock) Blocks.FLOWER_POT), BLOOD_MUSHROOM, BlockBehaviour.Properties.copy(Blocks.POTTED_BROWN_MUSHROOM)));
-
 
 	public static final RegistryObject<Block> BLOOD_MUSHROOM_BLOCK = registerBlock("blood_mushroom_block",
 			() -> new HugeMushroomBlock(BlockBehaviour.Properties.copy(Blocks.BROWN_MUSHROOM_BLOCK)
@@ -222,7 +288,7 @@ public class HexcraftBlocks {
 					.strength(0.2F, 0F)));
 
 	public static final RegistryObject<Block> GHOSTSHROOM = registerBlock("ghostshroom",
-			() -> new SaplingBlock (new GhostshroomGrower(),BlockBehaviour.Properties.copy(Blocks.RED_MUSHROOM)
+			() -> new SaplingBlock (new GhostshroomGrower(),BlockBehaviour.Properties.copy(Blocks.BROWN_MUSHROOM)
 					.lightLevel((state) -> 1)));
 
 	public static final RegistryObject <Block> POTTED_GHOSTSHROOM = BLOCKS.register("potted_ghostshroom",
@@ -343,6 +409,22 @@ public class HexcraftBlocks {
 	public static final RegistryObject <Block> CUT_FAIRY_SAND_STONE = registerBlock("cut_fairy_sand_stone",
 			() -> new Block(BlockBehaviour.Properties.copy(Blocks.CUT_SANDSTONE).strength(0.8F).sound(SoundType.STONE)));
 
+	public static final RegistryObject <Block> PIXIE_SAND = registerBlock("pixie_sand",
+			() -> new SandBlock(14406560,BlockBehaviour.Properties.copy(Blocks.SAND)
+					.strength(0.5F).sound(SoundType.SAND)));
+
+	public static final RegistryObject <Block> PIXIE_SAND_STONE = registerBlock("pixie_sand_stone",
+			() -> new Block(BlockBehaviour.Properties.copy(Blocks.SANDSTONE).strength(0.8F).sound(SoundType.STONE)));
+
+	public static final RegistryObject <Block> SMOOTH_PIXIE_SAND_STONE = registerBlock("smooth_pixie_sand_stone",
+			() -> new Block(BlockBehaviour.Properties.copy(Blocks.SMOOTH_SANDSTONE).strength(2.0F, 6.0F).sound(SoundType.STONE)));
+
+	public static final RegistryObject <Block> CHISELED_PIXIE_SAND_STONE = registerBlock("chiseled_pixie_sand_stone",
+			() -> new Block(BlockBehaviour.Properties.copy(Blocks.CHISELED_SANDSTONE).strength(0.8F).sound(SoundType.STONE)));
+
+	public static final RegistryObject <Block> CUT_PIXIE_SAND_STONE = registerBlock("cut_pixie_sand_stone",
+			() -> new Block(BlockBehaviour.Properties.copy(Blocks.CUT_SANDSTONE).strength(0.8F).sound(SoundType.STONE)));
+
 	//Glass Blocks
 	public static final RegistryObject <Block> CRIMSON_GLASS = registerBlock("crimson_glass",
 			() -> new GlassBlock(BlockBehaviour.Properties.copy(Blocks.GLASS).instrument(NoteBlockInstrument.HAT)
@@ -358,6 +440,14 @@ public class HexcraftBlocks {
 
 	public static final RegistryObject <Block> FAIRY_GLASS_PANE = registerBlock("fairy_glass_pane",
 			() -> new StainedGlassPaneBlock(DyeColor.RED, BlockBehaviour.Properties.copy(Blocks.GLASS).instrument(NoteBlockInstrument.HAT)
+					.strength(0.3F).sound(SoundType.GLASS).noOcclusion()));
+
+	public static final RegistryObject <Block> PIXIE_GLASS = registerBlock("pixie_glass",
+			() -> new GlassBlock(BlockBehaviour.Properties.copy(Blocks.GLASS)
+					.strength(0.3F).sound(SoundType.GLASS).noOcclusion()));
+
+	public static final RegistryObject <Block> PIXIE_GLASS_PANE = registerBlock("pixie_glass_pane",
+			() -> new StainedGlassPaneBlock(DyeColor.RED, BlockBehaviour.Properties.copy(Blocks.GLASS)
 					.strength(0.3F).sound(SoundType.GLASS).noOcclusion()));
 
 	//Ice Blocks
@@ -466,6 +556,12 @@ public class HexcraftBlocks {
 	public static final RegistryObject <Block> POTTED_ECHO_WOOD_SAPLING = BLOCKS.register("potted_echo_sapling",
 			() -> new FlowerPotBlock((() -> (FlowerPotBlock) Blocks.FLOWER_POT), ECHO_WOOD_SAPLING, BlockBehaviour.Properties.copy(Blocks.POTTED_OAK_SAPLING)));
 
+	public static final RegistryObject<Block> PHOENIX_SAPLING = registerBlock("phoenix_sapling",
+			() -> new SaplingBlock(new PhoenixTreeGrower(), BlockBehaviour.Properties.copy(Blocks.OAK_SAPLING)));
+
+	public static final RegistryObject <Block> POTTED_PHOENIX_SAPLING = BLOCKS.register("potted_phoenix_sapling",
+			() -> new FlowerPotBlock((() -> (FlowerPotBlock) Blocks.FLOWER_POT), PHOENIX_SAPLING, BlockBehaviour.Properties.copy(Blocks.POTTED_OAK_SAPLING)));
+
 	//Leaves
 	public static final RegistryObject<Block> EBONY_LEAVES = registerBlock("ebony_leaves",
 			() -> new LeavesBlock(BlockBehaviour.Properties.copy(Blocks.OAK_LEAVES)) {
@@ -518,6 +614,11 @@ public class HexcraftBlocks {
 				@Override
 				public int getFireSpreadSpeed(BlockState state, BlockGetter world, BlockPos pos, Direction face) {
 					return 30;
+				}
+
+				@Override
+				public boolean isRandomlyTicking(BlockState state) {
+					return false;  // Disable random ticking (decay checks)
 				}
 			});
 
@@ -739,6 +840,30 @@ public class HexcraftBlocks {
 				public int getFireSpreadSpeed(BlockState state, BlockGetter world, BlockPos pos, Direction face) {
 					return 30;
 				}
+
+				@Override
+				public boolean isRandomlyTicking(BlockState state) {
+					return false;  // Disable random ticking (decay checks)
+				}
+			});
+
+	//Leaves
+	public static final RegistryObject<Block> PHOENIX_LEAVES = registerBlock("phoenix_leaves",
+			() -> new LeavesBlock(BlockBehaviour.Properties.copy(Blocks.OAK_LEAVES)) {
+				@Override
+				public boolean isFlammable(BlockState state, BlockGetter level, BlockPos pos, Direction direction) {
+					return false;
+				}
+
+				@Override
+				public int getFlammability(BlockState state, BlockGetter level, BlockPos pos, Direction direction) {
+					return 60;
+				}
+
+				@Override
+				public int getFireSpreadSpeed(BlockState state, BlockGetter level, BlockPos pos, Direction direction) {
+					return 30;
+				}
 			});
 
 
@@ -804,6 +929,10 @@ public class HexcraftBlocks {
 					.sound(SoundType.GRASS).noLootTable().noOcclusion().noCollission()));
 
 	public static final RegistryObject <Block> ECHO_WOOD_LEAVES_PILE = registerBlock("echo_wood_leaves_pile",
+			() -> new CarpetBlock(BlockBehaviour.Properties.copy(Blocks.OAK_LEAVES).strength(0.1F)
+					.sound(SoundType.GRASS).noLootTable().noOcclusion().noCollission()));
+
+	public static final RegistryObject <Block> PHOENIX_LEAVES_PILE = registerBlock("phoenix_leaves_pile",
 			() -> new CarpetBlock(BlockBehaviour.Properties.copy(Blocks.OAK_LEAVES).strength(0.1F)
 					.sound(SoundType.GRASS).noLootTable().noOcclusion().noCollission()));
 
@@ -873,6 +1002,10 @@ public class HexcraftBlocks {
 			() -> new HexcraftFlammableRotatedPillarBlock(BlockBehaviour.Properties.copy(Blocks.OAK_LOG).strength(2.0F)
 			));
 
+	public static final RegistryObject<Block> PHOENIX_LOG = registerBlock("phoenix_log",
+			() -> new HexcraftFlammableRotatedPillarBlock(BlockBehaviour.Properties.copy(Blocks.OAK_LOG).strength(2.0F)
+			));
+
 	//Striped Logs
 	public static final RegistryObject<Block> STRIPPED_EBONY_LOG = registerBlock("stripped_ebony_log",
 			() -> new HexcraftFlammableRotatedPillarBlock(BlockBehaviour.Properties.copy(Blocks.STRIPPED_OAK_LOG).strength(2.0F)
@@ -938,6 +1071,10 @@ public class HexcraftBlocks {
 			() -> new HexcraftFlammableRotatedPillarBlock(BlockBehaviour.Properties.copy(Blocks.STRIPPED_OAK_LOG).strength(2.0F)
 			));
 
+	public static final RegistryObject<Block> STRIPPED_PHOENIX_LOG = registerBlock("stripped_phoenix_log",
+			() -> new HexcraftFlammableRotatedPillarBlock(BlockBehaviour.Properties.copy(Blocks.STRIPPED_OAK_LOG).strength(2.0F)
+			));
+
 	//Wood
 	public static final RegistryObject<Block> EBONY_WOOD = registerBlock("ebony_wood",
 			() -> new HexcraftFlammableRotatedPillarBlock(BlockBehaviour.Properties.copy(Blocks.OAK_WOOD).strength(2.0F)
@@ -985,6 +1122,9 @@ public class HexcraftBlocks {
 			() -> new HexcraftFlammableRotatedPillarBlock(BlockBehaviour.Properties.copy(Blocks.OAK_WOOD).strength(2.0F)
 			));
 	public static final RegistryObject<Block> ECHO_WOOD_WOOD = registerBlock("echo_wood_wood",
+			() -> new HexcraftFlammableRotatedPillarBlock(BlockBehaviour.Properties.copy(Blocks.OAK_WOOD).strength(2.0F)
+			));
+	public static final RegistryObject<Block> PHOENIX_WOOD = registerBlock("phoenix_wood",
 			() -> new HexcraftFlammableRotatedPillarBlock(BlockBehaviour.Properties.copy(Blocks.OAK_WOOD).strength(2.0F)
 			));
 
@@ -1035,6 +1175,9 @@ public class HexcraftBlocks {
 			() -> new HexcraftFlammableRotatedPillarBlock(BlockBehaviour.Properties.copy(Blocks.STRIPPED_OAK_WOOD).strength(2.0F)
 			));
 	public static final RegistryObject<Block> STRIPPED_ECHO_WOOD_WOOD = registerBlock("stripped_echo_wood_wood",
+			() -> new HexcraftFlammableRotatedPillarBlock(BlockBehaviour.Properties.copy(Blocks.STRIPPED_OAK_WOOD).strength(2.0F)
+			));
+	public static final RegistryObject<Block> STRIPPED_PHOENIX_WOOD = registerBlock("stripped_phoenix_wood",
 			() -> new HexcraftFlammableRotatedPillarBlock(BlockBehaviour.Properties.copy(Blocks.STRIPPED_OAK_WOOD).strength(2.0F)
 			));
 
@@ -1097,7 +1240,7 @@ public class HexcraftBlocks {
 			() -> new Block(BlockBehaviour.Properties.copy(Blocks.OAK_PLANKS)) {
 				@Override
 				public boolean isFlammable(BlockState state, BlockGetter world, BlockPos pos, Direction face) {
-					return false;
+					return true;
 				}
 
 				@Override
@@ -1115,7 +1258,7 @@ public class HexcraftBlocks {
 			() -> new Block(BlockBehaviour.Properties.copy(Blocks.OAK_PLANKS)) {
 				@Override
 				public boolean isFlammable(BlockState state, BlockGetter world, BlockPos pos, Direction face) {
-					return false;
+					return true;
 				}
 
 				@Override
@@ -1133,7 +1276,7 @@ public class HexcraftBlocks {
 			() -> new Block(BlockBehaviour.Properties.copy(Blocks.OAK_PLANKS)) {
 				@Override
 				public boolean isFlammable(BlockState state, BlockGetter world, BlockPos pos, Direction face) {
-					return false;
+					return true;
 				}
 
 				@Override
@@ -1151,7 +1294,7 @@ public class HexcraftBlocks {
 			() -> new Block(BlockBehaviour.Properties.copy(Blocks.OAK_PLANKS)) {
 				@Override
 				public boolean isFlammable(BlockState state, BlockGetter world, BlockPos pos, Direction face) {
-					return false;
+					return true;
 				}
 
 				@Override
@@ -1169,7 +1312,7 @@ public class HexcraftBlocks {
 			() -> new Block(BlockBehaviour.Properties.copy(Blocks.OAK_PLANKS)) {
 				@Override
 				public boolean isFlammable(BlockState state, BlockGetter world, BlockPos pos, Direction face) {
-					return false;
+					return true;
 				}
 
 				@Override
@@ -1187,7 +1330,7 @@ public class HexcraftBlocks {
 			() -> new Block(BlockBehaviour.Properties.copy(Blocks.OAK_PLANKS)) {
 				@Override
 				public boolean isFlammable(BlockState state, BlockGetter world, BlockPos pos, Direction face) {
-					return false;
+					return true;
 				}
 
 				@Override
@@ -1205,7 +1348,7 @@ public class HexcraftBlocks {
 			() -> new Block(BlockBehaviour.Properties.copy(Blocks.OAK_PLANKS)) {
 				@Override
 				public boolean isFlammable(BlockState state, BlockGetter world, BlockPos pos, Direction face) {
-					return false;
+					return true;
 				}
 
 				@Override
@@ -1223,7 +1366,7 @@ public class HexcraftBlocks {
 			() -> new Block(BlockBehaviour.Properties.copy(Blocks.OAK_PLANKS)) {
 				@Override
 				public boolean isFlammable(BlockState state, BlockGetter world, BlockPos pos, Direction face) {
-					return false;
+					return true;
 				}
 
 				@Override
@@ -1241,7 +1384,7 @@ public class HexcraftBlocks {
 			() -> new Block(BlockBehaviour.Properties.copy(Blocks.OAK_PLANKS)) {
 				@Override
 				public boolean isFlammable(BlockState state, BlockGetter world, BlockPos pos, Direction face) {
-					return false;
+					return true;
 				}
 
 				@Override
@@ -1259,7 +1402,7 @@ public class HexcraftBlocks {
 			() -> new Block(BlockBehaviour.Properties.copy(Blocks.OAK_PLANKS)) {
 				@Override
 				public boolean isFlammable(BlockState state, BlockGetter world, BlockPos pos, Direction face) {
-					return false;
+					return true;
 				}
 
 				@Override
@@ -1277,7 +1420,7 @@ public class HexcraftBlocks {
 			() -> new Block(BlockBehaviour.Properties.copy(Blocks.OAK_PLANKS)) {
 				@Override
 				public boolean isFlammable(BlockState state, BlockGetter world, BlockPos pos, Direction face) {
-					return false;
+					return true;
 				}
 
 				@Override
@@ -1295,7 +1438,7 @@ public class HexcraftBlocks {
 			() -> new Block(BlockBehaviour.Properties.copy(Blocks.OAK_PLANKS)) {
 				@Override
 				public boolean isFlammable(BlockState state, BlockGetter world, BlockPos pos, Direction face) {
-					return false;
+					return true;
 				}
 
 				@Override
@@ -1312,7 +1455,7 @@ public class HexcraftBlocks {
 			() -> new Block(BlockBehaviour.Properties.copy(Blocks.OAK_PLANKS)) {
 				@Override
 				public boolean isFlammable(BlockState state, BlockGetter world, BlockPos pos, Direction face) {
-					return false;
+					return true;
 				}
 
 				@Override
@@ -1326,8 +1469,23 @@ public class HexcraftBlocks {
 				}
 			});
 
+	public static final RegistryObject<Block> PHOENIX_PLANKS = registerBlock("phoenix_planks",
+			() -> new Block(BlockBehaviour.Properties.copy(Blocks.OAK_PLANKS)) {
+				@Override
+				public boolean isFlammable(BlockState state, BlockGetter world, BlockPos pos, Direction face) {
+					return false;
+				}
 
-	//Chests
+				@Override
+				public int getFlammability(BlockState state, BlockGetter world, BlockPos pos, Direction face) {
+					return 20;
+				}
+
+				@Override
+				public int getFireSpreadSpeed(BlockState state, BlockGetter world, BlockPos pos, Direction face) {
+					return 5;
+				}
+			});
 
 
 	//Signs
@@ -1379,6 +1537,9 @@ public class HexcraftBlocks {
 	public static final RegistryObject<Block> ECHO_WOOD_SIGN = BLOCKS.register("echo_sign",
 			() -> new HexcraftStadingSignBlock(BlockBehaviour.Properties.copy(Blocks.OAK_SIGN), HexcraftWoodTypes.ECHO_WOOD));
 
+	public static final RegistryObject<Block> PHOENIX_SIGN = BLOCKS.register("phoenix_sign",
+			() -> new HexcraftStadingSignBlock(BlockBehaviour.Properties.copy(Blocks.OAK_SIGN), HexcraftWoodTypes.PHOENIX));
+
 	public static final RegistryObject<Block> EBONY_WALL_SIGN = BLOCKS.register("ebony_wall_sign",
 			() -> new HexcraftWallSignBlock(BlockBehaviour.Properties.copy(Blocks.OAK_WALL_SIGN), HexcraftWoodTypes.EBONY));
 
@@ -1426,6 +1587,9 @@ public class HexcraftBlocks {
 
 	public static final RegistryObject<Block> ECHO_WOOD_WALL_SIGN = BLOCKS.register("echo_wall_sign",
 			() -> new HexcraftWallSignBlock(BlockBehaviour.Properties.copy(Blocks.OAK_WALL_SIGN), HexcraftWoodTypes.ECHO_WOOD));
+
+	public static final RegistryObject<Block> PHOENIX_WALL_SIGN = BLOCKS.register("phoenix_wall_sign",
+			() -> new HexcraftWallSignBlock(BlockBehaviour.Properties.copy(Blocks.OAK_WALL_SIGN), HexcraftWoodTypes.PHOENIX));
 
 	public static final RegistryObject<Block> EBONY_HANGING_SIGN = BLOCKS.register("ebony_hanging_sign",
 			() -> new HexcraftlHangingSignBlock(BlockBehaviour.Properties.copy(Blocks.OAK_HANGING_SIGN), HexcraftWoodTypes.EBONY));
@@ -1475,6 +1639,9 @@ public class HexcraftBlocks {
 	public static final RegistryObject<Block> ECHO_WOOD_HANGING_SIGN = BLOCKS.register("echo_hanging_sign",
 			() -> new HexcraftlHangingSignBlock(BlockBehaviour.Properties.copy(Blocks.OAK_HANGING_SIGN), HexcraftWoodTypes.ECHO_WOOD));
 
+	public static final RegistryObject<Block> PHOENIX_HANGING_SIGN = BLOCKS.register("phoenix_hanging_sign",
+			() -> new HexcraftlHangingSignBlock(BlockBehaviour.Properties.copy(Blocks.OAK_HANGING_SIGN), HexcraftWoodTypes.PHOENIX));
+
 	public static final RegistryObject<Block> EBONY_WALL_HANGING_SIGN = BLOCKS.register("ebony_wall_hanging_sign",
 			() -> new HexcraftWallHangingSignBlock(BlockBehaviour.Properties.copy(Blocks.OAK_WALL_HANGING_SIGN), HexcraftWoodTypes.EBONY));
 
@@ -1521,7 +1688,10 @@ public class HexcraftBlocks {
 			() -> new HexcraftWallHangingSignBlock(BlockBehaviour.Properties.copy(Blocks.OAK_WALL_HANGING_SIGN), HexcraftWoodTypes.WITCH_WOOD));
 
 	public static final RegistryObject<Block> ECHO_WOOD_WALL_HANGING_SIGN = BLOCKS.register("echo_wall_hanging_sign",
-			() -> new HexcraftWallHangingSignBlock(BlockBehaviour.Properties.copy(Blocks.OAK_WALL_HANGING_SIGN), HexcraftWoodTypes.ECHO_WOOD));
+			() -> new HexcraftWallHangingSignBlock(BlockBehaviour.Properties.copy(Blocks.OAK_WALL_HANGING_SIGN), HexcraftWoodTypes.PHOENIX));
+
+	public static final RegistryObject<Block> PHOENIX_WALL_HANGING_SIGN = BLOCKS.register("phoenix_wall_hanging_sign",
+			() -> new HexcraftWallHangingSignBlock(BlockBehaviour.Properties.copy(Blocks.OAK_WALL_HANGING_SIGN), HexcraftWoodTypes.PHOENIX));
 
 	//Bookshelves
 	public static final RegistryObject<Block> EBONY_BOOKSHELF = registerBlock("ebony_bookshelf",
@@ -1588,6 +1758,10 @@ public class HexcraftBlocks {
 			() -> new HexcraftBookshelf(BlockBehaviour.Properties.copy(Blocks.OAK_WOOD)
 					.strength(1.5F)));
 
+	public static final RegistryObject<Block> PHOENIX_BOOKSHELF = registerBlock("phoenix_bookshelf",
+			() -> new HexcraftBookshelf(BlockBehaviour.Properties.copy(Blocks.OAK_WOOD)
+					.strength(1.5F)));
+
 	//Crates
 	//public static final RegistryObject<Block> CRATE_EBONY = BLOCKS.register("crate_ebony", () -> new CrateEbonyBlock());
 	//public static final RegistryObject<Block> CRATE_BLOOD_OAK = BLOCKS.register("crate_blood_oak", () -> new CrateBloodOakBlock());
@@ -1616,40 +1790,6 @@ public class HexcraftBlocks {
 	//public static final RegistryObject<Block> CRATE_MANGROVE = BLOCKS.register("crate_mangrove", () -> new CrateMangroveBlock());
 
 
-	//Chests
-	//public static final RegistryObject<HexcraftChestBlock> CHEST_ALDER = BLOCKS.register("chest_alder",
-			//() -> new HexcraftChestBlock(BlockBehaviour.Properties.copy(ALDER_PLANKS.get()).strength(2.5f)));
-	//public static final RegistryObject<HexcraftChestBlock> CHEST_BLOOD_OAK = BLOCKS.register("chest_blood_oak",
-			//() -> new HexcraftChestBlock(BlockBehaviour.Properties.copy(BLOOD_OAK_PLANKS.get()).strength(2.5f)));
-	//public static final RegistryObject<HexcraftChestBlock> CHEST_CEDAR = BLOCKS.register("chest_cedar",
-			//() -> new HexcraftChestBlock(BlockBehaviour.Properties.copy(CEDAR_PLANKS.get()).strength(2.5f)));
-	//public static final RegistryObject<HexcraftChestBlock> CHEST_DISTORTED = BLOCKS.register("chest_distorted",
-			//() -> new HexcraftChestBlock(BlockBehaviour.Properties.copy(DISTORTED_PLANKS.get()).strength(2.5f)));
-	//public static final RegistryObject<HexcraftChestBlock> CHEST_EBONY = BLOCKS.register("chest_ebony",
-			//() -> new HexcraftChestBlock(BlockBehaviour.Properties.copy(EBONY_PLANKS.get()).strength(2.5f)));
-	//public static final RegistryObject<HexcraftChestBlock> CHEST_ECHO_WOOD = BLOCKS.register("chest_echo_wood",
-			//() -> new HexcraftChestBlock(BlockBehaviour.Properties.copy(ECHO_WOOD_PLANKS.get()).strength(2.5f)));
-	//public static final RegistryObject<HexcraftChestBlock> CHEST_ELDER = BLOCKS.register("chest_elder",
-			//() -> new HexcraftChestBlock(BlockBehaviour.Properties.copy(ELDER_PLANKS.get()).strength(2.5f)));
-	//public static final RegistryObject<HexcraftChestBlock> CHEST_HAWTHORN = BLOCKS.register("chest_hawthorn",
-			//() -> new HexcraftChestBlock(BlockBehaviour.Properties.copy(HAWTHORN_PLANKS.get()).strength(2.5f)));
-	//public static final RegistryObject<HexcraftChestBlock> CHEST_HELL_BARK = BLOCKS.register("chest_hell_bark",
-			//() -> new HexcraftChestBlock(BlockBehaviour.Properties.copy(HELL_BARK_PLANKS.get()).strength(2.5f)));
-	//public static final RegistryObject<HexcraftChestBlock> CHEST_JUNIPER = BLOCKS.register("chest_juniper",
-			//() -> new HexcraftChestBlock(BlockBehaviour.Properties.copy(JUNIPER_PLANKS.get()).strength(2.5f)));
-	//public static final RegistryObject<HexcraftChestBlock> CHEST_ROWAN = BLOCKS.register("chest_rowan",
-			//() -> new HexcraftChestBlock(BlockBehaviour.Properties.copy(ROWAN_PLANKS.get()).strength(2.5f)));
-	//public static final RegistryObject<HexcraftChestBlock> CHEST_TWISTED = BLOCKS.register("chest_twisted",
-			//() -> new HexcraftChestBlock(BlockBehaviour.Properties.copy(TWISTED_PLANKS.get()).strength(2.5f)));
-	//public static final RegistryObject<HexcraftChestBlock> CHEST_WHITE_OAK = BLOCKS.register("chest_white_oak",
-			//() -> new HexcraftChestBlock(BlockBehaviour.Properties.copy(WHITE_OAK_PLANKS.get()).strength(2.5f)));
-	//public static final RegistryObject<HexcraftChestBlock> CHEST_WILLOW = BLOCKS.register("chest_willow",
-			//() -> new HexcraftChestBlock(BlockBehaviour.Properties.copy(WILLOW_PLANKS.get()).strength(2.5f)));
-	//public static final RegistryObject<HexcraftChestBlock> CHEST_WITCH_HAZEL = BLOCKS.register("chest_witch_hazel",
-			//() -> new HexcraftChestBlock(BlockBehaviour.Properties.copy(WITCH_HAZEL_PLANKS.get()).strength(2.5f)));
-	//public static final RegistryObject<HexcraftChestBlock> CHEST_WITCH_WOOD = BLOCKS.register("chest_witch_wood",
-			//() -> new HexcraftChestBlock(BlockBehaviour.Properties.copy(WITCH_WOOD_PLANKS.get()).strength(2.5f)));
-
 	//Walls
 	public static final RegistryObject<Block> PEARL_STONE_WALL = registerBlock("pearl_stone_wall",
 			() -> new WallBlock(BlockBehaviour.Properties.copy(Blocks.COBBLESTONE_WALL).forceSolidOn().requiresCorrectToolForDrops()));
@@ -1667,6 +1807,9 @@ public class HexcraftBlocks {
 			() -> new WallBlock(BlockBehaviour.Properties.copy(Blocks.SANDSTONE_WALL).forceSolidOn().requiresCorrectToolForDrops()));
 
 	public static final RegistryObject<Block> FAIRY_SAND_STONE_WALL = registerBlock("fairy_sand_stone_wall",
+			() -> new WallBlock(BlockBehaviour.Properties.copy(Blocks.SANDSTONE_WALL).forceSolidOn().requiresCorrectToolForDrops()));
+
+	public static final RegistryObject<Block> PIXIE_SAND_STONE_WALL = registerBlock("pixie_sand_stone_wall",
 			() -> new WallBlock(BlockBehaviour.Properties.copy(Blocks.SANDSTONE_WALL).forceSolidOn().requiresCorrectToolForDrops()));
 
 
@@ -1751,6 +1894,14 @@ public class HexcraftBlocks {
 			() -> new StairBlock(() -> HexcraftBlocks.SMOOTH_FAIRY_SAND_STONE.get().defaultBlockState(),
 					BlockBehaviour.Properties.copy(Blocks.SMOOTH_SANDSTONE_STAIRS).strength(1.5F, 6.0F)));
 
+	public static final RegistryObject<Block> PIXIE_SAND_STONE_STAIRS = registerBlock("pixie_sand_stone_stairs",
+			() -> new StairBlock(() -> HexcraftBlocks.PIXIE_SAND_STONE.get().defaultBlockState(),
+					BlockBehaviour.Properties.copy(Blocks.SANDSTONE_STAIRS).strength(1.5F, 6.0F)));
+
+	public static final RegistryObject<Block> SMOOTH_PIXIE_SAND_STONE_STAIRS = registerBlock("smooth_pixie_sand_stone_stairs",
+			() -> new StairBlock(() -> HexcraftBlocks.SMOOTH_PIXIE_SAND_STONE.get().defaultBlockState(),
+					BlockBehaviour.Properties.copy(Blocks.SMOOTH_SANDSTONE_STAIRS).strength(1.5F, 6.0F)));
+
 	public static final RegistryObject<Block> EBONY_STAIRS = registerBlock("ebony_stairs",
 			() -> new StairBlock(() -> HexcraftBlocks.EBONY_PLANKS.get().defaultBlockState(),BlockBehaviour.Properties.copy(Blocks.OAK_STAIRS)
 			));
@@ -1812,7 +1963,11 @@ public class HexcraftBlocks {
 			));
 
 	public static final RegistryObject<Block> ECHO_WOOD_STAIRS = registerBlock("echo_wood_stairs",
-			() -> new StairBlock(() -> HexcraftBlocks.TWISTED_PLANKS.get().defaultBlockState(),BlockBehaviour.Properties.copy(Blocks.OAK_STAIRS)
+			() -> new StairBlock(() -> HexcraftBlocks.ECHO_WOOD_PLANKS.get().defaultBlockState(),BlockBehaviour.Properties.copy(Blocks.OAK_STAIRS)
+			));
+
+	public static final RegistryObject<Block> PHOENIX_STAIRS = registerBlock("phoenix_stairs",
+			() -> new StairBlock(() -> HexcraftBlocks.PHOENIX_PLANKS.get().defaultBlockState(),BlockBehaviour.Properties.copy(Blocks.OAK_STAIRS)
 			));
 
 	//Pressure Plates
@@ -1908,6 +2063,11 @@ public class HexcraftBlocks {
 			));
 
 	public static final RegistryObject<Block> ECHO_WOOD_PRESSURE_PLATE = registerBlock("echo_wood_pressure_plate",
+			() -> new PressurePlateBlock(PressurePlateBlock.Sensitivity.EVERYTHING,BlockBehaviour.Properties.copy(Blocks.OAK_PRESSURE_PLATE)
+					.mapColor(MapColor.WOOD).forceSolidOn().instrument(NoteBlockInstrument.BASS).noCollission().strength(0.5F).ignitedByLava().pushReaction(PushReaction.DESTROY), BlockSetType.OAK
+			));
+
+	public static final RegistryObject<Block> PHOENIX_PRESSURE_PLATE = registerBlock("phoenix_pressure_plate",
 			() -> new PressurePlateBlock(PressurePlateBlock.Sensitivity.EVERYTHING,BlockBehaviour.Properties.copy(Blocks.OAK_PRESSURE_PLATE)
 					.mapColor(MapColor.WOOD).forceSolidOn().instrument(NoteBlockInstrument.BASS).noCollission().strength(0.5F).ignitedByLava().pushReaction(PushReaction.DESTROY), BlockSetType.OAK
 			));
@@ -2013,6 +2173,11 @@ public class HexcraftBlocks {
 					.pushReaction(PushReaction.DESTROY), BlockSetType.OAK, 10, true
 			));
 
+	public static final RegistryObject<Block> PHOENIX_BUTTON = registerBlock("phoenix_button",
+			() -> new ButtonBlock(BlockBehaviour.Properties.copy(Blocks.OAK_BUTTON).noCollission().strength(0.5F)
+					.pushReaction(PushReaction.DESTROY), BlockSetType.OAK, 10, true
+			));
+
 	//Fence
 	public static final RegistryObject<Block> EBONY_FENCE = registerBlock("ebony_fence",
 			() -> new FenceBlock(BlockBehaviour.Properties.copy(Blocks.OAK_FENCE)
@@ -2075,6 +2240,10 @@ public class HexcraftBlocks {
 			));
 
 	public static final RegistryObject<Block> ECHO_WOOD_FENCE = registerBlock("echo_wood_fence",
+			() -> new FenceBlock(BlockBehaviour.Properties.copy(Blocks.OAK_FENCE)
+			));
+
+	public static final RegistryObject<Block> PHOENIX_FENCE = registerBlock("phoenix_fence",
 			() -> new FenceBlock(BlockBehaviour.Properties.copy(Blocks.OAK_FENCE)
 			));
 
@@ -2144,6 +2313,10 @@ public class HexcraftBlocks {
 			() -> new FenceGateBlock(BlockBehaviour.Properties.copy(Blocks.OAK_FENCE_GATE), SoundEvents.FENCE_GATE_OPEN, SoundEvents.FENCE_GATE_CLOSE
 			));
 
+	public static final RegistryObject<Block> PHOENIX_FENCE_GATE = registerBlock("phoenix_fence_gate",
+			() -> new FenceGateBlock(BlockBehaviour.Properties.copy(Blocks.OAK_FENCE_GATE), SoundEvents.FENCE_GATE_OPEN, SoundEvents.FENCE_GATE_CLOSE
+			));
+
 
 	//Doors
 	public static final RegistryObject<Block> EBONY_DOOR = registerBlock("ebony_door",
@@ -2207,6 +2380,10 @@ public class HexcraftBlocks {
 			));
 
 	public static final RegistryObject<Block> ECHO_WOOD_DOOR = registerBlock("echo_wood_door",
+			() -> new DoorBlock(BlockBehaviour.Properties.copy(Blocks.OAK_DOOR), BlockSetType.OAK
+			));
+
+	public static final RegistryObject<Block> PHOENIX_DOOR = registerBlock("phoenix_door",
 			() -> new DoorBlock(BlockBehaviour.Properties.copy(Blocks.OAK_DOOR), BlockSetType.OAK
 			));
 
@@ -2275,27 +2452,128 @@ public class HexcraftBlocks {
 			() -> new TrapDoorBlock(BlockBehaviour.Properties.copy(Blocks.OAK_TRAPDOOR), BlockSetType.OAK
 			));
 
+	public static final RegistryObject<Block> PHOENIX_TRAPDOOR = registerBlock("phoenix_trapdoor",
+			() -> new TrapDoorBlock(BlockBehaviour.Properties.copy(Blocks.OAK_TRAPDOOR), BlockSetType.OAK
+			));
+
 	public static final RegistryObject <Block> AMETHYST_CHIMES = registerBlock("amethyst_chimes",
 			() -> new AmethysChimesBlock(BlockBehaviour.Properties.copy(Blocks.AMETHYST_BLOCK)
 					.strength(1.7F).requiresCorrectToolForDrops()
 					.sound(SoundType.AMETHYST).noOcclusion()));
+
+	public static final RegistryObject<Block> PANDORAS_BOX = BLOCKS.register("pandoras_box",
+			() -> {
+				System.out.println("Registering PANDORAS_BOX");
+				return new PandorasBox(Block.Properties.copy(Blocks.CRIMSON_NYLIUM).strength(3.0F).sound(SoundType.WOOD));
+			});
+
+	public static final RegistryObject<Block> SACRIFICIAL_PILLAR = BLOCKS.register("sacrificial_pillar",
+			() -> new SacrificialPillarBlock(BlockBehaviour.Properties.copy(Blocks.STONE)
+					.strength(3.5F)
+					.requiresCorrectToolForDrops()
+					.noOcclusion()));
+
+	public static final RegistryObject<Block> WHITE_WITCH_CANDLE = BLOCKS.register("white_witch_candle",
+			() -> new WitchesCandleBlock(BlockBehaviour.Properties.copy(Blocks.CANDLE).lightLevel((state) -> 7)));
+
+	public static final RegistryObject<Block> ORANGE_WITCH_CANDLE = BLOCKS.register("orange_witch_candle",
+			() -> new WitchesCandleBlock(BlockBehaviour.Properties.copy(Blocks.CANDLE).lightLevel((state) -> 7)));
+
+	public static final RegistryObject<Block> MAGENTA_WITCH_CANDLE = BLOCKS.register("magenta_witch_candle",
+			() -> new WitchesCandleBlock(BlockBehaviour.Properties.copy(Blocks.CANDLE).lightLevel((state) -> 7)));
+
+	public static final RegistryObject<Block> LIGHT_BLUE_WITCH_CANDLE = BLOCKS.register("light_blue_witch_candle",
+			() -> new WitchesCandleBlock(BlockBehaviour.Properties.copy(Blocks.CANDLE).lightLevel((state) -> 7)));
+
+	public static final RegistryObject<Block> YELLOW_WITCH_CANDLE = BLOCKS.register("yellow_witch_candle",
+			() -> new WitchesCandleBlock(BlockBehaviour.Properties.copy(Blocks.CANDLE).lightLevel((state) -> 7)));
+
+	public static final RegistryObject<Block> LIME_WITCH_CANDLE = BLOCKS.register("lime_witch_candle",
+			() -> new WitchesCandleBlock(BlockBehaviour.Properties.copy(Blocks.CANDLE).lightLevel((state) -> 7)));
+
+	public static final RegistryObject<Block> PINK_WITCH_CANDLE = BLOCKS.register("pink_witch_candle",
+			() -> new WitchesCandleBlock(BlockBehaviour.Properties.copy(Blocks.CANDLE).lightLevel((state) -> 7)));
+
+	public static final RegistryObject<Block> GRAY_WITCH_CANDLE = BLOCKS.register("gray_witch_candle",
+			() -> new WitchesCandleBlock(BlockBehaviour.Properties.copy(Blocks.CANDLE).lightLevel((state) -> 7)));
+
+	public static final RegistryObject<Block> LIGHT_GRAY_WITCH_CANDLE = BLOCKS.register("light_gray_witch_candle",
+			() -> new WitchesCandleBlock(BlockBehaviour.Properties.copy(Blocks.CANDLE).lightLevel((state) -> 7)));
+
+	public static final RegistryObject<Block> CYAN_WITCH_CANDLE = BLOCKS.register("cyan_witch_candle",
+			() -> new WitchesCandleBlock(BlockBehaviour.Properties.copy(Blocks.CANDLE).lightLevel((state) -> 7)));
+
+	public static final RegistryObject<Block> PURPLE_WITCH_CANDLE = BLOCKS.register("purple_witch_candle",
+			() -> new WitchesCandleBlock(BlockBehaviour.Properties.copy(Blocks.CANDLE).lightLevel((state) -> 7)));
+
+	public static final RegistryObject<Block> BLUE_WITCH_CANDLE = BLOCKS.register("blue_witch_candle",
+			() -> new WitchesCandleBlock(BlockBehaviour.Properties.copy(Blocks.CANDLE).lightLevel((state) -> 7)));
+
+	public static final RegistryObject<Block> BROWN_WITCH_CANDLE = BLOCKS.register("brown_witch_candle",
+			() -> new WitchesCandleBlock(BlockBehaviour.Properties.copy(Blocks.CANDLE).lightLevel((state) -> 7)));
+
+	public static final RegistryObject<Block> GREEN_WITCH_CANDLE = BLOCKS.register("green_witch_candle",
+			() -> new WitchesCandleBlock(BlockBehaviour.Properties.copy(Blocks.CANDLE).lightLevel((state) -> 7)));
+
+	public static final RegistryObject<Block> RED_WITCH_CANDLE = BLOCKS.register("red_witch_candle",
+			() -> new WitchesCandleBlock(BlockBehaviour.Properties.copy(Blocks.CANDLE).lightLevel((state) -> 7)));
+
+	public static final RegistryObject<Block> BLACK_WITCH_CANDLE = BLOCKS.register("black_witch_candle",
+			() -> new WitchesCandleBlock(BlockBehaviour.Properties.copy(Blocks.CANDLE).lightLevel((state) -> 7)));
 
 	public static final RegistryObject <Block> PURE_MAGIC_CRYSTAL = registerBlock("pure_magic_crystal",
 			() -> new PureMagicCrystalBlock(BlockBehaviour.Properties.copy(Blocks.AMETHYST_BLOCK)
 					.strength(1.7F).requiresCorrectToolForDrops()
 					.sound(SoundType.AMETHYST).noOcclusion()));
 
+	public static final RegistryObject<Block> FAIRY_WARD = BLOCKS.register("fairy_ward",
+			() -> new FairyWardBlock(BlockBehaviour.Properties.copy(Blocks.STONE)
+					.strength(3.0F).requiresCorrectToolForDrops()
+					.sound(SoundType.AMETHYST)
+					.lightLevel(state -> 7)));
+
+	public static final RegistryObject<Block> PIXIE_WARD = BLOCKS.register("pixie_ward",
+			() -> new PixieWardBlock(BlockBehaviour.Properties.copy(Blocks.STONE)
+					.strength(4.0F)
+					.sound(SoundType.AMETHYST)
+					.lightLevel(state -> 7)));
+
 	public static final RegistryObject <Block> WITCHES_OVEN = registerBlock("witches_oven",
 			() -> new WitchesOven(BlockBehaviour.Properties.copy(Blocks.FURNACE).instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops()
 					.strength(3.5F).lightLevel(litBlockEmission(13)).noOcclusion().sound(SoundType.ANVIL)));
+
+	public static final RegistryObject<Block> FUME_FUNNEL = BLOCKS.register("fume_funnel",
+			() -> new Block(BlockBehaviour.Properties.copy(Blocks.ANVIL)
+					.strength(3.0F, 6.0F)
+					.sound(SoundType.METAL)));
 
 	public static final RegistryObject <Block> WITCHES_CAULDRON = registerBlock("witches_cauldron",
 			() -> new WitchesCauldron(BlockBehaviour.Properties.copy(Blocks.CAULDRON).requiresCorrectToolForDrops()
 					.strength(3.5F).noOcclusion()));
 
-	public static final RegistryObject <Block> POPPET_TABLE = registerBlock("poppet_table",
-			() -> new PoppetTableBlock(BlockBehaviour.Properties.copy(Blocks.LAPIS_BLOCK)
-					.strength(2.5F, 2.0F).sound(SoundType.WOOD)));
+	public static final RegistryObject<Block> CHALICE = BLOCKS.register("chalice",
+			() -> new Block(BlockBehaviour.Properties.copy(Blocks.ANVIL).strength(2.0F)));
+
+	public static final RegistryObject<Block> CANDELABRA = BLOCKS.register("candelabra",
+			() -> new Block(BlockBehaviour.Properties.copy(Blocks.ANVIL).strength(2.5F)));
+
+	public static final RegistryObject<Block> SKULL = BLOCKS.register("skull",
+			() -> new Block(BlockBehaviour.Properties.copy(Blocks.STONE).strength(3.0F)));
+
+	public static final RegistryObject<Block> ALTAR_BASE = BLOCKS.register("altar_base", () -> new AltarBaseBlock());
+
+	public static final RegistryObject<Block> ALTAR_TOP = BLOCKS.register("altar_top", () -> new AltarTopBlock());
+
+	//public static final RegistryObject <Block> FAIRY_HOUSE = BLOCKS.register("fairy_house",
+			//() -> new Block(BlockBehaviour.Properties.copy(Blocks.OAK_PLANKS).noOcclusion().dynamicShape()
+					//.strength(2.0F).sound(SoundType.WOOD)));
+
+	//public static final RegistryObject <Block> PIXIE_HOUSE = BLOCKS.register("pixie_house",
+			//() -> new Block(BlockBehaviour.Properties.copy(Blocks.OAK_PLANKS).noOcclusion().dynamicShape()
+					//.strength(2.0F).sound(SoundType.WOOD)));
+
+	//public static final RegistryObject<Block> POPPET_TABLE = BLOCKS.register("poppet_table",
+			//() -> new PoppetTableBlock(BlockBehaviour.Properties.copy(Blocks.CRAFTING_TABLE)));
 
 	//Slabs
 	public static final RegistryObject<Block> PEARL_STONE_SLAB = registerBlock("pearl_stone_slab",
@@ -2364,6 +2642,15 @@ public class HexcraftBlocks {
 	public static final RegistryObject<Block> SMOOTH_FAIRY_SAND_STONE_SLAB = registerBlock("smooth_fairy_sand_stone_slab",
 			() -> new SlabBlock(BlockBehaviour.Properties.copy(Blocks.SMOOTH_SANDSTONE_SLAB).sound(SoundType.STONE).strength(1.5F, 6.0F)));
 
+	public static final RegistryObject<Block> PIXIE_SAND_STONE_SLAB = registerBlock("pixie_sand_stone_slab",
+			() -> new SlabBlock(BlockBehaviour.Properties.copy(Blocks.SANDSTONE_SLAB).sound(SoundType.STONE).strength(1.5F, 6.0F)));
+
+	public static final RegistryObject<Block> CUT_PIXIE_SAND_STONE_SLAB = registerBlock("cut_pixie_sand_stone_slab",
+			() -> new SlabBlock(BlockBehaviour.Properties.copy(Blocks.CUT_SANDSTONE_SLAB).sound(SoundType.STONE).strength(1.5F, 6.0F)));
+
+	public static final RegistryObject<Block> SMOOTH_PIXIE_SAND_STONE_SLAB = registerBlock("smooth_pixie_sand_stone_slab",
+			() -> new SlabBlock(BlockBehaviour.Properties.copy(Blocks.SMOOTH_SANDSTONE_SLAB).sound(SoundType.STONE).strength(1.5F, 6.0F)));
+
 	public static final RegistryObject<Block> EBONY_SLAB = registerBlock("ebony_slab",
 			() -> new SlabBlock(BlockBehaviour.Properties.copy(Blocks.OAK_SLAB).strength(2.0F, 3.0F)
 			));
@@ -2425,6 +2712,10 @@ public class HexcraftBlocks {
 			));
 
 	public static final RegistryObject<Block> ECHO_WOOD_SLAB = registerBlock("echo_wood_slab",
+			() -> new SlabBlock(BlockBehaviour.Properties.copy(Blocks.OAK_SLAB).strength(2.0F, 3.0F)
+			));
+
+	public static final RegistryObject<Block> PHOENIX_SLAB = registerBlock("phoenix_slab",
 			() -> new SlabBlock(BlockBehaviour.Properties.copy(Blocks.OAK_SLAB).strength(2.0F, 3.0F)
 			));
 
@@ -2494,6 +2785,22 @@ public class HexcraftBlocks {
 			() -> new DropExperienceBlock(BlockBehaviour.Properties.copy(Blocks.STONE).requiresCorrectToolForDrops()
 					.strength(3.0F, 3.0F).sound(SoundType.STONE), UniformInt.of(3, 7)));
 
+	public static final RegistryObject <Block> SOULSTONE_ORE = registerBlock("soulstone_ore",
+			() -> new DropExperienceBlock(BlockBehaviour.Properties.copy(Blocks.STONE).requiresCorrectToolForDrops()
+					.strength(3.0F, 3.0F).sound(SoundType.STONE), UniformInt.of(3, 7)));
+
+	public static final RegistryObject <Block> ABYSSIUM_ORE = registerBlock("abyssium_ore",
+			() -> new DropExperienceBlock(BlockBehaviour.Properties.copy(Blocks.STONE).requiresCorrectToolForDrops()
+					.strength(3.0F, 3.0F).sound(SoundType.STONE), UniformInt.of(3, 7)));
+
+	public static final RegistryObject <Block> ECLIPSIUM_ORE = registerBlock("eclipsium_ore",
+			() -> new DropExperienceBlock(BlockBehaviour.Properties.copy(Blocks.STONE).requiresCorrectToolForDrops()
+					.strength(3.0F, 3.0F).sound(SoundType.STONE), UniformInt.of(3, 7)));
+
+	public static final RegistryObject <Block> ABYSSAL_COAL_ORE = registerBlock("abyssal_coal_ore",
+			() -> new DropExperienceBlock(BlockBehaviour.Properties.copy(Blocks.STONE).requiresCorrectToolForDrops()
+					.strength(3.0F, 3.0F).sound(SoundType.STONE), UniformInt.of(3, 7)));
+
 	//Geodes
 	public static final RegistryObject <Block> MAGIC_CRYSTAL_BLOCK = registerBlock("magic_crystal_block",
 			() -> new AmethystBlock(BlockBehaviour.Properties.copy(Blocks.AMETHYST_BLOCK).strength(1.5F).requiresCorrectToolForDrops()
@@ -2523,6 +2830,15 @@ public class HexcraftBlocks {
 					.randomTicks().strength(1.5F).requiresCorrectToolForDrops()
 					.sound(SoundType.AMETHYST).lightLevel((state) -> 1).noLootTable()));
 
+	public static final RegistryObject<Block> HELLFIRE = BLOCKS.register("hell_fire",
+			() -> new HellfireBlock(BlockBehaviour.Properties.copy(Blocks.FIRE).noLootTable()));
+
+	public static final RegistryObject<Block> UNDERWORLD_PORTAL = BLOCKS.register("underworld_portal",
+			() -> new UnderworldPortalBlock(BlockBehaviour.Properties.copy(Blocks.NETHER_PORTAL)
+					.noCollission()
+					.strength(-1.0F)
+					.lightLevel(state -> 11).noLootTable()));
+
 
 	//Ore Blocks
 	public static final RegistryObject <Block> MOONSTONE_BLOCK = registerBlock("moonstone_block",
@@ -2536,6 +2852,21 @@ public class HexcraftBlocks {
 	public static final RegistryObject <Block> VAMPIRIC_BLOCK = registerBlock("vampiric_block",
 			() -> new Block(BlockBehaviour.Properties.copy(Blocks.LAPIS_BLOCK).requiresCorrectToolForDrops()
 					.strength(5.0F, 6.0F).sound(SoundType.METAL)));
+
+	public static final RegistryObject <Block> SOULSTONE_BLOCK = registerBlock("soulstone_block",
+			() -> new Block(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK).requiresCorrectToolForDrops()
+					.strength(5.0F, 6.0F).sound(SoundType.METAL)));
+
+	public static final RegistryObject <Block> ABYSSIUM_BLOCK = registerBlock("abyssium_block",
+			() -> new Block(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK).requiresCorrectToolForDrops()
+					.strength(5.0F, 6.0F).sound(SoundType.METAL)));
+
+	public static final RegistryObject <Block> ECLIPSIUM_BLOCK = registerBlock("eclipsium_block",
+			() -> new Block(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK).requiresCorrectToolForDrops()
+					.strength(3.0F, 3.0F).sound(SoundType.METAL)));
+
+	public static final RegistryObject <Block> ABYSSAL_COAL_BLOCK = registerBlock("abyssal_coal_block",
+			() -> new Block(BlockBehaviour.Properties.copy(Blocks.STONE).requiresCorrectToolForDrops().strength(5.0F, 6.0F)));
 
 	//Crops
 	public static final RegistryObject<Block> MANDRAKE_FLOWER = registerBlockWithoutBlockItem("mandrake_flower",
@@ -2583,42 +2914,245 @@ public class HexcraftBlocks {
 	public static final RegistryObject<Block> WATER_ARTICHOKE_PLANT = registerBlockWithoutBlockItem("water_artichoke_plant",
 			() -> new WaterArtichokePlantBlock(BlockBehaviour.Properties.copy(Blocks.WHEAT).sound(SoundType.WET_GRASS).noOcclusion().randomTicks()));
 
+
+
 	public static final RegistryObject<LiquidBlock> BLOOD_BLOCK = BLOCKS.register("blood_block",
-			() -> new LiquidBlock(HexcraftFluids.SOURCE_BLOOD, BlockBehaviour.Properties.copy(Blocks.WATER).noLootTable()));
+			() -> new LiquidBlock(HexcraftFluids.SOURCE_BLOOD, BlockBehaviour.Properties.copy(Blocks.WATER).noLootTable().noCollission().noLootTable()));
+
+	//Coral
+	public static final RegistryObject<Block> DEAD_TWILIGHT_CORAL = registerBlock("dead_twilightcoral",
+			() -> new BaseCoralPlantBlock(Block.Properties.copy(Blocks.DEAD_BRAIN_CORAL).noCollission().instabreak()));
+
+	public static final RegistryObject<Block> TWILIGHT_CORAL = registerBlock("twilightcoral",
+			() -> new CoralPlantBlock(HexcraftBlocks.DEAD_TWILIGHT_CORAL.get(),
+					(Block.Properties.copy(Blocks.BRAIN_CORAL).noCollission().instabreak())));
+
+	public static final RegistryObject<Block> DEAD_TWILIGHT_CORAL_BLOCK = registerBlock("dead_twilightcoral_block",
+			() -> new Block(Block.Properties.copy(Blocks.DEAD_BRAIN_CORAL_BLOCK)));
+
+	public static final RegistryObject<Block> TWILIGHT_CORAL_BLOCK = registerBlock("twilightcoral_block",
+			() -> new CoralBlock(HexcraftBlocks.DEAD_TWILIGHT_CORAL_BLOCK.get(),
+					(Block.Properties.copy(Blocks.BRAIN_CORAL_BLOCK))));
+
+	public static final RegistryObject<Block> DEAD_TWILIGHT_CORAL_FAN = registerBlock("dead_twilightcoral_fan",
+			() -> new BaseCoralPlantBlock(Block.Properties.copy(Blocks.DEAD_BRAIN_CORAL_BLOCK).noCollission().instabreak()));
+
+	public static final RegistryObject<Block> TWILIGHT_CORAL_FAN = registerBlock("twilightcoral_fan",
+			() -> new CoralFanBlock(HexcraftBlocks.DEAD_TWILIGHT_CORAL_FAN.get(),
+					Block.Properties.copy(Blocks.BRAIN_CORAL_FAN).noCollission().instabreak()));
+
+	public static final RegistryObject<Block> DEAD_TWILIGHT_CORAL_WALL_FAN = registerBlock("dead_twilightcoral_wall_fan",
+			() -> new BaseCoralWallFanBlock(
+					Block.Properties.copy(Blocks.DEAD_BRAIN_CORAL_WALL_FAN).noCollission().instabreak()));
+
+	public static final RegistryObject<Block> TWILIGHT_CORAL_WALL_FAN = registerBlock("twilightcoral_wall_fan",
+			() -> new CoralWallFanBlock(HexcraftBlocks.DEAD_TWILIGHT_CORAL_WALL_FAN.get(),
+					Block.Properties.copy(Blocks.BRAIN_CORAL_WALL_FAN).noCollission().instabreak()));
+
+	public static final RegistryObject<Block> DEAD_SANGUINE_CORAL = registerBlock("dead_sanguine_coral",
+			() -> new BaseCoralPlantBlock(Block.Properties.copy(Blocks.DEAD_BRAIN_CORAL).noCollission().instabreak()));
+
+	public static final RegistryObject<Block> SANGUINE_CORAL = registerBlock("sanguine_coral",
+			() -> new CoralPlantBlock(HexcraftBlocks.DEAD_SANGUINE_CORAL.get(),
+					(Block.Properties.copy(Blocks.BRAIN_CORAL).noCollission().instabreak())));
+
+	public static final RegistryObject<Block> DEAD_SANGUINE_CORAL_BLOCK = registerBlock("dead_sanguine_coral_block",
+			() -> new Block(Block.Properties.copy(Blocks.DEAD_BRAIN_CORAL_BLOCK)));
+
+	public static final RegistryObject<Block> SANGUINE_CORAL_BLOCK = registerBlock("sanguine_coral_block",
+			() -> new CoralBlock(HexcraftBlocks.DEAD_SANGUINE_CORAL_BLOCK.get(),
+					(Block.Properties.copy(Blocks.BRAIN_CORAL_BLOCK))));
+
+	public static final RegistryObject<Block> DEAD_SANGUINE_CORAL_FAN = registerBlock("dead_sanguine_coral_fan",
+			() -> new BaseCoralPlantBlock(Block.Properties.copy(Blocks.DEAD_BRAIN_CORAL_BLOCK).noCollission().instabreak()));
+
+	public static final RegistryObject<Block> SANGUINE_CORAL_FAN = registerBlock("sanguine_coral_fan",
+			() -> new CoralFanBlock(HexcraftBlocks.DEAD_SANGUINE_CORAL_FAN.get(),
+					Block.Properties.copy(Blocks.BRAIN_CORAL_FAN).noCollission().instabreak()));
+
+	public static final RegistryObject<Block> DEAD_SANGUINE_CORAL_WALL_FAN = registerBlock("dead_sanguine_coral_wall_fan",
+			() -> new BaseCoralWallFanBlock(
+					Block.Properties.copy(Blocks.DEAD_BRAIN_CORAL_WALL_FAN).noCollission().instabreak()));
+
+	public static final RegistryObject<Block> SANGUINE_CORAL_WALL_FAN = registerBlock("sanguine_coral_wall_fan",
+			() -> new CoralWallFanBlock(HexcraftBlocks.DEAD_SANGUINE_CORAL_WALL_FAN.get(),
+					Block.Properties.copy(Blocks.BRAIN_CORAL_WALL_FAN).noCollission().instabreak()));
+
+	public static final RegistryObject<Block> DEAD_WHISPER_CORAL = registerBlock("dead_whisper_coral",
+			() -> new BaseCoralPlantBlock(Block.Properties.copy(Blocks.DEAD_BRAIN_CORAL).noCollission().instabreak()));
+
+	public static final RegistryObject<Block> WHISPER_CORAL = registerBlock("whisper_coral",
+			() -> new CoralPlantBlock(HexcraftBlocks.DEAD_WHISPER_CORAL.get(),
+					(Block.Properties.copy(Blocks.BRAIN_CORAL).noCollission().instabreak())));
+
+	public static final RegistryObject<Block> DEAD_WHISPER_CORAL_BLOCK = registerBlock("dead_whisper_coral_block",
+			() -> new Block(Block.Properties.copy(Blocks.DEAD_BRAIN_CORAL_BLOCK)));
+
+	public static final RegistryObject<Block> WHISPER_CORAL_BLOCK = registerBlock("whisper_coral_block",
+			() -> new CoralBlock(HexcraftBlocks.DEAD_WHISPER_CORAL_BLOCK.get(),
+					(Block.Properties.copy(Blocks.BRAIN_CORAL_BLOCK))));
+
+	public static final RegistryObject<Block> DEAD_WHISPER_CORAL_FAN = registerBlock("dead_whisper_coral_fan",
+			() -> new BaseCoralPlantBlock(Block.Properties.copy(Blocks.DEAD_BRAIN_CORAL_BLOCK).noCollission().instabreak()));
+
+	public static final RegistryObject<Block> WHISPER_CORAL_FAN = registerBlock("whisper_coral_fan",
+			() -> new CoralFanBlock(HexcraftBlocks.DEAD_WHISPER_CORAL_FAN.get(),
+					Block.Properties.copy(Blocks.BRAIN_CORAL_FAN).noCollission().instabreak()));
+
+	public static final RegistryObject<Block> DEAD_WHISPER_CORAL_WALL_FAN = registerBlock("dead_whisper_coral_wall_fan",
+			() -> new BaseCoralWallFanBlock(
+					Block.Properties.copy(Blocks.DEAD_BRAIN_CORAL_WALL_FAN).noCollission().instabreak()));
+
+	public static final RegistryObject<Block> WHISPER_CORAL_WALL_FAN = registerBlock("whisper_coral_wall_fan",
+			() -> new CoralWallFanBlock(HexcraftBlocks.DEAD_WHISPER_CORAL_WALL_FAN.get(),
+					Block.Properties.copy(Blocks.BRAIN_CORAL_WALL_FAN).noCollission().instabreak()));
+
+	public static final RegistryObject<Block> DEAD_EBONFANG_CORAL = registerBlock("dead_ebonfang_coral",
+			() -> new BaseCoralPlantBlock(Block.Properties.copy(Blocks.DEAD_BRAIN_CORAL).noCollission().instabreak()));
+
+	public static final RegistryObject<Block> EBONFANG_CORAL = registerBlock("ebonfang_coral",
+			() -> new CoralPlantBlock(HexcraftBlocks.DEAD_EBONFANG_CORAL.get(),
+					(Block.Properties.copy(Blocks.BRAIN_CORAL).noCollission().instabreak())));
+
+	public static final RegistryObject<Block> DEAD_EBONFANG_CORAL_BLOCK = registerBlock("dead_ebonfang_coral_block",
+			() -> new Block(Block.Properties.copy(Blocks.DEAD_BRAIN_CORAL_BLOCK)));
+
+	public static final RegistryObject<Block> EBONFANG_CORAL_BLOCK = registerBlock("ebonfang_coral_block",
+			() -> new CoralBlock(HexcraftBlocks.DEAD_EBONFANG_CORAL_BLOCK.get(),
+					(Block.Properties.copy(Blocks.BRAIN_CORAL_BLOCK))));
+
+	public static final RegistryObject<Block> DEAD_EBONFANG_CORAL_FAN = registerBlock("dead_ebonfang_coral_fan",
+			() -> new BaseCoralPlantBlock(Block.Properties.copy(Blocks.DEAD_BRAIN_CORAL_BLOCK).noCollission().instabreak()));
+
+	public static final RegistryObject<Block> EBONFANG_CORAL_FAN = registerBlock("ebonfang_coral_fan",
+			() -> new CoralFanBlock(HexcraftBlocks.DEAD_EBONFANG_CORAL_FAN.get(),
+					Block.Properties.copy(Blocks.BRAIN_CORAL_FAN).noCollission().instabreak()));
+
+	public static final RegistryObject<Block> DEAD_EBONFANG_CORAL_WALL_FAN = registerBlock("dead_ebonfang_coral_wall_fan",
+			() -> new BaseCoralWallFanBlock(
+					Block.Properties.copy(Blocks.DEAD_BRAIN_CORAL_WALL_FAN).noCollission().instabreak()));
+
+	public static final RegistryObject<Block> EBONFANG_CORAL_WALL_FAN = registerBlock("ebonfang_coral_wall_fan",
+			() -> new CoralWallFanBlock(HexcraftBlocks.DEAD_EBONFANG_CORAL_WALL_FAN.get(),
+					Block.Properties.copy(Blocks.BRAIN_CORAL_WALL_FAN).noCollission().instabreak()));
+
+	public static final RegistryObject<Block> DEAD_SPECTRAL_BLOOM_CORAL = registerBlock("dead_spectral_bloom_coral",
+			() -> new BaseCoralPlantBlock(Block.Properties.copy(Blocks.DEAD_BRAIN_CORAL).noCollission().instabreak()));
+
+	public static final RegistryObject<Block> SPECTRAL_BLOOM_CORAL = registerBlock("spectral_bloom_coral",
+			() -> new CoralPlantBlock(HexcraftBlocks.DEAD_SPECTRAL_BLOOM_CORAL.get(),
+					(Block.Properties.copy(Blocks.BRAIN_CORAL).noCollission().instabreak())));
+
+	public static final RegistryObject<Block> DEAD_SPECTRAL_BLOOM_CORAL_BLOCK = registerBlock("dead_spectral_bloom_coral_block",
+			() -> new Block(Block.Properties.copy(Blocks.DEAD_BRAIN_CORAL_BLOCK)));
+
+	public static final RegistryObject<Block> SPECTRAL_BLOOM_CORAL_BLOCK = registerBlock("spectral_bloom_coral_block",
+			() -> new CoralBlock(HexcraftBlocks.DEAD_SPECTRAL_BLOOM_CORAL_BLOCK.get(),
+					(Block.Properties.copy(Blocks.BRAIN_CORAL_BLOCK))));
+
+	public static final RegistryObject<Block> DEAD_SPECTRAL_BLOOM_CORAL_FAN = registerBlock("dead_spectral_bloom_coral_fan",
+			() -> new BaseCoralPlantBlock(Block.Properties.copy(Blocks.DEAD_BRAIN_CORAL_BLOCK).noCollission().instabreak()));
+
+	public static final RegistryObject<Block> SPECTRAL_BLOOM_CORAL_FAN = registerBlock("spectral_bloom_coral_fan",
+			() -> new CoralFanBlock(HexcraftBlocks.DEAD_SPECTRAL_BLOOM_CORAL_FAN.get(),
+					Block.Properties.copy(Blocks.BRAIN_CORAL_FAN).noCollission().instabreak()));
+
+	public static final RegistryObject<Block> DEAD_SPECTRAL_BLOOM_CORAL_WALL_FAN = registerBlock("dead_spectral_bloom_coral_wall_fan",
+			() -> new BaseCoralWallFanBlock(
+					Block.Properties.copy(Blocks.DEAD_BRAIN_CORAL_WALL_FAN).noCollission().instabreak()));
+
+	public static final RegistryObject<Block> SPECTRAL_BLOOM_CORAL_WALL_FAN = registerBlock("spectral_bloom_coral_wall_fan",
+			() -> new CoralWallFanBlock(HexcraftBlocks.DEAD_SPECTRAL_BLOOM_CORAL_WALL_FAN.get(),
+					Block.Properties.copy(Blocks.BRAIN_CORAL_WALL_FAN).noCollission().instabreak()));
+
+	public static final RegistryObject<Block> DEAD_HELLVINE_CORAL = registerBlock("dead_hellvine_coral",
+			() -> new BaseCoralPlantBlock(Block.Properties.copy(Blocks.DEAD_BRAIN_CORAL).noCollission().instabreak()));
+
+	public static final RegistryObject<Block> HELLVINE_CORAL = registerBlock("hellvine_coral",
+			() -> new CoralPlantBlock(HexcraftBlocks.DEAD_HELLVINE_CORAL.get(),
+					(Block.Properties.copy(Blocks.BRAIN_CORAL).noCollission().instabreak())));
+
+	public static final RegistryObject<Block> DEAD_HELLVINE_CORAL_BLOCK = registerBlock("dead_hellvine_coral_block",
+			() -> new Block(Block.Properties.copy(Blocks.DEAD_BRAIN_CORAL_BLOCK)));
+	public static final RegistryObject<Block> HELLVINE_CORAL_BLOCK = registerBlock("hellvine_coral_block",
+			() -> new CoralBlock(HexcraftBlocks.DEAD_HELLVINE_CORAL_BLOCK.get(),
+					(Block.Properties.copy(Blocks.BRAIN_CORAL_BLOCK))));
+
+	public static final RegistryObject<Block> DEAD_HELLVINE_CORAL_FAN = registerBlock("dead_hellvine_coral_fan",
+			() -> new BaseCoralPlantBlock(Block.Properties.copy(Blocks.DEAD_BRAIN_CORAL_BLOCK).noCollission().instabreak()));
+
+	public static final RegistryObject<Block> HELLVINE_CORAL_FAN = registerBlock("hellvine_coral_fan",
+			() -> new CoralFanBlock(HexcraftBlocks.DEAD_HELLVINE_CORAL_FAN.get(),
+					Block.Properties.copy(Blocks.BRAIN_CORAL_FAN).noCollission().instabreak()));
+
+	public static final RegistryObject<Block> DEAD_HELLVINE_CORAL_WALL_FAN = registerBlock("dead_hellvine_coral_wall_fan",
+			() -> new BaseCoralWallFanBlock(
+					Block.Properties.copy(Blocks.DEAD_BRAIN_CORAL_WALL_FAN).noCollission().instabreak()));
+	public static final RegistryObject<Block> HELLVINE_CORAL_WALL_FAN = registerBlock("hellvine_coral_wall_fan",
+			() -> new CoralWallFanBlock(HexcraftBlocks.DEAD_HELLVINE_CORAL_WALL_FAN.get(),
+					Block.Properties.copy(Blocks.BRAIN_CORAL_WALL_FAN).noCollission().instabreak()));
+
+	public static final RegistryObject<Block> SOULSTEM_CANDLE = registerBlock("soulstem_candle", () -> new SoulstemCandlesBlock(
+			Block.Properties.copy(Blocks.CANDLE).strength(0.3f, 0.2f).noOcclusion().strength(0.1F).sound(SoundType.CANDLE)
+					.lightLevel(CandleBlock.LIGHT_EMISSION)));
 
 	//Chests
-	//public static final RegistryObject<HexcraftChestBlock> CHEST_ALDER = BLOCKS.register("chest_alder",
-			//() -> new HexcraftChestBlock(BlockBehaviour.Properties.copy(ALDER_PLANKS.get()).strength(2.5f)));
-	//public static final RegistryObject<HexcraftChestBlock> CHEST_BLOOD_OAK = BLOCKS.register("chest_blood_oak",
-			//() -> new HexcraftChestBlock(BlockBehaviour.Properties.copy(BLOOD_OAK_PLANKS.get()).strength(2.5f)));
-	//public static final RegistryObject<HexcraftChestBlock> CHEST_CEDAR = BLOCKS.register("chest_cedar",
-			//() -> new HexcraftChestBlock(BlockBehaviour.Properties.copy(CEDAR_PLANKS.get()).strength(2.5f)));
-	//public static final RegistryObject<HexcraftChestBlock> CHEST_DISTORTED = BLOCKS.register("chest_distorted",
-			//() -> new HexcraftChestBlock(BlockBehaviour.Properties.copy(DISTORTED_PLANKS.get()).strength(2.5f)));
-	//public static final RegistryObject<HexcraftChestBlock> CHEST_EBONY = BLOCKS.register("chest_ebony",
-	//		() -> new HexcraftChestBlock(BlockBehaviour.Properties.copy(EBONY_PLANKS.get()).strength(2.5f)));
-	//public static final RegistryObject<HexcraftChestBlock> CHEST_ECHO_WOOD = BLOCKS.register("chest_echo_wood",
-	//		() -> new HexcraftChestBlock(BlockBehaviour.Properties.copy(ECHO_WOOD_PLANKS.get()).strength(2.5f)));
-	//public static final RegistryObject<HexcraftChestBlock> CHEST_ELDER = BLOCKS.register("chest_elder",
-	//		() -> new HexcraftChestBlock(BlockBehaviour.Properties.copy(ELDER_PLANKS.get()).strength(2.5f)));
-	//public static final RegistryObject<HexcraftChestBlock> CHEST_HAWTHORN = BLOCKS.register("chest_hawthorn",
-	//		() -> new HexcraftChestBlock(BlockBehaviour.Properties.copy(HAWTHORN_PLANKS.get()).strength(2.5f)));
-	//public static final RegistryObject<HexcraftChestBlock> CHEST_HELL_BARK = BLOCKS.register("chest_hell_bark",
-	//		() -> new HexcraftChestBlock(BlockBehaviour.Properties.copy(HELL_BARK_PLANKS.get()).strength(2.5f)));
-	//public static final RegistryObject<HexcraftChestBlock> CHEST_JUNIPER = BLOCKS.register("chest_juniper",
-	//		() -> new HexcraftChestBlock(BlockBehaviour.Properties.copy(JUNIPER_PLANKS.get()).strength(2.5f)));
-	//public static final RegistryObject<HexcraftChestBlock> CHEST_ROWAN = BLOCKS.register("chest_rowan",
-	//		() -> new HexcraftChestBlock(BlockBehaviour.Properties.copy(ROWAN_PLANKS.get()).strength(2.5f)));
-	//public static final RegistryObject<HexcraftChestBlock> CHEST_TWISTED = BLOCKS.register("chest_twisted",
-	//		() -> new HexcraftChestBlock(BlockBehaviour.Properties.copy(TWISTED_PLANKS.get()).strength(2.5f)));
-	//public static final RegistryObject<HexcraftChestBlock> CHEST_WHITE_OAK = BLOCKS.register("chest_white_oak",
-	//		() -> new HexcraftChestBlock(BlockBehaviour.Properties.copy(WHITE_OAK_PLANKS.get()).strength(2.5f)));
-	//public static final RegistryObject<HexcraftChestBlock> CHEST_WILLOW = BLOCKS.register("chest_willow",
-	//		() -> new HexcraftChestBlock(BlockBehaviour.Properties.copy(WILLOW_PLANKS.get()).strength(2.5f)));
-	//public static final RegistryObject<HexcraftChestBlock> CHEST_WITCH_HAZEL = BLOCKS.register("chest_witch_hazel",
-	//		() -> new HexcraftChestBlock(BlockBehaviour.Properties.copy(WITCH_HAZEL_PLANKS.get()).strength(2.5f)));
-	//public static final RegistryObject<HexcraftChestBlock> CHEST_WITCH_WOOD = BLOCKS.register("chest_witch_wood",
-	//		() -> new HexcraftChestBlock(BlockBehaviour.Properties.copy(WITCH_WOOD_PLANKS.get()).strength(2.5f)));
+
+	public static final RegistryObject<HexcraftChestBlock> ALDER_CHEST = BLOCKS.register("alder_chest",
+			() -> new HexcraftChestBlock(BlockBehaviour.Properties.copy(ALDER_PLANKS.get()).strength(2.5f)));
+
+	public static final RegistryObject<HexcraftChestBlock> BLOOD_OAK_CHEST = BLOCKS.register("blood_oak_chest",
+			() -> new HexcraftChestBlock(BlockBehaviour.Properties.copy(BLOOD_OAK_PLANKS.get()).strength(2.5f)));
+
+	public static final RegistryObject<HexcraftChestBlock> CEDAR_CHEST = BLOCKS.register("cedar_chest",
+			() -> new HexcraftChestBlock(BlockBehaviour.Properties.copy(CEDAR_PLANKS.get()).strength(2.5f)));
+
+	public static final RegistryObject<HexcraftChestBlock> DISTORTED_CHEST = BLOCKS.register("distorted_chest",
+			() -> new HexcraftChestBlock(BlockBehaviour.Properties.copy(DISTORTED_PLANKS.get()).strength(2.5f)));
+
+	public static final RegistryObject<HexcraftChestBlock> EBONY_CHEST = BLOCKS.register("ebony_chest",
+			() -> new HexcraftChestBlock(BlockBehaviour.Properties.copy(EBONY_PLANKS.get()).strength(2.5f)));
+
+	public static final RegistryObject<HexcraftChestBlock> ECHO_WOOD_CHEST = BLOCKS.register("echo_wood_chest",
+			() -> new HexcraftChestBlock(BlockBehaviour.Properties.copy(ECHO_WOOD_PLANKS.get()).strength(2.5f)));
+
+	public static final RegistryObject<HexcraftChestBlock> ELDER_CHEST = BLOCKS.register("elder_chest",
+			() -> new HexcraftChestBlock(BlockBehaviour.Properties.copy(ELDER_PLANKS.get()).strength(2.5f)));
+
+	public static final RegistryObject<HexcraftChestBlock> HAWTHORN_CHEST = BLOCKS.register("hawthorn_chest",
+			() -> new HexcraftChestBlock(BlockBehaviour.Properties.copy(HAWTHORN_PLANKS.get()).strength(2.5f)));
+
+	public static final RegistryObject<HexcraftChestBlock> HELL_BARK_CHEST = BLOCKS.register("hell_bark_chest",
+			() -> new HexcraftChestBlock(BlockBehaviour.Properties.copy(HELL_BARK_PLANKS.get()).strength(2.5f)));
+
+	public static final RegistryObject<HexcraftChestBlock> JUNIPER_CHEST = BLOCKS.register("juniper_chest",
+			() -> new HexcraftChestBlock(BlockBehaviour.Properties.copy(JUNIPER_PLANKS.get()).strength(2.5f)));
+
+	public static final RegistryObject<HexcraftChestBlock> ROWAN_CHEST = BLOCKS.register("rowan_chest",
+			() -> new HexcraftChestBlock(BlockBehaviour.Properties.copy(ROWAN_PLANKS.get()).strength(2.5f)));
+
+	public static final RegistryObject<HexcraftChestBlock> TWISTED_CHEST = BLOCKS.register("twisted_chest",
+			() -> new HexcraftChestBlock(BlockBehaviour.Properties.copy(TWISTED_PLANKS.get()).strength(2.5f)));
+
+	public static final RegistryObject<HexcraftChestBlock> WHITE_OAK_CHEST = BLOCKS.register("white_oak_chest",
+			() -> new HexcraftChestBlock(BlockBehaviour.Properties.copy(WHITE_OAK_PLANKS.get()).strength(2.5f)));
+
+	public static final RegistryObject<HexcraftChestBlock> WILLOW_CHEST = BLOCKS.register("willow_chest",
+			() -> new HexcraftChestBlock(BlockBehaviour.Properties.copy(WILLOW_PLANKS.get()).strength(2.5f)));
+
+	public static final RegistryObject<HexcraftChestBlock> WITCH_HAZEL_CHEST = BLOCKS.register("witch_hazel_chest",
+			() -> new HexcraftChestBlock(BlockBehaviour.Properties.copy(WITCH_HAZEL_PLANKS.get()).strength(2.5f)));
+
+	public static final RegistryObject<HexcraftChestBlock> WITCH_WOOD_CHEST = BLOCKS.register("witch_wood_chest",
+			() -> new HexcraftChestBlock(BlockBehaviour.Properties.copy(WITCH_WOOD_PLANKS.get()).strength(2.5f)));
+
+	public static final RegistryObject<HexcraftChestBlock> PHOENIX_CHEST = BLOCKS.register("phoenix_chest",
+			() -> new HexcraftChestBlock(BlockBehaviour.Properties.copy(WITCH_WOOD_PLANKS.get()).strength(2.5f)));
+
+	private static RegistryObject<Block> registerChest(String name) {
+		return BLOCKS.register(name, () -> new HexcraftChestBlock(BlockBehaviour.Properties.of().mapColor(MapColor.WOOD).strength(2.5f)));
+
+	}
 
 	private static <T extends Block> RegistryObject<T> registerBlock(String name, Supplier<T> block) {
 		RegistryObject<T> toReturn = BLOCKS.register(name, block);

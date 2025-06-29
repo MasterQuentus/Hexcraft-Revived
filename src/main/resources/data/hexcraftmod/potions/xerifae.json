@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:potion",
+  "effects": [
+    {
+      "id": "minecraft:weakness",
+      "duration": 600
+    },
+    {
+      "id": "minecraft:slowness",
+      "duration": 600
+    }
+  ]
+}

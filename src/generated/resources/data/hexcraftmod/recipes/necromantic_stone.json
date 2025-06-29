@@ -1,0 +1,18 @@
+{
+  "type": "hexcraftmod:witches_cauldron",
+  "brewTime": 100,
+  "ingredients": [
+    {
+      "item": "hexcraftmod:ash"
+    },
+    {
+      "item": "minecraft:bone"
+    },
+    {
+      "item": "hexcraftmod:salt"
+    }
+  ],
+  "result": {
+    "item": "hexcraftmod:necromantic_stone"
+  }
+}

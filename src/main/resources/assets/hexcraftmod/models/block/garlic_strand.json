@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/plane",
+  "textures": {
+    "texture": "hexcraftmod:block/garlic_strand"
+  }
+}

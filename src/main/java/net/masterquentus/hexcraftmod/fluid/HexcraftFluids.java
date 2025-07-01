@@ -22,12 +22,21 @@ public class HexcraftFluids {
     public static final RegistryObject<FlowingFluid> FLOWING_BLOOD = FLUIDS.register("flowing_blood_fluid",
             () -> new ForgeFlowingFluid.Flowing(HexcraftFluids.BLOOD_FLUID_PROPERTIES));
 
+    public static final RegistryObject<FlowingFluid> SOURCE_DEEP_WATER = FLUIDS.register("deep_water",
+            () -> new ForgeFlowingFluid.Source(HexcraftFluids.DEEP_WATER_FLUID_PROPERTIES));
+
+    public static final RegistryObject<FlowingFluid> FLOWING_DEEP_WATER = FLUIDS.register("flowing_deep_water",
+            () -> new ForgeFlowingFluid.Flowing(HexcraftFluids.DEEP_WATER_FLUID_PROPERTIES));
 
     public static final ForgeFlowingFluid.Properties BLOOD_FLUID_PROPERTIES = new ForgeFlowingFluid.Properties(
             HexcraftFluidTypes.BLOOD_FLUID_TYPE, SOURCE_BLOOD, FLOWING_BLOOD)
             .slopeFindDistance(2).levelDecreasePerBlock(1).block(HexcraftBlocks.BLOOD_BLOCK)
             .bucket(HexcraftItems.BLOOD_BUCKET);
 
+    public static final ForgeFlowingFluid.Properties DEEP_WATER_FLUID_PROPERTIES = new ForgeFlowingFluid.Properties(
+            HexcraftFluidTypes.DEEP_WATER_FLUID_TYPE, SOURCE_DEEP_WATER, FLOWING_DEEP_WATER)
+            .slopeFindDistance(2).levelDecreasePerBlock(1).block(HexcraftBlocks.DEEP_WATER_BLOCK)
+            .bucket(HexcraftItems.DEEP_WATER_BUCKET);
 
 
     public static void register(IEventBus eventBus) {

@@ -4186,6 +4186,14 @@ public class HexcraftRecipeProvider extends RecipeProvider implements ICondition
 						inventoryTrigger(ItemPredicate.Builder.item().of(Items.CAULDRON).build()))
 				.save(pWriter);
 
+		WitchesCauldronRecipeBuilder.buildCauldronRecipe(HexcraftItems.DEEPSEER_INGOT.get())
+				.requires(HexcraftItems.ABYSSIUM_INGOT.get())    // base ingredient
+				.requires(HexcraftItems.SALT.get())               // example additive
+				.requires(Items.GLOWSTONE_DUST)                    // example additive
+				.unlockedBy("has_abyssium_ingot",
+						inventoryTrigger(ItemPredicate.Builder.item().of(HexcraftItems.ABYSSIUM_INGOT.get()).build()))
+				.save(pWriter);
+
 		WitchesCauldronRecipeBuilder.buildCauldronRecipe(HexcraftItems.NECROMANTIC_STONE.get())
 				.requires(HexcraftItems.ASH.get())
 				.requires(Items.BONE)

@@ -43,6 +43,8 @@ public class HexcraftTags {
 		public static final TagKey<Block> SOULSTEM_CANDLES = createBlockTag(
 				HexcraftMod.id("soulstem_candles"));
 
+
+
 		private static TagKey<Block> tag(String name) {
 			return BlockTags.create(new ResourceLocation(HexcraftMod.MOD_ID, name));
 
@@ -63,6 +65,8 @@ public class HexcraftTags {
 
 		public static final TagKey<Item> WITCHES_OVEN_BLACKLIST = createItemTag(
 				HexcraftMod.id("witches_oven_blacklist"));
+
+		public static final TagKey<Item> DEEPSEER_HELM = createItemTag(HexcraftMod.id("deepseer_helm"));
 
 	}
 

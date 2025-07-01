@@ -10,9 +10,6 @@ import net.minecraft.world.level.levelgen.NoiseGeneratorSettings;
 
 public class HexcraftRegistryBootstrap {
 
-    public static void bootstrapNoiseSettings(BootstapContext<NoiseGeneratorSettings> context) {
-        HexcraftDimensions.bootstrapNoiseSettings(context);
-    }
 
     public static void bootstrapDimensionTypes(BootstapContext<DimensionType> context) {
         HexcraftDimensions.bootstrapType(context);

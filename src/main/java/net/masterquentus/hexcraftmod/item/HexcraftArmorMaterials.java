@@ -63,7 +63,15 @@ public enum HexcraftArmorMaterials implements ArmorMaterial {
         p_266655_.put(ArmorItem.Type.LEGGINGS, 5);
         p_266655_.put(ArmorItem.Type.CHESTPLATE, 7);
         p_266655_.put(ArmorItem.Type.HELMET, 5);
-    }), 15, SoundEvents.ARMOR_EQUIP_IRON, 3.0F, 0.1F, () -> Ingredient.of(HexcraftItems.SILVER_INGOT.get()));
+    }), 15, SoundEvents.ARMOR_EQUIP_IRON, 3.0F, 0.1F, () -> Ingredient.of(HexcraftItems.SILVER_INGOT.get())),
+
+    DEEPSEER("deepseer", 30, Util.make(new EnumMap<>(ArmorItem.Type.class), (p_266655_) -> {
+        p_266655_.put(ArmorItem.Type.BOOTS, 3);
+        p_266655_.put(ArmorItem.Type.LEGGINGS, 6);
+        p_266655_.put(ArmorItem.Type.CHESTPLATE, 7);
+        p_266655_.put(ArmorItem.Type.HELMET, 4);
+    }), 16, SoundEvents.ARMOR_EQUIP_TURTLE, 2.5F, 0.1F, () -> Ingredient.of(HexcraftItems.DEEPSEER_INGOT.get()));
+
 
     public static final StringRepresentable.EnumCodec<ArmorMaterials> CODEC = StringRepresentable.fromEnum(ArmorMaterials::values);
     private static final EnumMap<ArmorItem.Type, Integer> HEALTH_FUNCTION_FOR_TYPE = Util.make(new EnumMap<>(ArmorItem.Type.class), (p_266653_) -> {

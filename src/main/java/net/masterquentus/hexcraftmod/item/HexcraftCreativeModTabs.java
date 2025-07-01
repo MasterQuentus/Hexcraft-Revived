@@ -107,6 +107,7 @@ public class HexcraftCreativeModTabs {
                         output.accept(HexcraftItems.RAW_ECLIPSIUM.get());
                         output.accept(HexcraftItems.ECLIPSIUM_INGOT.get());
                         output.accept(HexcraftItems.ECLIPSIUM_NUGGET.get());
+                        output.accept(HexcraftItems.DEEPSEER_INGOT.get());
                         output.accept(HexcraftItems.WHITE_OAK_ASH.get());
                         output.accept(HexcraftItems.SALT.get());
                         output.accept(HexcraftItems.NECROMANTIC_STONE.get());
@@ -238,6 +239,7 @@ public class HexcraftCreativeModTabs {
                         output.accept(HexcraftItems.VAMPIRIC_CHESTPLATE.get());
                         output.accept(HexcraftItems.VAMPIRIC_LEGGING.get());
                         output.accept(HexcraftItems.VAMPIRIC_BOOTS.get());
+                        output.accept(HexcraftItems.DEEPSEER_HELM.get());
 
 // Non-Wood Blocks
                         output.accept(HexcraftBlocks.DEMON_HEART.get());
@@ -249,6 +251,10 @@ public class HexcraftCreativeModTabs {
                         output.accept(HexcraftBlocks.GHOSTSHROOM_STEM.get());
                         output.accept(HexcraftItems.VILE_GRASS_BLOCK_ITEM.get());
                         output.accept(HexcraftBlocks.VILE_DIRT.get());
+                        output.accept(HexcraftBlocks.GLOOMROOT_SOIL.get());
+                        output.accept(HexcraftBlocks.GLIMMER_CAP.get());
+                        output.accept(HexcraftBlocks.SHARDSTONE.get());
+                        output.accept(HexcraftBlocks.LUMICLAST.get());
                         output.accept(HexcraftBlocks.LIVING_KELP_BLOCK.get());
                         output.accept(HexcraftBlocks.EMBER_MOSS_BLOCK.get());
                         output.accept(HexcraftBlocks.EMBER_MOSS_CARPET.get());
@@ -585,6 +591,7 @@ public class HexcraftCreativeModTabs {
                         output.accept(HexcraftItems.GARLIC_STRAND_ITEM.get());
                         output.accept(HexcraftItems.VERVAIN_STRAND_ITEM.get());
                         output.accept(HexcraftBlocks.VILE_GRASS.get());
+                        output.accept(HexcraftBlocks.TWILIGHT_MOSSGRASS.get());
                         output.accept(HexcraftItems.AERPINE.get());
                         output.accept(HexcraftItems.XERIFAE.get());
                         output.accept(HexcraftItems.BELLADONNA.get());
@@ -735,6 +742,8 @@ public class HexcraftCreativeModTabs {
                         output.accept(HexcraftBlocks.SMOOTH_PIXIE_SAND_STONE.get());
                         output.accept(HexcraftBlocks.CHISELED_PIXIE_SAND_STONE.get());
                         output.accept(HexcraftBlocks.CUT_PIXIE_SAND_STONE.get());
+                        output.accept(HexcraftBlocks.ABYSSAL_SAND.get());
+                        output.accept(HexcraftBlocks.ABYSSAL_GRAVEL.get());
                         output.accept(HexcraftBlocks.PIXIE_GLASS.get());
                         output.accept(HexcraftBlocks.PIXIE_GLASS_PANE.get());
                         output.accept(HexcraftBlocks.CRIMSON_ICE.get());

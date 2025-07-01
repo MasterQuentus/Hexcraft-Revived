@@ -11,6 +11,7 @@ import net.masterquentus.hexcraftmod.block.custom.signs.HexcraftWallHangingSignB
 import net.masterquentus.hexcraftmod.block.custom.signs.HexcraftWallSignBlock;
 import net.masterquentus.hexcraftmod.block.custom.signs.HexcraftlHangingSignBlock;
 import net.masterquentus.hexcraftmod.block.entity.custom.UnderworldPortalBlock;
+import net.masterquentus.hexcraftmod.block.entity.custom.liquid.DeepWaterBlock;
 import net.masterquentus.hexcraftmod.fluid.HexcraftFluids;
 import net.masterquentus.hexcraftmod.item.HexcraftItems;
 import net.masterquentus.hexcraftmod.util.HexcraftWoodTypes;
@@ -33,6 +34,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockSetType;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.NoteBlockInstrument;
+import net.minecraft.world.level.material.FlowingFluid;
 import net.minecraft.world.level.material.MapColor;
 import net.minecraft.world.level.material.PushReaction;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -57,6 +59,28 @@ public class HexcraftBlocks {
 
 	public static final RegistryObject<Block> VILE_DIRT = BLOCKS.register("vile_dirt",
 			() -> new Block(BlockBehaviour.Properties.copy(Blocks.DIRT)));
+
+	public static final RegistryObject<Block> VILE_GRASS = registerBlock("vile_grass",
+			() -> new TallGrassBlock(BlockBehaviour.Properties.copy(Blocks.GRASS)
+					.mapColor(MapColor.PLANT).replaceable().noCollission().instabreak().sound(SoundType.GRASS)
+					.offsetType(BlockBehaviour.OffsetType.XYZ).ignitedByLava().pushReaction(PushReaction.DESTROY)));
+
+	public static final RegistryObject<Block> TWILIGHT_MOSSGRASS = registerBlock("twilight_mossgrass",
+			() -> new TallGrassBlock(BlockBehaviour.Properties.copy(Blocks.GRASS)
+					.mapColor(MapColor.PLANT).replaceable().noCollission().instabreak().sound(SoundType.GRASS)
+					.offsetType(BlockBehaviour.OffsetType.XYZ).ignitedByLava().pushReaction(PushReaction.DESTROY)));
+
+	public static final RegistryObject<Block> GLOOMROOT_SOIL = BLOCKS.register("gloomroot_soil",
+			() -> new Block(BlockBehaviour.Properties.copy(Blocks.DIRT)));
+
+	public static final RegistryObject<Block> GLIMMER_CAP = BLOCKS.register("glimmer_cap",
+			() -> new Block(BlockBehaviour.Properties.copy(Blocks.STONE).strength(1.5f).lightLevel(state -> 7)));
+
+	public static final RegistryObject<Block> SHARDSTONE = BLOCKS.register("shardstone",
+			() -> new Block(BlockBehaviour.Properties.copy(Blocks.STONE).strength(1.8f)));
+
+	public static final RegistryObject<Block> LUMICLAST = BLOCKS.register("lumiclast",
+			() -> new Block(BlockBehaviour.Properties.copy(Blocks.DEEPSLATE).strength(2.0f).lightLevel(state -> 4)));
 
 	public static final RegistryObject <Block> CRIMSON_MAGMA = registerBlock("crimson_magma",
 			() -> new MagmaBlock(BlockBehaviour.Properties.copy(Blocks.STONE)
@@ -171,11 +195,6 @@ public class HexcraftBlocks {
 	public static final RegistryObject<Block> ENDER_BRAMBLE = registerBlock("ender_bramble",
 			() -> new EnderBrambleBlock(BlockBehaviour.Properties.copy(Blocks.SUGAR_CANE)
 					.instabreak()));
-
-	public static final RegistryObject<Block> VILE_GRASS = registerBlock("vile_grass",
-			() -> new TallGrassBlock(BlockBehaviour.Properties.copy(Blocks.GRASS)
-					.mapColor(MapColor.PLANT).replaceable().noCollission().instabreak().sound(SoundType.GRASS)
-					.offsetType(BlockBehaviour.OffsetType.XYZ).ignitedByLava().pushReaction(PushReaction.DESTROY)));
 
 	public static final RegistryObject<Block> LIVING_KELP = BLOCKS.register("living_kelp",
 			() -> new LivingKelpBlock(BlockBehaviour.Properties.copy(Blocks.KELP)
@@ -391,6 +410,20 @@ public class HexcraftBlocks {
 
 	public static final RegistryObject <Block> CUT_CRIMSON_SAND_STONE = registerBlock("cut_crimson_sand_stone",
 			() -> new Block(BlockBehaviour.Properties.copy(Blocks.CUT_SANDSTONE).strength(0.8F).sound(SoundType.STONE)));
+
+	public static final RegistryObject<Block> ABYSSAL_SAND = registerBlock("abyssal_sand",
+			() -> new SandBlock(0x0F1E2D,  // Example color (dark blue-ish)
+					BlockBehaviour.Properties.copy(Blocks.SAND)
+							.strength(0.5F)
+							.sound(SoundType.SAND)
+			));
+
+	public static final RegistryObject<Block> ABYSSAL_GRAVEL = registerBlock("abyssal_gravel",
+			() -> new GravelBlock(
+					BlockBehaviour.Properties.copy(Blocks.GRAVEL)
+							.strength(0.6F)
+							.sound(SoundType.GRAVEL)
+			));
 
 	public static final RegistryObject <Block> FAIRY_SAND = registerBlock("fairy_sand",
 			() -> new SandBlock(14406560,BlockBehaviour.Properties.copy(Blocks.SAND)
@@ -2914,10 +2947,16 @@ public class HexcraftBlocks {
 	public static final RegistryObject<Block> WATER_ARTICHOKE_PLANT = registerBlockWithoutBlockItem("water_artichoke_plant",
 			() -> new WaterArtichokePlantBlock(BlockBehaviour.Properties.copy(Blocks.WHEAT).sound(SoundType.WET_GRASS).noOcclusion().randomTicks()));
 
-
-
 	public static final RegistryObject<LiquidBlock> BLOOD_BLOCK = BLOCKS.register("blood_block",
 			() -> new LiquidBlock(HexcraftFluids.SOURCE_BLOOD, BlockBehaviour.Properties.copy(Blocks.WATER).noLootTable().noCollission().noLootTable()));
+
+	public static final RegistryObject<LiquidBlock> DEEP_WATER_BLOCK = BLOCKS.register("deep_water_block",
+			() -> new DeepWaterBlock(
+					(FlowingFluid) HexcraftFluids.SOURCE_DEEP_WATER.get(),
+					BlockBehaviour.Properties.copy(Blocks.WATER)
+							.noLootTable()
+							.noCollission()
+			));
 
 	//Coral
 	public static final RegistryObject<Block> DEAD_TWILIGHT_CORAL = registerBlock("dead_twilightcoral",

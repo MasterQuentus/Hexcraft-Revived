@@ -34,13 +34,16 @@ public class DataGenerators {
         generator.addProvider(event.includeServer(), new HexcraftItemTagGenerator(packOutput, lookupProvider,
                 blockTagGenerator.contentsGetter(), existingFileHelper));
 
-        generator.addProvider(true, new EntityTypeTagProvider(packOutput, lookupProvider, existingFileHelper));
+        generator.addProvider(event.includeServer(),
+                new EntityTypeTagProvider(packOutput, lookupProvider, existingFileHelper));
 
         generator.addProvider(event.includeServer(), new HexcraftGlobalLootModifiersProvider(packOutput));
 
         generator.addProvider(event.includeClient(),
                 new HexcraftFluidTagProvider(packOutput, lookupProvider, existingFileHelper));
 
-        generator.addProvider(event.includeServer(), new HexcraftRegistrySetsProvider(packOutput, lookupProvider));
+        // ✅ Only include this line if your RegistrySetsProvider uses valid Forge 1.20.1-compatible code
+        generator.addProvider(event.includeServer(),
+                new HexcraftRegistrySetsProvider(packOutput, lookupProvider));
     }
 }

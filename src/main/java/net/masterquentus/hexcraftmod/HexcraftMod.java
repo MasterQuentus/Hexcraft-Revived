@@ -314,6 +314,10 @@ public class HexcraftMod {
 				// Set fluid render types (e.g., for blood fluids)
 				ItemBlockRenderTypes.setRenderLayer(HexcraftFluids.SOURCE_BLOOD.get(), RenderType.translucent());
 				ItemBlockRenderTypes.setRenderLayer(HexcraftFluids.FLOWING_BLOOD.get(), RenderType.translucent());
+				ItemBlockRenderTypes.setRenderLayer(HexcraftFluids.SOURCE_DEEP_WATER.get(), RenderType.translucent());
+				ItemBlockRenderTypes.setRenderLayer(HexcraftFluids.FLOWING_DEEP_WATER.get(), RenderType.translucent());
+				ItemBlockRenderTypes.setRenderLayer(HexcraftBlocks.WITCHES_CAULDRON.get(), RenderType.translucent());
+
 
 				// Register boat renderers
 				EntityRenderers.register(HexcraftEntities.HEXCRAFT_BOAT.get(), pContext -> new HexcraftBoatRenderer(pContext, false));

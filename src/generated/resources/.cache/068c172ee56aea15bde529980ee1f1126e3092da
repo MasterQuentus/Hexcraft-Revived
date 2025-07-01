@@ -1,9 +1,10 @@
-// 1.20.1	2025-03-03T14:44:43.6145025	Tags for minecraft:item mod id hexcraftmod
+// 1.20.1	2025-06-30T21:35:50.7333374	Tags for minecraft:item mod id hexcraftmod
+750a908c5de9dea5b63c40e54b34b3bad747c4cf data/hexcraftmod/tags/items/deepseer_helm.json
 4d036b60f7bdf1cc6a8de8f4c30e835ebe1541f0 data/hexcraftmod/tags/items/fits_in_witches_satchel.json
 cc2c3ac0625546599b5f9fae3fb03a5641002d56 data/hexcraftmod/tags/items/witches_oven_blacklist.json
 052992c6a6c1b85dc4753f756003dbaf4b274e7c data/minecraft/tags/items/boats.json
 8fdb96cdadee0b9cc1f013ded84f38a49f5449f9 data/minecraft/tags/items/coals.json
-71738a1ed84f551a49436f62e5e5da265594e713 data/minecraft/tags/items/dirt.json
+119f2bee36a239a7682e1c14457d870141b2b423 data/minecraft/tags/items/dirt.json
 87c11d5bced4f0402a5bf239f433da9d41c9962c data/minecraft/tags/items/fence_gates.json
 01347a4dc2b3a8334e8dcc05002b7409d2ca41bd data/minecraft/tags/items/flowers.json
 abb57d27fea930c9debeff288d96bacfc7e4625f data/minecraft/tags/items/hanging_signs.json
@@ -11,7 +12,7 @@ abb57d27fea930c9debeff288d96bacfc7e4625f data/minecraft/tags/items/hanging_signs
 cda701b2e0548c81589b022eeeebe63a1b7c93ba data/minecraft/tags/items/logs_that_burn.json
 d8a795d85f6b5043f56e333ee8d0d3b7d4e2d739 data/minecraft/tags/items/non_flammable_wood.json
 365e0ca082887ad096c49e5a6d70b069b79d7b06 data/minecraft/tags/items/planks.json
-51d0070d6db8096cc38c44fef95cd30c9ddf1510 data/minecraft/tags/items/sand.json
+c6d38a31c82657acaffb693f12970c97f40af1dd data/minecraft/tags/items/sand.json
 147de909e253e995b15d522d5c6faa67a850d529 data/minecraft/tags/items/saplings.json
 c0de8996dc0ed02059f34f8a943ce83a027125f4 data/minecraft/tags/items/signs.json
 31f302736aee65e5eb39b4e02ebb7540af357af5 data/minecraft/tags/items/slabs.json

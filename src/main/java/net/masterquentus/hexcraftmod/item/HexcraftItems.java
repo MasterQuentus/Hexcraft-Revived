@@ -44,6 +44,18 @@ public class HexcraftItems {
     public static final RegistryObject<Item> VILE_DIRT_ITEM = ITEMS.register("vile_dirt",
             () -> new BlockItem(HexcraftBlocks.VILE_DIRT.get(), new Item.Properties()));
 
+    public static final RegistryObject<Item> GLOOMROOT_SOIL_ITEM = ITEMS.register("gloomroot_soil",
+            () -> new BlockItem(HexcraftBlocks.GLOOMROOT_SOIL.get(), new Item.Properties()));
+
+    public static final RegistryObject<Item> GLIMMER_CAP_ITEM = ITEMS.register("glimmer_cap",
+            () -> new BlockItem(HexcraftBlocks.GLIMMER_CAP.get(), new Item.Properties()));
+
+    public static final RegistryObject<Item> SHARDSTONE_ITEM = ITEMS.register("shardstone",
+            () -> new BlockItem(HexcraftBlocks.SHARDSTONE.get(), new Item.Properties()));
+
+    public static final RegistryObject<Item> LUMICLAST_ITEM = ITEMS.register("lumiclast",
+            () -> new BlockItem(HexcraftBlocks.LUMICLAST.get(), new Item.Properties()));
+
     public static final RegistryObject<BlockItem> CURSED_SOIL = ITEMS.register("cursed_soil",
             () -> new BlockItem(HexcraftBlocks.CURSED_SOIL.get(), new Item.Properties()));
 
@@ -334,6 +346,9 @@ public class HexcraftItems {
             () -> new Item(new Item.Properties()));
 
     public static final RegistryObject<Item> ECLIPSIUM_NUGGET = ITEMS.register("eclipsium_nugget",
+            () -> new Item(new Item.Properties()));
+
+    public static final RegistryObject<Item> DEEPSEER_INGOT = ITEMS.register("deepseer_ingot",
             () -> new Item(new Item.Properties()));
 
     public static final RegistryObject<Item> WHITE_OAK_ASH = ITEMS.register("white_oak_ash",
@@ -738,6 +753,9 @@ public class HexcraftItems {
     public static final RegistryObject<Item> VAMPIRIC_BOOTS = ITEMS.register("vampiric_boots",
             () -> new ArmorItem(HexcraftArmorMaterials.VAMPIRIC, ArmorItem.Type.BOOTS, new Item.Properties()));
 
+    public static final RegistryObject<Item> DEEPSEER_HELM = ITEMS.register("deepseer_helm",
+            () -> new ArmorItem(HexcraftArmorMaterials.DEEPSEER, ArmorItem.Type.HELMET, new Item.Properties()));
+
 
     //Plants
     public static final RegistryObject<Item> WITCHES_LADDER_ITEM = ITEMS.register("witches_ladder_item",
@@ -900,6 +918,9 @@ public class HexcraftItems {
     //Liquids
     public static final RegistryObject<Item> BLOOD_BUCKET = ITEMS.register("blood_bucket",
             () -> new BucketItem(HexcraftFluids.SOURCE_BLOOD, new Item.Properties().craftRemainder(Items.BUCKET).stacksTo(1)));
+
+    public static final RegistryObject<Item> DEEP_WATER_BUCKET = ITEMS.register("deep_water_bucket",
+            () -> new BucketItem(HexcraftFluids.SOURCE_DEEP_WATER, new Item.Properties().craftRemainder(Items.BUCKET).stacksTo(1)));
 
 
     //Signs

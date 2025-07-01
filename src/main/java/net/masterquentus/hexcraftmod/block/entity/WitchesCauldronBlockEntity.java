@@ -5,6 +5,11 @@ import java.util.List;
 import java.util.Optional;
 import java.util.Set;
 
+import net.masterquentus.hexcraftmod.block.custom.WitchesCauldron;
+import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.AreaEffectCloud;
@@ -63,10 +68,30 @@ public class WitchesCauldronBlockEntity extends BlockEntity implements ITickable
 		BlockPos abovePos = this.worldPosition.above();
 		List<ItemEntity> items = level.getEntitiesOfClass(ItemEntity.class, new AABB(abovePos));
 
+		boolean pickedUpAny = false;
+
 		for (ItemEntity itemEntity : items) {
 			ItemStack stack = itemEntity.getItem();
-			brewingItems.add(stack.copy()); // Store items
-			itemEntity.remove(Entity.RemovalReason.KILLED);
+			if (!stack.isEmpty()) {
+				brewingItems.add(stack.copy());
+				itemEntity.remove(Entity.RemovalReason.KILLED);
+				pickedUpAny = true;
+			}
+		}
+
+		if (pickedUpAny) {
+			// 🎵 Play bubbling sound
+			level.playSound(null, worldPosition, SoundEvents.BOTTLE_FILL, SoundSource.BLOCKS, 0.7F, 1.2F);
+
+			// ✨ Spawn particle effects
+			if (level instanceof ServerLevel server) {
+				server.sendParticles(ParticleTypes.BUBBLE,
+						worldPosition.getX() + 0.5, worldPosition.getY() + 1.0, worldPosition.getZ() + 0.5,
+						6, 0.2, 0.3, 0.2, 0.02);
+				server.sendParticles(ParticleTypes.SMOKE,
+						worldPosition.getX() + 0.5, worldPosition.getY() + 1.0, worldPosition.getZ() + 0.5,
+						4, 0.2, 0.2, 0.2, 0.01);
+			}
 		}
 	}
 
@@ -100,10 +125,22 @@ public class WitchesCauldronBlockEntity extends BlockEntity implements ITickable
 		ItemStack result = recipe.getResultItem(level.registryAccess());
 
 		if (!result.isEmpty()) {
-			ItemEntity itemEntity = new ItemEntity(level, worldPosition.getX() + 0.5, worldPosition.getY() + 1, worldPosition.getZ() + 0.5, result);
+			// Spawn the brewed item
+			ItemEntity itemEntity = new ItemEntity(level,
+					worldPosition.getX() + 0.5, worldPosition.getY() + 1, worldPosition.getZ() + 0.5, result);
 			level.addFreshEntity(itemEntity);
 
-			brewingItems.clear(); // ✅ Clear the cauldron after crafting
+			// Consume one water level
+			BlockState state = level.getBlockState(worldPosition);
+			if (state.hasProperty(WitchesCauldron.LEVEL)) {
+				int levelValue = state.getValue(WitchesCauldron.LEVEL);
+				if (levelValue > 0) {
+					level.setBlock(worldPosition, state.setValue(WitchesCauldron.LEVEL, levelValue - 1), 3);
+				}
+			}
+
+			// Clear the input items
+			brewingItems.clear();
 		}
 	}
 

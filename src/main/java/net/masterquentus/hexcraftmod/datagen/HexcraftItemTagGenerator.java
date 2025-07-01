@@ -30,6 +30,10 @@ public class HexcraftItemTagGenerator extends ItemTagsProvider {
 				.addOptionalTag(new ResourceLocation("forge", "ores"))
 				.addOptionalTag(new ResourceLocation("c", "ores"));
 
+		this.tag(HexcraftTags.Items.DEEPSEER_HELM)
+				.add(HexcraftItems.DEEPSEER_HELM.get());
+
+
 		this.tag(ItemTags.TRIMMABLE_ARMOR)
 				.add(HexcraftItems.STEEL_HELMET.get())
 				.add(HexcraftItems.STEEL_CHESTPLATE.get())
@@ -162,7 +166,8 @@ public class HexcraftItemTagGenerator extends ItemTagsProvider {
 
 		this.tag(ItemTags.DIRT)
 				.add(HexcraftBlocks.VILE_GRASS_BLOCK.get().asItem())
-				.add(HexcraftBlocks.VILE_DIRT.get().asItem());
+				.add(HexcraftBlocks.VILE_DIRT.get().asItem())
+		        .add(HexcraftBlocks.GLOOMROOT_SOIL.get().asItem());
 
 		this.tag(ItemTags.FLOWERS)
 				.add(HexcraftBlocks.VAMPIRE_ORCHID.get().asItem())
@@ -485,6 +490,7 @@ public class HexcraftItemTagGenerator extends ItemTagsProvider {
 
 		this.tag(ItemTags.SAND)
 				.add(HexcraftBlocks.CRIMSON_SAND.get().asItem())
+				.add(HexcraftBlocks.FAIRY_SAND.get().asItem())
 				.add(HexcraftBlocks.FAIRY_SAND.get().asItem());
 
 		this.tag(ItemTags.COALS)

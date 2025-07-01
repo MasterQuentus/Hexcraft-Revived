@@ -34,8 +34,6 @@ public class HexcraftDimensions {
             new ResourceLocation(HexcraftMod.MOD_ID, "underworlddim"));
     public static final ResourceKey<DimensionType> UNDERWORLD_DIM_TYPE = ResourceKey.create(Registries.DIMENSION_TYPE,
             new ResourceLocation(HexcraftMod.MOD_ID, "underworlddim_type"));
-    public static final ResourceKey<NoiseGeneratorSettings> UNDERWORLD_NOISE_SETTINGS_KEY = ResourceKey.create(
-            Registries.NOISE_SETTINGS, new ResourceLocation(HexcraftMod.MOD_ID, "underworld_noise_settings"));
 
     // New Prison World dimension keys
     public static final ResourceKey<LevelStem> PRISONWORLD_DIM_KEY = ResourceKey.create(Registries.LEVEL_STEM,
@@ -45,26 +43,6 @@ public class HexcraftDimensions {
     public static final ResourceKey<DimensionType> PRISONWORLD_DIM_TYPE = ResourceKey.create(Registries.DIMENSION_TYPE,
             new ResourceLocation(HexcraftMod.MOD_ID, "prison_world_type"));
 
-    public static void bootstrapNoiseSettings(BootstapContext<NoiseGeneratorSettings> context) {
-        Holder<NoiseGeneratorSettings> cavesSettingsHolder = context.lookup(Registries.NOISE_SETTINGS).getOrThrow(NoiseGeneratorSettings.CAVES);
-        NoiseGeneratorSettings cavesSettings = cavesSettingsHolder.value();
-
-        NoiseGeneratorSettings underworldNoiseSettings = new NoiseGeneratorSettings(
-                cavesSettings.noiseSettings(),
-                cavesSettings.defaultBlock(),
-                cavesSettings.defaultFluid(),
-                cavesSettings.noiseRouter(),
-                HexcraftSurfaceRules.makeRules(),  // <-- Your custom surface rules here
-                cavesSettings.spawnTarget(),
-                cavesSettings.seaLevel(),
-                cavesSettings.oreVeinsEnabled(),
-                cavesSettings.aquifersEnabled(),
-                cavesSettings.useLegacyRandomSource(),
-                cavesSettings.disableMobGeneration()
-        );
-
-        context.register(UNDERWORLD_NOISE_SETTINGS_KEY, underworldNoiseSettings);
-    }
 
 
     public static void bootstrapType(BootstapContext<DimensionType> context) {
@@ -266,21 +244,76 @@ public class HexcraftDimensions {
         HolderGetter<Biome> biomeRegistry = context.lookup(Registries.BIOME);
         HolderGetter<DimensionType> dimTypes = context.lookup(Registries.DIMENSION_TYPE);
         HolderGetter<NoiseGeneratorSettings> noiseGenSettings = context.lookup(Registries.NOISE_SETTINGS);
+                noiseGenSettings.getOrThrow(NoiseGeneratorSettings.CAVES);
 
-        // Underworld chunk generator with your Hexcraft biomes, using your custom underground noise settings
-        NoiseBasedChunkGenerator underworldChunkGen = new NoiseBasedChunkGenerator(
+        NoiseBasedChunkGenerator noiseBasedChunkGenerator = new NoiseBasedChunkGenerator(
                 MultiNoiseBiomeSource.createFromList(
                         new Climate.ParameterList<>(List.of(
-                                Pair.of(Climate.parameters(-0.3F, 0.4F, 0.0F, 0.0F, 0.0F, 0.6F, 0.5F),
-                                        biomeRegistry.getOrThrow(HexcraftBiomes.VAMPIRE_FOREST)),
-                                Pair.of(Climate.parameters(0.7F, 0.1F, 0.0F, 0.0F, 0.0F, 0.2F, 0.7F),
-                                        biomeRegistry.getOrThrow(HexcraftBiomes.CRIMSON_DESERT))
-                        ))
-                ),
-                noiseGenSettings.getOrThrow(UNDERWORLD_NOISE_SETTINGS_KEY)
-        );
+                                Pair.of(
+                                        Climate.parameters(0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F),
+                                        biomeRegistry.getOrThrow(HexcraftBiomes.SHADOWLANDS)
+                                ),
+                                Pair.of(
+                                        Climate.parameters(-0.3F, 0.4F, 0.0F, 0.0F, 0.0F, 0.6F, 0.5F),
+                                        biomeRegistry.getOrThrow(HexcraftBiomes.VAMPIRE_FOREST)
+                                ),
+                                Pair.of(
+                                        Climate.parameters(0.7F, 0.1F, 0.0F, 0.0F, 0.0F, 0.2F, 0.7F),
+                                        biomeRegistry.getOrThrow(HexcraftBiomes.CRIMSON_DESERT)
+                                ),
+                                Pair.of(
+                                        Climate.parameters(0.05F, 0.8F, 0.0F, 0.0F, 0.0F, 0.4F, 0.3F),
+                                        biomeRegistry.getOrThrow(HexcraftBiomes.UNDERGARDEN)
+                                ),
 
-        context.register(UNDERWORLDDIM_KEY, new LevelStem(dimTypes.getOrThrow(UNDERWORLD_DIM_TYPE), underworldChunkGen));
+                                Pair.of(
+                                        Climate.parameters(-0.9F, -0.4F, 0.0F, 0.0F, 0.0F, 0.6F, 0.4F),
+                                        biomeRegistry.getOrThrow(HexcraftBiomes.ABYSSAL_SEAS)
+                                ),
+                                Pair.of(
+                                        Climate.parameters(-1.0F, -0.8F, 0.0F, 0.0F, 0.0F, 0.7F, 0.6F),
+                                        biomeRegistry.getOrThrow(HexcraftBiomes.DEEP_ABYSSAL_SEAS)
+                                ),
+                                Pair.of(
+                                        Climate.parameters(-0.6F, -0.2F, 0.0F, 0.0F, 0.0F, 0.5F, 0.5F),
+                                        biomeRegistry.getOrThrow(HexcraftBiomes.FROSTFANG_OCEAN)
+                                ),
+                                Pair.of(
+                                        Climate.parameters(-0.8F, -0.1F, 0.0F, 0.0F, 0.0F, 0.5F, 0.4F),
+                                        biomeRegistry.getOrThrow(HexcraftBiomes.STORMREACH_OCEAN)
+                                ),
+                                Pair.of(
+                                        Climate.parameters(0.6F, 0.2F, 0.0F, 0.0F, 0.0F, 0.7F, 0.5F),
+                                        biomeRegistry.getOrThrow(HexcraftBiomes.SCORCHING_REEF)
+                                ),
+                                Pair.of(
+                                        Climate.parameters(0.2F, 0.5F, 0.0F, 0.0F, 0.0F, 0.6F, 0.5F),
+                                        biomeRegistry.getOrThrow(HexcraftBiomes.GLIMMERING_SHOALS)
+                                ),
+                                Pair.of(
+                                        Climate.parameters(0.3F, 0.7F, 0.0F, 0.0F, 0.0F, 0.4F, 0.3F),
+                                        biomeRegistry.getOrThrow(HexcraftBiomes.TWILIGHT_SHOALS)
+                                ),
+                                Pair.of(
+                                        Climate.parameters(0.1F, 0.6F, 0.0F, 0.0F, 0.0F, 0.5F, 0.4F),
+                                        biomeRegistry.getOrThrow(HexcraftBiomes.VEILWATER_BASIN)
+                                ),
+
+                                Pair.of(
+                                        Climate.parameters(0.25F, 0.35F, 0.0F, 0.0F, 0.0F, 0.5F, 0.3F),
+                                        biomeRegistry.getOrThrow(HexcraftBiomes.ECHO_FUNGLE_FOREST)
+                                ),
+                                Pair.of(
+                                        Climate.parameters(0.5F, 0.6F, 0.0F, 0.0F, 0.0F, 0.6F, 0.4F),
+                                        biomeRegistry.getOrThrow(HexcraftBiomes.HELL_FUNGLE_FOREST)
+                                )
+
+                        ))),
+                noiseGenSettings.getOrThrow(NoiseGeneratorSettings.CAVES));
+
+        LevelStem stem = new LevelStem(dimTypes.getOrThrow(HexcraftDimensions.UNDERWORLD_DIM_TYPE), noiseBasedChunkGenerator);
+
+        context.register(UNDERWORLDDIM_KEY, stem);
 
         // Prison World chunk generator with vanilla overworld biomes
         MultiNoiseBiomeSource prisonBiomeSource = createVanillaOverworldBiomeSource(biomeRegistry);

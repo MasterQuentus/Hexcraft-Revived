@@ -6,6 +6,7 @@ import net.minecraft.core.HolderGetter;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.levelgen.*;
@@ -14,15 +15,60 @@ import net.minecraft.world.level.levelgen.synth.NormalNoise;
 import java.util.List;
 
 public class HexcraftNoiseBuilders {
-    private static final SurfaceRules.RuleSource GRASS_BLOCK = SurfaceRules.state(HexcraftBlocks.VILE_GRASS_BLOCK.get().defaultBlockState());
-    private static final SurfaceRules.RuleSource DIRT = SurfaceRules.state(HexcraftBlocks.VILE_DIRT.get().defaultBlockState());
+    private static final SurfaceRules.RuleSource GRASS_BLOCK = SurfaceRules.state(Blocks.GRASS_BLOCK.defaultBlockState());
+    private static final SurfaceRules.RuleSource DIRT = SurfaceRules.state(Blocks.DIRT.defaultBlockState());
+    private static final SurfaceRules.RuleSource VILE_GRASS_BLOCK = SurfaceRules.state(HexcraftBlocks.VILE_GRASS_BLOCK.get().defaultBlockState());
+    private static final SurfaceRules.RuleSource VILE_DIRT = SurfaceRules.state(HexcraftBlocks.VILE_DIRT.get().defaultBlockState());
+    private static final SurfaceRules.RuleSource CRIMSON_SAND_BLOCK = SurfaceRules.state(HexcraftBlocks.CRIMSON_SAND.get().defaultBlockState());
+    private static final SurfaceRules.RuleSource CRIMSON_SAND_STONE_BLOCK = SurfaceRules.state(HexcraftBlocks.CRIMSON_SAND_STONE.get().defaultBlockState());
+    private static final SurfaceRules.RuleSource UNDER_WORLD_STONE_BLOCK = SurfaceRules.state(HexcraftBlocks.UNDER_WORLD_STONE.get().defaultBlockState());
+    private static final SurfaceRules.RuleSource BEDROCK = SurfaceRules.state(Blocks.BEDROCK.defaultBlockState());
+    private static final SurfaceRules.RuleSource DEEPSLATE = SurfaceRules.state(Blocks.DEEPSLATE.defaultBlockState());
+    private static final SurfaceRules.RuleSource TWILIGHT_MOSSGRASS_BLOCK = SurfaceRules.state(HexcraftBlocks.TWILIGHT_MOSSGRASS.get().defaultBlockState());
+    private static final SurfaceRules.RuleSource GLOOMROOT_SOIL = SurfaceRules.state(HexcraftBlocks.GLOOMROOT_SOIL.get().defaultBlockState());
+    private static final SurfaceRules.RuleSource GLIMMER_CAP_BLOCK = SurfaceRules.state(HexcraftBlocks.GLIMMER_CAP.get().defaultBlockState());
+    private static final SurfaceRules.RuleSource SHARDSTONE_BLOCK = SurfaceRules.state(HexcraftBlocks.SHARDSTONE.get().defaultBlockState());
+    private static final SurfaceRules.RuleSource LUMICLAST_BLOCK = SurfaceRules.state(HexcraftBlocks.LUMICLAST.get().defaultBlockState());
+    private static final SurfaceRules.RuleSource ABYSSAL_SAND_BLOCK = SurfaceRules.state(HexcraftBlocks.ABYSSAL_SAND.get().defaultBlockState());
+    private static final SurfaceRules.RuleSource ABYSSAL_GRAVEL_BLOCK = SurfaceRules.state(HexcraftBlocks.ABYSSAL_GRAVEL.get().defaultBlockState());
+    private static final SurfaceRules.RuleSource DEEP_WATER_BLOCK = SurfaceRules.state(HexcraftBlocks.DEEP_WATER_BLOCK.get().defaultBlockState());
+    private static final SurfaceRules.RuleSource TWILIGHT_CORAL = SurfaceRules.state(HexcraftBlocks.TWILIGHT_CORAL.get().defaultBlockState());
+    private static final SurfaceRules.RuleSource TWILIGHT_CORAL_BLOCK = SurfaceRules.state(HexcraftBlocks.TWILIGHT_CORAL_BLOCK.get().defaultBlockState());
+    private static final SurfaceRules.RuleSource TWILIGHT_CORAL_FAN = SurfaceRules.state(HexcraftBlocks.TWILIGHT_CORAL_FAN.get().defaultBlockState());
+    private static final SurfaceRules.RuleSource TWILIGHT_CORAL_WALL_FAN = SurfaceRules.state(HexcraftBlocks.TWILIGHT_CORAL_WALL_FAN.get().defaultBlockState());
+    private static final SurfaceRules.RuleSource SANGUINE_CORAL = SurfaceRules.state(HexcraftBlocks.SANGUINE_CORAL.get().defaultBlockState());
+    private static final SurfaceRules.RuleSource SANGUINE_CORAL_BLOCK = SurfaceRules.state(HexcraftBlocks.SANGUINE_CORAL_BLOCK.get().defaultBlockState());
+    private static final SurfaceRules.RuleSource SANGUINE_CORAL_FAN = SurfaceRules.state(HexcraftBlocks.SANGUINE_CORAL_FAN.get().defaultBlockState());
+    private static final SurfaceRules.RuleSource SANGUINE_CORAL_WALL_FAN = SurfaceRules.state(HexcraftBlocks.SANGUINE_CORAL_WALL_FAN.get().defaultBlockState());
+    private static final SurfaceRules.RuleSource WHISPER_CORAL = SurfaceRules.state(HexcraftBlocks.WHISPER_CORAL.get().defaultBlockState());
+    private static final SurfaceRules.RuleSource WHISPER_CORAL_BLOCK = SurfaceRules.state(HexcraftBlocks.WHISPER_CORAL_BLOCK.get().defaultBlockState());
+    private static final SurfaceRules.RuleSource WHISPER_CORAL_FAN = SurfaceRules.state(HexcraftBlocks.WHISPER_CORAL_FAN.get().defaultBlockState());
+    private static final SurfaceRules.RuleSource WHISPER_CORAL_WALL_FAN = SurfaceRules.state(HexcraftBlocks.WHISPER_CORAL_WALL_FAN.get().defaultBlockState());
+    private static final SurfaceRules.RuleSource EBONFANG_CORAL = SurfaceRules.state(HexcraftBlocks.EBONFANG_CORAL.get().defaultBlockState());
+    private static final SurfaceRules.RuleSource EBONFANG_CORAL_BLOCK = SurfaceRules.state(HexcraftBlocks.EBONFANG_CORAL_BLOCK.get().defaultBlockState());
+    private static final SurfaceRules.RuleSource EBONFANG_CORAL_FAN = SurfaceRules.state(HexcraftBlocks.EBONFANG_CORAL_FAN.get().defaultBlockState());
+    private static final SurfaceRules.RuleSource EBONFANG_CORAL_WALL_FAN = SurfaceRules.state(HexcraftBlocks.EBONFANG_CORAL_WALL_FAN.get().defaultBlockState());
+    private static final SurfaceRules.RuleSource SPECTRAL_BLOOM_CORAL = SurfaceRules.state(HexcraftBlocks.SPECTRAL_BLOOM_CORAL.get().defaultBlockState());
+    private static final SurfaceRules.RuleSource SPECTRAL_BLOOM_CORAL_BLOCK = SurfaceRules.state(HexcraftBlocks.SPECTRAL_BLOOM_CORAL_BLOCK.get().defaultBlockState());
+    private static final SurfaceRules.RuleSource SPECTRAL_BLOOM_CORAL_FAN = SurfaceRules.state(HexcraftBlocks.SPECTRAL_BLOOM_CORAL_FAN.get().defaultBlockState());
+    private static final SurfaceRules.RuleSource SPECTRAL_BLOOM_CORAL_WALL_FAN = SurfaceRules.state(HexcraftBlocks.SPECTRAL_BLOOM_CORAL_WALL_FAN.get().defaultBlockState());
+    private static final SurfaceRules.RuleSource HELLVINE_CORAL = SurfaceRules.state(HexcraftBlocks.HELLVINE_CORAL.get().defaultBlockState());
+    private static final SurfaceRules.RuleSource HELLVINE_CORAL_BLOCK = SurfaceRules.state(HexcraftBlocks.HELLVINE_CORAL_BLOCK.get().defaultBlockState());
+    private static final SurfaceRules.RuleSource HELLVINE_CORAL_FAN = SurfaceRules.state(HexcraftBlocks.HELLVINE_CORAL_FAN.get().defaultBlockState());
+    private static final SurfaceRules.RuleSource HELLVINE_CORAL_WALL_FAN = SurfaceRules.state(HexcraftBlocks.HELLVINE_CORAL_WALL_FAN.get().defaultBlockState());
+    private static final SurfaceRules.RuleSource SOULSTEM_CANDLE = SurfaceRules.state(HexcraftBlocks.SOULSTEM_CANDLE.get().defaultBlockState());
+    private static final SurfaceRules.RuleSource LIVING_KELP_PLANT = SurfaceRules.state(HexcraftBlocks.LIVING_KELP_PLANT.get().defaultBlockState());
+    private static final SurfaceRules.RuleSource UMBRAL_BLOOM_GRASS = SurfaceRules.state(HexcraftBlocks.UMBRAL_BLOOM_GRASS_BLOCK.get().defaultBlockState());
+    private static final SurfaceRules.RuleSource UMBRAL_BLOOM_DIRT = SurfaceRules.state(HexcraftBlocks.UMBRAL_BLOOM_DIRT.get().defaultBlockState());
+    private static final SurfaceRules.RuleSource SCORCHFIRE_GRASS = SurfaceRules.state(HexcraftBlocks.SCORCHFIRE_GRASS_BLOCK.get().defaultBlockState());
+    private static final SurfaceRules.RuleSource SCORCHFIRE_DIRT = SurfaceRules.state(HexcraftBlocks.SCORCHFIRE_DIRT.get().defaultBlockState());
 
     public static NoiseGeneratorSettings underworldNoiseSettings(HolderGetter<DensityFunction> densityFunctions, HolderGetter<NormalNoise.NoiseParameters> noise) {
         BlockState holystone = HexcraftBlocks.UNDER_WORLD_STONE.get().defaultBlockState();
         return new NoiseGeneratorSettings(
                 new NoiseSettings(0, 128, 2, 1), // noiseSettings
                 holystone, // defaultBlock
-                Blocks.WATER.defaultBlockState(), // defaultFluid
+                HexcraftBlocks.DEEP_WATER_BLOCK.get().defaultBlockState(), // defaultFluid
                 makeNoiseRouter(densityFunctions, noise), // noiseRouter
                 vampireforestSurfaceRules(), // surfaceRule
                 List.of(), // spawnTarget
@@ -35,8 +81,19 @@ public class HexcraftNoiseBuilders {
     }
 
     public static SurfaceRules.RuleSource vampireforestSurfaceRules() {
-        SurfaceRules.RuleSource surface = SurfaceRules.sequence(SurfaceRules.ifTrue(SurfaceRules.waterBlockCheck(-1, 0), GRASS_BLOCK), DIRT);
-        return SurfaceRules.sequence(SurfaceRules.ifTrue(SurfaceRules.ON_FLOOR, surface), SurfaceRules.ifTrue(SurfaceRules.UNDER_FLOOR, DIRT));
+        SurfaceRules.RuleSource surface = SurfaceRules.sequence(
+                SurfaceRules.ifTrue(SurfaceRules.waterBlockCheck(-1, 0), VILE_GRASS_BLOCK),
+                VILE_DIRT
+        );
+
+        // ON_FLOOR means surface layer (top block)
+        // UNDER_FLOOR means blocks just under surface
+        // Everything below that will fall back to default block in NoiseGeneratorSettings (UNDER_WORLD_STONE)
+
+        return SurfaceRules.sequence(
+                SurfaceRules.ifTrue(SurfaceRules.ON_FLOOR, surface),
+                SurfaceRules.ifTrue(SurfaceRules.UNDER_FLOOR, UNDER_WORLD_STONE_BLOCK)
+        );
     }
 
     private static NoiseRouter makeNoiseRouter(HolderGetter<DensityFunction> densityFunctions, HolderGetter<NormalNoise.NoiseParameters> noise) {

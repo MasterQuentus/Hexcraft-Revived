@@ -18,6 +18,8 @@ public class HexcraftBlockStateProvider extends BlockStateProvider {
 
     @Override
     protected void registerStatesAndModels() {
+        blockWithItem(HexcraftBlocks.SCORCHFIRE_DIRT);
+        blockWithItem(HexcraftBlocks.UMBRAL_BLOOM_DIRT);
         blockWithItem(HexcraftBlocks.VILE_DIRT);
         blockWithItem(HexcraftBlocks.GHOSTSHROOM_LAMP);
         blockWithItem(HexcraftBlocks.VILESHROOM_LAMP);

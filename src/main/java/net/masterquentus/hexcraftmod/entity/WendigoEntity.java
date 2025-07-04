@@ -29,17 +29,23 @@ import java.util.Random;
 public class WendigoEntity extends Monster implements GeoEntity {
     private final AnimatableInstanceCache cache = GeckoLibUtil.createInstanceCache(this);
 
-    // Custom attributes for stalking, hunger, and illusions
     private int hungerCurseCooldown = 1200; // Every 60s
     private int illusionCooldown = 1800; // Every 90s
     private int stalkerCooldown = 600; // Every 30s
 
-    // Fixed: Correct attack animation name
+    // Flag to mark illusions, default false
+    private boolean isIllusion = false;
+
     private static final RawAnimation WENDIGO_ATTACK = RawAnimation.begin().then("animation.wendigo.attack", Animation.LoopType.PLAY_ONCE);
 
     public WendigoEntity(EntityType<? extends Monster> entityType, Level level) {
         super(entityType, level);
-        this.xpReward = 150; // Mid-tier boss or mini-boss
+        this.xpReward = 150;
+    }
+
+    // Setter for illusions
+    public void setIllusion(boolean illusion) {
+        this.isIllusion = illusion;
     }
 
     @Override
@@ -49,10 +55,9 @@ public class WendigoEntity extends Monster implements GeoEntity {
         this.goalSelector.addGoal(2, new RandomLookAroundGoal(this));
         this.goalSelector.addGoal(3, new WaterAvoidingRandomStrollGoal(this, 1.0D));
 
-        // Fix: Properly Reference Methods
-        this.goalSelector.addGoal(4, new UseAbilityGoal(this, this::applyHungerCurse, 1200)); // Hunger Curse
-        this.goalSelector.addGoal(5, new UseAbilityGoal(this, this::summonIllusions, 1800)); // Illusions
-        this.goalSelector.addGoal(6, new UseAbilityGoal(this, this::stalkerMode, 600)); // Shadow Stalker
+        this.goalSelector.addGoal(4, new UseAbilityGoal(this, this::applyHungerCurse, 1200));
+        this.goalSelector.addGoal(5, new UseAbilityGoal(this, this::summonIllusions, 1800));
+        this.goalSelector.addGoal(6, new UseAbilityGoal(this, this::stalkerMode, 600));
 
         this.targetSelector.addGoal(1, new NearestAttackableTargetGoal<>(this, Player.class, true));
         this.targetSelector.addGoal(2, new NearestAttackableTargetGoal<>(this, Villager.class, true));
@@ -61,46 +66,54 @@ public class WendigoEntity extends Monster implements GeoEntity {
 
     public static AttributeSupplier setAttributes() {
         return Mob.createMobAttributes()
-                .add(Attributes.MAX_HEALTH, 120.0D) // High HP but not a full boss
-                .add(Attributes.MOVEMENT_SPEED, 0.45D) // Faster than normal mobs
-                .add(Attributes.ATTACK_DAMAGE, 10.0D) // Strong but not OP
-                .add(Attributes.ATTACK_KNOCKBACK, 1.5D) // Slight knockback
-                .add(Attributes.ARMOR, 5.0D) // Moderate defense
-                .add(Attributes.KNOCKBACK_RESISTANCE, 0.3D) // Hard to knock back
-                .add(Attributes.FOLLOW_RANGE, 60.0D).build(); // Stalks players from far away
+                .add(Attributes.MAX_HEALTH, 120.0D)
+                .add(Attributes.MOVEMENT_SPEED, 0.45D)
+                .add(Attributes.ATTACK_DAMAGE, 10.0D)
+                .add(Attributes.ATTACK_KNOCKBACK, 1.5D)
+                .add(Attributes.ARMOR, 5.0D)
+                .add(Attributes.KNOCKBACK_RESISTANCE, 0.3D)
+                .add(Attributes.FOLLOW_RANGE, 60.0D)
+                .build();
     }
 
     @Override
     public void tick() {
         super.tick();
 
-        // Reduce ability cooldowns
+        // **Skip cooldown reduction & ability usage if this is an illusion**
+        if (isIllusion) {
+            // Optionally despawn illusions after some time, e.g. 20 seconds:
+            if (this.tickCount > 400) {
+                this.discard();
+            }
+            return;
+        }
+
         if (hungerCurseCooldown > 0) hungerCurseCooldown--;
         if (illusionCooldown > 0) illusionCooldown--;
         if (stalkerCooldown > 0) stalkerCooldown--;
 
-        // Apply abilities when cooldown expires
         if (hungerCurseCooldown == 0) {
             applyHungerCurse(this);
-            hungerCurseCooldown = 1200; // Reset cooldown
+            hungerCurseCooldown = 1200;
         }
-
         if (illusionCooldown == 0) {
             summonIllusions(this);
-            illusionCooldown = 1800; // Reset cooldown
+            illusionCooldown = 1800;
         }
-
         if (stalkerCooldown == 0) {
             stalkerMode(this);
-            stalkerCooldown = 600; // Reset cooldown
+            stalkerCooldown = 600;
         }
     }
 
     private void applyHungerCurse(LivingEntity entity) {
         if (!level().isClientSide) {
             for (Player player : level().players()) {
-                player.addEffect(new MobEffectInstance(MobEffects.HUNGER, 600, 1)); // Hunger for 30s
-                player.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 200, 1)); // Slowness for 10s
+                if (!player.isCreative() && !player.isSpectator()) {
+                    player.addEffect(new MobEffectInstance(MobEffects.HUNGER, 600, 1)); // 30s
+                    player.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 200, 1)); // 10s
+                }
             }
             level().playSound(null, this.getX(), this.getY(), this.getZ(), SoundEvents.WOLF_GROWL, SoundSource.HOSTILE, 1.0F, 0.8F);
         }
@@ -112,8 +125,9 @@ public class WendigoEntity extends Monster implements GeoEntity {
             for (int i = 0; i < 3; i++) {
                 WendigoEntity illusion = HexcraftEntities.WENDIGO.get().create(level());
                 if (illusion != null) {
-                    illusion.moveTo(this.getX() + random.nextDouble() * 5, this.getY(), this.getZ() + random.nextDouble() * 5);
-                    illusion.setInvisible(true); // Illusions are invisible
+                    illusion.setIllusion(true); // Mark as illusion so it doesn't spawn more illusions
+                    illusion.moveTo(this.getX() + (random.nextDouble() - 0.5) * 6, this.getY(), this.getZ() + (random.nextDouble() - 0.5) * 6);
+                    illusion.setInvisible(true);
                     level().addFreshEntity(illusion);
                 }
             }
@@ -123,7 +137,7 @@ public class WendigoEntity extends Monster implements GeoEntity {
 
     private void stalkerMode(LivingEntity entity) {
         if (!level().isClientSide) {
-            this.addEffect(new MobEffectInstance(MobEffects.INVISIBILITY, 400, 0)); // Wendigo disappears for 20s
+            this.addEffect(new MobEffectInstance(MobEffects.INVISIBILITY, 400, 0));
             level().playSound(null, this.getX(), this.getY(), this.getZ(), SoundEvents.WARDEN_SONIC_BOOM, SoundSource.HOSTILE, 1.0F, 0.5F);
         }
     }
@@ -132,14 +146,14 @@ public class WendigoEntity extends Monster implements GeoEntity {
     public boolean doHurtTarget(Entity target) {
         boolean success = super.doHurtTarget(target);
         if (success && target instanceof LivingEntity) {
-            ((LivingEntity) target).addEffect(new MobEffectInstance(MobEffects.HUNGER, 200, 1)); // 10s Hunger
-            this.triggerAttackAnimation(); // Play attack animation
+            ((LivingEntity) target).addEffect(new MobEffectInstance(MobEffects.HUNGER, 200, 1));
+            this.triggerAttackAnimation();
         }
         return success;
     }
 
     private void triggerAttackAnimation() {
-        this.triggerAnim("attack_controller", "attack"); // Matches your animation name
+        this.triggerAnim("attack_controller", "attack");
     }
 
     @Override
@@ -147,7 +161,7 @@ public class WendigoEntity extends Monster implements GeoEntity {
         super.die(source);
         if (!level().isClientSide) {
             if (random.nextFloat() < 0.50) {
-                this.spawnAtLocation(Items.ROTTEN_FLESH); // 50% chance to drop Cursed Flesh
+                this.spawnAtLocation(Items.ROTTEN_FLESH);
             }
         }
     }

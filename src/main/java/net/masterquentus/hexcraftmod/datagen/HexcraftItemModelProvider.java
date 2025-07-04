@@ -81,8 +81,8 @@ public class HexcraftItemModelProvider extends ItemModelProvider {
 		simpleItem(HexcraftItems.RAW_BLOODY_NYKIUM);
 		simpleItem(HexcraftItems.BLOODY_NYKIUM);
 		simpleItem(HexcraftItems.BLOODY_NYKIUM_NUGGET);
-		//simpleItem(HexcraftItems.NYKIUM_INGOT);
-		//simpleItem(HexcraftItems.NYKIUM_NUGGET);
+		simpleItem(HexcraftItems.NYKIUM_INGOT);
+		simpleItem(HexcraftItems.NYKIUM_NUGGET);
 		simpleItem(HexcraftItems.RAW_CUROGEN);
 		simpleItem(HexcraftItems.CUROGEN);
 		simpleItem(HexcraftItems.CUROGEN_NUGGET);
@@ -101,6 +101,7 @@ public class HexcraftItemModelProvider extends ItemModelProvider {
 		simpleItem(HexcraftItems.RAW_ECLIPSIUM);
 		simpleItem(HexcraftItems.ECLIPSIUM_INGOT);
 		simpleItem(HexcraftItems.ECLIPSIUM_NUGGET);
+		simpleItem(HexcraftItems.DEEPSEER_INGOT);
 		simpleItem(HexcraftItems.WHITE_OAK_ASH);
 		simpleItem(HexcraftItems.SALT);
 		simpleItem(HexcraftItems.NECROMANTIC_STONE);
@@ -432,7 +433,7 @@ public class HexcraftItemModelProvider extends ItemModelProvider {
 		//handheldItem(HexcraftItems.DARK_STEEL_SHOVEL);
 		//handheldItem(HexcraftItems.DARK_STEEL_AXE);
 		//handheldItem(HexcraftItems.DARK_STEEL_HOE);
-		//handheldItem(HexcraftItems.BLOODY_NYKIUM_SWORD);
+		handheldItem(HexcraftItems.BLOODY_NYKIUM_SWORD);
 		//handheldItem(HexcraftItems.BLOODY_NYKIUM_PICKAXE);
 		//handheldItem(HexcraftItems.BLOODY_NYKIUM_SHOVEL);
 		//handheldItem(HexcraftItems.BLOODY_NYKIUM_AXE);

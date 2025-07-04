@@ -8,6 +8,10 @@
     "hexcraftmod:charstone",
     "hexcraftmod:vileshroom_lamp",
     "hexcraftmod:ghostshroom_lamp",
-    "hexcraftmod:gloomroot_soil"
+    "hexcraftmod:gloomroot_soil",
+    "hexcraftmod:scorchfire_grass_block",
+    "hexcraftmod:scorchfire_dirt",
+    "hexcraftmod:umbral_bloom_grass_block",
+    "hexcraftmod:umbral_bloom_dirt"
   ]
 }

@@ -66,6 +66,40 @@ public class HexcraftPlacedFeatures {
 
     public static final ResourceKey<PlacedFeature> VILE_GRASS_BONEMEAL = createKey("vile_grass_bonemeal");
 
+    public static final ResourceKey<PlacedFeature> UMBRAL_BLOOM_GRASS_BONEMEAL = createKey("umbral_grass_bonemeal");
+
+    public static final ResourceKey<PlacedFeature> SCORCHFIRE_GRASS_BONEMEAL = createKey("scorchfire_grass_bonemeal");
+
+    public static final ResourceKey<PlacedFeature> BRAMBLE_GRASS_BONEMEAL = createKey("bramble_grass_bonemeal");
+
+    public static final ResourceKey<PlacedFeature> VEILSHADE_GRASS_BONEMEAL = createKey("vilshade_soil_bonemeal");
+
+    public static final ResourceKey<PlacedFeature> CRACKED_SOIL_BONEMEAL = createKey("cracked_soil_bonemeal");
+
+    public static final ResourceKey<PlacedFeature> PACKED_HUMUS_BONEMEAL = createKey("packed_humus_bonemeal");
+
+    public static final ResourceKey<PlacedFeature> FESTERING_GRASS_BONEMEAL = createKey("festering_grass_bonemeal");
+
+    public static final ResourceKey<PlacedFeature> CINDERWEED_SOIL_BONEMEAL = createKey("cinderweed_soil_bonemeal");
+
+    public static final ResourceKey<PlacedFeature> FLAREWORN_GRASS_BONEMEAL = createKey("flareworn_grass_bonemeal");
+
+    public static final ResourceKey<PlacedFeature> BILEWEED_GRASS_BONEMEAL = createKey("bileweed_grass_bonemeal");
+
+    public static final ResourceKey<PlacedFeature> WHISPERBLOOM_SOIL_BONEMEAL = createKey("whisperblom_soil_bonemeal");
+
+    public static final ResourceKey<PlacedFeature> TWILIGHTLOAM_GRASS_BONEMEAL = createKey("twilightloam_grass_bonemeal");
+
+    public static final ResourceKey<PlacedFeature> ROTROOT_GRASS_BONEMEAL = createKey("rotroot_grass_bonemeal");
+
+    public static final ResourceKey<PlacedFeature> HUSKWEED_GRASS_BONEMEAL = createKey("huskweed_grass_bonemeal");
+
+    public static final ResourceKey<PlacedFeature> SPIRITWEED_GRASS_BONEMEAL = createKey("spiritweed_grass_bonemeal");
+
+    public static final ResourceKey<PlacedFeature> DUSK_GRASS_BONEMEAL = createKey("dusk_grass_bonemeal");
+
+    public static final ResourceKey<PlacedFeature> NIGHTVEIN_GRASS_BONEMEAL = createKey("nightvein_grass_bonemeal");
+
     public static final ResourceKey<PlacedFeature> GRASS_PATCH_PLACEMENT = createKey("grass_patch");
 
 
@@ -169,6 +203,12 @@ public class HexcraftPlacedFeatures {
                         HexcraftBlocks.BLOOD_OAK_SAPLING.get()));
 
         register(context, VILE_GRASS_BONEMEAL, configuredFeatures.getOrThrow(VegetationFeatures.SINGLE_PIECE_OF_GRASS),
+                Collections.singletonList(PlacementUtils.isEmpty()));
+
+        register(context, UMBRAL_BLOOM_GRASS_BONEMEAL, configuredFeatures.getOrThrow(VegetationFeatures.SINGLE_PIECE_OF_GRASS),
+                Collections.singletonList(PlacementUtils.isEmpty()));
+
+        register(context, SCORCHFIRE_GRASS_BONEMEAL, configuredFeatures.getOrThrow(VegetationFeatures.SINGLE_PIECE_OF_GRASS),
                 Collections.singletonList(PlacementUtils.isEmpty()));
 
 

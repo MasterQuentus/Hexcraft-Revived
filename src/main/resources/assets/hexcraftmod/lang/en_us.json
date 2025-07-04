@@ -37,6 +37,7 @@
   "item.hexcraftmod.necrotic_stone": "Necrotic Stone",
   "item.hexcraftmod.crystal_trap_item": "Crystal Trap",
   "item.hexcraftmod.enchanted_rune": "Enchanted Rune",
+  "item.hexcraftmod.corrupted_rune": "Corrupted Rune",
   "item.hexcraftmod.blank_rune": "Blank Rune",
   "item.hexcraftmod.air_rune": "Air Rune",
   "item.hexcraftmod.earth_rune": "Earth Rune",
@@ -167,6 +168,56 @@
   "item.hexcraftmod.deep_water_bucket": "Deep Water Bucket",
 
   //Blocks
+  "block.hexcraftmod.bramble_dirt": "Bramble Dirt",
+  "block.hexcraftmod.bramble_grass_block": "Bramble Grass Block",
+
+  "block.hexcraftmod.vileshade_dirt": "Veilshade Dirt",
+  "block.hexcraftmod.veilshade_soil": "Veilshade Soil",
+
+  "block.hexcraftmod.tainted_dirt": "Tainted Dirt",
+  "block.hexcraftmod.tainted_soil": "Tainted Soil",
+
+  "block.hexcraftmod.stoneloam_dirt": "Stoneloam Dirt",
+  "block.hexcraftmod.stoneloam_soil": "Stoneloam Soil",
+
+  "block.hexcraftmod.cindeweed_dirt": "Cinderweed Dirt",
+  "block.hexcraftmod.cinderweed_soil": "Cinderweed Soil",
+
+  "block.hexcraftmod.seething_red_dirt": "Seething Red Dirt",
+  "block.hexcraftmod.festering_grass_block": "Festering Grass Block",
+
+  "block.hexcraftmod.flareworn_dirt": "Flareworn Dirt",
+  "block.hexcraftmod.flareworn_grass_block": "Flareworn Grass Block",
+
+  "block.hexcraftmod.bileweed_dirt_dirt": "Bileweed Dirt",
+  "block.hexcraftmod.bileweed_grass_block": "Bileweed Grass Block",
+
+  "block.hexcraftmod.whisperbloom_dirt": "Whisperbloom Dirt",
+  "block.hexcraftmod.whisperbloom_soil": "Whisperbloom Soil",
+
+  "block.hexcraftmod.twilightloam_dirt": "Twilightloam Dirt",
+  "block.hexcraftmod.twilightloam_grass_block": "Twilightloam Grass Block",
+
+  "block.hexcraftmod.rodroot_dirt": "Rotroot Dirt",
+  "block.hexcraftmod.rotroot_grass_block": "Rotroot Grass Block",
+
+  "block.hexcraftmod.huskweed_dirt": "Huskweed Dirt",
+  "block.hexcraftmod.huskweed_grass_block": "Huskweed Grass Block",
+
+  "block.hexcraftmod.soulloam_dirt": "Spiritweed Dirt",
+  "block.hexcraftmod.spiritweed_grass_block": "Spiritweed Grass Block",
+
+  "block.hexcraftmod.duskdirt": "Dusk Dirt",
+  "block.hexcraftmod.dusk_grass_block": "Dusk Grass Block",
+
+  "block.hexcraftmod.nightvein_dirt": "Nightvein Dirt",
+  "block.hexcraftmod.nightvein_grass_block": "Nightvein Grass Block",
+  "block.hexcraftmod.scorchfire_grass_block": "Scorchfire Grass Block",
+  "block.hexcraftmod.scorchfire_dirt": "Scorchfire Dirt",
+  "block.hexcraftmod.scorchfire_grass": "Scorchfire Grass",
+  "block.hexcraftmod.umbral_bloom_grass_block": "Umbral Bloom Grass Block",
+  "block.hexcraftmod.umbral_bloom_dirt": "Umbral Bloom Dirt",
+  "block.hexcraftmod.umbral_bloom_grass": "Umbral Bloom Grass",
   "block.hexcraftmod.vile_grass_block": "Vile Grass Block",
   "block.hexcraftmod.vile_dirt": "Vile Dirt",
   "block.hexcraftmod.gloomroot_soil": "Gloomroot Soil",
@@ -194,6 +245,7 @@
   "block.hexcraftmod.blister_cactus_flower": "Blister Cactus Flower",
   "block.hexcraftmod.blister_cactus": "Blister Cactus",
   "block.hexcraftmod.black_obsidian": "Black Obsidian",
+  "block.hexcraftmod.obsidrock": "Obsidrock",
   "block.hexcraftmod.amethyst_chimes": "Amethyst Chimes",
   "block.hexcraftmod.pure_magic_crystal": "Pure Magic Crystal",
   "block.hexcraftmod.witches_oven": "Witches Oven",
@@ -262,6 +314,7 @@
   "block.hexcraftmod.polished_charstone": "Polished Charstone",
   "block.hexcraftmod.chiseled_charstone": "Chiseled Charstone",
   "block.hexcraftmod.cracked_charstone": "Cracked Charstone",
+  "block.hexcraftmod.igneorock": "Igneorock",
   "block.hexcraftmod.pixie_sand": "Pixie Sand",
   "block.hexcraftmod.pixie_sand_stone": "Pixie Sandstone",
   "block.hexcraftmod.smooth_pixie_sand_stone": "Smooth Pixie Sandstone",
@@ -283,6 +336,8 @@
   "block.hexcraftmod.cut_crimson_sand_stone": "Cut Crimson Sandstone",
   "block.hexcraftmod.abyssal_sand": "Abyssal Sand",
   "block.hexcraftmod.abyssal_gravel": "Abyssal Gravel",
+  "block.hexcraftmod.voidgrit": "Void Grit",
+  "block.hexcraftmod.magmagrit": "Magma Grit",
   "block.hexcraftmod.crimson_glass": "Crimson Glass",
   "block.hexcraftmod.crimson_glass_pane": "Crimson Glass Pane",
   "block.hexcraftmod.crimson_ice": "Crimson Ice",
@@ -299,6 +354,9 @@
   "block.hexcraftmod.pixie_ward": "Pixie Ward",
   "block.hexcraftmod.hellfire_campfire": "Hellfire Campfire",
   "fluid_type.hexcraftmod.blood_fluid": "Blood",
+  "fluid_type.hexcraftmod.deep_water_fluid": "Blood",
+  "block.hexcraftmod.seething_coalbed": "Seething Calbed",
+  "block.hexcraftmod.drowned_moss": "Drowned Moss",
 
   //Logs
   "block.hexcraftmod.stripped_ebony_wood": "Stripped Ebony Wood",
@@ -833,6 +891,7 @@
   "block.hexcraftmod.hell_fungal_lamp": "Hell Fungal Lamp",
   "block.hexcraftmod.vileshroom_lamp": "Vileshroom Lamp",
   "block.hexcraftmod.ghostshroom_lamp": "Ghostshroom Lamp",
+  "block.hexcraftmod.lumenbloom_cluster": "Lumen Bloom Cluster",
 
 
   //Foods
@@ -846,6 +905,19 @@
   "item.hexcraftmod.living_kelp_salad": "Living Kelp Salad",
 
   //Potions
+  "effect.hexcraftmod.blister_effect": "Blister Effect",
+  "effect.hexcraftmod.vampire_infection": "Vampire Infection",
+  "effect.hexcraftmod.vampire_transformation": "Vampire Transformation",
+  "effect.hexcraftmod.vervain_burn": "Vervain Effect",
+  "effect.hexcraftmod.blood_vision": "Blood Vision",
+  "effect.hexcraftmod.bloodhorn": "Bloodhorn",
+  "effect.hexcraftmod.bloodlust": "Blood Lust",
+  "effect.hexcraftmod.enhanced_speed": "Enhanced Speed",
+  "effect.hexcraftmod.enhanced_strength": "Enhanced Strength",
+  "effect.hexcraftmod.magical_boost": "Magical Boost",
+  "effect.hexcraftmod.magic_drain": "Magic Drain",
+  "effect.hexcraftmod.paralyzed": "Paralyzed",
+  "effect.hexcraftmod.magical_boost": "Magical Boost",
   "item.hexcraftmod.blistering_vitality_potion.effect.empty": "Potion Of Vitality",
   "item.hexcraftmod.venom_bottle": "Venom Bottle",
   "item.hexcraftmod.irenial_brew": "Irenial Brew",
@@ -903,6 +975,7 @@
   "item.hexcraftmod.vampiric_axe": "Vampiric Axe",
   "item.hexcraftmod.vampiric_hoe": "Vampiric Hoe",
   "item.hexcraftmod.vampiric_paxel": "Vampiric Paxel",
+  "item.hexcraftmod.crimson_fang": "Crimson Fang",
 
   //Armor
   "item.hexcraftmod.steel_helmet": "Steel Helmet",

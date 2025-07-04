@@ -7,6 +7,10 @@
     "hexcraftmod:under_world_stone_bricks",
     "hexcraftmod:charstone_bricks",
     "hexcraftmod:blister_cactus",
-    "hexcraftmod:gloomroot_soil"
+    "hexcraftmod:gloomroot_soil",
+    "hexcraftmod:scorchfire_grass_block",
+    "hexcraftmod:scorchfire_dirt",
+    "hexcraftmod:umbral_bloom_grass_block",
+    "hexcraftmod:umbral_bloom_dirt"
   ]
 }

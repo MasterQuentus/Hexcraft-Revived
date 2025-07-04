@@ -215,7 +215,11 @@ public class HexcraftBlockTagGenerator extends BlockTagsProvider {
 		             HexcraftBlocks.CHARSTONE.get(),
 		             HexcraftBlocks.VILESHROOM_LAMP.get(),
 		             HexcraftBlocks.GHOSTSHROOM_LAMP.get(),
-					 HexcraftBlocks.GLOOMROOT_SOIL.get());
+					 HexcraftBlocks.GLOOMROOT_SOIL.get(),
+		             HexcraftBlocks.SCORCHFIRE_GRASS_BLOCK.get(),
+		             HexcraftBlocks.SCORCHFIRE_DIRT.get(),
+		             HexcraftBlocks.UMBRAL_BLOOM_GRASS_BLOCK.get(),
+		             HexcraftBlocks.UMBRAL_BLOOM_DIRT.get());
 
 		this.tag(BlockTags.NEEDS_IRON_TOOL)
 				.add(HexcraftBlocks.AMETHYST_CHIMES.get(),
@@ -681,13 +685,17 @@ public class HexcraftBlockTagGenerator extends BlockTagsProvider {
 						HexcraftBlocks.FERTILIZED_DIRT.get(), HexcraftBlocks.CRIMSON_SAND.get(),
 						HexcraftBlocks.FAIRY_SAND.get(), HexcraftBlocks.PIXIE_SAND.get(),
 						HexcraftBlocks.GLOOMROOT_SOIL.get(), HexcraftBlocks.ABYSSAL_GRAVEL.get(),
-						HexcraftBlocks.ABYSSAL_SAND.get());
+						HexcraftBlocks.ABYSSAL_SAND.get(), HexcraftBlocks.SCORCHFIRE_GRASS_BLOCK.get(),
+						HexcraftBlocks.SCORCHFIRE_DIRT.get(), HexcraftBlocks.UMBRAL_BLOOM_GRASS_BLOCK.get(),
+						HexcraftBlocks.UMBRAL_BLOOM_DIRT.get());
 
 		this.tag(BlockTags.DIRT)
 				.add(HexcraftBlocks.VILE_GRASS_BLOCK.get(), HexcraftBlocks.VILE_DIRT.get(),
 						HexcraftBlocks.CURSED_SOIL.get(), HexcraftBlocks.CURED_SOIL.get(),
 						HexcraftBlocks.FERTILIZED_DIRT.get(), HexcraftBlocks.EMBER_MOSS_BLOCK.get(),
-						HexcraftBlocks.GLOOMROOT_SOIL.get());
+						HexcraftBlocks.GLOOMROOT_SOIL.get(), HexcraftBlocks.SCORCHFIRE_GRASS_BLOCK.get(),
+						HexcraftBlocks.SCORCHFIRE_DIRT.get(), HexcraftBlocks.UMBRAL_BLOOM_GRASS_BLOCK.get(),
+						HexcraftBlocks.UMBRAL_BLOOM_DIRT.get());
 
 		this.tag(BlockTags.BASE_STONE_OVERWORLD)
 				.add(HexcraftBlocks.PEARL_STONE.get(), HexcraftBlocks.CRIMSON_STONE.get(),
@@ -704,13 +712,17 @@ public class HexcraftBlockTagGenerator extends BlockTagsProvider {
 
 		this.tag(BlockTags.ANIMALS_SPAWNABLE_ON)
 				.add(HexcraftBlocks.VILE_GRASS_BLOCK.get(), HexcraftBlocks.VILE_DIRT.get(),
-						HexcraftBlocks.GLOOMROOT_SOIL.get());
+						HexcraftBlocks.GLOOMROOT_SOIL.get(), HexcraftBlocks.SCORCHFIRE_GRASS_BLOCK.get(),
+						HexcraftBlocks.SCORCHFIRE_DIRT.get(), HexcraftBlocks.UMBRAL_BLOOM_GRASS_BLOCK.get(),
+						HexcraftBlocks.UMBRAL_BLOOM_DIRT.get());
 
 		this.tag(BlockTags.ENDERMAN_HOLDABLE)
 				.add(HexcraftBlocks.VILE_GRASS_BLOCK.get(), HexcraftBlocks.VILE_DIRT.get(),
 						HexcraftBlocks.PEARL_STONE.get(), HexcraftBlocks.CRIMSON_STONE_BRICKS.get(),
 						HexcraftBlocks.UNDER_WORLD_STONE_BRICKS.get(), HexcraftBlocks.CHARSTONE_BRICKS.get(),
-						HexcraftBlocks.BLISTER_CACTUS.get(),HexcraftBlocks.GLOOMROOT_SOIL.get());
+						HexcraftBlocks.BLISTER_CACTUS.get(),HexcraftBlocks.GLOOMROOT_SOIL.get(),
+						HexcraftBlocks.SCORCHFIRE_GRASS_BLOCK.get(), HexcraftBlocks.SCORCHFIRE_DIRT.get(),
+						HexcraftBlocks.UMBRAL_BLOOM_GRASS_BLOCK.get(), HexcraftBlocks.UMBRAL_BLOOM_DIRT.get());
 
 		this.tag(BlockTags.FLOWERS)
 				.add(HexcraftBlocks.BLISTER_CACTUS_FLOWER.get());

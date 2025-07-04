@@ -316,7 +316,6 @@ public class HexcraftMod {
 				ItemBlockRenderTypes.setRenderLayer(HexcraftFluids.FLOWING_BLOOD.get(), RenderType.translucent());
 				ItemBlockRenderTypes.setRenderLayer(HexcraftFluids.SOURCE_DEEP_WATER.get(), RenderType.translucent());
 				ItemBlockRenderTypes.setRenderLayer(HexcraftFluids.FLOWING_DEEP_WATER.get(), RenderType.translucent());
-				ItemBlockRenderTypes.setRenderLayer(HexcraftBlocks.WITCHES_CAULDRON.get(), RenderType.translucent());
 
 
 				// Register boat renderers

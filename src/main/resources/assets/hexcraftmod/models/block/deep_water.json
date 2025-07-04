@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/fluid",
+  "textures": {
+    "still": "hexcraft:block/deep_water_still",
+    "flow": "hexcraft:block/deep_water_flow"
+  }
+}

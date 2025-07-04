@@ -283,7 +283,7 @@ public class HexcraftConfiguredFeatures {
 
 		// Hell Bark Huge Fungus Registration
 		register(context, HELL_BARK_KEY, Feature.HUGE_FUNGUS, new HugeFungusConfiguration(
-				Blocks.GRASS_BLOCK.defaultBlockState(),
+				HexcraftBlocks.SCORCHFIRE_GRASS_BLOCK.get().defaultBlockState(),
 				HexcraftBlocks.HELL_BARK_LOG.get().defaultBlockState(),
 				HexcraftBlocks.HELL_BARK_LEAVES.get().defaultBlockState(),
 				HexcraftBlocks.HELL_FUNGAL_LAMP.get().defaultBlockState(),
@@ -429,7 +429,7 @@ public class HexcraftConfiguredFeatures {
 
 		// Echo Wood Huge Fungus Registration
 		register(context, ECHO_KEY, Feature.HUGE_FUNGUS, new HugeFungusConfiguration(
-				Blocks.GRASS_BLOCK.defaultBlockState(),
+				HexcraftBlocks.UMBRAL_BLOOM_GRASS_BLOCK.get().defaultBlockState(),
 				HexcraftBlocks.ECHO_WOOD_LOG.get().defaultBlockState(),
 				HexcraftBlocks.ECHO_WOOD_LEAVES.get().defaultBlockState(),
 				HexcraftBlocks.ECHO_FUNGAL_LAMP.get().defaultBlockState(),

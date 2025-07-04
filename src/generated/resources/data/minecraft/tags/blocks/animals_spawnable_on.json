@@ -2,6 +2,10 @@
   "values": [
     "hexcraftmod:vile_grass_block",
     "hexcraftmod:vile_dirt",
-    "hexcraftmod:gloomroot_soil"
+    "hexcraftmod:gloomroot_soil",
+    "hexcraftmod:scorchfire_grass_block",
+    "hexcraftmod:scorchfire_dirt",
+    "hexcraftmod:umbral_bloom_grass_block",
+    "hexcraftmod:umbral_bloom_dirt"
   ]
 }

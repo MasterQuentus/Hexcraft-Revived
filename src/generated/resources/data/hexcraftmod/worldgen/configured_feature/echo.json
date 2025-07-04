@@ -34,8 +34,9 @@
       }
     },
     "valid_base_block": {
-      "Name": "minecraft:grass_block",
+      "Name": "hexcraftmod:umbral_bloom_grass_block",
       "Properties": {
+        "double_drops": "false",
         "snowy": "false"
       }
     }

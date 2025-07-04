@@ -53,6 +53,228 @@ public class HexcraftBlocks {
 	public static final DeferredRegister<Block> BLOCKS =
 			DeferredRegister.create(ForgeRegistries.BLOCKS, HexcraftMod.MOD_ID);
 
+	public static final RegistryObject<Block> BRAMBLE_DIRT = BLOCKS.register("bramble_dirt",
+			() -> new Block(BlockBehaviour.Properties.copy(Blocks.DIRT)
+					.strength(0.8F)
+					.sound(SoundType.ROOTED_DIRT)));
+
+	public static final RegistryObject<Block> BRAMBLE_GRASS_BLOCK = BLOCKS.register("bramble_grass_block",
+			() -> new BrambleGrassBlock(BlockBehaviour.Properties.copy(Blocks.GRASS_BLOCK)
+					.strength(1.0F)
+					.sound(SoundType.SWEET_BERRY_BUSH)
+					.lightLevel(state -> 1)
+					.requiresCorrectToolForDrops()));
+
+	public static final RegistryObject<Block> VEILSHADE_DIRT = BLOCKS.register("vileshade_dirt",
+			() -> new Block(BlockBehaviour.Properties.copy(Blocks.DIRT)
+					.strength(0.6F)
+					.friction(0.85F)
+					.sound(SoundType.GRASS)));
+
+	public static final RegistryObject<Block> VEILSHADE_SOIL = BLOCKS.register("veilshade_soil",
+			() -> new VeilshadeGrassBlock(BlockBehaviour.Properties.copy(Blocks.GRASS_BLOCK)
+					.strength(0.6F)
+					.sound(SoundType.SHROOMLIGHT)
+					.lightLevel(state -> 2)
+					.requiresCorrectToolForDrops()));
+
+	public static final RegistryObject<Block> TAINTED_DIRT = BLOCKS.register("tainted_dirt",
+			() -> new Block(BlockBehaviour.Properties.copy(Blocks.DIRT)
+					.strength(0.6F)               // Slightly easier to break than grass
+					.jumpFactor(0.95F)
+					.sound(SoundType.SLIME_BLOCK)));
+
+	public static final RegistryObject<Block> TAINTED_SOIL = BLOCKS.register("tainted_soil",
+			() -> new TaintedSoilBlock(BlockBehaviour.Properties.copy(Blocks.GRASS_BLOCK)
+					.strength(0.9F)               // Stronger than dirt for durability
+					.jumpFactor(0.9F)             // Slightly less slippery on grass
+					.sound(SoundType.SLIME_BLOCK)
+					.requiresCorrectToolForDrops()));
+
+	public static final RegistryObject<Block> STONELOAM_DIRT = BLOCKS.register("stoneloam_dirt",
+			() -> new Block(BlockBehaviour.Properties.copy(Blocks.DIRT)
+					.strength(1.5F)
+					.sound(SoundType.STONE)));
+
+	public static final RegistryObject<Block> STONELOAM_SOIL = BLOCKS.register("stoneloam_soil",
+			() -> new StoneloamSoilBlock(BlockBehaviour.Properties.copy(Blocks.GRASS_BLOCK)
+					.strength(1.8F)                   // Slightly tougher than the dirt
+					.sound(SoundType.TUFF)            // Dense but not harsh like full stone
+					.requiresCorrectToolForDrops()));
+
+	public static final RegistryObject<Block> CINDERWEED_DIRT = BLOCKS.register("cindeweed_dirt",
+			() -> new Block(BlockBehaviour.Properties.copy(Blocks.DIRT)
+					.strength(1.0F)
+					.lightLevel(state -> 1)
+					.sound(SoundType.GRAVEL)));
+
+	public static final RegistryObject<Block> CINDERWEED_SOIL = BLOCKS.register("cinderweed_soil",
+			() -> new CinderweedSoilBlock(BlockBehaviour.Properties.copy(Blocks.GRASS_BLOCK)
+					.strength(1.3F)                        // Slightly tougher than the dirt
+					.lightLevel(state -> 2)                // Emits a stronger ember-like glow
+					.sound(SoundType.BASALT)               // Charred, brittle crunch
+					.requiresCorrectToolForDrops()));
+
+	public static final RegistryObject<Block> SEETHING_RED_DIRT = BLOCKS.register("seething_red_dirt",
+			() -> new Block(BlockBehaviour.Properties.copy(Blocks.DIRT)
+					.strength(1.2F)                         // Tougher, dense soil
+					.lightLevel(state -> 2)                // Faint glow from seething heat
+					.sound(SoundType.BASALT)));
+
+	public static final RegistryObject<Block> FESTERING_GRASS_BLOCK = BLOCKS.register("festering_grass_block",
+			() -> new FesteringGrassBlock(BlockBehaviour.Properties.copy(Blocks.GRASS_BLOCK)
+					.strength(1.5F)                         // Firmer and hostile
+					.lightLevel(state -> 3)                // Slightly more glow, corrupted aura
+					.sound(SoundType.NETHERRACK)           // Fleshy, rotten crunch
+					.requiresCorrectToolForDrops()));
+
+	public static final RegistryObject<Block> FLAREWORN_DIRT = BLOCKS.register("flareworn_dirt",
+			() -> new Block(BlockBehaviour.Properties.copy(Blocks.DIRT)
+					.strength(0.6F)
+					.sound(SoundType.SAND)));
+
+	public static final RegistryObject<Block> FLAREWORN_GRASS_BLOCK = BLOCKS.register("flareworn_grass_block",
+			() -> new FlarewornGrassBlock(BlockBehaviour.Properties.copy(Blocks.GRASS_BLOCK)
+					.strength(0.9F)                         // Slightly tougher than the dirt
+					.sound(SoundType.SAND)                  // Dry, dusty grass
+					.lightLevel(state -> 1)                 // Faint shimmer of heat or embers
+					.requiresCorrectToolForDrops()));
+
+	public static final RegistryObject<Block> BILEWEED_DIRT = BLOCKS.register("bileweed_dirt_dirt",
+			() -> new Block(BlockBehaviour.Properties.copy(Blocks.DIRT)
+					.strength(0.5F)
+					.sound(SoundType.SLIME_BLOCK)
+					.friction(0.9F)));
+
+	public static final RegistryObject<Block> BILEWEED_GRASS_BLOCK = BLOCKS.register("bileweed_grass_block",
+			() -> new BileweedGrassBlock(BlockBehaviour.Properties.copy(Blocks.GRASS_BLOCK)
+					.strength(0.8F)                          // Tougher than the soft dirt
+					.friction(0.85F)                         // Slightly slick, like decay
+					.sound(SoundType.SLIME_BLOCK)            // Wet, squelchy growth
+					.lightLevel(state -> 1)                  // Faint glow, like bile luminescence
+					.requiresCorrectToolForDrops()));
+
+	public static final RegistryObject<Block> WHISPERBLOOM_DIRT = BLOCKS.register("whisperbloom_dirt",
+			() -> new Block(BlockBehaviour.Properties.copy(Blocks.DIRT)
+					.strength(0.7F)
+					.sound(SoundType.GRASS)));
+
+	public static final RegistryObject<Block> WHISPERBLOOM_SOIL = BLOCKS.register("whisperbloom_soil",
+			() -> new WhisperbloomSoilBlock(BlockBehaviour.Properties.copy(Blocks.GRASS_BLOCK)
+					.strength(1.0F)                         // Slightly tougher than the dirt
+					.sound(SoundType.GRASS)                 // Gentle grassy step
+					.lightLevel(state -> 2)                 // Soft magical glow
+					.requiresCorrectToolForDrops()));
+
+	public static final RegistryObject<Block> TWILIGHTLOAM_DIRT = BLOCKS.register("twilightloam_dirt",
+			() -> new Block(BlockBehaviour.Properties.copy(Blocks.DIRT)
+					.strength(0.8F)
+					.sound(SoundType.NETHER_WART)));
+
+	public static final RegistryObject<Block> TWILIGHTLOAM_GRASS_BLOCK = BLOCKS.register("twilightloam_grass_block",
+			() -> new TwilightloamGrassBlock(BlockBehaviour.Properties.copy(Blocks.GRASS_BLOCK)
+					.strength(1.1F)                            // Firmer than the loamy base
+					.sound(SoundType.NETHER_WART)             // Damp, fungal texture
+					.lightLevel(state -> 2)                   // Subtle ambient glow, like dusklight
+					.requiresCorrectToolForDrops()));
+
+	public static final RegistryObject<Block> ROTROOT_DIRT = BLOCKS.register("rodroot_dirt",
+			() -> new Block(BlockBehaviour.Properties.copy(Blocks.DIRT)
+					.strength(0.5F)
+					.sound(SoundType.SLIME_BLOCK)
+					.jumpFactor(0.85F)));
+
+	public static final RegistryObject<Block> ROTROOT_GRASS_BLOCK = BLOCKS.register("rotroot_grass_block",
+			() -> new RotrootGrassBlock(BlockBehaviour.Properties.copy(Blocks.GRASS_BLOCK)
+					.strength(0.9F)                          // Tougher than the base rotroot dirt
+					.sound(SoundType.SLIME_BLOCK)            // Wet, decaying ground
+					.jumpFactor(0.85F)                       // Matches the bouncy feel of decay
+					.lightLevel(state -> 1)                  // Faint glow, like bio-luminescent rot
+					.requiresCorrectToolForDrops()));
+
+	public static final RegistryObject<Block> HUSKWEED_DIRT = BLOCKS.register("huskweed_dirt",
+			() -> new Block(BlockBehaviour.Properties.copy(Blocks.DIRT)
+					.strength(0.6F)
+					.sound(SoundType.SOUL_SAND)
+					.friction(0.85F)));
+
+	public static final RegistryObject<Block> HUSKWEED_GRASS_BLOCK = BLOCKS.register("huskweed_grass_block",
+			() -> new HuskweedGrassBlock(BlockBehaviour.Properties.copy(Blocks.GRASS_BLOCK)
+					.strength(0.9F)                          // Slightly firmer than the base dirt
+					.friction(0.85F)                         // Matches dirt’s sluggish drag
+					.sound(SoundType.SOUL_SAND)              // Hollow, dry, cursed sound
+					.lightLevel(state -> 1)                  // Dim ambient glow like haunted roots
+					.requiresCorrectToolForDrops()));
+
+	public static final RegistryObject<Block> SPIRITWEED_DIRT = BLOCKS.register("soulloam_dirt",
+			() -> new Block(BlockBehaviour.Properties.copy(Blocks.DIRT)
+					.strength(0.7F)
+					.sound(SoundType.SOUL_SOIL)));
+
+	public static final RegistryObject<Block> SPIRITWEED_GRASS_BLOCK = BLOCKS.register("spiritweed_grass_block",
+			() -> new SpiritweedGrassBlock(BlockBehaviour.Properties.copy(Blocks.GRASS_BLOCK)
+					.strength(1.0F)                          // More resilient than the base dirt
+					.sound(SoundType.SOUL_SOIL)              // Ethereal, dry echo
+					.lightLevel(state -> 3)                  // Gentle spirit-glow
+					.requiresCorrectToolForDrops()));
+
+	public static final RegistryObject<Block> DUSKDIRT = BLOCKS.register("duskdirt",
+			() -> new Block(BlockBehaviour.Properties.copy(Blocks.DIRT)
+					.strength(0.6F)
+					.sound(SoundType.DEEPSLATE)
+					.friction(0.9F)));
+
+	public static final RegistryObject<Block> DUSK_GRASS_BLOCK = BLOCKS.register("dusk_grass_block",
+			() -> new DuskGrassBlock(BlockBehaviour.Properties.copy(Blocks.GRASS_BLOCK)
+					.strength(0.9F)                          // Firmer than DUSKDIRT
+					.sound(SoundType.DEEPSLATE)              // Deep, muted crunch
+					.friction(0.9F)                          // Matches dirt's slightly sticky feel
+					.lightLevel(state -> 1)                  // Low dusk-like glow
+					.requiresCorrectToolForDrops()));
+
+	public static final RegistryObject<Block> NIGHTVEIN_DIRT = BLOCKS.register("nightvein_dirt",
+			() -> new Block(BlockBehaviour.Properties.copy(Blocks.DIRT)
+					.strength(0.8F)
+					.lightLevel(state -> 1)
+					.sound(SoundType.AMETHYST)));
+
+	public static final RegistryObject<Block> NIGHTVEIN_GRASS_BLOCK = BLOCKS.register("nightvein_grass_block",
+			() -> new NightveinGrassBlock(BlockBehaviour.Properties.copy(Blocks.GRASS_BLOCK)
+					.strength(1.2F)                         // Firmer than the base dirt
+					.sound(SoundType.AMETHYST)              // Crystal-like chiming underfoot
+					.lightLevel(state -> 2)                 // Brighter glow than the dirt
+					.requiresCorrectToolForDrops()));
+
+	public static final RegistryObject<Block> SCORCHFIRE_GRASS_BLOCK = BLOCKS.register("scorchfire_grass_block",
+			() -> new ScorchfireGrassBlock(BlockBehaviour.Properties.copy(Blocks.GRASS_BLOCK)
+					.lightLevel(state -> 3)));
+
+	public static final RegistryObject<Block> SCORCHFIRE_DIRT = BLOCKS.register("scorchfire_dirt",
+			() -> new Block(BlockBehaviour.Properties.copy(Blocks.DIRT)
+					.lightLevel(state -> 1)));
+
+	public static final RegistryObject<Block> SCORCHFIRE_GRASS = registerBlock("scorchfire_grass",
+			() -> new TallGrassBlock(BlockBehaviour.Properties.copy(Blocks.GRASS)
+					.mapColor(MapColor.PLANT).replaceable().noCollission().instabreak().sound(SoundType.GRASS)
+					.offsetType(BlockBehaviour.OffsetType.XYZ).ignitedByLava().pushReaction(PushReaction.DESTROY)));
+
+	public static final RegistryObject<Block> UMBRAL_BLOOM_GRASS_BLOCK = BLOCKS.register("umbral_bloom_grass_block",
+			() -> new UmbralBloomGrassBlock(BlockBehaviour.Properties.copy(Blocks.GRASS_BLOCK)
+					.strength(0.7F)
+					.sound(SoundType.NYLIUM)
+					.lightLevel(state -> 3)
+					.requiresCorrectToolForDrops()));
+
+	public static final RegistryObject<Block> UMBRAL_BLOOM_DIRT = BLOCKS.register("umbral_bloom_dirt",
+			() -> new Block(BlockBehaviour.Properties.copy(Blocks.DIRT)
+					.strength(0.9F)
+					.sound(SoundType.NYLIUM)
+					.lightLevel(state -> 1)));
+
+	public static final RegistryObject<Block> UMBRAL_BLOOM_GRASS = registerBlock("umbral_bloom_grass",
+			() -> new TallGrassBlock(BlockBehaviour.Properties.copy(Blocks.GRASS)
+					.mapColor(MapColor.PLANT).replaceable().noCollission().instabreak().sound(SoundType.GRASS)
+					.offsetType(BlockBehaviour.OffsetType.XYZ).ignitedByLava().pushReaction(PushReaction.DESTROY)));
 
 	public static final RegistryObject<Block> VILE_GRASS_BLOCK = BLOCKS.register("vile_grass_block",
 			() -> new VileGrassBlock(BlockBehaviour.Properties.copy(Blocks.GRASS_BLOCK)));
@@ -97,6 +319,21 @@ public class HexcraftBlocks {
 	public static final RegistryObject<Block> FERTILIZED_DIRT = BLOCKS.register("fertilized_dirt",
 			() -> new FertilizedDirtBlock(BlockBehaviour.Properties.of().strength(1.5f).sound(SoundType.GRASS)
 					.requiresCorrectToolForDrops()));
+
+	public static final RegistryObject<Block> LUMENBLOOM_CLUSTER = BLOCKS.register("lumenbloom_cluster",
+			() -> new Block(BlockBehaviour.Properties.copy(Blocks.GLOWSTONE)
+					.strength(0.3F)
+					.sound(SoundType.AMETHYST_CLUSTER) // Glassy + magical
+					.lightLevel(state -> 15)
+					.requiresCorrectToolForDrops()
+					.noOcclusion()));
+
+	public static final RegistryObject<Block> SEETHING_COALBED = BLOCKS.register("seething_coalbed",
+			() -> new SeethingCoalbedBlock(BlockBehaviour.Properties.copy(Blocks.MAGMA_BLOCK)
+					.strength(1.2F)
+					.lightLevel(state -> 10)
+					.requiresCorrectToolForDrops()
+					.sound(SoundType.BASALT)));
 
 	public static final RegistryObject <Block> VAMPIRE_ORCHID = registerBlock("vampire_orchid",
 			() -> new FlowerBlock(() -> MobEffects.HEALTH_BOOST, 4, BlockBehaviour.Properties.copy(Blocks.ALLIUM)));
@@ -155,6 +392,13 @@ public class HexcraftBlocks {
 	public static final Supplier<Block> EMBER_MOSS_BLOCK = registerBlock("ember_moss_block",
 			() -> new EmberMoss(BlockBehaviour.Properties.copy(Blocks.MOSS_BLOCK)
 					.instabreak().sound(SoundType.MOSS).strength(0.1f)));
+
+	public static final Supplier<Block> DROWNED_MOSS = registerBlock("drowned_moss",
+			() -> new Block(BlockBehaviour.Properties.copy(Blocks.MOSS_BLOCK)
+					.strength(0.4F) // More saturated and dense than dry moss
+					.sound(SoundType.WET_GRASS) // Damp, soft sound
+					.friction(0.8F) // Slippery like waterlogged terrain
+			));
 
 	public static final RegistryObject<Block> EMBER_MOSS_CARPET = registerBlock("ember_moss_carpet",
 			() -> new CarpetBlock(BlockBehaviour.Properties.copy(Blocks.MOSS_BLOCK)
@@ -228,6 +472,14 @@ public class HexcraftBlocks {
 			//() -> new Block(BlockBehaviour.Properties.copy(Blocks.SNOW)
 					//.strength(0.1F)
 					//.sound(SoundType.SAND)));
+
+	public static final RegistryObject<Block> OBSIDROCK = registerBlock("obsidrock",
+			() -> new Block(
+					BlockBehaviour.Properties.copy(Blocks.OBSIDIAN)
+							.strength(4.5F, 1200.0F) // Durable and blast-resistant, but not unbreakable
+							.sound(SoundType.STONE) // Sharp stone impact
+							.requiresCorrectToolForDrops()
+			));
 
 	public static final RegistryObject <Block> BLACK_OBSIDIAN = registerBlock("black_obsidian",
 			() -> new Block(BlockBehaviour.Properties.copy(Blocks.OBSIDIAN).requiresCorrectToolForDrops()
@@ -395,6 +647,12 @@ public class HexcraftBlocks {
 			() -> new Block(BlockBehaviour.Properties.copy(Blocks.STONE)
 					.strength(1.5F, 6.0F)));
 
+	public static final RegistryObject<Block> IGNEOROCK = registerBlock("igneorock",
+			() -> new Block(BlockBehaviour.Properties.copy(Blocks.BASALT)
+					.strength(3.0F, 9.0F) // Tougher than normal stone
+					.lightLevel(state -> 2) // Slight ambient glow
+					.requiresCorrectToolForDrops()));
+
 	public static final RegistryObject <Block> CRIMSON_SAND = registerBlock("crimson_sand",
 			() -> new SandBlock(14406560,BlockBehaviour.Properties.copy(Blocks.SAND)
 					.strength(0.5F).sound(SoundType.SAND)));
@@ -423,6 +681,23 @@ public class HexcraftBlocks {
 					BlockBehaviour.Properties.copy(Blocks.GRAVEL)
 							.strength(0.6F)
 							.sound(SoundType.GRAVEL)
+			));
+
+	public static final RegistryObject<Block> VOIDGRIT = registerBlock("voidgrit",
+			() -> new GravelBlock(
+					BlockBehaviour.Properties.copy(Blocks.GRAVEL)
+							.strength(0.5F) // Slightly weaker and looser than regular gravel
+							.sound(SoundType.SOUL_SAND) // Echoey, strange crunch
+							.friction(0.85F) // Slippery and unsettling
+							.jumpFactor(0.95F) // Feels off when walking
+			));
+
+	public static final RegistryObject<Block> MAGMAGRIT = registerBlock("magmagrit",
+			() -> new GravelBlock(
+					BlockBehaviour.Properties.copy(Blocks.GRAVEL)
+							.strength(0.8F) // Slightly tougher than normal gravel
+							.sound(SoundType.BASALT) // Heavier, stone-like crunch
+							.jumpFactor(0.9F) // Slightly slows jumping, like sticky ash
 			));
 
 	public static final RegistryObject <Block> FAIRY_SAND = registerBlock("fairy_sand",
@@ -1721,7 +1996,7 @@ public class HexcraftBlocks {
 			() -> new HexcraftWallHangingSignBlock(BlockBehaviour.Properties.copy(Blocks.OAK_WALL_HANGING_SIGN), HexcraftWoodTypes.WITCH_WOOD));
 
 	public static final RegistryObject<Block> ECHO_WOOD_WALL_HANGING_SIGN = BLOCKS.register("echo_wall_hanging_sign",
-			() -> new HexcraftWallHangingSignBlock(BlockBehaviour.Properties.copy(Blocks.OAK_WALL_HANGING_SIGN), HexcraftWoodTypes.PHOENIX));
+			() -> new HexcraftWallHangingSignBlock(BlockBehaviour.Properties.copy(Blocks.OAK_WALL_HANGING_SIGN), HexcraftWoodTypes.ECHO_WOOD));
 
 	public static final RegistryObject<Block> PHOENIX_WALL_HANGING_SIGN = BLOCKS.register("phoenix_wall_hanging_sign",
 			() -> new HexcraftWallHangingSignBlock(BlockBehaviour.Properties.copy(Blocks.OAK_WALL_HANGING_SIGN), HexcraftWoodTypes.PHOENIX));

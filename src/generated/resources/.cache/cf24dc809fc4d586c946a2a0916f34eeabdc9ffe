@@ -1,4 +1,4 @@
-// 1.20.1	2025-06-28T18:37:11.4016951	Item Models: hexcraftmod
+// 1.20.1	2025-07-03T02:06:51.4298006	Item Models: hexcraftmod
 d31e8b29755a61296a2b4fd100f8b3b260f3becd assets/hexcraftmod/models/item/abyssal_coal.json
 2bbb18db183d9511a2dfbcba9d826be0e4991afb assets/hexcraftmod/models/item/abyssium_ingot.json
 fbf3c0516eda2f1f4177cd57eb701056504c40a6 assets/hexcraftmod/models/item/abyssium_nugget.json
@@ -28,6 +28,7 @@ cd47dce375203e8326b42f3dd1de08b0e39494a7 assets/hexcraftmod/models/item/blister_
 4defcf1d973de602d8e04fb03ec73c960fc971ba assets/hexcraftmod/models/item/blooded_waystone.json
 cd79370ead3d74a3c136a52d296a857ca55c0b99 assets/hexcraftmod/models/item/bloody_nykium.json
 36e8c0516fa8002762ef187f14db05a543284d93 assets/hexcraftmod/models/item/bloody_nykium_nugget.json
+a485a9d9f00e38f60eb6ec8815b693e2e32811ad assets/hexcraftmod/models/item/bloody_nykium_sword.json
 c925f47e7eb45574b4113ea370dceb89a68bd7a6 assets/hexcraftmod/models/item/blood_apple.json
 dd5bc89a10e2c64fcc1e4a7c827a432f46d7eddc assets/hexcraftmod/models/item/blood_berries.json
 2a85d0dd8d3ae40ea04ae0dd9524ec7b761189c9 assets/hexcraftmod/models/item/blood_bottle.json
@@ -92,6 +93,7 @@ f263de2b5ac14dfb9a065425bca4b36b4a8afcbb assets/hexcraftmod/models/item/dark_ste
 ec2083699599229980e3134be1448e7def14e2f7 assets/hexcraftmod/models/item/death_contract.json
 48faffa27b122fc259f8b5965b2486ed3a85c172 assets/hexcraftmod/models/item/death_protection_poppet.json
 d97142ed275df8ccccce22e0a99380f6b2f3419a assets/hexcraftmod/models/item/death_soul.json
+cd47d8605d3da969449cc60d401f21d449afc35f assets/hexcraftmod/models/item/deepseer_ingot.json
 552b3009f18130eeaed26af40b80da0f6237d1f0 assets/hexcraftmod/models/item/diamond_vapour.json
 f0374706553ff23ff6d7ad35662f5a621db68124 assets/hexcraftmod/models/item/distorted_boat.json
 6713dc31f722f92c478ede98bcf4da6a0806615e assets/hexcraftmod/models/item/distorted_button.json
@@ -192,6 +194,8 @@ d721e732376ccdc17ace570090d920e979bf3ca5 assets/hexcraftmod/models/item/mira_see
 2abe0ed3b260097e3960618128bab16df779376f assets/hexcraftmod/models/item/mutandis.json
 54f9595e7bb3edad0f563c0fb06080f2702381e9 assets/hexcraftmod/models/item/mutandis_extremis.json
 8578ab690ea03db9180101a31f1c125f3d705fa4 assets/hexcraftmod/models/item/necromantic_stone.json
+aa2412c5df23e534614df0915d604a707961af88 assets/hexcraftmod/models/item/nykium_ingot.json
+79d02d0fed9cbc5fb1325d0e5fb5c72f97caa433 assets/hexcraftmod/models/item/nykium_nugget.json
 d88404e0cce9ed03ef544d07250e476245403d1c assets/hexcraftmod/models/item/orange_rune.json
 38e48ab806afd357576544d57c13cf57d033dc6e assets/hexcraftmod/models/item/pearl_cobblestone_slab.json
 8460cc7354b45692ab31a85665d02b1bcce84fd9 assets/hexcraftmod/models/item/pearl_cobblestone_stairs.json

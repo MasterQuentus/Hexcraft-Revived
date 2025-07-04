@@ -34,7 +34,8 @@ public class HexcraftBlockEntities {
 
 	public static final RegistryObject<BlockEntityType<HexcraftSignBlockEntity>> Hexcraft_SIGN = BLOCK_ENTITIES
 			.register("hexcraft_sign", () -> BlockEntityType.Builder
-					.of(HexcraftSignBlockEntity::new, HexcraftBlocks.EBONY_SIGN.get(), HexcraftBlocks.EBONY_WALL_SIGN.get(),
+					.of(HexcraftSignBlockEntity::new,
+							HexcraftBlocks.EBONY_SIGN.get(), HexcraftBlocks.EBONY_WALL_SIGN.get(),
 							HexcraftBlocks.BLOOD_OAK_SIGN.get(), HexcraftBlocks.BLOOD_OAK_WALL_SIGN.get(),
 							HexcraftBlocks.HELL_BARK_SIGN.get(), HexcraftBlocks.HELL_BARK_WALL_SIGN.get(),
 							HexcraftBlocks.WHITE_OAK_SIGN.get(), HexcraftBlocks.WHITE_OAK_WALL_SIGN.get(),
@@ -54,7 +55,8 @@ public class HexcraftBlockEntities {
 
 	public static final RegistryObject<BlockEntityType<HexcraftHangingSignBlockEntity>> Hexcraft_HANGING_SIGN = BLOCK_ENTITIES
 			.register("hexcraft_hanging_sign", () -> BlockEntityType.Builder
-					.of(HexcraftHangingSignBlockEntity::new, HexcraftBlocks.EBONY_HANGING_SIGN.get(), HexcraftBlocks.EBONY_WALL_HANGING_SIGN.get(),
+					.of(HexcraftHangingSignBlockEntity::new,
+							HexcraftBlocks.EBONY_HANGING_SIGN.get(), HexcraftBlocks.EBONY_WALL_HANGING_SIGN.get(),
 							HexcraftBlocks.BLOOD_OAK_HANGING_SIGN.get(), HexcraftBlocks.BLOOD_OAK_WALL_HANGING_SIGN.get(),
 							HexcraftBlocks.HELL_BARK_HANGING_SIGN.get(), HexcraftBlocks.HELL_BARK_WALL_HANGING_SIGN.get(),
 							HexcraftBlocks.WHITE_OAK_HANGING_SIGN.get(), HexcraftBlocks.WHITE_OAK_WALL_HANGING_SIGN.get(),

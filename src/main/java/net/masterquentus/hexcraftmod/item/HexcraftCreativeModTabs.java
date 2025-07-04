@@ -156,6 +156,7 @@ public class HexcraftCreativeModTabs {
                         output.accept(HexcraftItems.ARMOR_PROTECTION_POPPET.get());
                         output.accept(HexcraftItems.TOOL_PROTECTION_POPPET.get());
                         output.accept(HexcraftItems.BLOOD_BUCKET.get());
+                        output.accept(HexcraftItems.DEEP_WATER_BUCKET.get());
 
 // Tools
                         output.accept(HexcraftItems.STEEL_SWORD.get());
@@ -249,24 +250,64 @@ public class HexcraftCreativeModTabs {
                         output.accept(HexcraftBlocks.VILESHROOM_STEM.get());
                         output.accept(HexcraftBlocks.GHOSTSHROOM_BLOCK.get());
                         output.accept(HexcraftBlocks.GHOSTSHROOM_STEM.get());
+
+                        output.accept(HexcraftItems.SCORCHFIRE_GRASS_BLOCK_ITEM.get());
+                        output.accept(HexcraftBlocks.SCORCHFIRE_DIRT.get());
+                        output.accept(HexcraftItems.UMBRAL_BLOOM_GRASS_BLOCK_ITEM.get());
+                        output.accept(HexcraftBlocks.UMBRAL_BLOOM_DIRT.get());
                         output.accept(HexcraftItems.VILE_GRASS_BLOCK_ITEM.get());
                         output.accept(HexcraftBlocks.VILE_DIRT.get());
-                        output.accept(HexcraftBlocks.GLOOMROOT_SOIL.get());
+                        output.accept(HexcraftItems.BRAMBLE_GRASS_BLOCK_ITEM.get());
+                        output.accept(HexcraftBlocks.BRAMBLE_DIRT.get());
+                        output.accept(HexcraftItems.VEILSHADE_SOIL_ITEM.get());
+                        output.accept(HexcraftBlocks.VEILSHADE_DIRT.get());
+                        output.accept(HexcraftItems.TAINTED_SOIL_ITEM.get());
+                        output.accept(HexcraftBlocks.TAINTED_DIRT.get());
+                        output.accept(HexcraftItems.STONELOAM_SOIL_ITEM.get());
+                        output.accept(HexcraftBlocks.STONELOAM_DIRT.get());
+                        output.accept(HexcraftItems.CINDERWEED_SOIL_ITEM.get());
+                        output.accept(HexcraftBlocks.CINDERWEED_DIRT.get());
+                        output.accept(HexcraftItems.FESTERING_GRASS_BLOCK_ITEM.get());
+                        output.accept(HexcraftBlocks.SEETHING_RED_DIRT.get());
+                        output.accept(HexcraftItems.FLAREWORN_GRASS_BLOCK_ITEM.get());
+                        output.accept(HexcraftBlocks.FLAREWORN_DIRT.get());
+                        output.accept(HexcraftBlocks.BILEWEED_DIRT.get());
+                        output.accept(HexcraftItems.BILEWEED_GRASS_BLOCK_ITEM.get());
+                        output.accept(HexcraftBlocks.WHISPERBLOOM_DIRT.get());
+                        output.accept(HexcraftItems.WHISPERBLOOM_SOIL_ITEM.get());
+                        output.accept(HexcraftBlocks.TWILIGHTLOAM_DIRT.get());
+                        output.accept(HexcraftItems.TWILIGHTLOAM_GRASS_BLOCK_ITEM.get());
+                        output.accept(HexcraftBlocks.ROTROOT_DIRT.get());
+                        output.accept(HexcraftItems.ROTROOT_GRASS_BLOCK_ITEM.get());
+                        output.accept(HexcraftBlocks.HUSKWEED_DIRT.get());
+                        output.accept(HexcraftItems.HUSKWEED_GRASS_BLOCK_ITEM.get());
+                        output.accept(HexcraftBlocks.SPIRITWEED_DIRT.get());
+                        output.accept(HexcraftItems.SPIRITWEED_GRASS_BLOCK_ITEM.get());
+                        output.accept(HexcraftBlocks.DUSKDIRT.get());
+                        output.accept(HexcraftItems.DUSK_GRASS_BLOCK_ITEM.get());
+                        output.accept(HexcraftBlocks.NIGHTVEIN_DIRT.get());
+                        output.accept(HexcraftItems.NIGHTVEIN_GRASS_BLOCK_ITEM.get());
+                        output.accept(HexcraftItems.GLOOMROOT_SOIL_ITEM.get());
                         output.accept(HexcraftBlocks.GLIMMER_CAP.get());
                         output.accept(HexcraftBlocks.SHARDSTONE.get());
                         output.accept(HexcraftBlocks.LUMICLAST.get());
                         output.accept(HexcraftBlocks.LIVING_KELP_BLOCK.get());
+                        output.accept(HexcraftBlocks.DROWNED_MOSS.get());
                         output.accept(HexcraftBlocks.EMBER_MOSS_BLOCK.get());
                         output.accept(HexcraftBlocks.EMBER_MOSS_CARPET.get());
                         output.accept(HexcraftBlocks.CRIMSON_MAGMA.get());
+                        output.accept(HexcraftBlocks.SEETHING_COALBED.get());
                         output.accept(HexcraftBlocks.CURSED_SOIL.get());
                         output.accept(HexcraftBlocks.CURED_SOIL.get());
                         output.accept(HexcraftBlocks.FERTILIZED_DIRT.get());
+                        output.accept(HexcraftBlocks.OBSIDROCK.get());
                         output.accept(HexcraftBlocks.BLACK_OBSIDIAN.get());
                         output.accept(HexcraftBlocks.PEARL_STONE.get());
                         output.accept(HexcraftBlocks.CRIMSON_STONE.get());
                         output.accept(HexcraftBlocks.UNDER_WORLD_STONE.get());
                         output.accept(HexcraftBlocks.CHARSTONE.get());
+                        output.accept(HexcraftBlocks.IGNEOROCK.get());
+                        output.accept(HexcraftBlocks.LUMENBLOOM_CLUSTER.get());
 
 // ---------------------------------------------------
 // 2. Wood & Natural Blocks
@@ -590,6 +631,8 @@ public class HexcraftCreativeModTabs {
                         output.accept(HexcraftBlocks.SPANISH_MOSS.get());
                         output.accept(HexcraftItems.GARLIC_STRAND_ITEM.get());
                         output.accept(HexcraftItems.VERVAIN_STRAND_ITEM.get());
+                        output.accept(HexcraftBlocks.SCORCHFIRE_GRASS.get());
+                        output.accept(HexcraftBlocks.UMBRAL_BLOOM_GRASS.get());
                         output.accept(HexcraftBlocks.VILE_GRASS.get());
                         output.accept(HexcraftBlocks.TWILIGHT_MOSSGRASS.get());
                         output.accept(HexcraftItems.AERPINE.get());
@@ -729,7 +772,6 @@ public class HexcraftCreativeModTabs {
                         output.accept(HexcraftBlocks.CUT_CRIMSON_SAND_STONE.get());
                         output.accept(HexcraftBlocks.CRIMSON_GLASS.get());
                         output.accept(HexcraftBlocks.CRIMSON_GLASS_PANE.get());
-                        output.accept(HexcraftBlocks.CRIMSON_STONE_WALL.get());
                         output.accept(HexcraftBlocks.FAIRY_SAND.get());
                         output.accept(HexcraftBlocks.FAIRY_SAND_STONE.get());
                         output.accept(HexcraftBlocks.SMOOTH_FAIRY_SAND_STONE.get());
@@ -744,15 +786,19 @@ public class HexcraftCreativeModTabs {
                         output.accept(HexcraftBlocks.CUT_PIXIE_SAND_STONE.get());
                         output.accept(HexcraftBlocks.ABYSSAL_SAND.get());
                         output.accept(HexcraftBlocks.ABYSSAL_GRAVEL.get());
+                        output.accept(HexcraftBlocks.VOIDGRIT.get());
+                        output.accept(HexcraftBlocks.MAGMAGRIT.get());
                         output.accept(HexcraftBlocks.PIXIE_GLASS.get());
                         output.accept(HexcraftBlocks.PIXIE_GLASS_PANE.get());
                         output.accept(HexcraftBlocks.CRIMSON_ICE.get());
                         output.accept(HexcraftBlocks.CRIMSON_PACKED_ICE.get());
                         output.accept(HexcraftBlocks.UNDER_WORLD_STONE_WALL.get());
+                        output.accept(HexcraftBlocks.PEARL_STONE_WALL.get());
                         output.accept(HexcraftBlocks.CHARSTONE_WALL.get());
                         output.accept(HexcraftBlocks.CRIMSON_SAND_STONE_WALL.get());
                         output.accept(HexcraftBlocks.FAIRY_SAND_STONE_WALL.get());
                         output.accept(HexcraftBlocks.PIXIE_SAND_STONE_WALL.get());
+                        output.accept(HexcraftBlocks.CRIMSON_STONE_WALL.get());
                         output.accept(HexcraftBlocks.PEARL_STONE_STAIRS.get());
                         output.accept(HexcraftBlocks.PEARL_COBBLESTONE_STAIRS.get());
                         output.accept(HexcraftBlocks.PEARL_STONE_BRICKS_STAIRS.get());

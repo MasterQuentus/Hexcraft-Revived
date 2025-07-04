@@ -38,6 +38,129 @@ public class HexcraftItems {
     public static final RegistryObject<Item> HEXCRAFT_GRIMOIRE = ITEMS.register("hexcraft_grimoire",
             () -> new Item(new Item.Properties().stacksTo(1)));
 
+    public static final RegistryObject<Item> LUMENBLOOM_CLUSTER_ITEM = ITEMS.register("lumenbloom_cluster",
+            () -> new BlockItem(HexcraftBlocks.LUMENBLOOM_CLUSTER.get(), new Item.Properties()));
+
+    public static final RegistryObject<Item> SEETHING_COALBED_ITEM = ITEMS.register("seething_coalbed",
+            () -> new BlockItem(HexcraftBlocks.SEETHING_COALBED.get(), new Item.Properties()));
+
+    // Bramble
+    public static final RegistryObject<Item> BRAMBLE_DIRT_ITEM = ITEMS.register("bramble_dirt",
+            () -> new BlockItem(HexcraftBlocks.BRAMBLE_DIRT.get(), new Item.Properties()));
+
+    public static final RegistryObject<Item> BRAMBLE_GRASS_BLOCK_ITEM = ITEMS.register("bramble_grass_block",
+            () -> new BlockItem(HexcraftBlocks.BRAMBLE_GRASS_BLOCK.get(), new Item.Properties()));
+
+    // Veilshade
+    public static final RegistryObject<Item> VEILSHADE_DIRT_ITEM = ITEMS.register("vileshade_dirt",
+            () -> new BlockItem(HexcraftBlocks.VEILSHADE_DIRT.get(), new Item.Properties()));
+
+    public static final RegistryObject<Item> VEILSHADE_SOIL_ITEM = ITEMS.register("veilshade_soil",
+            () -> new BlockItem(HexcraftBlocks.VEILSHADE_SOIL.get(), new Item.Properties()));
+
+    // Tainted
+    public static final RegistryObject<Item> TAINTED_DIRT_ITEM = ITEMS.register("tainted_dirt",
+            () -> new BlockItem(HexcraftBlocks.TAINTED_DIRT.get(), new Item.Properties()));
+
+    public static final RegistryObject<Item> TAINTED_SOIL_ITEM = ITEMS.register("tainted_soil",
+            () -> new BlockItem(HexcraftBlocks.TAINTED_SOIL.get(), new Item.Properties()));
+
+    // Stoneloam
+    public static final RegistryObject<Item> STONELOAM_DIRT_ITEM = ITEMS.register("stoneloam_dirt",
+            () -> new BlockItem(HexcraftBlocks.STONELOAM_DIRT.get(), new Item.Properties()));
+
+    public static final RegistryObject<Item> STONELOAM_SOIL_ITEM = ITEMS.register("stoneloam_soil",
+            () -> new BlockItem(HexcraftBlocks.STONELOAM_SOIL.get(), new Item.Properties()));
+
+    // Cinderweed
+    public static final RegistryObject<Item> CINDERWEED_DIRT_ITEM = ITEMS.register("cindeweed_dirt",
+            () -> new BlockItem(HexcraftBlocks.CINDERWEED_DIRT.get(), new Item.Properties()));
+
+    public static final RegistryObject<Item> CINDERWEED_SOIL_ITEM = ITEMS.register("cinderweed_soil",
+            () -> new BlockItem(HexcraftBlocks.CINDERWEED_SOIL.get(), new Item.Properties()));
+
+    // Seething + Festering
+    public static final RegistryObject<Item> SEETHING_RED_DIRT_ITEM = ITEMS.register("seething_red_dirt",
+            () -> new BlockItem(HexcraftBlocks.SEETHING_RED_DIRT.get(), new Item.Properties()));
+
+    public static final RegistryObject<Item> FESTERING_GRASS_BLOCK_ITEM = ITEMS.register("festering_grass_block",
+            () -> new BlockItem(HexcraftBlocks.FESTERING_GRASS_BLOCK.get(), new Item.Properties()));
+
+    // Flareworn
+    public static final RegistryObject<Item> FLAREWORN_DIRT_ITEM = ITEMS.register("flareworn_dirt",
+            () -> new BlockItem(HexcraftBlocks.FLAREWORN_DIRT.get(), new Item.Properties()));
+
+    public static final RegistryObject<Item> FLAREWORN_GRASS_BLOCK_ITEM = ITEMS.register("flareworn_grass_block",
+            () -> new BlockItem(HexcraftBlocks.FLAREWORN_GRASS_BLOCK.get(), new Item.Properties()));
+
+    // Bileweed
+    public static final RegistryObject<Item> BILEWEED_DIRT_ITEM = ITEMS.register("bileweed_dirt",
+            () -> new BlockItem(HexcraftBlocks.BILEWEED_DIRT.get(), new Item.Properties()));
+
+    public static final RegistryObject<Item> BILEWEED_GRASS_BLOCK_ITEM = ITEMS.register("bileweed_grass_block",
+            () -> new BlockItem(HexcraftBlocks.BILEWEED_GRASS_BLOCK.get(), new Item.Properties()));
+
+    // Whisperbloom
+    public static final RegistryObject<Item> WHISPERBLOOM_DIRT_ITEM = ITEMS.register("whisperbloom_dirt",
+            () -> new BlockItem(HexcraftBlocks.WHISPERBLOOM_DIRT.get(), new Item.Properties()));
+
+    public static final RegistryObject<Item> WHISPERBLOOM_SOIL_ITEM = ITEMS.register("whisperbloom_soil",
+            () -> new BlockItem(HexcraftBlocks.WHISPERBLOOM_SOIL.get(), new Item.Properties()));
+
+    // Twilightloam
+    public static final RegistryObject<Item> TWILIGHTLOAM_DIRT_ITEM = ITEMS.register("twilightloam_dirt",
+            () -> new BlockItem(HexcraftBlocks.TWILIGHTLOAM_DIRT.get(), new Item.Properties()));
+
+    public static final RegistryObject<Item> TWILIGHTLOAM_GRASS_BLOCK_ITEM = ITEMS.register("twilightloam_grass_block",
+            () -> new BlockItem(HexcraftBlocks.TWILIGHTLOAM_GRASS_BLOCK.get(), new Item.Properties()));
+
+    // Rotroot
+    public static final RegistryObject<Item> ROTROOT_DIRT_ITEM = ITEMS.register("rodroot_dirt",
+            () -> new BlockItem(HexcraftBlocks.ROTROOT_DIRT.get(), new Item.Properties()));
+
+    public static final RegistryObject<Item> ROTROOT_GRASS_BLOCK_ITEM = ITEMS.register("rotroot_grass_block",
+            () -> new BlockItem(HexcraftBlocks.ROTROOT_GRASS_BLOCK.get(), new Item.Properties()));
+
+    // Huskweed
+    public static final RegistryObject<Item> HUSKWEED_DIRT_ITEM = ITEMS.register("huskweed_dirt",
+            () -> new BlockItem(HexcraftBlocks.HUSKWEED_DIRT.get(), new Item.Properties()));
+
+    public static final RegistryObject<Item> HUSKWEED_GRASS_BLOCK_ITEM = ITEMS.register("huskweed_grass_block",
+            () -> new BlockItem(HexcraftBlocks.HUSKWEED_GRASS_BLOCK.get(), new Item.Properties()));
+
+    // Spiritweed
+    public static final RegistryObject<Item> SPIRITWEED_DIRT_ITEM = ITEMS.register("soulloam_dirt",
+            () -> new BlockItem(HexcraftBlocks.SPIRITWEED_DIRT.get(), new Item.Properties()));
+
+    public static final RegistryObject<Item> SPIRITWEED_GRASS_BLOCK_ITEM = ITEMS.register("spiritweed_grass_block",
+            () -> new BlockItem(HexcraftBlocks.SPIRITWEED_GRASS_BLOCK.get(), new Item.Properties()));
+
+    // Dusk
+    public static final RegistryObject<Item> DUSKDIRT_ITEM = ITEMS.register("duskdirt",
+            () -> new BlockItem(HexcraftBlocks.DUSKDIRT.get(), new Item.Properties()));
+
+    public static final RegistryObject<Item> DUSK_GRASS_BLOCK_ITEM = ITEMS.register("dusk_grass_block",
+            () -> new BlockItem(HexcraftBlocks.DUSK_GRASS_BLOCK.get(), new Item.Properties()));
+
+    // Nightvein
+    public static final RegistryObject<Item> NIGHTVEIN_DIRT_ITEM = ITEMS.register("nightvein_dirt",
+            () -> new BlockItem(HexcraftBlocks.NIGHTVEIN_DIRT.get(), new Item.Properties()));
+
+    public static final RegistryObject<Item> NIGHTVEIN_GRASS_BLOCK_ITEM = ITEMS.register("nightvein_grass_block",
+            () -> new BlockItem(HexcraftBlocks.NIGHTVEIN_GRASS_BLOCK.get(), new Item.Properties()));
+
+    public static final RegistryObject<BlockItem> SCORCHFIRE_GRASS_BLOCK_ITEM  = ITEMS.register("scorchfire_grass_block",
+            () -> new BlockItem(HexcraftBlocks. SCORCHFIRE_GRASS_BLOCK.get(), new Item.Properties()));
+
+    public static final RegistryObject<Item> SCORCHFIRE_DIRT_ITEM = ITEMS.register("scorchfire_dirt",
+            () -> new BlockItem(HexcraftBlocks.SCORCHFIRE_DIRT.get(), new Item.Properties()));
+
+    public static final RegistryObject<BlockItem> UMBRAL_BLOOM_GRASS_BLOCK_ITEM  = ITEMS.register("umbral_bloom_grass_block",
+            () -> new BlockItem(HexcraftBlocks. UMBRAL_BLOOM_GRASS_BLOCK.get(), new Item.Properties()));
+
+    public static final RegistryObject<Item> UMBRAL_BLOOM_DIRT_ITEM = ITEMS.register("umbral_bloom_dirt",
+            () -> new BlockItem(HexcraftBlocks. UMBRAL_BLOOM_DIRT.get(), new Item.Properties()));
+
     public static final RegistryObject<BlockItem> VILE_GRASS_BLOCK_ITEM = ITEMS.register("vile_grass_block",
             () -> new BlockItem(HexcraftBlocks.VILE_GRASS_BLOCK.get(), new Item.Properties()));
 
@@ -1268,9 +1391,6 @@ public class HexcraftItems {
     public static final RegistryObject<Item> BLACK_WITCH_CANDLE = registerCandleItem("black_witch_candle", HexcraftBlocks.BLACK_WITCH_CANDLE);
 
 
-    //Coral
-
-
     //Spawn Eggs
     public static final RegistryObject<Item> VAMPIRE_EVOKER_SPAWN_EGG = ITEMS.register("vampire_evoker_spawn_egg",
             () -> new ForgeSpawnEggItem(HexcraftEntities.VAMPIRE_EVOKER, 0x3b1e08, 0x9b2424, new Item.Properties()));
@@ -1290,7 +1410,6 @@ public class HexcraftItems {
 
     public static final RegistryObject<Item> FAIRY_SPAWN_EGG = ITEMS.register("fairy_spawn_egg",
             () -> new ForgeSpawnEggItem(HexcraftEntities.FAIRY, 0xFFC0CB, 0xFF69B4, new Item.Properties()));
-
 
 
     private static RegistryObject<Item> registerChestItem(String name, RegistryObject<HexcraftChestBlock> block) {

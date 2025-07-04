@@ -10,6 +10,10 @@
     "hexcraftmod:pixie_sand",
     "hexcraftmod:gloomroot_soil",
     "hexcraftmod:abyssal_gravel",
-    "hexcraftmod:abyssal_sand"
+    "hexcraftmod:abyssal_sand",
+    "hexcraftmod:scorchfire_grass_block",
+    "hexcraftmod:scorchfire_dirt",
+    "hexcraftmod:umbral_bloom_grass_block",
+    "hexcraftmod:umbral_bloom_dirt"
   ]
 }

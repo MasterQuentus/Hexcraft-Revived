@@ -6,6 +6,10 @@
     "hexcraftmod:cured_soil",
     "hexcraftmod:fertilized_dirt",
     "hexcraftmod:ember_moss_block",
-    "hexcraftmod:gloomroot_soil"
+    "hexcraftmod:gloomroot_soil",
+    "hexcraftmod:scorchfire_grass_block",
+    "hexcraftmod:scorchfire_dirt",
+    "hexcraftmod:umbral_bloom_grass_block",
+    "hexcraftmod:umbral_bloom_dirt"
   ]
 }

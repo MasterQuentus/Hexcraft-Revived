@@ -60,6 +60,8 @@ public class HexcraftBlockLootTables extends BlockLootSubProvider {
 
 		this.dropSelf(HexcraftBlocks.ECLIPSIUM_BLOCK.get());
 
+		this.dropSelf(HexcraftBlocks.OBSIDROCK.get());
+
 		this.dropSelf(HexcraftBlocks.BLACK_OBSIDIAN.get());
 
 		this.dropSelf(HexcraftBlocks.AMETHYST_CHIMES.get());
@@ -88,13 +90,76 @@ public class HexcraftBlockLootTables extends BlockLootSubProvider {
 
 		this.dropSelf(HexcraftBlocks.FERTILIZED_DIRT.get());
 
-		this.dropWhenSilkTouch(HexcraftBlocks.VILE_GRASS_BLOCK.get());
+		this.add(HexcraftBlocks.SCORCHFIRE_GRASS_BLOCK.get(), block -> createSilkTouchDispatchTable(
+				block,
+				LootItem.lootTableItem(HexcraftBlocks.SCORCHFIRE_DIRT.get())
+		));
+
+		this.dropSelf(HexcraftBlocks.SCORCHFIRE_DIRT.get());
+
+
+		add(HexcraftBlocks.SCORCHFIRE_GRASS.get(), block -> createSilkTouchOrShearsDispatchTable(block, applyExplosionCondition(block, LootItem.lootTableItem(HexcraftBlocks.SCORCHFIRE_GRASS.get()))));
+
+
+		this.add(HexcraftBlocks.UMBRAL_BLOOM_GRASS_BLOCK.get(), block -> createSilkTouchDispatchTable(
+				block,
+				LootItem.lootTableItem(HexcraftBlocks.UMBRAL_BLOOM_DIRT.get())
+		));
+
+// Dirt blocks (drop self)
+		this.dropSelf(HexcraftBlocks.BRAMBLE_DIRT.get());
+		this.dropSelf(HexcraftBlocks.VEILSHADE_DIRT.get());
+		this.dropSelf(HexcraftBlocks.TAINTED_DIRT.get());
+		this.dropSelf(HexcraftBlocks.STONELOAM_DIRT.get());
+		this.dropSelf(HexcraftBlocks.CINDERWEED_DIRT.get());
+		this.dropSelf(HexcraftBlocks.SEETHING_RED_DIRT.get());
+		this.dropSelf(HexcraftBlocks.FLAREWORN_DIRT.get());
+		this.dropSelf(HexcraftBlocks.BILEWEED_DIRT.get());
+		this.dropSelf(HexcraftBlocks.WHISPERBLOOM_DIRT.get());
+		this.dropSelf(HexcraftBlocks.TWILIGHTLOAM_DIRT.get());
+		this.dropSelf(HexcraftBlocks.ROTROOT_DIRT.get());
+		this.dropSelf(HexcraftBlocks.HUSKWEED_DIRT.get());
+		this.dropSelf(HexcraftBlocks.SPIRITWEED_DIRT.get());
+		this.dropSelf(HexcraftBlocks.DUSKDIRT.get());
+		this.dropSelf(HexcraftBlocks.NIGHTVEIN_DIRT.get());
+
+// Grass/Soil blocks (silk touch or shears)
+		add(HexcraftBlocks.BRAMBLE_GRASS_BLOCK.get(), block -> createSilkTouchOrShearsDispatchTable(block, applyExplosionCondition(block, LootItem.lootTableItem(block))));
+		add(HexcraftBlocks.VEILSHADE_SOIL.get(), block -> createSilkTouchOrShearsDispatchTable(block, applyExplosionCondition(block, LootItem.lootTableItem(block))));
+		add(HexcraftBlocks.TAINTED_SOIL.get(), block -> createSilkTouchOrShearsDispatchTable(block, applyExplosionCondition(block, LootItem.lootTableItem(block))));
+		add(HexcraftBlocks.STONELOAM_SOIL.get(), block -> createSilkTouchOrShearsDispatchTable(block, applyExplosionCondition(block, LootItem.lootTableItem(block))));
+		add(HexcraftBlocks.CINDERWEED_SOIL.get(), block -> createSilkTouchOrShearsDispatchTable(block, applyExplosionCondition(block, LootItem.lootTableItem(block))));
+		add(HexcraftBlocks.FESTERING_GRASS_BLOCK.get(), block -> createSilkTouchOrShearsDispatchTable(block, applyExplosionCondition(block, LootItem.lootTableItem(block))));
+		add(HexcraftBlocks.FLAREWORN_GRASS_BLOCK.get(), block -> createSilkTouchOrShearsDispatchTable(block, applyExplosionCondition(block, LootItem.lootTableItem(block))));
+		add(HexcraftBlocks.BILEWEED_GRASS_BLOCK.get(), block -> createSilkTouchOrShearsDispatchTable(block, applyExplosionCondition(block, LootItem.lootTableItem(block))));
+		add(HexcraftBlocks.WHISPERBLOOM_SOIL.get(), block -> createSilkTouchOrShearsDispatchTable(block, applyExplosionCondition(block, LootItem.lootTableItem(block))));
+		add(HexcraftBlocks.TWILIGHTLOAM_GRASS_BLOCK.get(), block -> createSilkTouchOrShearsDispatchTable(block, applyExplosionCondition(block, LootItem.lootTableItem(block))));
+		add(HexcraftBlocks.ROTROOT_GRASS_BLOCK.get(), block -> createSilkTouchOrShearsDispatchTable(block, applyExplosionCondition(block, LootItem.lootTableItem(block))));
+		add(HexcraftBlocks.HUSKWEED_GRASS_BLOCK.get(), block -> createSilkTouchOrShearsDispatchTable(block, applyExplosionCondition(block, LootItem.lootTableItem(block))));
+		add(HexcraftBlocks.SPIRITWEED_GRASS_BLOCK.get(), block -> createSilkTouchOrShearsDispatchTable(block, applyExplosionCondition(block, LootItem.lootTableItem(block))));
+		add(HexcraftBlocks.DUSK_GRASS_BLOCK.get(), block -> createSilkTouchOrShearsDispatchTable(block, applyExplosionCondition(block, LootItem.lootTableItem(block))));
+		add(HexcraftBlocks.NIGHTVEIN_GRASS_BLOCK.get(), block -> createSilkTouchOrShearsDispatchTable(block, applyExplosionCondition(block, LootItem.lootTableItem(block))));
+
+		this.dropSelf(HexcraftBlocks.LUMENBLOOM_CLUSTER.get());
+
+		this.dropSelf(HexcraftBlocks.UMBRAL_BLOOM_DIRT.get());
+
+		this.dropSelf(HexcraftBlocks.SEETHING_COALBED.get());
+
+
+		add(HexcraftBlocks.UMBRAL_BLOOM_GRASS.get(), block -> createSilkTouchOrShearsDispatchTable(block, applyExplosionCondition(block, LootItem.lootTableItem(HexcraftBlocks.UMBRAL_BLOOM_GRASS.get()))));
+
+
+		this.add(HexcraftBlocks.VILE_GRASS_BLOCK.get(), block -> createSilkTouchDispatchTable(
+				block,
+				LootItem.lootTableItem(HexcraftBlocks.VILE_DIRT.get())
+		));
+
+		this.dropSelf(HexcraftBlocks.VILE_DIRT.get());
 
 		add(HexcraftBlocks.VILE_GRASS.get(), block -> createSilkTouchOrShearsDispatchTable(block, applyExplosionCondition(block, LootItem.lootTableItem(HexcraftBlocks.VILE_GRASS.get()))));
 
 		add(HexcraftBlocks.TWILIGHT_MOSSGRASS.get(), block -> createSilkTouchOrShearsDispatchTable(block, applyExplosionCondition(block, LootItem.lootTableItem(HexcraftBlocks.TWILIGHT_MOSSGRASS.get()))));
-
-		this.dropSelf(HexcraftBlocks.VILE_DIRT.get());
 
 		this.dropSelf(HexcraftBlocks.GLOOMROOT_SOIL.get());
 
@@ -163,6 +228,8 @@ public class HexcraftBlockLootTables extends BlockLootSubProvider {
 				createPotFlowerItemTable(HexcraftBlocks.POTTED_VAMPIRE_ORCHID.get()));
 
 		add(HexcraftBlocks.SPANISH_MOSS.get(), block -> createSilkTouchOrShearsDispatchTable(block, applyExplosionCondition(block, LootItem.lootTableItem(HexcraftBlocks.SPANISH_MOSS.get()))));
+
+		this.dropSelf(HexcraftBlocks.DROWNED_MOSS.get());
 
 		this.dropSelf(HexcraftBlocks.EMBER_MOSS_BLOCK.get());
 
@@ -588,9 +655,15 @@ public class HexcraftBlockLootTables extends BlockLootSubProvider {
 
 		this.dropSelf(HexcraftBlocks.CRACKED_CHARSTONE.get());
 
+		this.dropSelf(HexcraftBlocks.IGNEOROCK.get());
+
 		this.dropSelf(HexcraftBlocks.ABYSSAL_SAND.get());
 
 		this.dropSelf(HexcraftBlocks.ABYSSAL_GRAVEL.get());
+
+		this.dropSelf(HexcraftBlocks.VOIDGRIT.get());
+
+		this.dropSelf(HexcraftBlocks.MAGMAGRIT.get());
 
 		this.dropSelf(HexcraftBlocks.CRIMSON_SAND.get());
 

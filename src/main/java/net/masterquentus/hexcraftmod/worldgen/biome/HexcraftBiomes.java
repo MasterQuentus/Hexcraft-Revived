@@ -29,6 +29,7 @@ public class HexcraftBiomes {
     public static final ResourceKey<Biome> DEEP_STORMREACH_OCEAN = register("deep_stormreach_ocean");
     public static final ResourceKey<Biome> VEIL_WATER_SHOALS = register("veil_water_shoals");
     public static final ResourceKey<Biome> VEIL_WATER_ABYSS = register("veil_water_abyss");
+    public static final ResourceKey<Biome> SCHORCHING_REEF = register("schorching_reef");
     public static final ResourceKey<Biome> SCHORCHING_SHOALS = register("schorching_shoals");
     public static final ResourceKey<Biome> SCHORCHING_ABYSS = register("schorching_abyss");
     public static final ResourceKey<Biome> VEIL_SHORE_BANKS = register("veil_shore_banks");
@@ -63,17 +64,19 @@ public class HexcraftBiomes {
         context.register(CRIMSON_DESERT, crimsondesertBiome(context));
         context.register(SHADOWLANDS, shadowlandsBiome(context));
         context.register(UNDERGARDEN, undergardenBiome(context));
+        context.register(VEIL_SHORE_BANKS, veilshoreBanksBiome(context));
         context.register(CRYSTAL_PEAKS, crystalPeaksBiome(context));
         context.register(ABYSSAL_SEAS, abyssalSeasBiome(context));
         context.register(DEEP_ABYSSAL_SEAS, deepAbyssalSeasBiome(context));
         context.register(FROSTFANG_OCEAN, frostfangOceanBiome(context));
+        context.register(DEEP_FROSTFANG_OCEAN, deepfrostfangOceanBiome(context));
         context.register(DEEP_FROSTFANG_OCEAN, stormreachOceanBiome(context));
         context.register(STORMREACH_OCEAN, frostfangOceanBiome(context));
         context.register(DEEP_STORMREACH_OCEAN, stormreachOceanBiome(context));
         context.register(VEIL_WATER_SHOALS, veilwaterShoalsBiome(context));
         context.register(VEIL_WATER_ABYSS, veilwaterAbyssBiome(context));
         context.register(VEIL_SHORE_BANKS, veilwaterAbyssBiome(context));
-        context.register(SCHORCHING_SHOALS, scorchingShoalsBiome(context));
+        context.register(SCHORCHING_REEF, scorchingReefBiome(context));
         context.register(SCHORCHING_ABYSS, scorchingAbyssBiome(context));
         context.register(VEILWATER_BASIN, veilwaterBasinBiome(context));
         context.register(TWILIGHT_SHOALS,twilightShoalsBiome(context));

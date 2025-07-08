@@ -202,11 +202,13 @@ public class HexcraftConfiguredFeatures {
 				HexcraftBlocks.END_SILVER_ORE.get().defaultBlockState(), 9));
 
 		register(context, OVERWORLD_MOON_STONE_ORE_KEY, Feature.ORE, new OreConfiguration(overworldMoonStoneOres, 9));
+
 		register(context, NETHER_MOON_STONE_ORE_KEY, Feature.ORE, new OreConfiguration(netherrackReplaceabeles,
 				HexcraftBlocks.NETHER_MOONSTONE_ORE.get().defaultBlockState(), 9));
 
 		register(context, END_MOON_STONE_ORE_KEY, Feature.ORE, new OreConfiguration(endReplaceabeles,
 				HexcraftBlocks.END_MOONSTONE_ORE.get().defaultBlockState(), 9));
+
 		register(context, OVERWORLD_TRENOGEN_ORE_KEY, Feature.ORE, new OreConfiguration(overworldTrenogenOres, 9));
 
 		register(context, JORMUIM_ORE_KEY, Feature.ORE, new OreConfiguration(endReplaceabeles,

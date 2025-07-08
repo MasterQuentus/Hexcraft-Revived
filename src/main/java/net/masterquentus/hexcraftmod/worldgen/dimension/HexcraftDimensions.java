@@ -45,7 +45,6 @@ public class HexcraftDimensions {
 
 
 
-
     public static void bootstrapType(BootstapContext<DimensionType> context) {
         // Underworld Dimension Type
         context.register(UNDERWORLD_DIM_TYPE, new DimensionType(

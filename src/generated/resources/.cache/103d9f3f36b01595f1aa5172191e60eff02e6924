@@ -1,4 +1,4 @@
-// 1.20.1	2025-07-02T18:14:51.1151124	Registries
+// 1.20.1	2025-07-04T16:28:40.4771424	Registries
 9c3472a382f8f636c2d33eb37607db77575314b0 data/hexcraftmod/damage_type/sacrifice.json
 8612625cd5512a6c69d3c0d14754ed3d837f1dae data/hexcraftmod/damage_type/sound.json
 9950a8984c5c79cf384017a7e02343c6a28f1d77 data/hexcraftmod/damage_type/voodoo.json
@@ -29,7 +29,7 @@ cefabb904f3ad2ee7595103757eb77686394b121 data/hexcraftmod/forge/biome_modifier/a
 5859f0adf757a3e861842bfd0602c0f8fe8ca5d1 data/hexcraftmod/worldgen/biome/crystal_peaks.json
 d6db5db623ba5f55225daf399f1ff0767e3893e6 data/hexcraftmod/worldgen/biome/decay_highlands.json
 07126b4da308bfd003c5281fbbe939d2e1b96956 data/hexcraftmod/worldgen/biome/deep_abyssal_seas.json
-d125c533f7b4b596b29c3737568366e8c6aa0276 data/hexcraftmod/worldgen/biome/deep_frostfang_ocean.json
+29df6050e9e506ea813b5db1fb3e716663a83d93 data/hexcraftmod/worldgen/biome/deep_frostfang_ocean.json
 d125c533f7b4b596b29c3737568366e8c6aa0276 data/hexcraftmod/worldgen/biome/deep_stormreach_ocean.json
 1b3e469d14b4691b89e24a4cdc77abca5b4ad4a4 data/hexcraftmod/worldgen/biome/dense_haunted_woods.json
 e19f7ef8c32dc30c891bf1c6e50e9aa0d7e70dc1 data/hexcraftmod/worldgen/biome/dried_flarelands.json
@@ -46,6 +46,7 @@ c677f8e684b07a7c04011b9762ea48cad400e3b2 data/hexcraftmod/worldgen/biome/obsidia
 0fa263a7092fdbc9d7ef932083c81a6dc064276a data/hexcraftmod/worldgen/biome/overgrown_vile_forest.json
 2ae45b6f9e03d19e2b11538fdc2e4f5a7e3577d5 data/hexcraftmod/worldgen/biome/red_blighted_wastes.json
 297d8a871aef0df7c1dd9813403488b8b98a9f60 data/hexcraftmod/worldgen/biome/schorching_abyss.json
+869eacb08d4a51fcb7a4bcd88d0fdd2b09ef6122 data/hexcraftmod/worldgen/biome/schorching_reef.json
 27a4d1a068f28b4f53cef66186ed55f9e245d2ea data/hexcraftmod/worldgen/biome/schorching_shoals.json
 1c310faa7347d321a3324992cd13e759f4253348 data/hexcraftmod/worldgen/biome/scorched_barrens.json
 7e38bac1d9f03155ac2d22aa1501c0f70264375b data/hexcraftmod/worldgen/biome/shadowed_hills.json
@@ -57,7 +58,7 @@ c677f8e684b07a7c04011b9762ea48cad400e3b2 data/hexcraftmod/worldgen/biome/obsidia
 b587543ee336d900bfb165e59a31b7cec4d4cc92 data/hexcraftmod/worldgen/biome/twilight_whispering_forest.json
 3cc412b48ae9029c41c6543196c37189646c06bf data/hexcraftmod/worldgen/biome/undergarden.json
 bdb9cf610fea54159692a83c39a3f9d1cd0f3543 data/hexcraftmod/worldgen/biome/vampire_forest.json
-6fbf84eb5f68352c1ce43f95695e396920953788 data/hexcraftmod/worldgen/biome/veil_shore_banks.json
+a65dacd6db85a0da8d7b1a5cc19e48d078fcfb6c data/hexcraftmod/worldgen/biome/veil_shore_banks.json
 6fbf84eb5f68352c1ce43f95695e396920953788 data/hexcraftmod/worldgen/biome/veil_water_abyss.json
 8f3826166c5ce647b27e406e6ec509dd940f153c data/hexcraftmod/worldgen/biome/veil_water_basin.json
 1fa23e8c118664fe6c3eb1143ba54eaa3227eaae data/hexcraftmod/worldgen/biome/veil_water_shoals.json

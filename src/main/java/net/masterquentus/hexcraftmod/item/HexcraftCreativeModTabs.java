@@ -155,6 +155,7 @@ public class HexcraftCreativeModTabs {
                         output.accept(HexcraftItems.WITHER_PROTECTION_POPPET.get());
                         output.accept(HexcraftItems.ARMOR_PROTECTION_POPPET.get());
                         output.accept(HexcraftItems.TOOL_PROTECTION_POPPET.get());
+                        output.accept(HexcraftItems.INCENDIA_SPELL_PAGE.get());
                         output.accept(HexcraftItems.BLOOD_BUCKET.get());
                         output.accept(HexcraftItems.DEEP_WATER_BUCKET.get());
 
@@ -623,6 +624,7 @@ public class HexcraftCreativeModTabs {
                         output.accept(HexcraftItems.WITCHES_LADDER_ITEM.get());
                         output.accept(HexcraftItems.VILEVINE_ITEM.get());
                         output.accept(HexcraftItems.BLOODTHORN_VINES_ITEM.get());
+                        output.accept(HexcraftItems.SLINKROOT_ITEM.get());
                         output.accept(HexcraftBlocks.WILD_BRAMBLE.get());
                         output.accept(HexcraftBlocks.ENDER_BRAMBLE.get());
                         output.accept(HexcraftItems.LIVING_KELP_ITEM.get());

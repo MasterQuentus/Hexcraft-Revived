@@ -1272,6 +1272,8 @@ public class HexcraftBlockLootTables extends BlockLootSubProvider {
 		this.dropOther(HexcraftBlocks.LIVING_KELP.get(), HexcraftItems.LIVING_KELP_ITEM.get());
 		;
 		add(HexcraftBlocks.VILEVINE.get(), block -> createSilkTouchOrShearsDispatchTable(block, applyExplosionCondition(block, LootItem.lootTableItem(HexcraftItems.VILEVINE_ITEM.get()))));
+
+		add(HexcraftBlocks.SLINKROOT.get(), block -> createSilkTouchOrShearsDispatchTable(block, applyExplosionCondition(block, LootItem.lootTableItem(HexcraftItems.SLINKROOT_ITEM.get()))));
 		;
 		this.add(HexcraftBlocks.BLOOD_MUSHROOM_BLOCK.get(),
 				createSilkTouchDispatchTable(

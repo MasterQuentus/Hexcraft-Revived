@@ -12,6 +12,7 @@ import net.masterquentus.hexcraftmod.block.custom.signs.HexcraftWallSignBlock;
 import net.masterquentus.hexcraftmod.block.custom.signs.HexcraftlHangingSignBlock;
 import net.masterquentus.hexcraftmod.block.entity.custom.UnderworldPortalBlock;
 import net.masterquentus.hexcraftmod.block.entity.custom.liquid.DeepWaterBlock;
+import net.masterquentus.hexcraftmod.effects.HexcraftEffects;
 import net.masterquentus.hexcraftmod.fluid.HexcraftFluids;
 import net.masterquentus.hexcraftmod.item.HexcraftItems;
 import net.masterquentus.hexcraftmod.util.HexcraftWoodTypes;
@@ -347,8 +348,13 @@ public class HexcraftBlocks {
 	public static final RegistryObject <Block> POTTED_BLOODY_ROSE = BLOCKS.register("potted_bloody_rose",
 			() -> new FlowerPotBlock((() -> (FlowerPotBlock) Blocks.FLOWER_POT), BLOODY_ROSE, BlockBehaviour.Properties.copy(Blocks.POTTED_ALLIUM)));
 
-	public static final RegistryObject <Block> DUSKROOT_LANTERN = registerBlock("duskroot_lantern",
-			() -> new FlowerBlock(() -> MobEffects.HUNGER, 3, BlockBehaviour.Properties.copy(Blocks.POPPY).lightLevel((state) -> 15)));
+	public static final RegistryObject<Block> DUSKROOT_LANTERN = registerBlock("duskroot_lantern",
+			() -> new DuskrootLanternBlock(
+					() -> HexcraftEffects.BLOODLUST.get(), // This is a Supplier<MobEffect>
+					200,
+					BlockBehaviour.Properties.copy(Blocks.POPPY)
+							.lightLevel(state -> 12)
+							.sound(SoundType.GRASS)));
 
 	public static final RegistryObject <Block> POTTED_DUSKROOT_LANTERN = BLOCKS.register("potted_duskroot_lantern",
 			() -> new FlowerPotBlock((() -> (FlowerPotBlock) Blocks.FLOWER_POT), DUSKROOT_LANTERN, BlockBehaviour.Properties.copy(Blocks.POTTED_ALLIUM)));
@@ -357,7 +363,7 @@ public class HexcraftBlocks {
 			() -> new FlowerBlock(() -> MobEffects.FIRE_RESISTANCE, 2, BlockBehaviour.Properties.copy(Blocks.POPPY)));
 
 	public static final RegistryObject <Block> POTTED_SCORCHASTALKS = BLOCKS.register("potted_scorchstalks",
-			() -> new FlowerPotBlock((() -> (FlowerPotBlock) Blocks.FLOWER_POT), DUSKROOT_LANTERN, BlockBehaviour.Properties.copy(Blocks.POTTED_ALLIUM)));
+			() -> new FlowerPotBlock((() -> (FlowerPotBlock) Blocks.FLOWER_POT), SCORCHSTALKS, BlockBehaviour.Properties.copy(Blocks.POTTED_ALLIUM)));
 
 	public static final Supplier<Block> GLINT_WEED = registerBlock("glint_weed",
 			GlintWeedBlock::new);
@@ -431,6 +437,15 @@ public class HexcraftBlocks {
 	public static final RegistryObject<Block> BLOODTHORN_VINES_PLANT = BLOCKS.register("bloodthorn_vines_plant",
 			() -> new BloodthronVinePlantBlock(BlockBehaviour.Properties.copy(Blocks.TWISTING_VINES_PLANT)
 					.instabreak().noOcclusion().noLootTable()));
+
+	public static final RegistryObject<Block> SLINKROOT = BLOCKS.register("slinkroot",
+			() -> new SlinkrootBlock(BlockBehaviour.Properties.copy(Blocks.TWISTING_VINES)
+					.mapColor(MapColor.COLOR_CYAN).randomTicks().noCollission().instabreak().sound(SoundType.WEEPING_VINES)
+					.offsetType(BlockBehaviour.OffsetType.XZ).hasPostProcess((bs, br, bp) -> true).emissiveRendering((bs, br, bp) -> true).lightLevel(s -> 14)));
+
+	public static final RegistryObject<Block> SLINKROOT_PLANT = BLOCKS.register("slinkroot_plant",
+			() -> new SlinkrootPlantBlock(BlockBehaviour.Properties.copy(Blocks.TWISTING_VINES_PLANT)
+					.mapColor(MapColor.COLOR_CYAN).noCollission().noLootTable().instabreak().sound(SoundType.WEEPING_VINES).offsetType(BlockBehaviour.OffsetType.XZ)));
 
 	public static final RegistryObject<Block> WILD_BRAMBLE = registerBlock("wild_bramble",
 			() -> new WildBrambleBlock(BlockBehaviour.Properties.copy(Blocks.SUGAR_CANE)

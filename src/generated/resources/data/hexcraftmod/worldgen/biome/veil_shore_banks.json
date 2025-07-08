@@ -6,20 +6,20 @@
       "minecraft:canyon"
     ]
   },
-  "downfall": 1.0,
+  "downfall": 0.5,
   "effects": {
-    "fog_color": 1716037,
-    "foliage_color": 3107699,
-    "grass_color": 2972779,
+    "fog_color": 4870235,
+    "foliage_color": 5793632,
+    "grass_color": 4870736,
     "mood_sound": {
       "block_search_extent": 8,
       "offset": 2.0,
       "sound": "minecraft:ambient.cave",
       "tick_delay": 6000
     },
-    "sky_color": 2313319,
-    "water_color": 2377836,
-    "water_fog_color": 1256516
+    "sky_color": 7040631,
+    "water_color": 4014672,
+    "water_fog_color": 2305082
   },
   "features": [
     [],
@@ -27,7 +27,9 @@
       "minecraft:lake_lava_underground",
       "minecraft:lake_lava_surface"
     ],
-    [],
+    [
+      "minecraft:amethyst_geode"
+    ],
     [
       "minecraft:monster_room",
       "minecraft:monster_room_deep"
@@ -43,23 +45,7 @@
       "minecraft:ore_diorite_lower",
       "minecraft:ore_andesite_upper",
       "minecraft:ore_andesite_lower",
-      "minecraft:ore_tuff",
-      "minecraft:ore_coal_upper",
-      "minecraft:ore_coal_lower",
-      "minecraft:ore_iron_upper",
-      "minecraft:ore_iron_middle",
-      "minecraft:ore_iron_small",
-      "minecraft:ore_gold",
-      "minecraft:ore_gold_lower",
-      "minecraft:ore_redstone",
-      "minecraft:ore_redstone_lower",
-      "minecraft:ore_diamond",
-      "minecraft:ore_diamond_large",
-      "minecraft:ore_diamond_buried",
-      "minecraft:ore_lapis",
-      "minecraft:ore_lapis_buried",
-      "minecraft:ore_copper",
-      "minecraft:underwater_magma"
+      "minecraft:ore_tuff"
     ],
     [],
     [
@@ -68,8 +54,7 @@
     ],
     [
       "minecraft:glow_lichen",
-      "minecraft:patch_sugar_cane",
-      "minecraft:patch_pumpkin"
+      "minecraft:patch_dead_bush"
     ]
   ],
   "has_precipitation": true,
@@ -147,5 +132,5 @@
     "water_ambient": [],
     "water_creature": []
   },
-  "temperature": 0.5
+  "temperature": 0.6
 }

@@ -893,6 +893,10 @@ public class HexcraftItems {
             () -> new BlockItem(HexcraftBlocks.BLOODTHORN_VINES.get(),
                     new Item.Properties()));
 
+    public static final RegistryObject<Item> SLINKROOT_ITEM = ITEMS.register("slinkroot_item",
+            () -> new BlockItem(HexcraftBlocks.SLINKROOT.get(),
+                    new Item.Properties()));
+
     public static final RegistryObject<Item> LIVING_KELP_ITEM = ITEMS.register("living_kelp_item",
             () -> new BlockItem(HexcraftBlocks.LIVING_KELP_PLANT.get(),
                     new Item.Properties()));
@@ -1035,6 +1039,9 @@ public class HexcraftItems {
 
     public static final RegistryObject<Item> LIVING_KELP_SALAD = ITEMS.register("living_kelp_salad",
             () -> new Item(new Item.Properties().food(HexcraftFoods.LIVING_KELP_SALAD_FOOD)));
+
+    public static final RegistryObject<Item> INCENDIA_SPELL_PAGE = ITEMS.register("incendia_spell_page",
+            () -> new SpellPageItem("incendia", new Item.Properties().stacksTo(1).rarity(Rarity.UNCOMMON)));
 
 
 

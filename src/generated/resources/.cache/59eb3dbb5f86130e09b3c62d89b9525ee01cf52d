@@ -1,4 +1,4 @@
-// 1.20.1	2025-07-03T00:24:07.2778073	Loot Tables
+// 1.20.1	2025-07-07T20:11:44.2718586	Loot Tables
 37ffa18854d932388dc44c6317cbeb42e0c2567c data/hexcraftmod/loot_tables/blocks/abyssal_coal_block.json
 5fd85186858ce5046c2a99ddd4f4339ba93ffc92 data/hexcraftmod/loot_tables/blocks/abyssal_coal_ore.json
 a543aa3740fdf9777c128582578bc3ef224a7826 data/hexcraftmod/loot_tables/blocks/abyssal_gravel.json
@@ -503,6 +503,7 @@ d1c0c24fa4ae84ebb595630604c6a5fca11e6e98 data/hexcraftmod/loot_tables/blocks/see
 43865f52f0a517cb448cb7b03ac5656b8d31a76e data/hexcraftmod/loot_tables/blocks/silver_block.json
 db8e4dc86fd8149d5494f224953a2233ac7dc5db data/hexcraftmod/loot_tables/blocks/silver_ore.json
 b2ed30a340c6af91824dc75b0160359001db3728 data/hexcraftmod/loot_tables/blocks/skull.json
+254feaf8482c6071137c59f61a0b8d8ba1442f65 data/hexcraftmod/loot_tables/blocks/slinkroot.json
 bbba754c6ab57dd3a2204f4cbae2215658d70dbe data/hexcraftmod/loot_tables/blocks/smooth_crimson_sand_stone.json
 2e285d6ecf94c57060aa693e8622bf576ef74e58 data/hexcraftmod/loot_tables/blocks/smooth_crimson_sand_stone_slab.json
 1685616a92622a30577f2cb9576e4e55a8af6780 data/hexcraftmod/loot_tables/blocks/smooth_crimson_sand_stone_stairs.json

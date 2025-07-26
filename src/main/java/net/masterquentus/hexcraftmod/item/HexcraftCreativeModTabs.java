@@ -201,7 +201,12 @@ public class HexcraftCreativeModTabs {
                         output.accept(HexcraftItems.VAMPIRIC_SHOVEL.get());
                         output.accept(HexcraftItems.VAMPIRIC_AXE.get());
                         output.accept(HexcraftItems.VAMPIRIC_HOE.get());
-                        output.accept(HexcraftItems.VAMPIRIC_PAXEL.get());
+                        output.accept(HexcraftItems.DEEPSEER_PICKAXE.get());
+                        output.accept(HexcraftItems.DEEPSEER_SWORD.get());
+                        output.accept(HexcraftItems.DEEPSEER_SHOVEL.get());
+                        output.accept(HexcraftItems.DEEPSEER_AXE.get());
+                        output.accept(HexcraftItems.DEEPSEER_HOE.get());
+                        output.accept(HexcraftItems.DEEPSEER_PAXEL.get());
 
                         output.accept(HexcraftItems.CRIMSON_FANG.get());
 
@@ -213,6 +218,7 @@ public class HexcraftCreativeModTabs {
                         output.accept(HexcraftItems.CUROGEN_BOW.get());
 
 // Armor
+                        output.accept(HexcraftItems.BLINDFOLD.get());
                         output.accept(HexcraftItems.STEEL_HELMET.get());
                         output.accept(HexcraftItems.STEEL_CHESTPLATE.get());
                         output.accept(HexcraftItems.STEEL_LEGGING.get());
@@ -242,6 +248,9 @@ public class HexcraftCreativeModTabs {
                         output.accept(HexcraftItems.VAMPIRIC_LEGGING.get());
                         output.accept(HexcraftItems.VAMPIRIC_BOOTS.get());
                         output.accept(HexcraftItems.DEEPSEER_HELM.get());
+                        output.accept(HexcraftItems.DEEPSEER_CHESTPLATE.get());
+                        output.accept(HexcraftItems.DEEPSEER_LEGGING.get());
+                        output.accept(HexcraftItems.DEEPSEER_BOOTS.get());
 
 // Non-Wood Blocks
                         output.accept(HexcraftBlocks.DEMON_HEART.get());
@@ -1023,10 +1032,15 @@ public class HexcraftCreativeModTabs {
                         //Spawn Eggs
                         output.accept(HexcraftItems.VAMPIRE_EVOKER_SPAWN_EGG.get());
                         output.accept(HexcraftItems.VAMPIRE_VINDICATOR_SPAWN_EGG.get());
+                        output.accept(HexcraftItems.VAMPIRE_PILLAGER_SPAWN_EGG.get());
                         output.accept(HexcraftItems.VAMPIRE_PIGLIN_SPAWN_EGG.get());
                         output.accept(HexcraftItems.LILITH_SPAWN_EGG.get());
                         output.accept(HexcraftItems.WENDIGO_SPAWN_EGG.get());
                         output.accept(HexcraftItems.FAIRY_SPAWN_EGG.get());
+                        output.accept(HexcraftItems.DROWNED_SLIME_SPAWN_EGG.get());
+                        output.accept(HexcraftItems.BASILISK_SPAWN_EGG.get());
+                        output.accept(HexcraftItems.SIREN_SPAWN_EGG.get());
+                        output.accept(HexcraftItems.BANSHEE_SPAWN_EGG.get());
 
                     })
                     .build());

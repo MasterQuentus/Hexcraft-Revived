@@ -62,7 +62,11 @@ public class HexcraftItemTagGenerator extends ItemTagsProvider {
 				.add(HexcraftItems.VAMPIRIC_HELMET.get())
 				.add(HexcraftItems.VAMPIRIC_CHESTPLATE.get())
 				.add(HexcraftItems.VAMPIRIC_LEGGING.get())
-				.add(HexcraftItems.VAMPIRIC_BOOTS.get());
+				.add(HexcraftItems.VAMPIRIC_BOOTS.get())
+			    .add(HexcraftItems.DEEPSEER_HELM.get())
+				.add(HexcraftItems.DEEPSEER_CHESTPLATE.get())
+				.add(HexcraftItems.DEEPSEER_LEGGING.get())
+				.add(HexcraftItems.DEEPSEER_BOOTS.get());
 
 		this.tag(ItemTags.PLANKS)
 				.add(HexcraftBlocks.EBONY_PLANKS.get().asItem())

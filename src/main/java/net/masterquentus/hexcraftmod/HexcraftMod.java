@@ -281,12 +281,18 @@ public class HexcraftMod {
 			// Entity renderers registration
 			EntityRenderers.register(HexcraftEntities.VAMPIRE_EVOKER.get(), VampireEvokerRenderer::new);
 			EntityRenderers.register(HexcraftEntities.VAMPIRE_VINDICATOR.get(), VampireVindicatorRenderer::new);
+			EntityRenderers.register(HexcraftEntities.VAMPIRE_PILLAGER.get(), VampirePillagerRenderer::new);
 			EntityRenderers.register(HexcraftEntities.VAMPIRE_PIGLIN.get(), VampirePiglinRenderer::new);
 			EntityRenderers.register(HexcraftEntities.LILITH.get(), LilithRenderer::new);
 			EntityRenderers.register(HexcraftEntities.WENDIGO.get(), WendigoRenderer::new);
 			EntityRenderers.register(HexcraftEntities.FAIRY.get(), FairyRenderer::new);
+			EntityRenderers.register(HexcraftEntities.DROWNED_SLIME.get(), DrownedSlimeRenderer::new);
+			EntityRenderers.register(HexcraftEntities.BASILISK.get(), BasiliskRenderer::new);
+			EntityRenderers.register(HexcraftEntities.SIREN.get(), SirenRenderer::new);
+			EntityRenderers.register(HexcraftEntities.BANSHEE.get(), BansheeRenderer::new);
 			EntityRenderers.register(HexcraftEntities.DARK_MAGIC_PROJECTILE.get(), DarkMagicProjectileRenderer::new);
 			EntityRenderers.register(HexcraftEntities.THROWN_BREW_OF_SPROUTING.get(), ThrownBrewOfSproutingEntityRenderer::new);
+
 
 			event.enqueueWork(() -> {
 				// Add wood types for various blocks

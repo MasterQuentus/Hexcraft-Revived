@@ -2849,6 +2849,14 @@ public class HexcraftBlocks {
 					.strength(1.7F).requiresCorrectToolForDrops()
 					.sound(SoundType.AMETHYST).noOcclusion()));
 
+	public static final RegistryObject<Block> MAGIC_CAGE_BLOCK = registerBlock("magic_cage_block",
+			() -> new MagicCageBlock(BlockBehaviour.Properties.copy(Blocks.GLASS)
+					.strength(-1.0F, 3600000.0F)  // Unbreakable
+					.noOcclusion()
+					.noLootTable()
+					.sound(SoundType.GLASS)
+					.lightLevel(state -> 1)));
+
 	public static final RegistryObject<Block> FAIRY_WARD = BLOCKS.register("fairy_ward",
 			() -> new FairyWardBlock(BlockBehaviour.Properties.copy(Blocks.STONE)
 					.strength(3.0F).requiresCorrectToolForDrops()
@@ -3245,8 +3253,7 @@ public class HexcraftBlocks {
 					(FlowingFluid) HexcraftFluids.SOURCE_DEEP_WATER.get(),
 					BlockBehaviour.Properties.copy(Blocks.WATER)
 							.noLootTable()
-							.noCollission()
-			));
+							.noCollission()));
 
 	//Coral
 	public static final RegistryObject<Block> DEAD_TWILIGHT_CORAL = registerBlock("dead_twilightcoral",

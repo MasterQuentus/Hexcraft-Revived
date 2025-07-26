@@ -1,12 +1,9 @@
 package net.masterquentus.hexcraftmod.events;
 
 import net.masterquentus.hexcraftmod.HexcraftMod;
-import net.masterquentus.hexcraftmod.entity.FairyEntity;
-import net.masterquentus.hexcraftmod.entity.VampireEntity;
-import net.masterquentus.hexcraftmod.entity.WendigoEntity;
+import net.masterquentus.hexcraftmod.entity.*;
 import net.masterquentus.hexcraftmod.entity.vampires.LilithEntity;
 import net.masterquentus.hexcraftmod.client.layers.HexcraftModelLayers;
-import net.masterquentus.hexcraftmod.entity.HexcraftEntities;
 import net.minecraft.client.model.BoatModel;
 import net.minecraft.client.model.ChestBoatModel;
 import net.minecraftforge.client.event.EntityRenderersEvent;
@@ -21,10 +18,15 @@ public class ModEvents {
     public static void entityAttributeEvent(EntityAttributeCreationEvent event) {
         event.put(HexcraftEntities.VAMPIRE_EVOKER.get(), VampireEntity.setAttributes());
         event.put(HexcraftEntities.VAMPIRE_VINDICATOR.get(), VampireEntity.setAttributes());
+        event.put(HexcraftEntities.VAMPIRE_PILLAGER.get(), VampireEntity.setAttributes());
         event.put(HexcraftEntities.VAMPIRE_PIGLIN.get(), VampireEntity.setAttributes());
         event.put(HexcraftEntities.LILITH.get(), LilithEntity.setAttributes());
         event.put(HexcraftEntities.WENDIGO.get(), WendigoEntity.setAttributes());
         event.put(HexcraftEntities.FAIRY.get(), FairyEntity.setAttributes());
+        event.put(HexcraftEntities.DROWNED_SLIME.get(), DrownedSlimeEntity.setAttributes());
+        event.put(HexcraftEntities.BASILISK.get(), BasiliskEntity.setAttributes());
+        event.put(HexcraftEntities.SIREN.get(), SirenEntity.setAttributes());
+        event.put(HexcraftEntities.BANSHEE.get(), BansheeEntity.setAttributes());
 
     }
 

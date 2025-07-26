@@ -3,7 +3,7 @@ package net.masterquentus.hexcraftmod.entity;
 import net.masterquentus.hexcraftmod.HexcraftMod;
 import net.masterquentus.hexcraftmod.block.entity.boats.HexcraftBoatEntity;
 import net.masterquentus.hexcraftmod.block.entity.boats.HexcraftChestBoatEntity;
-import net.masterquentus.hexcraftmod.entity.vampires.LilithEntity;
+import net.masterquentus.hexcraftmod.entity.vampires.*;
 import net.masterquentus.hexcraftmod.entity.vampires.VampireEvokerEntity;
 import net.masterquentus.hexcraftmod.entity.vampires.VampirePiglinEntity;
 import net.masterquentus.hexcraftmod.entity.vampires.VampireVindicatorEntity;
@@ -67,6 +67,12 @@ public class HexcraftEntities {
                     .sized(0.6F, 1.95F)
                     .build(new ResourceLocation(HexcraftMod.MOD_ID, "vampire_vindicator").toString()));
 
+    public static final RegistryObject<EntityType<VampirePillagerEntity>> VAMPIRE_PILLAGER = ENTITY_TYPES.register(
+            "vampire_pillager",
+            () -> EntityType.Builder.of(VampirePillagerEntity::new, MobCategory.MONSTER)
+                    .sized(0.6F, 1.95F)
+                    .build(new ResourceLocation(HexcraftMod.MOD_ID, "vampire_pillager").toString()));
+
     public static final RegistryObject<EntityType<VampirePiglinEntity>> VAMPIRE_PIGLIN = ENTITY_TYPES.register(
             "vampire_piglin",
             () -> EntityType.Builder.of(VampirePiglinEntity::new, MobCategory.MONSTER)
@@ -88,6 +94,30 @@ public class HexcraftEntities {
                     .sized(0.6F, 0.9F)
                     .clientTrackingRange(10)
                     .build("fairy"));
+
+    public static final RegistryObject<EntityType<DrownedSlimeEntity>> DROWNED_SLIME = ENTITIES.register("drowned_slime",
+            () -> EntityType.Builder.of(DrownedSlimeEntity::new, MobCategory.CREATURE)
+                    .sized(1.0F, 1.0F)
+                    .clientTrackingRange(10)
+                    .build("drowned_slime"));
+
+    public static final RegistryObject<EntityType<BasiliskEntity>> BASILISK = ENTITY_TYPES.register(
+            "basilisk",
+            () -> EntityType.Builder.of(BasiliskEntity::new, MobCategory.MONSTER)
+                    .sized(1.7F, 2.0F)
+                    .build(new ResourceLocation(HexcraftMod.MOD_ID, "basilisk").toString()));
+
+    public static final RegistryObject<EntityType<SirenEntity>> SIREN = ENTITY_TYPES.register(
+            "siren",
+            () -> EntityType.Builder.of(SirenEntity::new, MobCategory.MONSTER)
+                    .sized(0.8F, 1.9F)
+                    .build(new ResourceLocation(HexcraftMod.MOD_ID, "siren").toString()));
+
+    public static final RegistryObject<EntityType<BansheeEntity>> BANSHEE = ENTITY_TYPES.register(
+            "banshee",
+            () -> EntityType.Builder.of(BansheeEntity::new, MobCategory.MONSTER)
+                    .sized(0.8F, 2.0F) // Adjust width/height as needed
+                    .build(new ResourceLocation(HexcraftMod.MOD_ID, "banshee").toString()));
 
 
     public static void register(IEventBus eventBus) {

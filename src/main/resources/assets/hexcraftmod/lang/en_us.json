@@ -249,6 +249,7 @@
   "block.hexcraftmod.obsidrock": "Obsidrock",
   "block.hexcraftmod.amethyst_chimes": "Amethyst Chimes",
   "block.hexcraftmod.pure_magic_crystal": "Pure Magic Crystal",
+  "block.hexcraftmod.magic_cage_block": "Magic Cage",
   "block.hexcraftmod.witches_oven": "Witches Oven",
   "block.hexcraftmod.fume_funnel": "Fume Funnel",
   "block.hexcraftmod.altar_base": "Altar",
@@ -976,9 +977,16 @@
   "item.hexcraftmod.vampiric_axe": "Vampiric Axe",
   "item.hexcraftmod.vampiric_hoe": "Vampiric Hoe",
   "item.hexcraftmod.vampiric_paxel": "Vampiric Paxel",
+  "item.hexcraftmod.deepseer_sword": "Deepseer Sword",
+  "item.hexcraftmod.deepseer_pickaxe": "Deepseer Pickaxe",
+  "item.hexcraftmod.deepseer_shovel": "Deepseer Shovel",
+  "item.hexcraftmod.deepseer_axe": "Deepseer Axe",
+  "item.hexcraftmod.deepseer_hoe": "Deepseer Hoe",
+  "item.hexcraftmod.deepseer_paxel": "Deepseer Paxel",
   "item.hexcraftmod.crimson_fang": "Crimson Fang",
 
   //Armor
+  "item.hexcraftmod.blindfold": "Blindfold",
   "item.hexcraftmod.steel_helmet": "Steel Helmet",
   "item.hexcraftmod.steel_chestplate": "Steel Chestplate",
   "item.hexcraftmod.steel_leggings": "Steel Leggings",
@@ -1008,6 +1016,9 @@
   "item.hexcraftmod.vampiric_leggings": "Vampiric Leggings",
   "item.hexcraftmod.vampiric_boots": "Vampiric Boots",
   "item.hexcraftmod.deepseer_helm": "Deepseer Helm",
+  "item.hexcraftmod.deepseer_chestplate": "Deepseer Chestplate",
+  "item.hexcraftmod.deepseer_leggings": "Deepseer Leggings",
+  "item.hexcraftmod.deepseer_boots": "Deepseer Boots",
 
 
 
@@ -1113,10 +1124,15 @@
   //Spawn Eggs
   "item.hexcraftmod.vampire_evoker_spawn_egg": "Vampire Evoker Spawn Egg",
   "item.hexcraftmod.vampire_vindicator_spawn_egg": "Vampire Vindicator Spawn Egg",
+  "item.hexcraftmod.vampire_pillager_spawn_egg": "Vampire Pillager Spawn Egg",
   "item.hexcraftmod.vampire_piglin_spawn_egg": "Vampire Piglin Spawn Egg",
   "item.hexcraftmod.lilith_spawn_egg": "Lilith Spawn Egg",
   "item.hexcraftmod.wendigo_spawn_egg": "Wendigo Spawn Egg",
   "item.hexcraftmod.fairy_spawn_egg": "Fairy Spawn Egg",
+  "item.hexcraftmod.drowned_slime_spawn_egg": "Drowned Slime Spawn Egg",
+  "item.hexcraftmod.basilisk_spawn_egg": "Basilisk Spawn Egg",
+  "item.hexcraftmod.siren_spawn_egg": "Siren Spawn Egg",
+  "item.hexcraftmod.banshee_spawn_egg": "Banshee Spawn Egg",
 
   //Patchouli
   "patchouli.entry.hexcraftmod.wendigo": "The Wendigo",

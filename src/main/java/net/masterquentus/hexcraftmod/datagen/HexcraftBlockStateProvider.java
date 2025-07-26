@@ -25,6 +25,8 @@ public class HexcraftBlockStateProvider extends BlockStateProvider {
         blockWithItem(HexcraftBlocks.VILESHROOM_LAMP);
         blockWithItem((RegistryObject<Block>) HexcraftBlocks.EMBER_MOSS_BLOCK);
         blockWithItem(HexcraftBlocks.CRIMSON_MAGMA);
+        blockWithItem(HexcraftBlocks.LUMENBLOOM_CLUSTER);
+        blockWithItem(HexcraftBlocks.ABYSSAL_GRAVEL);
         blockWithItem(HexcraftBlocks.CURSED_SOIL);
         blockWithItem(HexcraftBlocks.CURED_SOIL);
         blockWithItem(HexcraftBlocks.FERTILIZED_DIRT);

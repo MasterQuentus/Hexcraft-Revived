@@ -16,60 +16,60 @@ import java.util.function.Supplier;
 import java.util.EnumMap;
 
 public enum HexcraftArmorMaterials implements ArmorMaterial {
-    STEEL("steel", 28, Util.make(new EnumMap<>(ArmorItem.Type.class), (p_266655_) -> {
-        p_266655_.put(ArmorItem.Type.BOOTS, 3);
-        p_266655_.put(ArmorItem.Type.LEGGINGS, 6);
-        p_266655_.put(ArmorItem.Type.CHESTPLATE, 7);
-        p_266655_.put(ArmorItem.Type.HELMET, 4);
-    }), 16, SoundEvents.ARMOR_EQUIP_IRON, 2.5F, 0.1F, () -> Ingredient.of(HexcraftItems.STEEL_INGOT.get())),
+    STEEL("steel", 28, Util.make(new EnumMap<>(ArmorItem.Type.class), (map) -> {
+        map.put(ArmorItem.Type.BOOTS, 3);
+        map.put(ArmorItem.Type.LEGGINGS, 6);
+        map.put(ArmorItem.Type.CHESTPLATE, 7);
+        map.put(ArmorItem.Type.HELMET, 4);
+    }), 16, SoundEvents.ARMOR_EQUIP_IRON, 2.5F, 0.05F, () -> Ingredient.of(HexcraftItems.STEEL_INGOT.get())),
 
-    DARKSTEEL("darksteel", 38, Util.make(new EnumMap<>(ArmorItem.Type.class), (p_266655_) -> {
-        p_266655_.put(ArmorItem.Type.BOOTS, 4);
-        p_266655_.put(ArmorItem.Type.LEGGINGS, 7);
-        p_266655_.put(ArmorItem.Type.CHESTPLATE, 8);
-        p_266655_.put(ArmorItem.Type.HELMET, 5);
-    }), 17, SoundEvents.ARMOR_EQUIP_NETHERITE, 3.5F, 0.1F, () -> Ingredient.of(HexcraftItems.DARK_STEEL.get())),
+    DARKSTEEL("darksteel", 40, Util.make(new EnumMap<>(ArmorItem.Type.class), (map) -> {
+        map.put(ArmorItem.Type.BOOTS, 4);
+        map.put(ArmorItem.Type.LEGGINGS, 7);
+        map.put(ArmorItem.Type.CHESTPLATE, 8);
+        map.put(ArmorItem.Type.HELMET, 5);
+    }), 18, SoundEvents.ARMOR_EQUIP_NETHERITE, 3.5F, 0.2F, () -> Ingredient.of(HexcraftItems.DARK_STEEL.get())),
 
-    BLOODYNYKIUM("bloodynykium", 36, Util.make(new EnumMap<>(ArmorItem.Type.class), (p_266655_) -> {
-        p_266655_.put(ArmorItem.Type.BOOTS, 4);
-        p_266655_.put(ArmorItem.Type.LEGGINGS, 7);
-        p_266655_.put(ArmorItem.Type.CHESTPLATE, 8);
-        p_266655_.put(ArmorItem.Type.HELMET, 5);
-    }), 18, SoundEvents.ARMOR_EQUIP_NETHERITE, 3.5F, 0.2F, () -> Ingredient.of(HexcraftItems.BLOODY_NYKIUM.get())),
+    BLOODYNYKIUM("bloodynykium", 37, Util.make(new EnumMap<>(ArmorItem.Type.class), (map) -> {
+        map.put(ArmorItem.Type.BOOTS, 4);
+        map.put(ArmorItem.Type.LEGGINGS, 7);
+        map.put(ArmorItem.Type.CHESTPLATE, 8);
+        map.put(ArmorItem.Type.HELMET, 5);
+    }), 17, SoundEvents.ARMOR_EQUIP_NETHERITE, 3.5F, 0.15F, () -> Ingredient.of(HexcraftItems.BLOODY_NYKIUM.get())),
 
-    JORMIUM("jormium", 35, Util.make(new EnumMap<>(ArmorItem.Type.class), (p_266655_) -> {
-        p_266655_.put(ArmorItem.Type.BOOTS, 4);
-        p_266655_.put(ArmorItem.Type.LEGGINGS, 5);
-        p_266655_.put(ArmorItem.Type.CHESTPLATE, 7);
-        p_266655_.put(ArmorItem.Type.HELMET, 5);
-    }), 15, SoundEvents.ARMOR_EQUIP_IRON, 3.0F, 0.1F, () -> Ingredient.of(HexcraftItems.JORMIUM_INGOT.get())),
+    JORMIUM("jormium", 33, Util.make(new EnumMap<>(ArmorItem.Type.class), (map) -> {
+        map.put(ArmorItem.Type.BOOTS, 3);
+        map.put(ArmorItem.Type.LEGGINGS, 6);
+        map.put(ArmorItem.Type.CHESTPLATE, 7);
+        map.put(ArmorItem.Type.HELMET, 4);
+    }), 15, SoundEvents.ARMOR_EQUIP_IRON, 2.7F, 0.1F, () -> Ingredient.of(HexcraftItems.JORMIUM_INGOT.get())),
 
-    CUROGEN("curogen", 34, Util.make(new EnumMap<>(ArmorItem.Type.class), (p_266655_) -> {
-        p_266655_.put(ArmorItem.Type.BOOTS, 4);
-        p_266655_.put(ArmorItem.Type.LEGGINGS, 5);
-        p_266655_.put(ArmorItem.Type.CHESTPLATE, 7);
-        p_266655_.put(ArmorItem.Type.HELMET, 5);
-    }), 15, SoundEvents.ARMOR_EQUIP_IRON, 3.0F, 0.1F, () -> Ingredient.of(HexcraftItems.CUROGEN.get())),
+    CUROGEN("curogen", 32, Util.make(new EnumMap<>(ArmorItem.Type.class), (map) -> {
+        map.put(ArmorItem.Type.BOOTS, 3);
+        map.put(ArmorItem.Type.LEGGINGS, 6);
+        map.put(ArmorItem.Type.CHESTPLATE, 7);
+        map.put(ArmorItem.Type.HELMET, 4);
+    }), 14, SoundEvents.ARMOR_EQUIP_IRON, 2.7F, 0.1F, () -> Ingredient.of(HexcraftItems.CUROGEN.get())),
 
-    SILVER("silver", 34, Util.make(new EnumMap<>(ArmorItem.Type.class), (p_266655_) -> {
-        p_266655_.put(ArmorItem.Type.BOOTS, 4);
-        p_266655_.put(ArmorItem.Type.LEGGINGS, 5);
-        p_266655_.put(ArmorItem.Type.CHESTPLATE, 7);
-        p_266655_.put(ArmorItem.Type.HELMET, 5);
+    SILVER("silver", 30, Util.make(new EnumMap<>(ArmorItem.Type.class), (map) -> {
+        map.put(ArmorItem.Type.BOOTS, 3);
+        map.put(ArmorItem.Type.LEGGINGS, 5);
+        map.put(ArmorItem.Type.CHESTPLATE, 6);
+        map.put(ArmorItem.Type.HELMET, 4);
+    }), 13, SoundEvents.ARMOR_EQUIP_IRON, 2.5F, 0.05F, () -> Ingredient.of(HexcraftItems.SILVER_INGOT.get())),
+
+    VAMPIRIC("vampiric", 34, Util.make(new EnumMap<>(ArmorItem.Type.class), (map) -> {
+        map.put(ArmorItem.Type.BOOTS, 4);
+        map.put(ArmorItem.Type.LEGGINGS, 6);
+        map.put(ArmorItem.Type.CHESTPLATE, 7);
+        map.put(ArmorItem.Type.HELMET, 4);
     }), 15, SoundEvents.ARMOR_EQUIP_IRON, 3.0F, 0.1F, () -> Ingredient.of(HexcraftItems.SILVER_INGOT.get())),
 
-    VAMPIRIC("vampiric", 34, Util.make(new EnumMap<>(ArmorItem.Type.class), (p_266655_) -> {
-        p_266655_.put(ArmorItem.Type.BOOTS, 4);
-        p_266655_.put(ArmorItem.Type.LEGGINGS, 5);
-        p_266655_.put(ArmorItem.Type.CHESTPLATE, 7);
-        p_266655_.put(ArmorItem.Type.HELMET, 5);
-    }), 15, SoundEvents.ARMOR_EQUIP_IRON, 3.0F, 0.1F, () -> Ingredient.of(HexcraftItems.SILVER_INGOT.get())),
-
-    DEEPSEER("deepseer", 30, Util.make(new EnumMap<>(ArmorItem.Type.class), (p_266655_) -> {
-        p_266655_.put(ArmorItem.Type.BOOTS, 3);
-        p_266655_.put(ArmorItem.Type.LEGGINGS, 6);
-        p_266655_.put(ArmorItem.Type.CHESTPLATE, 7);
-        p_266655_.put(ArmorItem.Type.HELMET, 4);
+    DEEPSEER("deepseer", 30, Util.make(new EnumMap<>(ArmorItem.Type.class), (map) -> {
+        map.put(ArmorItem.Type.BOOTS, 3);
+        map.put(ArmorItem.Type.LEGGINGS, 6);
+        map.put(ArmorItem.Type.CHESTPLATE, 7);
+        map.put(ArmorItem.Type.HELMET, 4);
     }), 16, SoundEvents.ARMOR_EQUIP_TURTLE, 2.5F, 0.1F, () -> Ingredient.of(HexcraftItems.DEEPSEER_INGOT.get()));
 
 

@@ -27,6 +27,10 @@
     "hexcraftmod:vampiric_helmet",
     "hexcraftmod:vampiric_chestplate",
     "hexcraftmod:vampiric_leggings",
-    "hexcraftmod:vampiric_boots"
+    "hexcraftmod:vampiric_boots",
+    "hexcraftmod:deepseer_helm",
+    "hexcraftmod:deepseer_chestplate",
+    "hexcraftmod:deepseer_leggings",
+    "hexcraftmod:deepseer_boots"
   ]
 }

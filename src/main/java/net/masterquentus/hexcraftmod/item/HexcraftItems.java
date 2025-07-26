@@ -768,7 +768,25 @@ public class HexcraftItems {
             () -> new HoeItem(HexcraftToolTiers.VAMPIRIC, 2, 3, new Item.Properties()));
 
     public static final RegistryObject<Item> VAMPIRIC_PAXEL = ITEMS.register("vampiric_paxel",
-            () -> new PaxelItem(HexcraftToolTiers.STEEL, 2, 3, new Item.Properties()));
+            () -> new PaxelItem(HexcraftToolTiers.VAMPIRIC, 2, 3, new Item.Properties()));
+
+    public static final RegistryObject<Item> DEEPSEER_SWORD = ITEMS.register("deepseer_sword",
+            () -> new SwordItem(HexcraftToolTiers.DEEPSEER, 2, 3, new Item.Properties()));
+
+    public static final RegistryObject<Item> DEEPSEER_PICKAXE = ITEMS.register("deepseer_pickaxe",
+            () -> new PickaxeItem(HexcraftToolTiers.DEEPSEER, 1, 2, new Item.Properties()));
+
+    public static final RegistryObject<Item> DEEPSEER_SHOVEL = ITEMS.register("deepseer_shovel",
+            () -> new ShovelItem(HexcraftToolTiers.DEEPSEER, 2, 3, new Item.Properties()));
+
+    public static final RegistryObject<Item> DEEPSEER_AXE = ITEMS.register("deepseer_axe",
+            () -> new AxeItem(HexcraftToolTiers.DEEPSEER, 2, 3, new Item.Properties()));
+
+    public static final RegistryObject<Item> DEEPSEER_HOE = ITEMS.register("deepseer_hoe",
+            () -> new HoeItem(HexcraftToolTiers.DEEPSEER, 2, 3, new Item.Properties()));
+
+    public static final RegistryObject<Item> DEEPSEER_PAXEL = ITEMS.register("deepseer_paxel",
+            () -> new PaxelItem(HexcraftToolTiers.DEEPSEER, 2, 3, new Item.Properties()));
 
 
     //Special Weapons
@@ -792,6 +810,9 @@ public class HexcraftItems {
             () -> new BowItem(new Item.Properties().durability(384)));
 
     //Armor
+    public static final RegistryObject<Item> BLINDFOLD = ITEMS.register("blindfold",
+            () -> new BlindfoldItem());
+
     public static final RegistryObject<Item> STEEL_HELMET = ITEMS.register("steel_helmet",
             () -> new ArmorItem(HexcraftArmorMaterials.STEEL, ArmorItem.Type.HELMET, new Item.Properties()));
 
@@ -878,6 +899,15 @@ public class HexcraftItems {
 
     public static final RegistryObject<Item> DEEPSEER_HELM = ITEMS.register("deepseer_helm",
             () -> new ArmorItem(HexcraftArmorMaterials.DEEPSEER, ArmorItem.Type.HELMET, new Item.Properties()));
+
+    public static final RegistryObject<Item> DEEPSEER_CHESTPLATE = ITEMS.register("deepseer_chestplate",
+            () -> new ArmorItem(HexcraftArmorMaterials.DEEPSEER, ArmorItem.Type.CHESTPLATE, new Item.Properties()));
+
+    public static final RegistryObject<Item> DEEPSEER_LEGGING = ITEMS.register("deepseer_leggings",
+            () -> new ArmorItem(HexcraftArmorMaterials.DEEPSEER, ArmorItem.Type.LEGGINGS, new Item.Properties()));
+
+    public static final RegistryObject<Item> DEEPSEER_BOOTS = ITEMS.register("deepseer_boots",
+            () -> new ArmorItem(HexcraftArmorMaterials.DEEPSEER, ArmorItem.Type.BOOTS, new Item.Properties()));
 
 
     //Plants
@@ -1400,10 +1430,13 @@ public class HexcraftItems {
 
     //Spawn Eggs
     public static final RegistryObject<Item> VAMPIRE_EVOKER_SPAWN_EGG = ITEMS.register("vampire_evoker_spawn_egg",
-            () -> new ForgeSpawnEggItem(HexcraftEntities.VAMPIRE_EVOKER, 0x3b1e08, 0x9b2424, new Item.Properties()));
+            () -> new ForgeSpawnEggItem(HexcraftEntities.VAMPIRE_EVOKER, 0x4B4B4B, 0x1D4023, new Item.Properties()));
 
     public static final RegistryObject<Item> VAMPIRE_VINDICATOR_SPAWN_EGG = ITEMS.register("vampire_vindicator_spawn_egg",
-            () -> new ForgeSpawnEggItem(HexcraftEntities.VAMPIRE_VINDICATOR, 0x3b1e08, 0x9b2424, new Item.Properties()));
+            () -> new ForgeSpawnEggItem(HexcraftEntities.VAMPIRE_VINDICATOR, 0x8B1E1E, 0x7C6A63, new Item.Properties()));
+
+    public static final RegistryObject<Item> VAMPIRE_PILLAGER_SPAWN_EGG = ITEMS.register("vampire_pillager_spawn_egg",
+            () -> new ForgeSpawnEggItem(HexcraftEntities.VAMPIRE_PILLAGER, 0x5A5A5A, 0x3A1F0F, new Item.Properties()));
 
     public static final RegistryObject<Item> VAMPIRE_PIGLIN_SPAWN_EGG = ITEMS.register("vampire_piglin_spawn_egg",
             () -> new ForgeSpawnEggItem(HexcraftEntities.VAMPIRE_PIGLIN, 0x3b1e08, 0x9b2424, new Item.Properties()));
@@ -1412,12 +1445,22 @@ public class HexcraftItems {
             () -> new ForgeSpawnEggItem(HexcraftEntities.LILITH, 0x590000, 0x2D0B0B, new Item.Properties()));
 
     public static final RegistryObject<Item> WENDIGO_SPAWN_EGG = ITEMS.register("wendigo_spawn_egg",
-            () -> new ForgeSpawnEggItem(HexcraftEntities.WENDIGO, 0x8B5A2B, 0xFFFFFF,
-                    new Item.Properties()));
+            () -> new ForgeSpawnEggItem(HexcraftEntities.WENDIGO, 0x8B5A2B, 0xFFFFFF, new Item.Properties()));
 
     public static final RegistryObject<Item> FAIRY_SPAWN_EGG = ITEMS.register("fairy_spawn_egg",
             () -> new ForgeSpawnEggItem(HexcraftEntities.FAIRY, 0xFFC0CB, 0xFF69B4, new Item.Properties()));
 
+    public static final RegistryObject<Item> DROWNED_SLIME_SPAWN_EGG = ITEMS.register("drowned_slime_spawn_egg",
+            () -> new ForgeSpawnEggItem(HexcraftEntities.DROWNED_SLIME, 0xADD8E6, 0x5DADE2, new Item.Properties()));
+
+    public static final RegistryObject<Item> BASILISK_SPAWN_EGG = ITEMS.register("basilisk_spawn_egg",
+            () -> new ForgeSpawnEggItem(HexcraftEntities.BASILISK, 0x3A9D23, 0x1B4F1B, new Item.Properties()));
+
+    public static final RegistryObject<Item> SIREN_SPAWN_EGG = ITEMS.register("siren_spawn_egg",
+            () -> new ForgeSpawnEggItem(HexcraftEntities.SIREN, 0x7D7D7D, 0x4E342E, new Item.Properties()));
+
+    public static final RegistryObject<Item> BANSHEE_SPAWN_EGG = ITEMS.register("banshee_spawn_egg",
+            () -> new ForgeSpawnEggItem(HexcraftEntities.BANSHEE, 0xA8A8FF, 0x3A3A6E, new Item.Properties()));
 
     private static RegistryObject<Item> registerChestItem(String name, RegistryObject<HexcraftChestBlock> block) {
         return ITEMS.register(name, () -> new HexcraftChestBlockItem(block.get(), new Item.Properties()));

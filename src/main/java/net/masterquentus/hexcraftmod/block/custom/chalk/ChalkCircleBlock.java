@@ -6,6 +6,8 @@ import net.minecraft.util.RandomSource;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
@@ -20,7 +22,7 @@ public class ChalkCircleBlock extends AbstractChalkBlock {
     private final SimpleParticleType particleType;
 
     public ChalkCircleBlock(SimpleParticleType particleType) {
-        super();
+        super(BlockBehaviour.Properties.copy(Blocks.CYAN_CARPET).noCollission().strength(0.1F));
         this.particleType = particleType;
         this.registerDefaultState(getStateDefinition().any().setValue(GLYPH, 0));
     }

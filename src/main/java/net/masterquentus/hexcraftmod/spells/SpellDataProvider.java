@@ -8,9 +8,13 @@ import net.minecraftforge.common.capabilities.CapabilityToken;
 import net.minecraftforge.common.capabilities.ICapabilityProvider;
 import net.minecraftforge.common.util.INBTSerializable;
 import net.minecraftforge.common.util.LazyOptional;
+import org.jetbrains.annotations.NotNull;
 
 import javax.annotation.Nullable;
 
+/**
+ * Provider class for attaching and serializing SpellData capability.
+ */
 public class SpellDataProvider implements ICapabilityProvider, INBTSerializable<CompoundTag> {
 
     public static final Capability<ISpellData> SPELL_DATA =
@@ -20,7 +24,7 @@ public class SpellDataProvider implements ICapabilityProvider, INBTSerializable<
     private final LazyOptional<ISpellData> optional = LazyOptional.of(() -> backend);
 
     @Override
-    public <T> LazyOptional<T> getCapability(Capability<T> cap, @Nullable Direction side) {
+    public <T> LazyOptional<T> getCapability(@NotNull Capability<T> cap, @Nullable Direction side) {
         return cap == SPELL_DATA ? optional.cast() : LazyOptional.empty();
     }
 

@@ -1,7 +1,9 @@
 package net.masterquentus.hexcraftmod;
 
 import com.mojang.brigadier.CommandDispatcher;
+import com.mojang.brigadier.arguments.BoolArgumentType;
 import com.mojang.logging.LogUtils;
+import net.masterquentus.hexcraftmod.block.entity.renderer.SacrificialPillarBlockEntityRenderer;
 import net.masterquentus.hexcraftmod.block.events.VampireProgressionHandler;
 import net.masterquentus.hexcraftmod.block.render.PandorasBoxRenderer;
 import net.masterquentus.hexcraftmod.block.entity.client.HexcraftBoatRenderer;
@@ -24,11 +26,14 @@ import net.masterquentus.hexcraftmod.item.HexcraftItems;
 import net.masterquentus.hexcraftmod.loot.HexcraftLootModifier;
 import net.masterquentus.hexcraftmod.magic.CapabilityEventHandler;
 import net.masterquentus.hexcraftmod.magic.MagicStamina;
+import net.masterquentus.hexcraftmod.magic.MagicStaminaProvider;
 import net.masterquentus.hexcraftmod.magic.MagicStaminaTickHandler;
 import net.masterquentus.hexcraftmod.recipe.HexcraftRecipeTypes;
 import net.masterquentus.hexcraftmod.recipe.HexcraftRecipes;
 import net.masterquentus.hexcraftmod.screens.HexcraftMenuTypes;
 import net.masterquentus.hexcraftmod.screens.WitchesOvenScreen;
+import net.masterquentus.hexcraftmod.spells.SiphonerData;
+import net.masterquentus.hexcraftmod.spells.SiphonerDataProvider;
 import net.masterquentus.hexcraftmod.util.HexcraftWoodTypes;
 import net.masterquentus.hexcraftmod.worldgen.biome.HexcraftTerraBlenderAPI;
 import net.masterquentus.hexcraftmod.worldgen.tree.custom.HexcraftFoliagePlacers;
@@ -42,7 +47,10 @@ import net.minecraft.client.renderer.blockentity.BlockEntityRenderers;
 import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.minecraft.client.renderer.entity.ThrownItemRenderer;
 import net.minecraft.commands.CommandSourceStack;
+import net.minecraft.commands.Commands;
+import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraft.world.level.block.Blocks;
@@ -132,8 +140,6 @@ public class HexcraftMod {
 	}
 
 
-
-
 	// Helper method to create ResourceLocation
 	public static ResourceLocation id(String path) {
 		return new ResourceLocation(MOD_ID, path);
@@ -149,7 +155,9 @@ public class HexcraftMod {
 		HexcraftItems.registerCompostables();
 		event.enqueueWork(() -> {
 
+
 			CapabilityManager.get(new CapabilityToken<MagicStamina>() {});  // No need to call register() manually
+			CapabilityManager.get(new CapabilityToken<SiphonerData>() {});
 
 
 			// Register the Leach Chest Block Entity
@@ -237,6 +245,7 @@ public class HexcraftMod {
 
 			BlockEntityRenderers.register(HexcraftBlockEntities.CHEST.get(), HexcraftChestRenderer::new);
 
+
 		});
 
 		// Register projectiles and entities
@@ -251,11 +260,39 @@ public class HexcraftMod {
 		}
 	}
 
-	// Server starting logic (for now it's empty)
 	@SubscribeEvent
 	public void onServerStarting(ServerStartingEvent event) {
 		CommandDispatcher<CommandSourceStack> dispatcher = event.getServer().getCommands().getDispatcher();
+
+		// Existing command
 		VampireCommand.register(dispatcher);
+
+		// ✅ /stamina command
+		dispatcher.register(Commands.literal("stamina")
+				.executes(context -> {
+					ServerPlayer player = context.getSource().getPlayerOrException();
+					player.getCapability(MagicStaminaProvider.MAGIC_STAMINA_CAPABILITY).ifPresent(stamina -> {
+						context.getSource().sendSuccess(
+								() -> Component.literal("Stamina: " + stamina.getStamina()), false
+						);
+					});
+					return 1;
+				}));
+
+		// ✅ /setsiphoner true|false command
+		dispatcher.register(Commands.literal("setsiphoner")
+				.then(Commands.argument("value", BoolArgumentType.bool())
+						.executes(context -> {
+							boolean value = BoolArgumentType.getBool(context, "value");
+							ServerPlayer player = context.getSource().getPlayerOrException();
+							player.getCapability(SiphonerDataProvider.SIPHONER_DATA_CAPABILITY).ifPresent(data -> {
+								data.setSiphoner(value);
+								context.getSource().sendSuccess(
+										() -> Component.literal("Siphoner set to: " + value), false
+								);
+							});
+							return 1;
+						})));
 	}
 
 	@Mod.EventBusSubscriber(modid = HexcraftMod.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
@@ -263,6 +300,7 @@ public class HexcraftMod {
 
 		@SubscribeEvent
 		public static void registerBlockEntityRenderers(EntityRenderersEvent.RegisterRenderers event) {
+			event.registerBlockEntityRenderer(HexcraftBlockEntities.SACRIFICIAL_PILLAR_ENTITY.get(), SacrificialPillarBlockEntityRenderer::new);
 			// Register your custom chest block entity renderer
 			event.registerBlockEntityRenderer(HexcraftBlockEntities.CHEST.get(), HexcraftChestRenderer::new);
 		}
@@ -278,6 +316,7 @@ public class HexcraftMod {
 
 		@SubscribeEvent
 		public static void onClientSetup(FMLClientSetupEvent event) {
+
 			// Entity renderers registration
 			EntityRenderers.register(HexcraftEntities.VAMPIRE_EVOKER.get(), VampireEvokerRenderer::new);
 			EntityRenderers.register(HexcraftEntities.VAMPIRE_VINDICATOR.get(), VampireVindicatorRenderer::new);

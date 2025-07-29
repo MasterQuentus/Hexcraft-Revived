@@ -1,0 +1,11 @@
+{
+  "chalk_write": {
+    "category": "players",
+    "sounds": [
+      {
+        "name": "minecraft:block.note_block.pling",
+        "type": "event"
+      }
+    ]
+  }
+}

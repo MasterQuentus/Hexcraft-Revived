@@ -108,26 +108,42 @@ public class SirenEntity extends Monster implements GeoEntity {
 
         // Luring song every 200 ticks
         if (--lureCooldown <= 0) {
-            isSinging = true;
-            singDuration = 60; // 3 seconds
-            lureCooldown = 200;
+            // Check if any valid player is near within 12 blocks
+            List<Player> nearbyPlayers = level().getEntitiesOfClass(Player.class, this.getBoundingBox().inflate(12),
+                    player -> !player.isCreative() && !player.isSpectator());
+
+            if (!nearbyPlayers.isEmpty()) {
+                isSinging = true;
+                singDuration = 60; // 3 seconds
+            }
+
+            lureCooldown = 200; // reset cooldown regardless
         }
 
         if (isSinging) {
-            applySirenLure();
-            singDuration--;
-            if (singDuration <= 0) {
+            List<Player> nearbyPlayers = level().getEntitiesOfClass(Player.class, this.getBoundingBox().inflate(12),
+                    player -> !player.isCreative() && !player.isSpectator());
+
+            if (nearbyPlayers.isEmpty()) {
+                // No players nearby, stop singing early
                 isSinging = false;
-            }
-
-            if (this.isInWater()) {
-                this.setSpeed(1.5F); // Higher than normal
+                singDuration = 0;
             } else {
-                this.setSpeed(1.0F);
-            }
+                applySirenLure();
+                singDuration--;
+                if (singDuration <= 0) {
+                    isSinging = false;
+                }
 
-            if (this.isInWater() && this.tickCount % 40 == 0) {
-                this.heal(1.0F);
+                if (this.isInWater()) {
+                    this.setSpeed(1.5F); // Higher than normal
+                } else {
+                    this.setSpeed(1.0F);
+                }
+
+                if (this.isInWater() && this.tickCount % 40 == 0) {
+                    this.heal(1.0F);
+                }
             }
         }
     }
@@ -203,14 +219,13 @@ public class SirenEntity extends Monster implements GeoEntity {
             this.moveRelative(0.05F, travelVector);
             this.move(MoverType.SELF, this.getDeltaMovement());
 
-            // Damp X/Z motion, and stop floating up
             Vec3 motion = this.getDeltaMovement();
-            this.setDeltaMovement(motion.x * 0.9, motion.y * 0.5, motion.z * 0.9);
+            this.setDeltaMovement(motion.x * 0.9, motion.y * 0.9, motion.z * 0.9); // dampen Y less
 
-            // Optional: Force slight sinking if no target
-            if (this.getTarget() == null) {
-                this.setDeltaMovement(this.getDeltaMovement().add(0, 0.01, 0));
-            }
+            // Remove forced upward motion
+            // if (this.getTarget() == null) {
+            //     this.setDeltaMovement(this.getDeltaMovement().add(0, 0.01, 0));
+            // }
         } else {
             super.travel(travelVector);
         }

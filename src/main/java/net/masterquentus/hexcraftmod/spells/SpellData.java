@@ -9,6 +9,9 @@ import net.minecraftforge.common.util.INBTSerializable;
 import java.util.HashSet;
 import java.util.Set;
 
+/**
+ * Capability backend implementation for ISpellData.
+ */
 public class SpellData implements ISpellData, INBTSerializable<CompoundTag> {
 
     private final Set<String> knownSpells = new HashSet<>();
@@ -27,9 +30,21 @@ public class SpellData implements ISpellData, INBTSerializable<CompoundTag> {
     @Override
     public void learnSpell(String spellId) {
         knownSpells.add(spellId);
+        // Auto-select the first learned spell if none is selected
         if (selectedSpell == null) {
-            selectedSpell = spellId; // auto-select the first spell learned
+            selectedSpell = spellId;
         }
+    }
+
+    @Override
+    public void setSelectedSpell(String id) {
+        if (id == null || !knowsSpell(id)) return;
+        selectedSpell = id;
+    }
+
+    @Override
+    public String getSelectedSpell() {
+        return selectedSpell;
     }
 
     @Override
@@ -62,16 +77,5 @@ public class SpellData implements ISpellData, INBTSerializable<CompoundTag> {
         // Load selected spell
         String stored = tag.getString("SelectedSpell");
         selectedSpell = stored.isEmpty() ? null : stored;
-    }
-
-    @Override
-    public void setSelectedSpell(String id) {
-        if (id == null || !knowsSpell(id)) return;
-        selectedSpell = id;
-    }
-
-    @Override
-    public String getSelectedSpell() {
-        return selectedSpell;
     }
 }

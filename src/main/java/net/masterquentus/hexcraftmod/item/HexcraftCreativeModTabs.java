@@ -40,6 +40,9 @@ public class HexcraftCreativeModTabs {
                         output.accept(HexcraftItems.ASH.get());
                         output.accept(HexcraftItems.TOXIC_FUMES.get());
                         output.accept(HexcraftItems.RITUAL_CHALK.get());
+                        output.accept(HexcraftItems.WHITE_CHALK.get());
+                        output.accept(HexcraftItems.BLACK_CHALK.get());
+                        output.accept(HexcraftItems.RED_CHALK.get());
                         output.accept(HexcraftItems.BLOOD_BOTTLE.get());
                         output.accept(HexcraftItems.LILITH_CONTRACT.get());
                         output.accept(HexcraftItems.DEATH_CONTRACT.get());

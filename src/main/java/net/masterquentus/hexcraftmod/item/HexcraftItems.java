@@ -8,19 +8,13 @@ import net.masterquentus.hexcraftmod.effects.HexcraftEffects;
 import net.masterquentus.hexcraftmod.entity.HexcraftEntities;
 import net.masterquentus.hexcraftmod.fluid.HexcraftFluids;
 import net.masterquentus.hexcraftmod.item.brews.SimpleEffectBrewItem;
-import net.masterquentus.hexcraftmod.item.brews.SimpleEffectSplashBrewItem;
 import net.masterquentus.hexcraftmod.item.brooms.BroomItem;
 import net.masterquentus.hexcraftmod.item.brooms.traits.*;
 import net.masterquentus.hexcraftmod.item.custom.*;
 import net.masterquentus.hexcraftmod.util.HexcraftTags;
 import net.minecraft.core.Direction;
-import net.minecraft.world.effect.MobEffectInstance;
-import net.minecraft.world.effect.MobEffects;
-import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.food.Foods;
 import net.minecraft.world.item.*;
-import net.minecraft.world.item.alchemy.Potion;
-import net.minecraft.world.item.alchemy.PotionUtils;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.ComposterBlock;
 import net.minecraftforge.common.ForgeSpawnEggItem;
@@ -28,8 +22,6 @@ import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
-
-import static net.masterquentus.hexcraftmod.potions.HexcraftPotions.POTIONS;
 
 public class HexcraftItems {
     public static final DeferredRegister<Item> ITEMS =
@@ -259,7 +251,28 @@ public class HexcraftItems {
             () -> new Item(new Item.Properties()));
 
     public static final RegistryObject<Item> RITUAL_CHALK = ITEMS.register("ritual_chalk",
-            () -> new Item(new Item.Properties()));
+            () -> new GoldChalkItem(HexcraftBlocks.GOLD_CHALK_MARK.get(), new Item.Properties().durability(64)));
+
+    public static final RegistryObject<Item> RITUAL_CHALK_MARK = ITEMS.register("ritual_chalk_mark",
+            () -> new BlockItem(HexcraftBlocks.GOLD_CHALK_MARK.get(), new Item.Properties()));
+
+    public static final RegistryObject<Item> WHITE_CHALK = ITEMS.register("white_chalk",
+            () -> new WhiteChalkItem(HexcraftBlocks.WHITE_CHALK_MARK.get(), new Item.Properties().durability(64)));
+
+    public static final RegistryObject<Item> WHITE_CHALK_MARK = ITEMS.register("white_chalk_mark",
+            () -> new BlockItem(HexcraftBlocks.WHITE_CHALK_MARK.get(), new Item.Properties()));
+
+    public static final RegistryObject<Item> BLACK_CHALK = ITEMS.register("black_chalk",
+            () -> new BlackChalkItem(HexcraftBlocks.BLACK_CHALK_MARK.get(), new Item.Properties().durability(64)));
+
+    public static final RegistryObject<Item> BLACK_CHALK_MARK = ITEMS.register("black_chalk_mark",
+            () -> new BlockItem(HexcraftBlocks.BLACK_CHALK_MARK.get(), new Item.Properties()));
+
+    public static final RegistryObject<Item> RED_CHALK = ITEMS.register("red_chalk",
+            () -> new RedChalkItem(HexcraftBlocks.RED_CHALK_MARK.get(), new Item.Properties().durability(64)));
+
+    public static final RegistryObject<Item> RED_CHALK_MARK = ITEMS.register("red_chalk_mark",
+            () -> new BlockItem(HexcraftBlocks.RED_CHALK_MARK.get(), new Item.Properties()));
 
     public static final RegistryObject<Item> CLAY_POT = ITEMS.register("clay_pot",
             () -> new Item(new Item.Properties()));

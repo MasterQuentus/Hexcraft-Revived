@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "shape=bloodline_totem":   { "model": "hexcraftmod:block/bloodline_totem" },
+    "shape=fang_sigil":        { "model": "hexcraftmod:block/fang_sigil" },
+    "shape=sanguine_coil":       { "model": "hexcraftmod:block/sanguine_coil" },
+    "shape=sanguine_oath":  { "model": "hexcraftmod:block/sanguine_oath" },
+    "shape=sire_sigil":     { "model": "hexcraftmod:block/sire_sigil" },
+    "shape=immortal_bond":       { "model": "hexcraftmod:block/immortal_bond" },
+    "shape=serpent_path":      { "model": "hexcraftmod:block/serpent_path" },
+    "shape=elder_sigil":     { "model": "hexcraftmod:block/elder_sigil" },
+    "shape=blood_pact":        { "model": "hexcraftmod:block/blood_pact" },
+    "shape=hunger_glyph":      { "model": "hexcraftmod:block/hunger_glyph" },
+    "shape=sacrifice_rune":    { "model": "hexcraftmod:block/sacrifice_rune" },
+    "shape=thornbind":         { "model": "hexcraftmod:block/thornbind" },
+    "shape=ritual_chain":      { "model": "hexcraftmod:block/ritual_chain" },
+    "shape=hexmark":           { "model": "hexcraftmod:block/hexmark" },
+    "shape=nightbringer":      { "model": "hexcraftmod:block/nightbringer" }
+  }
+}

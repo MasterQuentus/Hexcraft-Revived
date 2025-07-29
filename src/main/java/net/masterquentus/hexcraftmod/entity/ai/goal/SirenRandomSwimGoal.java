@@ -24,7 +24,7 @@ public class SirenRandomSwimGoal extends Goal {
     @Override
     public void start() {
         double dx = (mob.getX() + (mob.getRandom().nextDouble() - 0.5) * 16);
-        double dy = mob.getY() + 1 + mob.getRandom().nextDouble() * 4;
+        double dy = mob.getY() + (mob.getRandom().nextDouble() - 0.5) * 8;
         double dz = (mob.getZ() + (mob.getRandom().nextDouble() - 0.5) * 16);
         mob.getNavigation().moveTo(dx, dy, dz, speed);
     }
@@ -36,8 +36,8 @@ public class SirenRandomSwimGoal extends Goal {
 
     @Override
     public void tick() {
-        if (mob.isInWater() && mob.getDeltaMovement().y < 0) {
-            mob.setDeltaMovement(mob.getDeltaMovement().add(0, 0.03, 0)); // stronger upward
+        if (mob.getDeltaMovement().y < -0.1) {
+            mob.setDeltaMovement(mob.getDeltaMovement().add(0, 0.05, 0));
         }
         super.tick();
     }

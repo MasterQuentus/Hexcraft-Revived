@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "shape=vitality_sigil":        { "model": "hexcraftmod:block/vitality_sigil" },
+    "shape=sun_symbol":         { "model": "hexcraftmod:block/sun_symbol" },
+    "shape=vein_star":          { "model": "hexcraftmod:block/vein_star" },
+    "shape=daylight_seal":      { "model": "hexcraftmod:block/daylight_seal" },
+    "shape=protection_ward":    { "model": "hexcraftmod:block/protection_ward" },
+    "shape=nexus_seal":       { "model": "hexcraftmod:block/nexus_seal" },
+    "shape=tethered_soul":      { "model": "hexcraftmod:block/tethered_soul" },
+    "shape=quartz_rune":        { "model": "hexcraftmod:block/quartz_rune" },
+    "shape=binding_circle":     { "model": "hexcraftmod:block/binding_circle" },
+    "shape=sacred_thread":      { "model": "hexcraftmod:block/sacred_thread" },
+    "shape=illumination_sigil": { "model": "hexcraftmod:block/illumination_sigil" },
+    "shape=sanctum_mark":       { "model": "hexcraftmod:block/sanctum_mark" },
+    "shape=purity_star":        { "model": "hexcraftmod:block/purity_star" },
+    "shape=guardian_ward":      { "model": "hexcraftmod:block/guardian_ward" },
+    "shape=ethereal_chain":     { "model": "hexcraftmod:block/ethereal_chain" }
+  }
+}

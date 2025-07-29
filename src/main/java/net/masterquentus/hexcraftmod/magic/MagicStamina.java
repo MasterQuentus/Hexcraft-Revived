@@ -11,8 +11,7 @@ public class MagicStamina {
     }
 
     public void setStamina(int value) {
-        stamina = Math.min(value, maxStamina);
-        if (stamina < 0) stamina = 0;
+        stamina = Math.max(0, Math.min(value, maxStamina));
     }
 
     public int getMaxStamina() {
@@ -21,9 +20,14 @@ public class MagicStamina {
 
     public void setMaxStamina(int max) {
         maxStamina = max;
-        if (stamina > maxStamina) stamina = maxStamina;
+        if (stamina > maxStamina) {
+            stamina = maxStamina;
+        }
     }
 
+    /**
+     * Attempts to consume stamina. Returns true if successful.
+     */
     public boolean consume(int amount) {
         if (stamina >= amount) {
             stamina -= amount;
@@ -32,10 +36,16 @@ public class MagicStamina {
         return false;
     }
 
+    /**
+     * Restores stamina up to the max.
+     */
     public void regenerate(int amount) {
         setStamina(stamina + amount);
     }
 
+    /**
+     * Saves stamina values to NBT.
+     */
     public CompoundTag serializeNBT() {
         CompoundTag tag = new CompoundTag();
         tag.putInt("Stamina", stamina);
@@ -43,6 +53,9 @@ public class MagicStamina {
         return tag;
     }
 
+    /**
+     * Loads stamina values from NBT.
+     */
     public void deserializeNBT(CompoundTag tag) {
         stamina = tag.getInt("Stamina");
         maxStamina = tag.getInt("MaxStamina");

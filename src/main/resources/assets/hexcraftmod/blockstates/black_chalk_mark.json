@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "shape=hybrid_mark":       { "model": "hexcraftmod:block/hybrid_mark" },
+    "shape=trinity_mark":      { "model": "hexcraftmod:block/trinity_mark" },
+    "shape=ancestor_rune":     { "model": "hexcraftmod:block/ancestor_rune" },
+    "shape=dark_spiral":       { "model": "hexcraftmod:block/dark_spiral" },
+    "shape=necromantic_mark":  { "model": "hexcraftmod:block/necromantic_mark" },
+    "shape=center_sigil":      { "model": "hexcraftmod:block/center_sigil" },
+    "shape=moon_symbol":       { "model": "hexcraftmod:block/moon_symbol" },
+    "shape=locked_circle":     { "model": "hexcraftmod:block/locked_circle" },
+    "shape=nightbound_seal":   { "model": "hexcraftmod:block/nightbound_seal" },
+    "shape=shade_rune":        { "model": "hexcraftmod:block/shade_rune" },
+    "shape=bone_chain":        { "model": "hexcraftmod:block/bone_chain" },
+    "shape=abyssal_knot":      { "model": "hexcraftmod:block/abyssal_knot" },
+    "shape=void_star":         { "model": "hexcraftmod:block/void_star" },
+    "shape=bloodlock_ward":    { "model": "hexcraftmod:block/bloodlock_ward" },
+    "shape=fanged_ring":       { "model": "hexcraftmod:block/fanged_ring" }
+  }
+}

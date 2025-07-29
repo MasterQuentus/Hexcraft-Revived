@@ -15,29 +15,12 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 
 
 public class AbstractChalkBlock extends Block {
-
-    public AbstractChalkBlock() {
-        super(Properties.of().pushReaction(PushReaction.DESTROY).noOcclusion().noCollission().strength(0.5f, 0f).noLootTable());
+    public AbstractChalkBlock(Properties properties) {
+        super(properties);
     }
 
     @Override
-    public VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
-        return Shapes.create(new AABB(0.0, 0.0, 0.0, 1.0, 0.0625, 1.0));
+    public boolean canSurvive(BlockState state, LevelReader worldIn, BlockPos pos) {
+        return worldIn.getBlockState(pos.below()).isFaceSturdy(worldIn, pos.below(), Direction.UP);
     }
-
-    @Override
-    public void neighborChanged(BlockState state, Level level, BlockPos pos, Block block, BlockPos fromPos, boolean isMoving) {
-        if (!level.isClientSide()) {
-            if (!state.canSurvive(level, pos))
-                level.removeBlock(pos, false);
-        }
-    }
-
-    @Override
-    public boolean canSurvive(BlockState state, LevelReader level, BlockPos pos) {
-        BlockPos belowPos = pos.below();
-        BlockState blockstate = level.getBlockState(belowPos);
-        return blockstate.isFaceSturdy(level, belowPos, Direction.UP);
-    }
-
 }

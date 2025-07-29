@@ -41,6 +41,7 @@ import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.event.entity.living.LivingDropsEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.registries.ForgeRegistries;
 
 import java.util.List;
@@ -113,7 +114,7 @@ public class PandorasBoxBlockEntity extends BlockEntity {
             "hexcraftmod:attuned_stone_charged", "hexcraftmod:blooded_waystone",
             "hexcraftmod:breath_of_the_goddess", "hexcraftmod:drop_of_luck"
     );
-
+    public IItemHandler inventory;
 
 
     private int animationTicks = 0;

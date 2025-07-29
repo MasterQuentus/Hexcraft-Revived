@@ -5,12 +5,13 @@ import java.util.function.ToIntFunction;
 
 import net.masterquentus.hexcraftmod.HexcraftMod;
 import net.masterquentus.hexcraftmod.block.custom.*;
+import net.masterquentus.hexcraftmod.block.custom.chalk.AbstractChalkBlock;
 import net.masterquentus.hexcraftmod.block.custom.plants.*;
 import net.masterquentus.hexcraftmod.block.custom.signs.HexcraftStadingSignBlock;
 import net.masterquentus.hexcraftmod.block.custom.signs.HexcraftWallHangingSignBlock;
 import net.masterquentus.hexcraftmod.block.custom.signs.HexcraftWallSignBlock;
 import net.masterquentus.hexcraftmod.block.custom.signs.HexcraftlHangingSignBlock;
-import net.masterquentus.hexcraftmod.block.entity.custom.UnderworldPortalBlock;
+import net.masterquentus.hexcraftmod.block.entity.custom.*;
 import net.masterquentus.hexcraftmod.block.entity.custom.liquid.DeepWaterBlock;
 import net.masterquentus.hexcraftmod.effects.HexcraftEffects;
 import net.masterquentus.hexcraftmod.fluid.HexcraftFluids;
@@ -3169,6 +3170,30 @@ public class HexcraftBlocks {
 					.noCollission()
 					.strength(-1.0F)
 					.lightLevel(state -> 11).noLootTable()));
+
+	public static final RegistryObject<Block> RITUAL_CHALK = BLOCKS.register("ritual_chalk",
+			() -> new AbstractChalkBlock(BlockBehaviour.Properties.copy(Blocks.STONE).strength(0.5f).noLootTable()));
+
+	public static final RegistryObject<Block> WHITE_CHALK = BLOCKS.register("white_chalk",
+			() -> new AbstractChalkBlock(BlockBehaviour.Properties.copy(Blocks.STONE).strength(0.5f).noLootTable()));
+
+	public static final RegistryObject<Block> BLACK_CHALK = BLOCKS.register("black_chalk",
+			() -> new AbstractChalkBlock(BlockBehaviour.Properties.copy(Blocks.STONE).strength(0.5f).noLootTable()));
+
+	public static final RegistryObject<Block> RED_CHALK = BLOCKS.register("red_chalk",
+			() -> new AbstractChalkBlock(BlockBehaviour.Properties.copy(Blocks.STONE).strength(0.5f).noLootTable()));
+
+	public static final RegistryObject<Block> GOLD_CHALK_MARK = BLOCKS.register("gold_chalk_mark",
+			() -> new GoldChalkMarkBlock(BlockBehaviour.Properties.of().strength(5.0F, 1200.0F).noOcclusion().noCollission().noLootTable()));
+
+	public static final RegistryObject<Block> WHITE_CHALK_MARK = BLOCKS.register("white_chalk_mark",
+			() -> new WhiteChalkMarkBlock(BlockBehaviour.Properties.of().strength(5.0F, 1200.0F).noOcclusion().noCollission().noLootTable()));
+
+	public static final RegistryObject<Block> BLACK_CHALK_MARK = BLOCKS.register("black_chalk_mark",
+			() -> new BlackChalkMarkBlock(BlockBehaviour.Properties.of().strength(5.0F, 1200.0F).noOcclusion().noCollission().noLootTable()));
+
+	public static final RegistryObject<Block> RED_CHALK_MARK = BLOCKS.register("red_chalk_mark",
+			() -> new RedChalkMarkBlock(BlockBehaviour.Properties.of().strength(5.0F, 1200.0F).noOcclusion().noCollission().noLootTable()));
 
 
 	//Ore Blocks

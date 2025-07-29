@@ -1,5 +1,6 @@
 package net.masterquentus.hexcraftmod.magic;
 
+import net.minecraft.nbt.CompoundTag;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -15,14 +16,19 @@ public class MagicStaminaTickHandler {
     @SubscribeEvent
     public static void onPlayerTick(TickEvent.PlayerTickEvent event) {
         if (event.phase == TickEvent.Phase.END && !event.player.level().isClientSide) {
-            tickCounter++;
-            if (tickCounter >= REGEN_TICK_INTERVAL) {
-                tickCounter = 0;
+            CompoundTag data = event.player.getPersistentData();
+            int tick = data.getInt("MagicStaminaTick");
+            tick++;
+
+            if (tick >= REGEN_TICK_INTERVAL) {
+                tick = 0;
                 event.player.getCapability(MagicStaminaProvider.MAGIC_STAMINA_CAPABILITY).ifPresent(stamina -> {
                     stamina.regenerate(REGEN_RATE);
                     System.out.println("[DEBUG] Regenerated stamina for: " + event.player.getName().getString());
                 });
             }
+
+            data.putInt("MagicStaminaTick", tick);
         }
     }
 }

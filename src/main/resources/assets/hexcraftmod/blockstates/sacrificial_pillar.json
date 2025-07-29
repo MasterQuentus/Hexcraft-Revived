@@ -1,9 +1,7 @@
-  
 {
-    "variants": {
-        "facing=north": { "model": "hexcraftmod:block/sacrificial_pillar" },
-        "facing=south": { "model": "hexcraftmod:block/sacrificial_pillar", "y": 180 },
-        "facing=west":  { "model": "hexcraftmod:block/sacrificial_pillar", "y": 270 },
-        "facing=east":  { "model": "hexcraftmod:block/sacrificial_pillar", "y": 90 }
+  "variants": {
+    "": {
+      "model": "hexcraftmod:block/sacrificial_pillar"
     }
+  }
 }

@@ -28,12 +28,12 @@ import net.masterquentus.hexcraftmod.magic.CapabilityEventHandler;
 import net.masterquentus.hexcraftmod.magic.MagicStamina;
 import net.masterquentus.hexcraftmod.magic.MagicStaminaProvider;
 import net.masterquentus.hexcraftmod.magic.MagicStaminaTickHandler;
+import net.masterquentus.hexcraftmod.packets.HexcraftModNetworking;
 import net.masterquentus.hexcraftmod.recipe.HexcraftRecipeTypes;
 import net.masterquentus.hexcraftmod.recipe.HexcraftRecipes;
 import net.masterquentus.hexcraftmod.screens.HexcraftMenuTypes;
 import net.masterquentus.hexcraftmod.screens.WitchesOvenScreen;
-import net.masterquentus.hexcraftmod.spells.SiphonerData;
-import net.masterquentus.hexcraftmod.spells.SiphonerDataProvider;
+import net.masterquentus.hexcraftmod.spells.*;
 import net.masterquentus.hexcraftmod.util.HexcraftWoodTypes;
 import net.masterquentus.hexcraftmod.worldgen.biome.HexcraftTerraBlenderAPI;
 import net.masterquentus.hexcraftmod.worldgen.tree.custom.HexcraftFoliagePlacers;
@@ -118,6 +118,7 @@ public class HexcraftMod {
 		HexcraftEffects.register(modEventBus);
 		HexcraftFoliagePlacers.register(modEventBus);
 		HexcraftTrunkPlacers.register(modEventBus);
+		HexcraftModNetworking.register();
 
 		// Register entity attributes and event handlers
 		MinecraftForge.EVENT_BUS.addListener(HexcraftEntities::registerEntityAttributes);
@@ -152,6 +153,20 @@ public class HexcraftMod {
 
 	// Common setup (register block entities and blocks)
 	private void commonSetup(final FMLCommonSetupEvent event) {
+		SpellRegistry.registerSpell(new SanatoreSpell());
+		SpellRegistry.registerSpell(new AquafortisSpell());
+		SpellRegistry.registerSpell(new FulmenSpell());
+		SpellRegistry.registerSpell(new AquafortisSpell());
+		SpellRegistry.registerSpell(new FulmenSpell());
+		SpellRegistry.registerSpell(new LuxAeternamSpell());
+		SpellRegistry.registerSpell(new PhasmatosNaturalisSpell());
+		SpellRegistry.registerSpell(new MotusSpell());
+		SpellRegistry.registerSpell(new ClavemSpell());
+		SpellRegistry.registerSpell(new ManusSpiritusSpell());
+		SpellRegistry.registerSpell(new VitaReverteturSpell());
+		SpellRegistry.registerSpell(new SiccitasSpell());
+		SpellRegistry.registerSpell(new ClaustrumSpell());
+		SpellRegistry.registerSpell(new ExpellereSpell());
 		HexcraftItems.registerCompostables();
 		event.enqueueWork(() -> {
 

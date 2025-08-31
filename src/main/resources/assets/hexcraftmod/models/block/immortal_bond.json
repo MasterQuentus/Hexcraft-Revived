@@ -1,0 +1,20 @@
+{
+  "render_type": "cutout",
+  "parent": "block/block",
+  "textures": {
+    "particle": "hexcraftmod:block/immortal_bond",
+    "texture": "hexcraftmod:block/immortal_bond"
+  },
+  "elements": [
+    {
+      "from": [0, 0, 0],
+      "to": [16, 0.1, 16],
+      "faces": {
+        "up": {
+          "texture": "#texture",
+          "cullface": "up"
+        }
+      }
+    }
+  ]
+}

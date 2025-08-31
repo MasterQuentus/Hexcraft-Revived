@@ -158,11 +158,24 @@ public class HexcraftCreativeModTabs {
                         output.accept(HexcraftItems.WITHER_PROTECTION_POPPET.get());
                         output.accept(HexcraftItems.ARMOR_PROTECTION_POPPET.get());
                         output.accept(HexcraftItems.TOOL_PROTECTION_POPPET.get());
-                        output.accept(HexcraftItems.INCENDIA_SPELL_PAGE.get());
+                        output.accept(HexcraftItems.SPELL_PAGE_INCENDIA.get());
+                        output.accept(HexcraftItems.SPELL_PAGE_SANATORE.get());
+                        output.accept(HexcraftItems.SPELL_PAGE_AQUA_FORTIS.get());
+                        output.accept(HexcraftItems.SPELL_PAGE_FULMEN.get());
+                        output.accept(HexcraftItems.SPELL_PAGE_LUX_AETERNAM.get());
+                        output.accept(HexcraftItems.SPELL_PAGE_PHASMATOS_NATURALIS.get());
+                        output.accept(HexcraftItems.SPELL_PAGE_MOTUS.get());
+                        output.accept(HexcraftItems.SPELL_PAGE_CLAVEM.get());
+                        output.accept(HexcraftItems.SPELL_PAGE_MANUS_SPIRITUS.get());
+                        output.accept(HexcraftItems.SPELL_PAGE_VITA_REVERTETUR.get());
+                        output.accept(HexcraftItems.SPELL_PAGE_SICCITAS.get());
+                        output.accept(HexcraftItems.SPELL_PAGE_CLAUSTRUM.get());
+                        output.accept(HexcraftItems.SPELL_PAGE_EXPELLERE.get());
                         output.accept(HexcraftItems.BLOOD_BUCKET.get());
                         output.accept(HexcraftItems.DEEP_WATER_BUCKET.get());
 
 // Tools
+                        output.accept(HexcraftItems.FLINT_AND_HELLFIRE.get());
                         output.accept(HexcraftItems.STEEL_SWORD.get());
                         output.accept(HexcraftItems.STEEL_PICKAXE.get());
                         output.accept(HexcraftItems.STEEL_SHOVEL.get());

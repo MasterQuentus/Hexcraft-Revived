@@ -3,8 +3,12 @@ package net.masterquentus.hexcraftmod.fluid;
 import net.masterquentus.hexcraftmod.HexcraftMod;
 import net.masterquentus.hexcraftmod.block.HexcraftBlocks;
 import net.masterquentus.hexcraftmod.item.HexcraftItems;
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
+import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.material.FlowingFluid;
 import net.minecraft.world.level.material.Fluid;
+import net.minecraft.world.level.material.FluidState;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fluids.ForgeFlowingFluid;
 import net.minecraftforge.registries.DeferredRegister;
@@ -15,18 +19,38 @@ public class HexcraftFluids {
     public static final DeferredRegister<Fluid> FLUIDS =
             DeferredRegister.create(ForgeRegistries.FLUIDS, HexcraftMod.MOD_ID);
 
-
     public static final RegistryObject<FlowingFluid> SOURCE_BLOOD = FLUIDS.register("blood_fluid",
-            () -> new ForgeFlowingFluid.Source(HexcraftFluids.BLOOD_FLUID_PROPERTIES));
+            () -> new ForgeFlowingFluid.Source(HexcraftFluids.BLOOD_FLUID_PROPERTIES) {
+                @Override
+                public boolean canBeReplacedWith(FluidState state, BlockGetter world, BlockPos pos, Fluid fluid, Direction direction) {
+                    // Only allow replacement by itself
+                    return fluid == this;
+                }
+            });
 
     public static final RegistryObject<FlowingFluid> FLOWING_BLOOD = FLUIDS.register("flowing_blood_fluid",
-            () -> new ForgeFlowingFluid.Flowing(HexcraftFluids.BLOOD_FLUID_PROPERTIES));
+            () -> new ForgeFlowingFluid.Flowing(HexcraftFluids.BLOOD_FLUID_PROPERTIES) {
+                @Override
+                public boolean canBeReplacedWith(FluidState state, BlockGetter world, BlockPos pos, Fluid fluid, Direction direction) {
+                    return fluid == this;
+                }
+            });
 
     public static final RegistryObject<FlowingFluid> SOURCE_DEEP_WATER = FLUIDS.register("deep_water",
-            () -> new ForgeFlowingFluid.Source(HexcraftFluids.DEEP_WATER_FLUID_PROPERTIES));
+            () -> new ForgeFlowingFluid.Source(HexcraftFluids.DEEP_WATER_FLUID_PROPERTIES) {
+                @Override
+                public boolean canBeReplacedWith(FluidState state, BlockGetter world, BlockPos pos, Fluid fluid, Direction direction) {
+                    return fluid == this;
+                }
+            });
 
     public static final RegistryObject<FlowingFluid> FLOWING_DEEP_WATER = FLUIDS.register("flowing_deep_water",
-            () -> new ForgeFlowingFluid.Flowing(HexcraftFluids.DEEP_WATER_FLUID_PROPERTIES));
+            () -> new ForgeFlowingFluid.Flowing(HexcraftFluids.DEEP_WATER_FLUID_PROPERTIES) {
+                @Override
+                public boolean canBeReplacedWith(FluidState state, BlockGetter world, BlockPos pos, Fluid fluid, Direction direction) {
+                    return fluid == this;
+                }
+            });
 
     public static final ForgeFlowingFluid.Properties BLOOD_FLUID_PROPERTIES = new ForgeFlowingFluid.Properties(
             HexcraftFluidTypes.BLOOD_FLUID_TYPE, SOURCE_BLOOD, FLOWING_BLOOD)
@@ -37,7 +61,6 @@ public class HexcraftFluids {
             HexcraftFluidTypes.DEEP_WATER_FLUID_TYPE, SOURCE_DEEP_WATER, FLOWING_DEEP_WATER)
             .slopeFindDistance(2).levelDecreasePerBlock(1).block(HexcraftBlocks.DEEP_WATER_BLOCK)
             .bucket(HexcraftItems.DEEP_WATER_BUCKET);
-
 
     public static void register(IEventBus eventBus) {
         FLUIDS.register(eventBus);

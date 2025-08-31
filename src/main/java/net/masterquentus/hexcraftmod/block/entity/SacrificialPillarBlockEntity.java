@@ -1,6 +1,7 @@
 package net.masterquentus.hexcraftmod.block.entity;
 
 import net.masterquentus.hexcraftmod.block.HexcraftBlocks;
+import net.masterquentus.hexcraftmod.item.HexcraftItems;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
@@ -13,6 +14,7 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
+import net.minecraft.tags.BlockTags;
 import net.minecraft.world.Containers;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
@@ -22,14 +24,14 @@ import net.minecraft.world.entity.LightningBolt;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.items.ItemStackHandler;
-import org.jetbrains.annotations.NotNull;
 
 import javax.annotation.Nullable;
 import java.util.ArrayList;
@@ -38,18 +40,12 @@ import java.util.List;
 import java.util.Map;
 
 public class SacrificialPillarBlockEntity extends BlockEntity {
-    private static final BlockPos RITUAL_CENTER_OFFSET = new BlockPos(0, 0, 0);
 
     public final ItemStackHandler inventory = new ItemStackHandler(1) {
         @Override
-        protected int getStackLimit(int slot, @NotNull ItemStack stack) {
-            return 1;
-        }
-
-        @Override
         protected void onContentsChanged(int slot) {
             setChanged();
-            if(!level.isClientSide()) {
+            if (!level.isClientSide) {
                 level.sendBlockUpdated(getBlockPos(), getBlockState(), getBlockState(), 3);
             }
         }
@@ -65,7 +61,6 @@ public class SacrificialPillarBlockEntity extends BlockEntity {
         return rotation;
     }
 
-    private ItemStack storedItem = ItemStack.EMPTY;
     private static final int RITUAL_DELAY_TICKS = 100; // 5 seconds delay
     private static final int RITUAL_COOLDOWN_MILLIS = 60000; // 1-minute cooldown
     private long ritualCooldownEnd = 0;
@@ -75,37 +70,27 @@ public class SacrificialPillarBlockEntity extends BlockEntity {
     }
 
     public void consumeItem() {
-        if (!storedItem.isEmpty()) {
-            storedItem = ItemStack.EMPTY;
-            setChanged();
+        inventory.setStackInSlot(0, ItemStack.EMPTY);
+        setChanged();
+    }
+
+    public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
+        BlockEntity blockEntity = level.getBlockEntity(pos);
+        if (blockEntity instanceof SacrificialPillarBlockEntity pillar) {
+            return pillar.onPlayerUse(level, player, hand);
         }
+        return InteractionResult.PASS;
     }
 
     @Override
     protected void saveAdditional(CompoundTag tag) {
         super.saveAdditional(tag);
-
-        // Save storedItem
-        CompoundTag itemTag = new CompoundTag();
-        storedItem.save(itemTag);
-        tag.put("StoredItem", itemTag);
-
-        // Optional: save inventory if you're still using it
         tag.put("Inventory", inventory.serializeNBT());
     }
 
     @Override
     public void load(CompoundTag tag) {
         super.load(tag);
-
-        // Load storedItem
-        if (tag.contains("StoredItem")) {
-            storedItem = ItemStack.of(tag.getCompound("StoredItem"));
-        } else {
-            storedItem = ItemStack.EMPTY;
-        }
-
-        // Optional: load inventory if still used
         if (tag.contains("Inventory")) {
             inventory.deserializeNBT(tag.getCompound("Inventory"));
         }
@@ -143,26 +128,29 @@ public class SacrificialPillarBlockEntity extends BlockEntity {
     }
 
     public ItemStack getStoredItem() {
-        return storedItem;
+        return inventory.getStackInSlot(0);
     }
 
     public boolean setItem(ItemStack item) {
-        if (storedItem.isEmpty()) {
-            storedItem = item.copy();
-            storedItem.setCount(1);
-            inventory.setStackInSlot(0, storedItem.copy()); // 🔧 Sync to inventory
+        if (inventory.getStackInSlot(0).isEmpty()) {
+            ItemStack copy = item.copy();
+            copy.setCount(1);
+            inventory.setStackInSlot(0, copy);
             setChanged();
-            level.sendBlockUpdated(worldPosition, getBlockState(), getBlockState(), 3);
+            if (level != null) {
+                level.sendBlockUpdated(worldPosition, getBlockState(), getBlockState(), 3);
+            }
+            broadcastMessage("DEBUG: Item set on pillar: " + copy.getItem().getDescription().getString(), ChatFormatting.GREEN);
             return true;
         }
+        broadcastMessage("DEBUG: Pillar already has an item!", ChatFormatting.RED);
         return false;
     }
 
     public ItemStack removeItem() {
-        if (!storedItem.isEmpty()) {
-            ItemStack removed = storedItem;
-            storedItem = ItemStack.EMPTY;
-            inventory.setStackInSlot(0, ItemStack.EMPTY); // 🔧 Clear inventory too
+        ItemStack removed = inventory.getStackInSlot(0);
+        if (!removed.isEmpty()) {
+            inventory.setStackInSlot(0, ItemStack.EMPTY);
             setChanged();
             return removed;
         }
@@ -180,14 +168,16 @@ public class SacrificialPillarBlockEntity extends BlockEntity {
     public void attemptRitual() {
         if (level == null || level.isClientSide) return;
 
-        broadcastMessage("🔍 DEBUG: attemptRitual() has been called!", ChatFormatting.YELLOW);
+        BlockPos center = findRitualCenter();
+
+        broadcastMessage("🔍 DEBUG: attemptRitual() called at center " + formatPos(center), ChatFormatting.YELLOW);
 
         if (!canPerformRitual()) {
             broadcastMessage("⏳ The altar needs time to regain its power!", ChatFormatting.GRAY);
             return;
         }
 
-        List<BlockPos> pillars = findSacrificialPillars();
+        List<BlockPos> pillars = findSacrificialPillarsAround(center);
         broadcastMessage("🗿 DEBUG: Found " + pillars.size() + " sacrificial pillars.", ChatFormatting.YELLOW);
 
         if (pillars.size() < 4) {
@@ -233,7 +223,11 @@ public class SacrificialPillarBlockEntity extends BlockEntity {
         for (BlockPos pos : pillars) {
             BlockEntity entity = level.getBlockEntity(pos);
             if (entity instanceof SacrificialPillarBlockEntity pillar) {
-                pillar.consumeItem();
+                ItemStack stack = pillar.getStoredItem();
+                broadcastMessage("DEBUG: Pillar at " + formatPos(pos) + " contains item: "
+                        + (stack.isEmpty() ? "EMPTY" : stack.getItem().getDescription().getString()), ChatFormatting.AQUA);
+            } else {
+                broadcastMessage("DEBUG: No SacrificialPillarBlockEntity at " + formatPos(pos), ChatFormatting.RED);
             }
         }
 
@@ -242,12 +236,40 @@ public class SacrificialPillarBlockEntity extends BlockEntity {
         level.scheduleTick(getRitualCenter(), level.getBlockState(getRitualCenter()).getBlock(), RITUAL_DELAY_TICKS);
     }
 
+    private List<BlockPos> findSacrificialPillarsAround(BlockPos center) {
+        List<BlockPos> pillars = new ArrayList<>();
+        int radius = 5;
+        for (BlockPos pos : BlockPos.betweenClosed(
+                center.offset(-radius, 0, -radius),
+                center.offset(radius, 1, radius))) {
+            if (level.getBlockState(pos).is(HexcraftBlocks.SACRIFICIAL_PILLAR.get())) {
+                // Skip the center pillar itself
+                if (!pos.equals(center)) {
+                    pillars.add(pos);
+                }
+            }
+        }
+        return pillars;
+    }
+
+    public void neighborChanged(BlockState state, Level level, BlockPos pos, Block block, BlockPos fromPos, boolean isMoving) {
+        if (!level.isClientSide) {
+            boolean powered = level.hasNeighborSignal(pos);
+            if (powered) {
+                BlockEntity be = level.getBlockEntity(pos);
+                if (be instanceof SacrificialPillarBlockEntity pillar) {
+                    pillar.attemptRitual();
+                }
+            }
+        }
+    }
 
     public void completeRitual() {
         if (level instanceof ServerLevel serverLevel) {
             broadcastMessage("🔥 DEBUG: completeRitual() has been called!", ChatFormatting.RED);
 
-            BlockPos center = getRitualCenter();
+            BlockPos center = getRitualCenter().below(); // ➤ NEW
+            BlockPos centerTop = getRitualCenter();
 
             // ⚡ Lightning Strikes!
             for (int i = 0; i < 3; i++) {
@@ -273,9 +295,10 @@ public class SacrificialPillarBlockEntity extends BlockEntity {
 
     private List<String> getMultiBlockStructureErrors() {
         List<String> errors = new ArrayList<>();
-        BlockPos center = getRitualCenter();
+        BlockPos center = getRitualCenter().below(); // For base structure
+        BlockPos centerTop = getRitualCenter();       // For soul fire and others
 
-        // Eclipsium Blocks
+// Eclipsium Blocks (now 1 block lower)
         if (!isSacrificialPillarOrAbove(center) && !isEclipsiumBlock(center))
             errors.add("Missing Eclipsium Block at " + formatPos(center));
         if (!isSacrificialPillarOrAbove(center.north(2)) && !isEclipsiumBlock(center.north(2)))
@@ -288,14 +311,14 @@ public class SacrificialPillarBlockEntity extends BlockEntity {
             errors.add("Missing Eclipsium Block at " + formatPos(center.west(2)));
 
         // Soul Fire
-        if (!isSoulFire(center.north()))
-            errors.add("Missing Soul Fire at " + formatPos(center.north()));
-        if (!isSoulFire(center.south()))
-            errors.add("Missing Soul Fire at " + formatPos(center.south()));
-        if (!isSoulFire(center.east()))
-            errors.add("Missing Soul Fire at " + formatPos(center.east()));
-        if (!isSoulFire(center.west()))
-            errors.add("Missing Soul Fire at " + formatPos(center.west()));
+        if (!isSoulFire(centerTop.north()))
+            errors.add("Missing Soul Fire at " + formatPos(centerTop.north()));
+        if (!isSoulFire(centerTop.south()))
+            errors.add("Missing Soul Fire at " + formatPos(centerTop.south()));
+        if (!isSoulFire(centerTop.east()))
+            errors.add("Missing Soul Fire at " + formatPos(centerTop.east()));
+        if (!isSoulFire(centerTop.west()))
+            errors.add("Missing Soul Fire at " + formatPos(centerTop.west()));
 
         // Amethyst Blocks
         if (!isAmethystBlock(center.north(1).east(1)))
@@ -342,24 +365,30 @@ public class SacrificialPillarBlockEntity extends BlockEntity {
         List<String> errors = new ArrayList<>();
 
         Map<Item, Integer> requiredItemCounts = new HashMap<>();
-        requiredItemCounts.put(Items.TOTEM_OF_UNDYING, 1);
-        requiredItemCounts.put(Items.SOUL_SAND, 1);
-        requiredItemCounts.put(Items.NETHER_STAR, 1);
-        requiredItemCounts.put(HexcraftBlocks.ECLIPSIUM_BLOCK.get().asItem(), 1);
+        requiredItemCounts.put(HexcraftItems.INFERNAL_EMBER.get(), 1);
+        requiredItemCounts.put(HexcraftItems.BLOOD_BOTTLE.get(), 1);
+        requiredItemCounts.put(HexcraftItems.NECROMANTIC_STONE.get(), 1);
+        requiredItemCounts.put(HexcraftItems.WITHER_BONE.get(), 1);
 
         Map<Item, Integer> foundItemCounts = new HashMap<>();
+        BlockPos center = getRitualCenter();
 
         for (BlockPos pos : pillars) {
+            if (pos.equals(center)) continue; // Skip center pillar from item check
+
             BlockEntity entity = level.getBlockEntity(pos);
             if (entity instanceof SacrificialPillarBlockEntity pillar) {
-                ItemStack stack = pillar.inventory.getStackInSlot(0);
+                ItemStack stack = pillar.getStoredItem();
+                broadcastMessage("DEBUG: Pillar at " + formatPos(pos) + " has storedItem: "
+                        + (stack.isEmpty() ? "EMPTY" : stack.getItem().getDescription().getString()), ChatFormatting.LIGHT_PURPLE);
+
                 if (!stack.isEmpty()) {
                     foundItemCounts.put(stack.getItem(), foundItemCounts.getOrDefault(stack.getItem(), 0) + 1);
                 }
             }
         }
 
-        // Check for missing or extra items
+        // Now validate found counts against required counts as before
         for (Map.Entry<Item, Integer> entry : requiredItemCounts.entrySet()) {
             int found = foundItemCounts.getOrDefault(entry.getKey(), 0);
             if (found < entry.getValue()) {
@@ -369,7 +398,6 @@ public class SacrificialPillarBlockEntity extends BlockEntity {
             }
         }
 
-        // Check for unexpected items on pillars
         for (Item foundItem : foundItemCounts.keySet()) {
             if (!requiredItemCounts.containsKey(foundItem)) {
                 errors.add("Unexpected item on pillar: " + foundItem.getDescription().getString());
@@ -393,10 +421,10 @@ public class SacrificialPillarBlockEntity extends BlockEntity {
 
     private boolean validateSacrificialPillars(List<BlockPos> pillars) {
         List<Item> requiredItems = List.of(
-                Items.TOTEM_OF_UNDYING,
-                Items.SOUL_SAND,
-                Items.NETHER_STAR,
-                HexcraftBlocks.ECLIPSIUM_BLOCK.get().asItem()
+                HexcraftItems.INFERNAL_EMBER.get(),
+                HexcraftItems.BLOOD_BOTTLE.get(),
+                HexcraftItems.NECROMANTIC_STONE.get(),
+                HexcraftItems.WITHER_BONE.get()
         );
 
         List<Item> foundItems = new ArrayList<>();
@@ -421,7 +449,8 @@ public class SacrificialPillarBlockEntity extends BlockEntity {
     }
 
     private boolean validateMultiBlockStructure() {
-        BlockPos center = getRitualCenter(); // The ritual center
+        BlockPos center = getRitualCenter().below();  // 👈 updated center for structure
+        BlockPos centerTop = getRitualCenter();       // 👈 same height as soul fire / candles
 
         // Validate Eclipsium Blocks (🟪)
         if (!isEclipsiumBlock(center)) return false;
@@ -491,41 +520,64 @@ public class SacrificialPillarBlockEntity extends BlockEntity {
         player.sendSystemMessage(Component.literal("✅ Ritual structure is complete and correct!").withStyle(ChatFormatting.GREEN, ChatFormatting.BOLD));
     }
 
-    public boolean canAttemptRitual() {
-        return validateMultiBlockStructure() && validateSacrificialPillars(findSacrificialPillars());
-    }
-
     public InteractionResult onPlayerUse(Level level, Player player, InteractionHand hand) {
         if (level == null || level.isClientSide()) return InteractionResult.SUCCESS;
-
         if (!(player instanceof ServerPlayer serverPlayer)) return InteractionResult.PASS;
 
         ItemStack heldItem = player.getItemInHand(hand);
 
-        // 🔮 Sneaking: Attempt to start the ritual instead of placing/removing items
         if (player.isShiftKeyDown()) {
-            reportRitualStatusToPlayer(serverPlayer); // ✅ So player sees ritual status
-            attemptRitual();                           // ✅ Still triggers ritual
+            reportRitualStatusToPlayer(serverPlayer);
+            attemptRitual();
             return InteractionResult.CONSUME;
         }
 
-        // 🎒 Normal interaction: Place or remove items
         if (heldItem.isEmpty()) {
-            // Remove item from pillar
             ItemStack removed = removeItem();
             if (!removed.isEmpty()) {
                 player.addItem(removed);
+                broadcastMessage("DEBUG: Removed item from pillar: " + removed.getItem().getDescription().getString(), ChatFormatting.YELLOW);
                 return InteractionResult.SUCCESS;
             }
         } else {
-            // Try placing item on pillar
             if (setItem(heldItem)) {
                 heldItem.shrink(1);
+                broadcastMessage("DEBUG: Player placed item " + heldItem.getItem().getDescription().getString() + " on pillar", ChatFormatting.GREEN);
                 return InteractionResult.SUCCESS;
             }
         }
 
         return InteractionResult.PASS;
+    }
+
+    private BlockPos findRitualCenter() {
+        // Try to find the center pillar within a 7x7 area around this pillar
+        // Assuming center pillar is always at the center of the ritual
+        for (BlockPos pos : BlockPos.betweenClosed(
+                worldPosition.offset(-3, 0, -3),
+                worldPosition.offset(3, 0, 3))) {
+            if (level.getBlockState(pos).is(HexcraftBlocks.SACRIFICIAL_PILLAR.get())) {
+                // Check if this pillar has the special property of being the center
+                // or if it’s the center by structure position (e.g., the one without other pillars around)
+                // For simplicity, assume the ritual center is the pillar with no other pillars
+                // exactly 3 blocks north/south/east/west.
+                boolean isCenter = true;
+                int[] dx = {3, -3, 0, 0};
+                int[] dz = {0, 0, 3, -3};
+                for (int i = 0; i < dx.length; i++) {
+                    BlockPos checkPos = pos.offset(dx[i], 0, dz[i]);
+                    if (!level.getBlockState(checkPos).is(HexcraftBlocks.SACRIFICIAL_PILLAR.get())) {
+                        isCenter = false;
+                        break;
+                    }
+                }
+                if (isCenter) {
+                    return pos;
+                }
+            }
+        }
+        // Fallback to this pillar if center not found (should not happen)
+        return worldPosition;
     }
 
     // Utility methods to check block types
@@ -542,7 +594,8 @@ public class SacrificialPillarBlockEntity extends BlockEntity {
     }
 
     private boolean isCandle(BlockPos pos) {
-        return level.getBlockState(pos).is(Blocks.CANDLE) || level.getBlockState(pos.above()).is(Blocks.CANDLE);
+        return level.getBlockState(pos).is(BlockTags.CANDLES) ||
+                level.getBlockState(pos.above()).is(BlockTags.CANDLES);
     }
 
     private boolean isSacrificialPillar(BlockPos pos) {
@@ -558,7 +611,7 @@ public class SacrificialPillarBlockEntity extends BlockEntity {
     }
 
     private BlockPos getRitualCenter() {
-        return worldPosition; // ✅ This block is the ritual center
+        return findRitualCenter();
     }
 
     private boolean canPerformRitual() {

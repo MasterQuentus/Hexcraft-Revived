@@ -1,0 +1,20 @@
+{
+  "render_type": "cutout",
+  "parent": "block/block",
+  "textures": {
+    "particle": "hexcraftmod:block/sacred_thread",
+    "texture": "hexcraftmod:block/sacred_thread"
+  },
+  "elements": [
+    {
+      "from": [0, 0, 0],
+      "to": [16, 0.1, 16],
+      "faces": {
+        "up": {
+          "texture": "#texture",
+          "cullface": "up"
+        }
+      }
+    }
+  ]
+}

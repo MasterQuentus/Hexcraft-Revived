@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "shape=sun_ring":           { "model": "hexcraftmod:block/sun_ring" },
+    "shape=celestial_ward":     { "model": "hexcraftmod:block/celestial_ward" },
+    "shape=ancestral_sigil":    { "model": "hexcraftmod:block/ancestral_sigil" },
+    "shape=divine_knot":        { "model": "hexcraftmod:block/divine_knot" },
+    "shape=coven_star":         { "model": "hexcraftmod:block/coven_star" },
+    "shape=solar_vow":     { "model": "hexcraftmod:block/solar_vow" },
+    "shape=sanctuary_glyph":    { "model": "hexcraftmod:block/sanctuary_glyph" },
+    "shape=aegis_mark":         { "model": "hexcraftmod:block/aegis_mark" },
+    "shape=harmony_rune":       { "model": "hexcraftmod:block/harmony_rune" },
+    "shape=law_of_three":       { "model": "hexcraftmod:block/law_of_three" },
+    "shape=eternal_oath":       { "model": "hexcraftmod:block/eternal_oath" },
+    "shape=judgment_seal":      { "model": "hexcraftmod:block/judgment_seal" },
+    "shape=ordered_spiral":     { "model": "hexcraftmod:block/ordered_spiral" },
+    "shape=sacred_pillar":      { "model": "hexcraftmod:block/sacred_pillar" },
+    "shape=pactbound_sigil":    { "model": "hexcraftmod:block/pactbound_sigil" }
+  }
+}

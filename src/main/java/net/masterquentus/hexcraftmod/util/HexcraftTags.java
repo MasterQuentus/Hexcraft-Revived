@@ -43,6 +43,9 @@ public class HexcraftTags {
 		public static final TagKey<Block> SOULSTEM_CANDLES = createBlockTag(
 				HexcraftMod.id("soulstem_candles"));
 
+		public static final TagKey<Block> PORTAL_FRAME_BLOCKS = createBlockTag(
+				HexcraftMod.id("portal_frame_blocks"));
+
 
 
 		private static TagKey<Block> tag(String name) {
@@ -116,5 +119,4 @@ public class HexcraftTags {
 	public static TagKey<MobEffect> createEffectTag(ResourceLocation name) {
 		return createTag(Registries.MOB_EFFECT, name);
 	}
-
 }

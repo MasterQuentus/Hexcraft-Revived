@@ -29,6 +29,9 @@ public class HexcraftBlockTagGenerator extends BlockTagsProvider {
 						HexcraftBlocks.AERPINE_FLOWER.get(), HexcraftBlocks.PERENNIA_FLOWER.get(), HexcraftBlocks.HELLEBORE_PLANT.get(),
 						HexcraftBlocks.SAGE_PLANT.get(), HexcraftBlocks.WORMWOOD_PLANT.get());
 
+		this.tag(HexcraftTags.Blocks.PORTAL_FRAME_BLOCKS)
+				.add(HexcraftBlocks.BLACK_OBSIDIAN.get());
+
 		this.tag(HexcraftTags.Blocks.SOULSTEM_CANDLES)
 				.add(HexcraftBlocks.SOULSTEM_CANDLE.get());
 

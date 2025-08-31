@@ -1,0 +1,78 @@
+{
+	"format_version": "1.12.0",
+	"minecraft:geometry": [
+		{
+			"description": {
+				"identifier": "geometry.ghost",
+				"texture_width": 128,
+				"texture_height": 128,
+				"visible_bounds_width": 7,
+				"visible_bounds_height": 8,
+				"visible_bounds_offset": [0, 1, 0]
+			},
+			"bones": [
+				{
+					"name": "hitbox",
+					"pivot": [0, 8, 0],
+					"cubes": [
+						{"origin": [-8, 0, -8], "size": [16, 32, 16], "uv": [0, 80]}
+					]
+				},
+				{
+					"name": "torso",
+					"pivot": [0, 18, 0],
+					"cubes": [
+						{"origin": [-4, 12, -2], "size": [8, 12, 4], "uv": [0, 25]},
+						{"origin": [-4, 12, -2], "size": [8, 12, 4], "inflate": 0.25, "uv": [24, 25]}
+					]
+				},
+				{
+					"name": "h_head",
+					"parent": "torso",
+					"pivot": [0, 24, 0],
+					"cubes": [
+						{"origin": [-4, 15, -4], "size": [8, 17, 8], "inflate": 0.25, "uv": [0, 0]},
+						{"origin": [-4, 12.5, -4], "size": [8, 17, 8], "inflate": -0.5, "uv": [0, 0]},
+						{"origin": [-4, 24, -4], "size": [8, 8, 8], "uv": [32, 0]}
+					]
+				},
+				{
+					"name": "rightArm",
+					"parent": "torso",
+					"pivot": [4, 22, 0],
+					"cubes": [
+						{"origin": [4, 12, -2], "size": [3, 12, 4], "uv": [48, 16]},
+						{"origin": [4, 12, -2], "size": [4, 12, 4], "inflate": 0.25, "uv": [62, 16], "mirror": true}
+					]
+				},
+				{
+					"name": "leftArm",
+					"parent": "torso",
+					"pivot": [-4, 22, 0],
+					"cubes": [
+						{"origin": [-7, 12, -2], "size": [3, 12, 4], "uv": [48, 16], "mirror": true},
+						{"origin": [-8, 12, -2], "size": [4, 12, 4], "inflate": 0.25, "uv": [62, 16]}
+					]
+				},
+				{
+					"name": "rightLeg",
+					"parent": "torso",
+					"pivot": [1.5, 11.75, 0],
+					"cubes": [
+						{"origin": [0, 0, -2], "size": [3, 12, 4], "uv": [48, 32]},
+						{"origin": [0, 0, -2], "size": [4, 12, 4], "inflate": 0.25, "uv": [62, 32], "mirror": true}
+					]
+				},
+				{
+					"name": "leftLeg",
+					"parent": "torso",
+					"pivot": [-1.5, 11.75, 0],
+					"cubes": [
+						{"origin": [-3, 0, -2], "size": [3, 12, 4], "uv": [48, 32], "mirror": true},
+						{"origin": [-4, 0, -2], "size": [4, 12, 4], "inflate": 0.25, "uv": [62, 32]}
+					]
+				}
+			]
+		}
+	]
+}

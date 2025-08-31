@@ -235,8 +235,8 @@ public class HexcraftItems {
     public static final RegistryObject<Item> WITCHES_SATCHEL = ITEMS.register("witches_satchel",
             () -> new WitchesSatchelItem(new Item.Properties()));
 
-    public static final RegistryObject<Item> FLINT_AND_HELLFIRE = ITEMS.register("flint_and_hellfire",
-            () -> new FlintAndHellfireItem(new Item.Properties().durability(64)));
+    public static final RegistryObject<Item> FLINT_AND_HELLFIRE =
+            ITEMS.register("flint_and_hellfire", () -> new FlintAndHellfireItem(new Item.Properties().durability(64)));
 
     public static final RegistryObject<Item> UNFIRED_CLAY_POT = ITEMS.register("unfired_clay_pot",
             () -> new Item(new Item.Properties()));
@@ -1083,8 +1083,44 @@ public class HexcraftItems {
     public static final RegistryObject<Item> LIVING_KELP_SALAD = ITEMS.register("living_kelp_salad",
             () -> new Item(new Item.Properties().food(HexcraftFoods.LIVING_KELP_SALAD_FOOD)));
 
-    public static final RegistryObject<Item> INCENDIA_SPELL_PAGE = ITEMS.register("incendia_spell_page",
+    public static final RegistryObject<Item> SPELL_PAGE_INCENDIA = ITEMS.register("spell_page_incendia",
             () -> new SpellPageItem("incendia", new Item.Properties().stacksTo(1).rarity(Rarity.UNCOMMON)));
+
+    public static final RegistryObject<Item> SPELL_PAGE_SANATORE = ITEMS.register("spell_page_sanatore",
+            () -> new SpellPageItem("sanatore", new Item.Properties().stacksTo(1).rarity(Rarity.COMMON)));
+
+    public static final RegistryObject<Item> SPELL_PAGE_AQUA_FORTIS = ITEMS.register("spell_page_aqua_fortis",
+            () -> new SpellPageItem("aqua_fortis", new Item.Properties().stacksTo(1).rarity(Rarity.UNCOMMON)));
+
+    public static final RegistryObject<Item> SPELL_PAGE_FULMEN = ITEMS.register("spell_page_fulmen",
+            () -> new SpellPageItem("fulmen", new Item.Properties().stacksTo(1).rarity(Rarity.RARE)));
+
+    public static final RegistryObject<Item> SPELL_PAGE_LUX_AETERNAM = ITEMS.register("spell_page_lux_aeternam",
+            () -> new SpellPageItem("lux_aeternam", new Item.Properties().stacksTo(1).rarity(Rarity.RARE)));
+
+    public static final RegistryObject<Item> SPELL_PAGE_PHASMATOS_NATURALIS = ITEMS.register("spell_page_phasmatos_naturalis",
+            () -> new SpellPageItem("phasmatos_naturalis", new Item.Properties().stacksTo(1).rarity(Rarity.UNCOMMON)));
+
+    public static final RegistryObject<Item> SPELL_PAGE_MOTUS = ITEMS.register("spell_page_motus",
+            () -> new SpellPageItem("motus", new Item.Properties().stacksTo(1).rarity(Rarity.UNCOMMON)));
+
+    public static final RegistryObject<Item> SPELL_PAGE_CLAVEM = ITEMS.register("spell_page_clavem",
+            () -> new SpellPageItem("clavem", new Item.Properties().stacksTo(1).rarity(Rarity.UNCOMMON)));
+
+    public static final RegistryObject<Item> SPELL_PAGE_MANUS_SPIRITUS = ITEMS.register("spell_page_manus_spiritus",
+            () -> new SpellPageItem("manus_spiritus", new Item.Properties().stacksTo(1).rarity(Rarity.RARE)));
+
+    public static final RegistryObject<Item> SPELL_PAGE_VITA_REVERTETUR = ITEMS.register("spell_page_vita_revertetur",
+            () -> new SpellPageItem("vita_revertetur", new Item.Properties().stacksTo(1).rarity(Rarity.RARE)));
+
+    public static final RegistryObject<Item> SPELL_PAGE_SICCITAS = ITEMS.register("spell_page_siccitas",
+            () -> new SpellPageItem("siccitas", new Item.Properties().stacksTo(1).rarity(Rarity.UNCOMMON)));
+
+    public static final RegistryObject<Item> SPELL_PAGE_CLAUSTRUM = ITEMS.register("spell_page_claustrum",
+            () -> new SpellPageItem("claustrum", new Item.Properties().stacksTo(1).rarity(Rarity.RARE)));
+
+    public static final RegistryObject<Item> SPELL_PAGE_EXPELLERE = ITEMS.register("spell_page_expellere",
+            () -> new SpellPageItem("expellere", new Item.Properties().stacksTo(1).rarity(Rarity.RARE)));
 
 
 

@@ -108,6 +108,7 @@ public class HexcraftItemModelProvider extends ItemModelProvider {
 		simpleItem(HexcraftItems.ATTUNED_STONE);
 		simpleItem(HexcraftItems.ATTUNED_STONE_CHARGED);
 		simpleToolItem(HexcraftItems.ARTHANA.get());
+		simpleToolItem(HexcraftItems.FLINT_AND_HELLFIRE.get());
 		simpleItem(HexcraftItems.BLOODED_WAYSTONE);
 		simpleItem(HexcraftItems.BOUND_WAYSTONE);
 		simpleItem(HexcraftItems.WOOD_ASH);

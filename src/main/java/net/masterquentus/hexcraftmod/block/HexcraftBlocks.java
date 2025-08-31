@@ -5,6 +5,7 @@ import java.util.function.ToIntFunction;
 
 import net.masterquentus.hexcraftmod.HexcraftMod;
 import net.masterquentus.hexcraftmod.block.custom.*;
+import net.masterquentus.hexcraftmod.block.custom.UnderworldPortalBlock;
 import net.masterquentus.hexcraftmod.block.custom.chalk.AbstractChalkBlock;
 import net.masterquentus.hexcraftmod.block.custom.plants.*;
 import net.masterquentus.hexcraftmod.block.custom.signs.HexcraftStadingSignBlock;
@@ -298,17 +299,27 @@ public class HexcraftBlocks {
 			() -> new Block(BlockBehaviour.Properties.copy(Blocks.DIRT)));
 
 	public static final RegistryObject<Block> GLIMMER_CAP = BLOCKS.register("glimmer_cap",
-			() -> new Block(BlockBehaviour.Properties.copy(Blocks.STONE).strength(1.5f).lightLevel(state -> 7)));
+			() -> new Block(BlockBehaviour.Properties.copy(Blocks.STONE).strength(1.5f).lightLevel(state -> 7).requiresCorrectToolForDrops()));
 
 	public static final RegistryObject<Block> SHARDSTONE = BLOCKS.register("shardstone",
-			() -> new Block(BlockBehaviour.Properties.copy(Blocks.STONE).strength(1.8f)));
+			() -> new Block(BlockBehaviour.Properties.copy(Blocks.STONE).strength(1.8f).requiresCorrectToolForDrops()));
 
 	public static final RegistryObject<Block> LUMICLAST = BLOCKS.register("lumiclast",
-			() -> new Block(BlockBehaviour.Properties.copy(Blocks.DEEPSLATE).strength(2.0f).lightLevel(state -> 4)));
+			() -> new Block(BlockBehaviour.Properties.copy(Blocks.DEEPSLATE).strength(2.0f).lightLevel(state -> 4).requiresCorrectToolForDrops()));
 
 	public static final RegistryObject <Block> CRIMSON_MAGMA = registerBlock("crimson_magma",
-			() -> new MagmaBlock(BlockBehaviour.Properties.copy(Blocks.STONE)
+			() -> new CrimsonMagmaBlock(BlockBehaviour.Properties.copy(Blocks.MAGMA_BLOCK)
+					.strength(1.2F)
+					.lightLevel(state -> 10)
+					.requiresCorrectToolForDrops()
 					.sound(SoundType.NETHER_BRICKS)));
+
+	public static final RegistryObject<Block> SEETHING_COALBED = BLOCKS.register("seething_coalbed",
+			() -> new SeethingCoalbedBlock(BlockBehaviour.Properties.copy(Blocks.MAGMA_BLOCK)
+					.strength(1.2F)
+					.lightLevel(state -> 10)
+					.requiresCorrectToolForDrops()
+					.sound(SoundType.BASALT)));
 
 	public static final RegistryObject<Block> CURSED_SOIL = BLOCKS.register("cursed_soil",
 			() -> new CursedSoilBlock(BlockBehaviour.Properties.of().strength(1.5f).sound(SoundType.SOUL_SAND)
@@ -329,13 +340,6 @@ public class HexcraftBlocks {
 					.lightLevel(state -> 15)
 					.requiresCorrectToolForDrops()
 					.noOcclusion()));
-
-	public static final RegistryObject<Block> SEETHING_COALBED = BLOCKS.register("seething_coalbed",
-			() -> new SeethingCoalbedBlock(BlockBehaviour.Properties.copy(Blocks.MAGMA_BLOCK)
-					.strength(1.2F)
-					.lightLevel(state -> 10)
-					.requiresCorrectToolForDrops()
-					.sound(SoundType.BASALT)));
 
 	public static final RegistryObject <Block> VAMPIRE_ORCHID = registerBlock("vampire_orchid",
 			() -> new FlowerBlock(() -> MobEffects.HEALTH_BOOST, 4, BlockBehaviour.Properties.copy(Blocks.ALLIUM)));
@@ -3162,15 +3166,6 @@ public class HexcraftBlocks {
 					.randomTicks().strength(1.5F).requiresCorrectToolForDrops()
 					.sound(SoundType.AMETHYST).lightLevel((state) -> 1).noLootTable()));
 
-	public static final RegistryObject<Block> HELLFIRE = BLOCKS.register("hell_fire",
-			() -> new HellfireBlock(BlockBehaviour.Properties.copy(Blocks.FIRE).noLootTable()));
-
-	public static final RegistryObject<Block> UNDERWORLD_PORTAL = BLOCKS.register("underworld_portal",
-			() -> new UnderworldPortalBlock(BlockBehaviour.Properties.copy(Blocks.NETHER_PORTAL)
-					.noCollission()
-					.strength(-1.0F)
-					.lightLevel(state -> 11).noLootTable()));
-
 	public static final RegistryObject<Block> RITUAL_CHALK = BLOCKS.register("ritual_chalk",
 			() -> new AbstractChalkBlock(BlockBehaviour.Properties.copy(Blocks.STONE).strength(0.5f).noLootTable()));
 
@@ -3509,6 +3504,13 @@ public class HexcraftBlocks {
 
 	public static final RegistryObject<HexcraftChestBlock> PHOENIX_CHEST = BLOCKS.register("phoenix_chest",
 			() -> new HexcraftChestBlock(BlockBehaviour.Properties.copy(WITCH_WOOD_PLANKS.get()).strength(2.5f)));
+
+	public static final RegistryObject<Block> HELLFIRE = BLOCKS.register("hell_fire",
+			() -> new HellfireBlock(BlockBehaviour.Properties.copy(Blocks.SOUL_FIRE)
+					.instabreak().noOcclusion().randomTicks().lightLevel((state) -> 15).noLootTable()));
+
+	public static final RegistryObject<Block> UNDERWORLD_PORTAL = registerBlockWithoutBlockItem("underworld_portal",
+			UnderworldPortalBlock::new);
 
 	private static RegistryObject<Block> registerChest(String name) {
 		return BLOCKS.register(name, () -> new HexcraftChestBlock(BlockBehaviour.Properties.of().mapColor(MapColor.WOOD).strength(2.5f)));

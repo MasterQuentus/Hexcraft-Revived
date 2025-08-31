@@ -20,7 +20,8 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 
 import javax.annotation.Nullable;
 
-public class UnderworldPortalBlock extends NetherPortalBlock {
+public class UnderworldPortalBlock extends Block {
+
 
     public UnderworldPortalBlock(Properties properties) {
         super(properties);

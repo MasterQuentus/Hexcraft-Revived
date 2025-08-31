@@ -1,10 +1,11 @@
-// 1.20.1	2025-07-01T02:07:54.8780692	Tags for minecraft:block mod id hexcraftmod
+// 1.20.1	2025-08-05T22:41:09.1565226	Tags for minecraft:block mod id hexcraftmod
 08655953849d65d9052bf4a2b5837f023777b9e4 data/hexcraftmod/tags/blocks/blight_decayable_plants.json
 05d15f92ba6dcd89533c1466fae5008bfd580360 data/hexcraftmod/tags/blocks/crops.json
 64ba52a0503fe733de3f3907b7f157cb0821a8e3 data/hexcraftmod/tags/blocks/mineable/paxel.json
 2c15ff666f9512e78d5142860eb8a5aa9e74913b data/hexcraftmod/tags/blocks/mutandis_blacklist_plants.json
 8663a740027bbfe19f4b95afe255b4276e5af4db data/hexcraftmod/tags/blocks/mutandis_extremis_plants.json
 9b9b7ee6d5d644282d9c924aa8b520d4cafba2a4 data/hexcraftmod/tags/blocks/mutandis_plants.json
+fb39f443bcdf9663f1ba6e07177f5ad80b37f526 data/hexcraftmod/tags/blocks/portal_frame_blocks.json
 a40f7fdb831ffcdbba8b55c9d103efc44a84a25f data/hexcraftmod/tags/blocks/soulstem_candles.json
 31bfe26fb90326e925bf2fa421fb8076d03b8a66 data/minecraft/tags/blocks/all_hanging_signs.json
 c503ec02f8c9b9a0117f283668ba341605bda2da data/minecraft/tags/blocks/all_signs.json

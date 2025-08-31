@@ -1,0 +1,44 @@
+{
+	"format_version": "1.8.0",
+	"animations": {
+		"animation.underwater_slime.movement": {
+			"loop": true,
+			"animation_length": 1,
+			"bones": {
+				"bones": {
+					"rotation": {
+						"vector": [0, 0, 0]
+					},
+					"position": {
+						"vector": [0, "math.lerp(math.lerp(0, temp.control_height, query.anim_time), math.lerp(temp.control_height, 0, query.anim_time), query.anim_time)", "-math.lerp(-10, 10, query.anim_time)-10"]
+					}
+				}
+			}
+		},
+		"animation.underwater_slime.idle": {
+			"loop": true,
+			"animation_length": 2,
+			"bones": {
+				"bones": {
+					"scale": {
+						"0.0": {
+							"vector": [1, 1, 1]
+						},
+						"0.5": {
+							"vector": [0.9, 0.9, 0.9]
+						},
+						"1.0": {
+							"vector": [1, 1, 1]
+						},
+						"1.5": {
+							"vector": [1.1, 1.1, 1.1]
+						},
+						"2.0": {
+							"vector": [1, 1, 1]
+						}
+					}
+				}
+			}
+		}
+	}
+}

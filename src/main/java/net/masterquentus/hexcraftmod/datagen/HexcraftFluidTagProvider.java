@@ -21,6 +21,8 @@ public class HexcraftFluidTagProvider extends FluidTagsProvider {
     protected void addTags(HolderLookup.Provider pProvider) {
         tag(FluidTags.WATER)
                 .add(HexcraftFluids.SOURCE_BLOOD.get())
-                .add(HexcraftFluids.FLOWING_BLOOD.get());
+                .add(HexcraftFluids.FLOWING_BLOOD.get())
+                .add(HexcraftFluids.SOURCE_DEEP_WATER.get())
+                .add(HexcraftFluids.FLOWING_DEEP_WATER.get());
     }
 }

@@ -11,6 +11,7 @@ import net.minecraft.client.renderer.blockentity.BlockEntityRenderDispatcher;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderer;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemDisplayContext;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.block.Block;
@@ -20,9 +21,10 @@ import net.minecraftforge.registries.RegistryObject;
 import java.util.HashMap;
 import java.util.Map;
 
+
 public class HexcraftChestItemRenderer extends BlockEntityWithoutLevelRenderer {
 
-    private final Map<Block, BlockEntity> chestEntities = new HashMap<>();
+    private final Map<Block, HexcraftChestBlockEntity> chestEntities = new HashMap<>();
 
     public HexcraftChestItemRenderer() {
         super(Minecraft.getInstance().getBlockEntityRenderDispatcher(), Minecraft.getInstance().getEntityModels());
@@ -43,30 +45,33 @@ public class HexcraftChestItemRenderer extends BlockEntityWithoutLevelRenderer {
         makeInstance(HexcraftBlocks.WILLOW_CHEST);
         makeInstance(HexcraftBlocks.WITCH_HAZEL_CHEST);
         makeInstance(HexcraftBlocks.WITCH_WOOD_CHEST);
-    }
-
-    public void renderByItem(ItemStack stack, PoseStack ms, MultiBufferSource buffers, int light, int overlay) {
-        Item item = stack.getItem();
-        if (item instanceof BlockItem blockItem) {
-            Block block = blockItem.getBlock();
-            if (block instanceof HexcraftChestBlock) {
-                BlockEntity blockEntity = chestEntities.get(block);
-                if (blockEntity != null) {
-                    // Render the custom chest block item with its entity data
-                    BlockEntityRenderDispatcher rendererDispatcher = Minecraft.getInstance().getBlockEntityRenderDispatcher();
-                    BlockEntityRenderer<BlockEntity> renderer = rendererDispatcher.getRenderer(blockEntity);
-                    if (renderer != null) {
-                        renderer.render(blockEntity, 0, ms, buffers, light, overlay);
-                    }
-                }
-            }
-        }
+        makeInstance(HexcraftBlocks.PHOENIX_CHEST);
     }
 
     private void makeInstance(RegistryObject<? extends Block> registryObject) {
         Block block = registryObject.get();
-        // Create a BlockEntity instance and store it
-        BlockEntity blockEntity = new HexcraftChestBlockEntity(BlockPos.ZERO, block.defaultBlockState());
-        chestEntities.put(block, blockEntity);
+        chestEntities.put(block, new HexcraftChestBlockEntity(BlockPos.ZERO, block.defaultBlockState()));
+    }
+
+    @Override
+    public void renderByItem(ItemStack stack, ItemDisplayContext transformType, PoseStack ms, MultiBufferSource buffers, int light, int overlay) {
+        if (!(stack.getItem() instanceof BlockItem blockItem)) return;
+
+        Block block = blockItem.getBlock();
+        if (!(block instanceof HexcraftChestBlock)) return;
+
+        // Retrieve the proper block entity
+        HexcraftChestBlockEntity blockEntity = chestEntities.get(block);
+        if (blockEntity == null) return;
+
+        // Get the renderer for this block entity
+        BlockEntityRenderer<HexcraftChestBlockEntity> renderer =
+                (BlockEntityRenderer<HexcraftChestBlockEntity>) Minecraft.getInstance()
+                        .getBlockEntityRenderDispatcher()
+                        .getRenderer(blockEntity);
+
+        if (renderer != null) {
+            renderer.render(blockEntity, 0f, ms, buffers, light, overlay);
+        }
     }
 }

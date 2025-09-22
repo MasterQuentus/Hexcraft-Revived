@@ -1,8 +1,7 @@
 {
-    "parent": "block/template_campfire",
-    "textures": {
-        "log": "hexcraftmod:block/hellfire_camp_log",
-        "fire": "hexcraftmod:block/hellfire_camp_fire",
-        "particle": "hexcraftmod:block/hellfire_camp_fire"
-    }
+  "parent": "minecraft:block/template_campfire",
+  "textures": {
+    "fire": "hexcraftmod:block/hellfire_camp_fire",
+    "lit_log": "hexcraftmod:block/hellfire_camp_log_lit"
+  }
 }

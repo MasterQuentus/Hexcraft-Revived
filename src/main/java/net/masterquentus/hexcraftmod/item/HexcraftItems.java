@@ -23,6 +23,8 @@ import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 
+import static net.masterquentus.hexcraftmod.block.HexcraftBlocks.HELLFIRE_CAMPFIRE;
+
 public class HexcraftItems {
     public static final DeferredRegister<Item> ITEMS =
             DeferredRegister.create(ForgeRegistries.ITEMS, HexcraftMod.MOD_ID);
@@ -193,16 +195,28 @@ public class HexcraftItems {
             () -> new BlockItem(HexcraftBlocks.PIXIE_WARD.get(), new Item.Properties()));
 
     public static final RegistryObject<Item> HELLFIRE_CAMP_ITEM = ITEMS.register("hellfire_camp",
-            () -> new BlockItem(HexcraftBlocks.HELLFIRE_CAMPFIRE.get(), new Item.Properties()));
+            () -> new BlockItem(HELLFIRE_CAMPFIRE.get(), new Item.Properties()));
 
     public static final RegistryObject<Item> FUME_FUNNEL = ITEMS.register("fume_funnel",
             () -> new BlockItem(HexcraftBlocks.FUME_FUNNEL.get(), new Item.Properties()));
+
+    public static final RegistryObject<Item> UMBRACITE_CHAIN = ITEMS.register("umbracite_chain",
+            () -> new BlockItem(HexcraftBlocks.UMBRACITE_CHAIN.get(), new Item.Properties()));
+
+    public static final RegistryObject<Item> REINFORCED_UMBRACITE_CHAIN = ITEMS.register("reinforced_umbracite_chain",
+            () -> new BlockItem(HexcraftBlocks.REINFORCED_UMBRACITE_CHAIN_BLOCK.get(), new Item.Properties()));
+
+    public static final RegistryObject<Item> UMBRACITE_BARS = ITEMS.register("umbracite_bars",
+            () -> new BlockItem(HexcraftBlocks.UMBRACITE_BARS.get(), new Item.Properties()));
 
     public static final RegistryObject<BlockItem> ALTAR_BASE_ITEM = ITEMS.register("altar_base", () -> new BlockItem(HexcraftBlocks.ALTAR_BASE.get(), new Item.Properties()));
 
     public static final RegistryObject<BlockItem> ALTAR_TOP_ITEM = ITEMS.register("altar_top", () -> new BlockItem(HexcraftBlocks.ALTAR_TOP.get(), new Item.Properties()));
 
     public static final RegistryObject<Item> INFUSED_FABRIC = ITEMS.register("infused_fabric",
+            () -> new Item(new Item.Properties()));
+
+    public static final RegistryObject<Item> BLOODSHALE_SHARDS = ITEMS.register("bloodshale_shards",
             () -> new Item(new Item.Properties()));
 
     public static final RegistryObject<Item> BOUND_LEATHER = ITEMS.register("bound_leather",
@@ -249,6 +263,9 @@ public class HexcraftItems {
 
     public static final RegistryObject<Item> TOXIC_FUMES = ITEMS.register("toxic_fumes",
             () -> new Item(new Item.Properties()));
+
+    public static final RegistryObject<Item> PANDORAS_BOX_ITEM  = ITEMS.register("pandoras_box_item",
+            () -> new BlockItem(HexcraftBlocks.PANDORAS_BOX.get(), new Item.Properties().stacksTo(1)));
 
     public static final RegistryObject<Item> RITUAL_CHALK = ITEMS.register("ritual_chalk",
             () -> new GoldChalkItem(HexcraftBlocks.GOLD_CHALK_MARK.get(), new Item.Properties().durability(64)));
@@ -482,6 +499,15 @@ public class HexcraftItems {
             () -> new Item(new Item.Properties()));
 
     public static final RegistryObject<Item> ECLIPSIUM_NUGGET = ITEMS.register("eclipsium_nugget",
+            () -> new Item(new Item.Properties()));
+
+    public static final RegistryObject<Item> RAW_UMBRACITE = ITEMS.register("raw_umbracite",
+            () -> new Item(new Item.Properties()));
+
+    public static final RegistryObject<Item> UMBRACITE_INGOT = ITEMS.register("umbracite_ingot",
+            () -> new Item(new Item.Properties()));
+
+    public static final RegistryObject<Item> UMBRACITE_NUGGET = ITEMS.register("umbracite_nugget",
             () -> new Item(new Item.Properties()));
 
     public static final RegistryObject<Item> DEEPSEER_INGOT = ITEMS.register("deepseer_ingot",
@@ -801,6 +827,24 @@ public class HexcraftItems {
     public static final RegistryObject<Item> DEEPSEER_PAXEL = ITEMS.register("deepseer_paxel",
             () -> new PaxelItem(HexcraftToolTiers.DEEPSEER, 2, 3, new Item.Properties()));
 
+    public static final RegistryObject<Item> UMBRACITE_SWORD = ITEMS.register("umbracite_sword",
+            () -> new SwordItem(HexcraftToolTiers.UMBRACITE, 2, 3, new Item.Properties()));
+
+    public static final RegistryObject<Item> UMBRACITE_PICKAXE = ITEMS.register("umbracite_pickaxe",
+            () -> new PickaxeItem(HexcraftToolTiers.UMBRACITE, 1, 2, new Item.Properties()));
+
+    public static final RegistryObject<Item> UMBRACITE_SHOVEL = ITEMS.register("umbracite_shovel",
+            () -> new ShovelItem(HexcraftToolTiers.UMBRACITE, 2, 3, new Item.Properties()));
+
+    public static final RegistryObject<Item> UMBRACITE_AXE = ITEMS.register("umbracite_axe",
+            () -> new AxeItem(HexcraftToolTiers.UMBRACITE, 2, 3, new Item.Properties()));
+
+    public static final RegistryObject<Item> UMBRACITE_HOE = ITEMS.register("umbracite_hoe",
+            () -> new HoeItem(HexcraftToolTiers.UMBRACITE, 2, 3, new Item.Properties()));
+
+    public static final RegistryObject<Item> UMBRACITE_PAXEL = ITEMS.register("umbracite_paxel",
+            () -> new PaxelItem(HexcraftToolTiers.UMBRACITE, 2, 3, new Item.Properties()));
+
 
     //Special Weapons
     public static final RegistryObject<Item> CRIMSON_FANG = ITEMS.register("crimson_fang",
@@ -921,6 +965,18 @@ public class HexcraftItems {
 
     public static final RegistryObject<Item> DEEPSEER_BOOTS = ITEMS.register("deepseer_boots",
             () -> new ArmorItem(HexcraftArmorMaterials.DEEPSEER, ArmorItem.Type.BOOTS, new Item.Properties()));
+
+    public static final RegistryObject<Item> UMBRACITE_HELMET = ITEMS.register("umbracite_helmet",
+            () -> new ArmorItem(HexcraftArmorMaterials.UMBRACITE, ArmorItem.Type.HELMET, new Item.Properties()));
+
+    public static final RegistryObject<Item> UMBRACITE_CHESTPLATE = ITEMS.register("umbracite_chestplate",
+            () -> new ArmorItem(HexcraftArmorMaterials.UMBRACITE, ArmorItem.Type.CHESTPLATE, new Item.Properties()));
+
+    public static final RegistryObject<Item> UMBRACITE_LEGGING = ITEMS.register("umbracite_leggings",
+            () -> new ArmorItem(HexcraftArmorMaterials.UMBRACITE, ArmorItem.Type.LEGGINGS, new Item.Properties()));
+
+    public static final RegistryObject<Item> UMBRACITE_BOOTS = ITEMS.register("umbracite_boots",
+            () -> new ArmorItem(HexcraftArmorMaterials.UMBRACITE, ArmorItem.Type.BOOTS, new Item.Properties()));
 
 
     //Plants
@@ -1375,9 +1431,6 @@ public class HexcraftItems {
 
     public static final RegistryObject<Item> PHOENIX_CHEST = registerChestItem("phoenix_chest", HexcraftBlocks.PHOENIX_CHEST);
 
-    public static final RegistryObject<Item> PANDORAS_BOX = ITEMS.register("pandoras_box",
-            () -> new BlockItem(HexcraftBlocks.PANDORAS_BOX.get(), new Item.Properties()));
-
     public static final RegistryObject<Item> SACRIFICIAL_PILLAR = ITEMS.register("sacrificial_pillar",
             () -> new BlockItem(HexcraftBlocks.SACRIFICIAL_PILLAR.get(), new Item.Properties()));
 
@@ -1456,6 +1509,7 @@ public class HexcraftItems {
 
     public static final RegistryObject<Item> PHOENIX_BROOM = ITEMS.register("phoenix_broom",
             () -> new BroomItem(new Item.Properties(), new PhoenixTrait()));
+
 
 
     // 🕯 Witch Candles - Item Registration

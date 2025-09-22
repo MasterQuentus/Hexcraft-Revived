@@ -238,6 +238,14 @@ public class HexcraftItemTagGenerator extends ItemTagsProvider {
 				.add(HexcraftBlocks.CHARSTONE_COBBLESTONE_STAIRS.get().asItem())
 				.add(HexcraftBlocks.CHARSTONE_STONE_BRICKS_STAIRS.get().asItem())
 				.add(HexcraftBlocks.POLISHED_CHARSTONE_STONE_STAIRS.get().asItem())
+				.add(HexcraftBlocks.IGNEOROCK_STAIRS.get().asItem())
+				.add(HexcraftBlocks.IGNEOROCK_COBBLESTONE_STAIRS.get().asItem())
+				.add(HexcraftBlocks.IGNEOROCK_STONE_BRICKS_STAIRS.get().asItem())
+				.add(HexcraftBlocks.POLISHED_IGNEOROCK_STAIRS.get().asItem())
+				.add(HexcraftBlocks.BLOODSHALE_STAIRS.get().asItem())
+				.add(HexcraftBlocks.BLOODSHALE_COBBLESTONE_STAIRS.get().asItem())
+				.add(HexcraftBlocks.BLOODSHALE_STONE_BRICKS_STAIRS.get().asItem())
+				.add(HexcraftBlocks.POLISHED_BLOODSHALE_STAIRS.get().asItem())
 				.add(HexcraftBlocks.CRIMSON_SAND_STONE_STAIRS.get().asItem())
 				.add(HexcraftBlocks.SMOOTH_CRIMSON_SAND_STONE_STAIRS.get().asItem());
 
@@ -312,7 +320,9 @@ public class HexcraftItemTagGenerator extends ItemTagsProvider {
 				.add(HexcraftBlocks.PEARL_STONE_BUTTON.get().asItem())
 				.add(HexcraftBlocks.CRIMSON_STONE_BUTTON.get().asItem())
 				.add(HexcraftBlocks.UNDER_WORLD_STONE_BUTTON.get().asItem())
-				.add(HexcraftBlocks.CHARSTONE_BUTTON.get().asItem());
+				.add(HexcraftBlocks.CHARSTONE_BUTTON.get().asItem())
+				.add(HexcraftBlocks.IGNEOROCK_BUTTON.get().asItem())
+				.add(HexcraftBlocks.BLOODSHALE_BUTTON.get().asItem());
 
 		this.tag(ItemTags.WOODEN_BUTTONS)
 				.add(HexcraftBlocks.EBONY_BUTTON.get().asItem())

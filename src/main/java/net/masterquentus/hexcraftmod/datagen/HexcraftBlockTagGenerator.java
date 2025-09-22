@@ -55,7 +55,6 @@ public class HexcraftBlockTagGenerator extends BlockTagsProvider {
 						HexcraftBlocks.ELDER_SAPLING.get(), HexcraftBlocks.HAWTHORN_SAPLING.get(),
 						HexcraftBlocks.CEDAR_SAPLING.get(),HexcraftBlocks.ROWAN_SAPLING.get(),HexcraftBlocks.EMBER_MOSS.get());
 
-
 		this.tag(HexcraftTags.Blocks.BLIGHT_DECAYABLE_PLANTS)
 				.addTag(BlockTags.SAPLINGS)
 				.addTag(BlockTags.SMALL_FLOWERS)
@@ -143,7 +142,6 @@ public class HexcraftBlockTagGenerator extends BlockTagsProvider {
 					HexcraftBlocks.DEAD_SPECTRAL_BLOOM_CORAL_WALL_FAN.get(),
 					HexcraftBlocks.HELLVINE_CORAL_WALL_FAN.get(),
 					HexcraftBlocks.DEAD_HELLVINE_CORAL_FAN.get());
-
 
 		this.tag(BlockTags.CORALS)
 				.add(HexcraftBlocks.TWILIGHT_CORAL.get(),
@@ -277,6 +275,7 @@ public class HexcraftBlockTagGenerator extends BlockTagsProvider {
 						HexcraftBlocks.SOULSTONE_ORE.get(),
 						HexcraftBlocks.ABYSSIUM_ORE.get(),
 						HexcraftBlocks.ECLIPSIUM_ORE.get(),
+						HexcraftBlocks.UMBRACITE_ORE.get(),
 						HexcraftBlocks.ABYSSAL_COAL_ORE.get(),
 						HexcraftBlocks.MOONSTONE_BLOCK.get(),
 						HexcraftBlocks.SILVER_BLOCK.get(),
@@ -296,6 +295,11 @@ public class HexcraftBlockTagGenerator extends BlockTagsProvider {
 						HexcraftBlocks.NETHER_VAMPIRIC_ORE.get(),
 						HexcraftBlocks.DEEPSLATE_VAMPIRIC_ORE.get(),
 						HexcraftBlocks.VAMPIRIC_BLOCK.get(),
+						HexcraftBlocks.UMBRACITE_BLOCK.get(),
+						HexcraftBlocks.UMBRACITE_CHAIN.get(),
+						HexcraftBlocks.REINFORCED_UMBRACITE_CHAIN_BLOCK.get(),
+						HexcraftBlocks.UMBRACITE_BARS.get(),
+						HexcraftBlocks.SANGUINE_LANTERN.get(),
 						HexcraftBlocks.PEARL_STONE.get(),
 						HexcraftBlocks.PEARL_COBBLESTONE.get(),
 						HexcraftBlocks.PEARL_STONE_BRICKS.get(),
@@ -348,6 +352,14 @@ public class HexcraftBlockTagGenerator extends BlockTagsProvider {
 						HexcraftBlocks.CHARSTONE_COBBLESTONE_STAIRS.get(),
 						HexcraftBlocks.CHARSTONE_STONE_BRICKS_STAIRS.get(),
 						HexcraftBlocks.POLISHED_CHARSTONE_STONE_STAIRS.get(),
+						HexcraftBlocks.IGNEOROCK_STAIRS.get(),
+						HexcraftBlocks.IGNEOROCK_COBBLESTONE_STAIRS.get(),
+						HexcraftBlocks.IGNEOROCK_STONE_BRICKS_STAIRS.get(),
+						HexcraftBlocks.POLISHED_IGNEOROCK_STAIRS.get(),
+						HexcraftBlocks.BLOODSHALE_STAIRS.get(),
+						HexcraftBlocks.BLOODSHALE_COBBLESTONE_STAIRS.get(),
+						HexcraftBlocks.BLOODSHALE_STONE_BRICKS_STAIRS.get(),
+						HexcraftBlocks.POLISHED_BLOODSHALE_STAIRS.get(),
 						HexcraftBlocks.CRIMSON_SAND_STONE_STAIRS.get(),
 						HexcraftBlocks.FAIRY_SAND_STONE_STAIRS.get(),
 						HexcraftBlocks.PIXIE_SAND_STONE_STAIRS.get(),
@@ -386,6 +398,8 @@ public class HexcraftBlockTagGenerator extends BlockTagsProvider {
 						HexcraftBlocks.CRIMSON_STONE_BUTTON.get(),
 						HexcraftBlocks.UNDER_WORLD_STONE_BUTTON.get(),
 						HexcraftBlocks.CHARSTONE_BUTTON.get(),
+						HexcraftBlocks.IGNEOROCK_BUTTON.get(),
+						HexcraftBlocks.BLOODSHALE_BUTTON.get(),
 						HexcraftBlocks.PEARL_STONE_WALL.get(),
 						HexcraftBlocks.CRIMSON_STONE_WALL.get(),
 						HexcraftBlocks.UNDER_WORLD_STONE_WALL.get(),
@@ -402,7 +416,18 @@ public class HexcraftBlockTagGenerator extends BlockTagsProvider {
 						HexcraftBlocks.PIXIE_LANTERN.get(),
 		                HexcraftBlocks.LUMICLAST.get(),
 		                HexcraftBlocks.GLIMMER_CAP.get(),
-		                HexcraftBlocks.SHARDSTONE.get());
+		                HexcraftBlocks.SHARDSTONE.get(),
+						HexcraftBlocks.PEARL_STONE.get(),
+						HexcraftBlocks.IGNEOROCK.get(),
+						HexcraftBlocks.IGNEOROCK_STONE_BRICKS.get(),
+						HexcraftBlocks.POLISHED_IGNEOROCK.get(),
+						HexcraftBlocks.CHISELED_IGNEOROCK.get(),
+						HexcraftBlocks.CRACKED_IGNEOROCK.get(),
+						HexcraftBlocks.BLOODSHALE.get(),
+						HexcraftBlocks.BLOODSHALE_STONE_BRICKS.get(),
+						HexcraftBlocks.POLISHED_BLOODSHALE.get(),
+						HexcraftBlocks.CHISELED_BLOODSHALE.get(),
+						HexcraftBlocks.CRACKED_BLOODSHALE.get());
 
 		this.tag(BlockTags.MINEABLE_WITH_HOE)
 				.add(HexcraftBlocks.EMBER_MOSS_BLOCK.get(),
@@ -477,7 +502,6 @@ public class HexcraftBlockTagGenerator extends BlockTagsProvider {
 				//.add(HexcraftBlocks.FAIRY_HOUSE.get())
 				//.add(HexcraftBlocks.PIXIE_HOUSE.get())
 
-
 				.add(HexcraftBlocks.EBONY_PLANKS.get())
 				.add(HexcraftBlocks.BLOOD_OAK_PLANKS.get())
 				.add(HexcraftBlocks.HELL_BARK_PLANKS.get())
@@ -531,7 +555,6 @@ public class HexcraftBlockTagGenerator extends BlockTagsProvider {
 				.add(HexcraftBlocks.ECHO_WOOD_SLAB.get())
 				.add(HexcraftBlocks.PHOENIX_SLAB.get())
 
-
 				.add(HexcraftBlocks.EBONY_BUTTON.get())
 				.add(HexcraftBlocks.BLOOD_OAK_BUTTON.get())
 				.add(HexcraftBlocks.HELL_BARK_BUTTON.get())
@@ -549,7 +572,6 @@ public class HexcraftBlockTagGenerator extends BlockTagsProvider {
 				.add(HexcraftBlocks.WITCH_WOOD_BUTTON.get())
 				.add(HexcraftBlocks.ECHO_WOOD_BUTTON.get())
 				.add(HexcraftBlocks.PHOENIX_BUTTON.get())
-
 
 				.add(HexcraftBlocks.EBONY_PRESSURE_PLATE.get())
 				.add(HexcraftBlocks.BLOOD_OAK_PRESSURE_PLATE.get())
@@ -569,7 +591,6 @@ public class HexcraftBlockTagGenerator extends BlockTagsProvider {
 				.add(HexcraftBlocks.ECHO_WOOD_PRESSURE_PLATE.get())
 				.add(HexcraftBlocks.PHOENIX_PRESSURE_PLATE.get())
 
-
 				.add(HexcraftBlocks.EBONY_FENCE.get())
 				.add(HexcraftBlocks.BLOOD_OAK_FENCE.get())
 				.add(HexcraftBlocks.HELL_BARK_FENCE.get())
@@ -587,7 +608,6 @@ public class HexcraftBlockTagGenerator extends BlockTagsProvider {
 				.add(HexcraftBlocks.WITCH_WOOD_FENCE.get())
 				.add(HexcraftBlocks.ECHO_WOOD_FENCE.get())
 				.add(HexcraftBlocks.PHOENIX_FENCE.get())
-
 
 				.add(HexcraftBlocks.EBONY_PRESSURE_PLATE.get())
 				.add(HexcraftBlocks.BLOOD_OAK_FENCE_GATE.get())
@@ -607,7 +627,6 @@ public class HexcraftBlockTagGenerator extends BlockTagsProvider {
 				.add(HexcraftBlocks.ECHO_WOOD_FENCE_GATE.get())
 				.add(HexcraftBlocks.PHOENIX_FENCE_GATE.get())
 
-
 				.add(HexcraftBlocks.EBONY_SIGN.get())
 				.add(HexcraftBlocks.BLOOD_OAK_SIGN.get())
 				.add(HexcraftBlocks.HELL_BARK_SIGN.get())
@@ -626,7 +645,6 @@ public class HexcraftBlockTagGenerator extends BlockTagsProvider {
 				.add(HexcraftBlocks.ECHO_WOOD_SIGN.get())
 				.add(HexcraftBlocks.PHOENIX_SIGN.get())
 
-
 				.add(HexcraftBlocks.EBONY_SIGN.get())
 				.add(HexcraftBlocks.BLOOD_OAK_SIGN.get())
 				.add(HexcraftBlocks.HELL_BARK_SIGN.get())
@@ -644,7 +662,6 @@ public class HexcraftBlockTagGenerator extends BlockTagsProvider {
 				.add(HexcraftBlocks.WITCH_WOOD_SIGN.get())
 				.add(HexcraftBlocks.ECHO_WOOD_SIGN.get())
 				.add(HexcraftBlocks.PHOENIX_SIGN.get())
-
 
 				.add(HexcraftBlocks.EBONY_HANGING_SIGN.get())
 				.add(HexcraftBlocks.BLOOD_OAK_HANGING_SIGN.get())
@@ -681,7 +698,6 @@ public class HexcraftBlockTagGenerator extends BlockTagsProvider {
 				.add(HexcraftBlocks.ECHO_WOOD_WALL_HANGING_SIGN.get())
 				.add(HexcraftBlocks.PHOENIX_WALL_HANGING_SIGN.get());
 
-
 		this.tag(BlockTags.MINEABLE_WITH_SHOVEL)
 				.add(HexcraftBlocks.VILE_GRASS_BLOCK.get(), HexcraftBlocks.VILE_DIRT.get(),
 						HexcraftBlocks.CURSED_SOIL.get(), HexcraftBlocks.CURED_SOIL.get(),
@@ -702,11 +718,13 @@ public class HexcraftBlockTagGenerator extends BlockTagsProvider {
 
 		this.tag(BlockTags.BASE_STONE_OVERWORLD)
 				.add(HexcraftBlocks.PEARL_STONE.get(), HexcraftBlocks.CRIMSON_STONE.get(),
-						HexcraftBlocks.UNDER_WORLD_STONE.get(), HexcraftBlocks.CHARSTONE.get());
+						HexcraftBlocks.UNDER_WORLD_STONE.get(), HexcraftBlocks.CHARSTONE.get(),
+						HexcraftBlocks.IGNEOROCK.get(), HexcraftBlocks.BLOODSHALE.get());
 
 		this.tag(BlockTags.STONE_BRICKS)
 				.add(HexcraftBlocks.PEARL_STONE_BRICKS.get(), HexcraftBlocks.CRIMSON_STONE_BRICKS.get(),
-						HexcraftBlocks.UNDER_WORLD_STONE_BRICKS.get(), HexcraftBlocks.CHARSTONE_BRICKS.get());
+						HexcraftBlocks.UNDER_WORLD_STONE_BRICKS.get(), HexcraftBlocks.CHARSTONE_BRICKS.get(),
+						HexcraftBlocks.IGNEOROCK_STONE_BRICKS.get(), HexcraftBlocks.BLOODSHALE_STONE_BRICKS.get());
 
 		this.tag(BlockTags.SMALL_FLOWERS)
 				.add(HexcraftBlocks.VAMPIRE_ORCHID.get(), HexcraftBlocks.BLOODY_ROSE.get(),
@@ -795,7 +813,6 @@ public class HexcraftBlockTagGenerator extends BlockTagsProvider {
 				.add(HexcraftBlocks.PHOENIX_WOOD.get())
 				.add(HexcraftBlocks.STRIPPED_PHOENIX_LOG.get())
 				.add(HexcraftBlocks.STRIPPED_PHOENIX_WOOD.get());
-
 
 		this.tag(BlockTags.LOGS)
 				.add(HexcraftBlocks.EBONY_LOG.get())
@@ -899,17 +916,41 @@ public class HexcraftBlockTagGenerator extends BlockTagsProvider {
 
 		this.tag(BlockTags.STAIRS)
 				.add(HexcraftBlocks.PEARL_STONE_STAIRS.get())
+				.add(HexcraftBlocks.PEARL_COBBLESTONE_STAIRS.get())
+				.add(HexcraftBlocks.PEARL_STONE_BRICKS_STAIRS.get())
+				.add(HexcraftBlocks.POLISHED_PEARL_STONE_STAIRS.get())
 				.add(HexcraftBlocks.CRIMSON_STONE_STAIRS.get())
+				.add(HexcraftBlocks.CRIMSON_COBBLESTONE_STAIRS.get())
+				.add(HexcraftBlocks.CRIMSON_STONE_BRICKS_STAIRS.get())
+				.add(HexcraftBlocks.POLISHED_CRIMSON_STONE_STAIRS.get())
 				.add(HexcraftBlocks.UNDER_WORLD_STONE_STAIRS.get())
+				.add(HexcraftBlocks.UNDER_WORLD_COBBLESTONE_STAIRS.get())
+				.add(HexcraftBlocks.UNDER_WORLD_STONE_BRICKS_STAIRS.get())
+				.add(HexcraftBlocks.POLISHED_UNDER_WORLD_STONE_STAIRS.get())
 				.add(HexcraftBlocks.CHARSTONE_STONE_STAIRS.get())
+				.add(HexcraftBlocks.CHARSTONE_COBBLESTONE_STAIRS.get())
+				.add(HexcraftBlocks.CHARSTONE_STONE_BRICKS_STAIRS.get())
+				.add(HexcraftBlocks.POLISHED_CHARSTONE_STONE_STAIRS.get())
+				.add(HexcraftBlocks.IGNEOROCK_STAIRS.get())
+				.add(HexcraftBlocks.IGNEOROCK_COBBLESTONE_STAIRS.get())
+				.add(HexcraftBlocks.IGNEOROCK_STONE_BRICKS_STAIRS.get())
+				.add(HexcraftBlocks.POLISHED_IGNEOROCK_STAIRS.get())
+				.add(HexcraftBlocks.BLOODSHALE.get())
+				.add(HexcraftBlocks.BLOODSHALE_COBBLESTONE_STAIRS.get())
+				.add(HexcraftBlocks.BLOODSHALE_STONE_BRICKS_STAIRS.get())
+				.add(HexcraftBlocks.POLISHED_BLOODSHALE_STAIRS.get())
 				.add(HexcraftBlocks.CRIMSON_SAND_STONE_STAIRS.get())
+				.add(HexcraftBlocks.SMOOTH_CRIMSON_SAND_STONE_STAIRS.get())
+				.add(HexcraftBlocks.FAIRY_SAND_STONE_STAIRS.get())
 				.add(HexcraftBlocks.SMOOTH_CRIMSON_SAND_STONE_STAIRS.get());
 
 		this.tag(BlockTags.STONE_BUTTONS)
 				.add(HexcraftBlocks.PEARL_STONE_BUTTON.get())
 				.add(HexcraftBlocks.CRIMSON_STONE_BUTTON.get())
 				.add(HexcraftBlocks.UNDER_WORLD_STONE_BUTTON.get())
-				.add(HexcraftBlocks.CHARSTONE_BUTTON.get());
+				.add(HexcraftBlocks.CHARSTONE_BUTTON.get())
+				.add(HexcraftBlocks.IGNEOROCK_BUTTON.get())
+				.add(HexcraftBlocks.BLOODSHALE_BUTTON.get());
 
 		this.tag(BlockTags.WOODEN_BUTTONS)
 				.add(HexcraftBlocks.EBONY_BUTTON.get())
@@ -954,6 +995,9 @@ public class HexcraftBlockTagGenerator extends BlockTagsProvider {
 				.add(HexcraftBlocks.WITCH_WOOD_PRESSURE_PLATE.get())
 				.add(HexcraftBlocks.ECHO_WOOD_PRESSURE_PLATE.get())
 				.add(HexcraftBlocks.PHOENIX_PRESSURE_PLATE.get());
+
+		this.tag(BlockTags.PRESSURE_PLATES)
+				.add(HexcraftBlocks.UMBRACITE_PRESSURE_PLATE.get());
 
 		this.tag(BlockTags.WOODEN_FENCES)
 				.add(HexcraftBlocks.EBONY_FENCE.get())
@@ -1012,6 +1056,9 @@ public class HexcraftBlockTagGenerator extends BlockTagsProvider {
 				.add(HexcraftBlocks.ECHO_WOOD_DOOR.get())
 				.add(HexcraftBlocks.PHOENIX_DOOR.get());
 
+		this.tag(BlockTags.DOORS)
+				.add(HexcraftBlocks.UMBRACITE_DOOR.get());
+
 		this.tag(BlockTags.WOODEN_TRAPDOORS)
 				.add(HexcraftBlocks.EBONY_TRAPDOOR.get())
 				.add(HexcraftBlocks.BLOOD_OAK_TRAPDOOR.get())
@@ -1030,6 +1077,9 @@ public class HexcraftBlockTagGenerator extends BlockTagsProvider {
 				.add(HexcraftBlocks.WITCH_WOOD_TRAPDOOR.get())
 				.add(HexcraftBlocks.ECHO_WOOD_TRAPDOOR.get())
 				.add(HexcraftBlocks.PHOENIX_TRAPDOOR.get());
+
+		this.tag(BlockTags.TRAPDOORS)
+				.add(HexcraftBlocks.UMBRACITE_TRAPDOOR.get());
 
 		this.tag(BlockTags.WALLS)
 				.add(HexcraftBlocks.PEARL_STONE_WALL.get())

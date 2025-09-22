@@ -92,6 +92,7 @@ public abstract class VampireEntity extends Monster implements GeoEntity {
         }));
     }
 
+
     @Override
     public void die(DamageSource cause) {
         super.die(cause);

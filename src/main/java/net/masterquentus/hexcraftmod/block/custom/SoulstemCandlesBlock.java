@@ -8,6 +8,7 @@ import net.masterquentus.hexcraftmod.fluid.HexcraftFluids;
 import net.minecraft.Util;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.util.RandomSource;
@@ -34,6 +35,7 @@ import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
+import javax.annotation.Nullable;
 import java.util.List;
 import java.util.function.ToIntFunction;
 
@@ -95,6 +97,14 @@ public class SoulstemCandlesBlock extends CandleBlock implements BonemealableBlo
         }
     }
 
+    protected void extinguish(@Nullable Player player, BlockState state, Level level, BlockPos pos) {
+        level.setBlock(pos, state.setValue(LIT, false), 3);
+        level.levelEvent(player, 1012, pos, 0); // candle extinguish sound
+        if (state.getValue(WATERLOGGED)) {
+            level.addParticle(ParticleTypes.SOUL_FIRE_FLAME, pos.getX() + 0.5, pos.getY() + 0.7, pos.getZ() + 0.5, 0, 0, 0);
+        }
+    }
+
     public boolean canBeReplaced(BlockState pState, BlockPlaceContext pUseContext) {
         return !pUseContext.isSecondaryUseActive() && pUseContext.getItemInHand().getItem() == this.asItem() && pState.getValue(CANDLES) < 4 ? true : super.canBeReplaced(pState, pUseContext);
     }
@@ -117,6 +127,14 @@ public class SoulstemCandlesBlock extends CandleBlock implements BonemealableBlo
         }
 
         return super.updateShape(pState, pDirection, pNeighborState, pLevel, pCurrentPos, pNeighborPos);
+    }
+
+    @Override
+    public void tick(BlockState state, ServerLevel world, BlockPos pos, RandomSource random) {
+        if (state.getValue(WATERLOGGED)) {
+            FluidState fluid = world.getFluidState(pos);
+            world.scheduleTick(pos, fluid.getType(), fluid.getType().getTickDelay(world));
+        }
     }
 
     @Override

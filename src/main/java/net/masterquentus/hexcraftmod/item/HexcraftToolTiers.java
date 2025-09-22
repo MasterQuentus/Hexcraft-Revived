@@ -14,6 +14,12 @@ public class HexcraftToolTiers {
             () -> Ingredient.of(Items.GOLD_INGOT)
     ); // LOW, ritualistic, low durability & damage
 
+    public static final ForgeTier UMBRACITE = new ForgeTier(
+            2, 29 * 59, 7.5F, 2.5F, 14,
+            BlockTags.NEEDS_IRON_TOOL,
+            () -> Ingredient.of(HexcraftItems.UMBRACITE_INGOT.get())
+    );
+
     public static final ForgeTier STEEL = new ForgeTier(
             2, 28 * 59, 7.0F, 2.5F, 12,
             BlockTags.NEEDS_IRON_TOOL,

@@ -22,6 +22,7 @@ public class HexcraftItemModelProvider extends ItemModelProvider {
 	protected void registerModels() {
 		simpleItem(HexcraftItems.HEXCRAFT_GRIMOIRE);
 		simpleItem(HexcraftItems.INFUSED_FABRIC);
+		//simpleItem(HexcraftItems.BLOODSHALE_SHARDS);
 		simpleItem(HexcraftItems.BOUND_LEATHER);
 		simpleItem(HexcraftItems.TANNED_LEATHER);
 		simpleItem(HexcraftItems.DAYLIGHT_RING);
@@ -101,6 +102,9 @@ public class HexcraftItemModelProvider extends ItemModelProvider {
 		simpleItem(HexcraftItems.RAW_ECLIPSIUM);
 		simpleItem(HexcraftItems.ECLIPSIUM_INGOT);
 		simpleItem(HexcraftItems.ECLIPSIUM_NUGGET);
+		//simpleItem(HexcraftItems.RAW_UMBRACITE);
+		//simpleItem(HexcraftItems.UMBRACITE_INGOT);
+		//simpleItem(HexcraftItems.UMBRACITE_NUGGET);
 		simpleItem(HexcraftItems.DEEPSEER_INGOT);
 		simpleItem(HexcraftItems.WHITE_OAK_ASH);
 		simpleItem(HexcraftItems.SALT);
@@ -351,6 +355,7 @@ public class HexcraftItemModelProvider extends ItemModelProvider {
 		simpleBlockItem(HexcraftBlocks.WITCH_WOOD_DOOR);
 		simpleBlockItem(HexcraftBlocks.ECHO_WOOD_DOOR);
 		simpleBlockItem(HexcraftBlocks.PHOENIX_DOOR);
+		//simpleBlockItem(HexcraftBlocks.UMBRACITE_DOOR);
 
 
 		simpleItem(HexcraftItems.BLOOD_BUCKET);
@@ -459,6 +464,11 @@ public class HexcraftItemModelProvider extends ItemModelProvider {
 		handheldItem(HexcraftItems.VAMPIRIC_SHOVEL);
 		handheldItem(HexcraftItems.VAMPIRIC_AXE);
 		handheldItem(HexcraftItems.VAMPIRIC_HOE);
+		//handheldItem(HexcraftItems.UMBRACITE_SWORD);
+		//handheldItem(HexcraftItems.UMBRACITE_PICKAXE);
+		//handheldItem(HexcraftItems.UMBRACITE_SHOVEL);
+		//handheldItem(HexcraftItems.UMBRACITE_AXE);
+		//handheldItem(HexcraftItems.UMBRACITE_HOE);
 
 
 

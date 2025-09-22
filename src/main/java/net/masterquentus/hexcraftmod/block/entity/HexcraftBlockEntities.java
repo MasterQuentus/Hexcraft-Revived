@@ -8,6 +8,7 @@ import net.masterquentus.hexcraftmod.block.entity.custom.PandorasBoxBlockEntity;
 import net.masterquentus.hexcraftmod.block.entity.signs.HexcraftHangingSignBlockEntity;
 import net.masterquentus.hexcraftmod.block.entity.signs.HexcraftSignBlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
+import net.minecraft.world.level.block.entity.CampfireBlockEntity;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -32,7 +33,7 @@ public class HexcraftBlockEntities {
 	public static final RegistryObject<BlockEntityType<AltarTopBlockEntity>> ALTAR_TOP = BLOCK_ENTITIES.register("altar_top",
 			() -> BlockEntityType.Builder.of(AltarTopBlockEntity::new, HexcraftBlocks.ALTAR_TOP.get()).build(null));
 
-	public static final RegistryObject<BlockEntityType<HexcraftSignBlockEntity>> Hexcraft_SIGN = BLOCK_ENTITIES
+	public static final RegistryObject<BlockEntityType<HexcraftSignBlockEntity>> HEXCRAFT_SIGN = BLOCK_ENTITIES
 			.register("hexcraft_sign", () -> BlockEntityType.Builder
 					.of(HexcraftSignBlockEntity::new,
 							HexcraftBlocks.EBONY_SIGN.get(), HexcraftBlocks.EBONY_WALL_SIGN.get(),
@@ -53,7 +54,7 @@ public class HexcraftBlockEntities {
 							HexcraftBlocks.ECHO_WOOD_SIGN.get(), HexcraftBlocks.ECHO_WOOD_WALL_SIGN.get(),
 							HexcraftBlocks.PHOENIX_SIGN.get(), HexcraftBlocks.PHOENIX_WALL_SIGN.get()).build(null));
 
-	public static final RegistryObject<BlockEntityType<HexcraftHangingSignBlockEntity>> Hexcraft_HANGING_SIGN = BLOCK_ENTITIES
+	public static final RegistryObject<BlockEntityType<HexcraftHangingSignBlockEntity>> HEXCRAFT_HANGING_SIGN = BLOCK_ENTITIES
 			.register("hexcraft_hanging_sign", () -> BlockEntityType.Builder
 					.of(HexcraftHangingSignBlockEntity::new,
 							HexcraftBlocks.EBONY_HANGING_SIGN.get(), HexcraftBlocks.EBONY_WALL_HANGING_SIGN.get(),
@@ -82,6 +83,10 @@ public class HexcraftBlockEntities {
 	public static final RegistryObject<BlockEntityType<SacrificialPillarBlockEntity>> SACRIFICIAL_PILLAR_ENTITY =
 			BLOCK_ENTITIES.register("sacrificial_pillar",
 					() -> BlockEntityType.Builder.of(SacrificialPillarBlockEntity::new, HexcraftBlocks.SACRIFICIAL_PILLAR.get()).build(null));
+
+	public static final RegistryObject<BlockEntityType<CampfireBlockEntity>> HELLFIRE_CAMPFIRE_ENTITY =
+			BLOCK_ENTITIES.register("hellfire_campfire",
+					() -> BlockEntityType.Builder.of(CampfireBlockEntity::new, HexcraftBlocks.HELLFIRE_CAMPFIRE.get()).build(null));
 
 
 

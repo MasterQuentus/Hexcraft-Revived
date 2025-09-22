@@ -65,12 +65,20 @@ public enum HexcraftArmorMaterials implements ArmorMaterial {
         map.put(ArmorItem.Type.HELMET, 4);
     }), 15, SoundEvents.ARMOR_EQUIP_IRON, 3.0F, 0.1F, () -> Ingredient.of(HexcraftItems.SILVER_INGOT.get())),
 
+    UMBRACITE("umbracite", 45, Util.make(new EnumMap<>(ArmorItem.Type.class), (map) -> {
+        map.put(ArmorItem.Type.BOOTS, 4);
+        map.put(ArmorItem.Type.LEGGINGS, 7);
+        map.put(ArmorItem.Type.CHESTPLATE, 9);
+        map.put(ArmorItem.Type.HELMET, 5);
+    }), 20, SoundEvents.ARMOR_EQUIP_NETHERITE, 4.0F, 0.25F, () -> Ingredient.of(HexcraftItems.UMBRACITE_INGOT.get())),
+
     DEEPSEER("deepseer", 30, Util.make(new EnumMap<>(ArmorItem.Type.class), (map) -> {
         map.put(ArmorItem.Type.BOOTS, 3);
         map.put(ArmorItem.Type.LEGGINGS, 6);
         map.put(ArmorItem.Type.CHESTPLATE, 7);
         map.put(ArmorItem.Type.HELMET, 4);
     }), 16, SoundEvents.ARMOR_EQUIP_TURTLE, 2.5F, 0.1F, () -> Ingredient.of(HexcraftItems.DEEPSEER_INGOT.get()));
+
 
 
     public static final StringRepresentable.EnumCodec<ArmorMaterials> CODEC = StringRepresentable.fromEnum(ArmorMaterials::values);

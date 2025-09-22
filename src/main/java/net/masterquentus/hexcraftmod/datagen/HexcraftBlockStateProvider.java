@@ -89,10 +89,13 @@ public class HexcraftBlockStateProvider extends BlockStateProvider {
         blockWithItem(HexcraftBlocks.SOULSTONE_ORE);
         blockWithItem(HexcraftBlocks.ABYSSIUM_ORE);
         blockWithItem(HexcraftBlocks.ECLIPSIUM_ORE);
+        //blockWithItem(HexcraftBlocks.UMBRACITE_ORE);
         blockWithItem(HexcraftBlocks.ABYSSAL_COAL_ORE);
         blockWithItem(HexcraftBlocks.MOONSTONE_BLOCK);
         blockWithItem(HexcraftBlocks.SILVER_BLOCK);
         blockWithItem(HexcraftBlocks.VAMPIRIC_BLOCK);
+        //blockWithItem(HexcraftBlocks.UMBRACITE_BLOCK);
+        //blockWithItem(HexcraftBlocks.SANGUINE_LANTERN);
         //blockWithItem(HexcraftBlocks.ASH_BLOCK);
         //blockWithItem(HexcraftBlocks.FAIRY_WARD);
         //blockWithItem(HexcraftBlocks.PIXIE_WARD);
@@ -117,6 +120,14 @@ public class HexcraftBlockStateProvider extends BlockStateProvider {
         stairsBlock(((StairBlock) HexcraftBlocks.CHARSTONE_COBBLESTONE_STAIRS.get()), blockTexture(HexcraftBlocks.CHARSTONE_COBBLESTONE.get()));
         stairsBlock(((StairBlock) HexcraftBlocks.CHARSTONE_STONE_BRICKS_STAIRS.get()), blockTexture(HexcraftBlocks.CHARSTONE_BRICKS.get()));
         stairsBlock(((StairBlock) HexcraftBlocks.POLISHED_CHARSTONE_STONE_STAIRS.get()), blockTexture(HexcraftBlocks.POLISHED_CHARSTONE.get()));
+        //stairsBlock(((StairBlock) HexcraftBlocks.IGNEOROCK_STAIRS.get()), blockTexture(HexcraftBlocks.IGNEOROCK.get()));
+        //stairsBlock(((StairBlock) HexcraftBlocks.IGNEOROCK_COBBLESTONE_STAIRS.get()), blockTexture(HexcraftBlocks.IGNEOROCK_COBBLESTONE.get()));
+        //stairsBlock(((StairBlock) HexcraftBlocks.IGNEOROCK_STONE_BRICKS_STAIRS.get()), blockTexture(HexcraftBlocks.IGNEOROCK_STONE_BRICKS.get()));
+        //stairsBlock(((StairBlock) HexcraftBlocks.POLISHED_IGNEOROCK_STAIRS.get()), blockTexture(HexcraftBlocks.POLISHED_IGNEOROCK.get()));
+       // stairsBlock(((StairBlock) HexcraftBlocks.BLOODSHALE_STAIRS.get()), blockTexture(HexcraftBlocks.BLOODSHALE.get()));
+        //stairsBlock(((StairBlock) HexcraftBlocks.BLOODSHALE_COBBLESTONE_STAIRS.get()), blockTexture(HexcraftBlocks.BLOODSHALE_COBBLESTONE.get()));
+        //stairsBlock(((StairBlock) HexcraftBlocks.BLOODSHALE_STONE_BRICKS_STAIRS.get()), blockTexture(HexcraftBlocks.BLOODSHALE_STONE_BRICKS.get()));
+        //stairsBlock(((StairBlock) HexcraftBlocks.POLISHED_BLOODSHALE_STAIRS.get()), blockTexture(HexcraftBlocks.POLISHED_BLOODSHALE.get()));
         stairsBlock(((StairBlock) HexcraftBlocks.CRIMSON_SAND_STONE_STAIRS.get()), blockTexture(HexcraftBlocks.CRIMSON_SAND_STONE.get()));
         stairsBlock(((StairBlock) HexcraftBlocks.SMOOTH_CRIMSON_SAND_STONE_STAIRS.get()), blockTexture(HexcraftBlocks.SMOOTH_CRIMSON_SAND_STONE.get()));
         stairsBlock(((StairBlock) HexcraftBlocks.FAIRY_SAND_STONE_STAIRS.get()), blockTexture(HexcraftBlocks.FAIRY_SAND_STONE.get()));
@@ -512,6 +523,8 @@ public class HexcraftBlockStateProvider extends BlockStateProvider {
         buttonBlock((ButtonBlock) HexcraftBlocks.CRIMSON_STONE_BUTTON.get(), blockTexture(HexcraftBlocks.CRIMSON_STONE.get()));
         buttonBlock((ButtonBlock) HexcraftBlocks.UNDER_WORLD_STONE_BUTTON.get(), blockTexture(HexcraftBlocks.UNDER_WORLD_STONE.get()));
         buttonBlock((ButtonBlock) HexcraftBlocks.CHARSTONE_BUTTON.get(), blockTexture(HexcraftBlocks.CHARSTONE.get()));
+        //buttonBlock((ButtonBlock) HexcraftBlocks.IGNEOROCK_BUTTON.get(), blockTexture(HexcraftBlocks.IGNEOROCK.get()));
+        //buttonBlock((ButtonBlock) HexcraftBlocks.BLOODSHALE_BUTTON.get(), blockTexture(HexcraftBlocks.BLOODSHALE.get()));
         buttonBlock((ButtonBlock) HexcraftBlocks.EBONY_BUTTON.get(), blockTexture(HexcraftBlocks.EBONY_PLANKS.get()));
         buttonBlock((ButtonBlock) HexcraftBlocks.BLOOD_OAK_BUTTON.get(), blockTexture(HexcraftBlocks.BLOOD_OAK_PLANKS.get()));
         buttonBlock((ButtonBlock) HexcraftBlocks.HELL_BARK_BUTTON.get(), blockTexture(HexcraftBlocks.HELL_BARK_PLANKS.get()));
@@ -605,6 +618,7 @@ public class HexcraftBlockStateProvider extends BlockStateProvider {
         doorBlockWithRenderType((DoorBlock)HexcraftBlocks.WITCH_WOOD_DOOR.get(), modLoc("block/witch_wood_door_bottom"), modLoc("block/witch_wood_door_top"), "cutout");
         doorBlockWithRenderType((DoorBlock)HexcraftBlocks.ECHO_WOOD_DOOR.get(), modLoc("block/echo_wood_door_bottom"), modLoc("block/echo_wood_door_top"), "cutout");
         doorBlockWithRenderType((DoorBlock)HexcraftBlocks.PHOENIX_DOOR.get(), modLoc("block/phoenix_door_bottom"), modLoc("block/phoenix_door_top"), "cutout");
+        //doorBlockWithRenderType((DoorBlock)HexcraftBlocks.UMBRACITE_DOOR.get(), modLoc("block/umbracite_door_bottom"), modLoc("block/umbracite_door_top"), "cutout");
 
         trapdoorBlockWithRenderType((TrapDoorBlock) HexcraftBlocks.EBONY_TRAPDOOR.get(), modLoc("block/ebony_trapdoor"), true, "cutout");
         trapdoorBlockWithRenderType((TrapDoorBlock) HexcraftBlocks.BLOOD_OAK_TRAPDOOR.get(), modLoc("block/blood_oak_trapdoor"), true, "cutout");
@@ -623,6 +637,7 @@ public class HexcraftBlockStateProvider extends BlockStateProvider {
         trapdoorBlockWithRenderType((TrapDoorBlock) HexcraftBlocks.WITCH_WOOD_TRAPDOOR.get(), modLoc("block/witch_wood_trapdoor"), true, "cutout");
         trapdoorBlockWithRenderType((TrapDoorBlock) HexcraftBlocks.ECHO_WOOD_TRAPDOOR.get(), modLoc("block/echo_wood_trapdoor"), true, "cutout");
         trapdoorBlockWithRenderType((TrapDoorBlock) HexcraftBlocks.PHOENIX_TRAPDOOR.get(), modLoc("block/phoenix_trapdoor"), true, "cutout");
+        //trapdoorBlockWithRenderType((TrapDoorBlock) HexcraftBlocks.UMBRACITE_TRAPDOOR.get(), modLoc("block/umbracite_trapdoor"), true, "cutout");
 
 
         blockItem(HexcraftBlocks.PEARL_STONE_STAIRS);
@@ -641,6 +656,14 @@ public class HexcraftBlockStateProvider extends BlockStateProvider {
         blockItem(HexcraftBlocks.CHARSTONE_COBBLESTONE_STAIRS);
         blockItem(HexcraftBlocks.CHARSTONE_STONE_BRICKS_STAIRS);
         blockItem(HexcraftBlocks.POLISHED_CHARSTONE_STONE_STAIRS);
+        //blockItem(HexcraftBlocks.IGNEOROCK_STAIRS);
+        //blockItem(HexcraftBlocks.IGNEOROCK_COBBLESTONE_STAIRS);
+        //blockItem(HexcraftBlocks.IGNEOROCK_STONE_BRICKS_STAIRS);
+        //blockItem(HexcraftBlocks.POLISHED_IGNEOROCK_STAIRS);
+        //blockItem(HexcraftBlocks.BLOODSHALE_STAIRS);
+       // blockItem(HexcraftBlocks.BLOODSHALE_COBBLESTONE_STAIRS);
+        //blockItem(HexcraftBlocks.BLOODSHALE_STONE_BRICKS_STAIRS);
+        //blockItem(HexcraftBlocks.POLISHED_BLOODSHALE_STAIRS);
         blockItem(HexcraftBlocks.CRIMSON_SAND_STONE_STAIRS);
         blockItem(HexcraftBlocks.SMOOTH_CRIMSON_SAND_STONE_STAIRS);
         blockItem(HexcraftBlocks.FAIRY_SAND_STONE_STAIRS);
@@ -731,6 +754,7 @@ public class HexcraftBlockStateProvider extends BlockStateProvider {
         blockItem(HexcraftBlocks.WITCH_WOOD_PRESSURE_PLATE);
         blockItem(HexcraftBlocks.ECHO_WOOD_PRESSURE_PLATE);
         blockItem(HexcraftBlocks.PHOENIX_PRESSURE_PLATE);
+        //blockItem(HexcraftBlocks.UMBRACITE_PRESSURE_PLATE);
 
 
         blockItem(HexcraftBlocks.EBONY_FENCE_GATE);
@@ -871,6 +895,12 @@ public class HexcraftBlockStateProvider extends BlockStateProvider {
 
         hangingSignBlock(HexcraftBlocks.PHOENIX_HANGING_SIGN.get(), HexcraftBlocks.PHOENIX_WALL_HANGING_SIGN.get(),
                 blockTexture(HexcraftBlocks.PHOENIX_PLANKS.get()));
+
+        simpleBlockWithItem(HexcraftBlocks.POTTED_GHOSTSHROOM.get(), models().singleTexture("potted_ghostshroom", new ResourceLocation("flower_pot_cross"), "plant",
+                blockTexture(HexcraftBlocks.GHOSTSHROOM.get())).renderType("cutout"));
+
+        simpleBlockWithItem(HexcraftBlocks.POTTED_VILESHROOM.get(), models().singleTexture("potted_vileshroom", new ResourceLocation("flower_pot_cross"), "plant",
+                blockTexture(HexcraftBlocks.VILESHROOM.get())).renderType("cutout"));
 
     }
 

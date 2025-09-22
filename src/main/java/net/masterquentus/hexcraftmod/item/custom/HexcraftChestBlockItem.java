@@ -7,10 +7,12 @@ import net.minecraftforge.client.extensions.common.IClientItemExtensions;
 
 import java.util.function.Consumer;
 
+
+
 public class HexcraftChestBlockItem extends BlockItem {
 
-    public HexcraftChestBlockItem(Block pBlock, Properties pProperties) {
-        super(pBlock, pProperties);
+    public HexcraftChestBlockItem(Block block, Properties properties) {
+        super(block, properties);
     }
 
     @Override
@@ -18,7 +20,8 @@ public class HexcraftChestBlockItem extends BlockItem {
         consumer.accept(new IClientItemExtensions() {
             @Override
             public BlockEntityWithoutLevelRenderer getCustomRenderer() {
-                return new HexcraftChestItemRenderer(); // Ensure this renderer is properly implemented
+                // Just return a new renderer here — do NOT use INSTANCE
+                return new HexcraftChestItemRenderer();
             }
         });
     }

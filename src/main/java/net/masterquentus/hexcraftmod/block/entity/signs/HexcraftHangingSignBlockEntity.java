@@ -9,11 +9,11 @@ import net.minecraft.world.level.block.state.BlockState;
 
 public class HexcraftHangingSignBlockEntity extends SignBlockEntity {
     public HexcraftHangingSignBlockEntity(BlockPos blockPos, BlockState blockState) {
-        super(HexcraftBlockEntities.Hexcraft_HANGING_SIGN.get(),blockPos, blockState);
+        super(HexcraftBlockEntities.HEXCRAFT_HANGING_SIGN.get(),blockPos, blockState);
     }
 
     @Override
     public BlockEntityType<?> getType() {
-        return HexcraftBlockEntities.Hexcraft_HANGING_SIGN.get();
+        return HexcraftBlockEntities.HEXCRAFT_HANGING_SIGN.get();
     }
 }

@@ -3,7 +3,7 @@
   "category": "blocks",
   "cookingtime": 200,
   "experience": 0.2,
-  "group": "cracked_charstone",
+  "group": "cracked_igneorock",
   "ingredient": {
     "item": "hexcraftmod:charstone_bricks"
   },

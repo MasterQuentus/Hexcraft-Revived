@@ -16,6 +16,14 @@
     "hexcraftmod:charstone_cobblestone_stairs",
     "hexcraftmod:charstone_bricks_stairs",
     "hexcraftmod:polished_charstone_stairs",
+    "hexcraftmod:igneorock_stairs",
+    "hexcraftmod:igneorock_cobblestone_stairs",
+    "hexcraftmod:igneorock_stone_bricks_stairs",
+    "hexcraftmod:polished_igneorock_stairs",
+    "hexcraftmod:bloodshale_stairs",
+    "hexcraftmod:bloodshale_cobblestone_stairs",
+    "hexcraftmod:bloodshale_stone_bricks_stairs",
+    "hexcraftmod:polished_bloodshale_stairs",
     "hexcraftmod:crimson_sand_stone_stairs",
     "hexcraftmod:smooth_crimson_sand_stone_stairs"
   ]

@@ -1,6 +1,8 @@
 {
   "values": [
     "hexcraftmod:blood_fluid",
-    "hexcraftmod:flowing_blood_fluid"
+    "hexcraftmod:flowing_blood_fluid",
+    "hexcraftmod:deep_water",
+    "hexcraftmod:flowing_deep_water"
   ]
 }

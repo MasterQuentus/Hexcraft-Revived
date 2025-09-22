@@ -1,3 +1,6 @@
 {
-    "parent": "hexcraftmod:block/hellfire_camp"
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "hexcraftmod:block/hellfire_camp"
+  }
 }

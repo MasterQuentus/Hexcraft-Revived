@@ -341,6 +341,15 @@ public class HexcraftBlocks {
 					.requiresCorrectToolForDrops()
 					.noOcclusion()));
 
+	public static final RegistryObject<Block> UMBRACITE_CHAIN = BLOCKS.register("umbracite_chain",
+			() -> new ChainBlock(BlockBehaviour.Properties.copy(Blocks.CHAIN).strength(5.0F, 6.0F).requiresCorrectToolForDrops()));
+
+	public static final RegistryObject<Block> REINFORCED_UMBRACITE_CHAIN_BLOCK = BLOCKS.register("reinforced_umbracite_chain_block",
+			() -> new Block(BlockBehaviour.Properties.copy(Blocks.CHAIN).requiresCorrectToolForDrops().strength(5.5F, 7.0F)));
+
+	public static final RegistryObject<Block> UMBRACITE_BARS = BLOCKS.register("umbracite_bars",
+			() -> new IronBarsBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BARS).strength(5.0F, 6.0F).requiresCorrectToolForDrops()));
+
 	public static final RegistryObject <Block> VAMPIRE_ORCHID = registerBlock("vampire_orchid",
 			() -> new FlowerBlock(() -> MobEffects.HEALTH_BOOST, 4, BlockBehaviour.Properties.copy(Blocks.ALLIUM)));
 
@@ -473,6 +482,14 @@ public class HexcraftBlocks {
 			() -> new Block(BlockBehaviour.Properties.copy(Blocks.DRIED_KELP_BLOCK).sound(SoundType.WET_GRASS)
 					.strength(0.5F, 2.5F)));
 
+	public static final RegistryObject<Block> DEEP_SEA_GRASS = registerBlock("deep_sea_grass",
+			() -> new DeepSeaGrassBlock(Block.Properties.copy(Blocks.SEAGRASS)
+					.sound(SoundType.GRASS).noCollission().instabreak().requiresCorrectToolForDrops()));
+
+	public static final RegistryObject<Block> TAll_DEEP_SEA_GRASS = registerBlock("tall_deep_sea_grass",
+			() -> new TallDeepSeaGrassBlock(Block.Properties.copy(Blocks.TALL_SEAGRASS)
+					.sound(SoundType.GRASS).noCollission().instabreak().requiresCorrectToolForDrops()));
+
 	public static final RegistryObject<Block> BLOOD_BERRIES_PLANT = registerBlockWithoutBlockItem("blood_berries_plant",
 			() -> new BloodBerryBush(BlockBehaviour.Properties.copy(Blocks.SWEET_BERRY_BUSH).noOcclusion().randomTicks().noLootTable()));
 
@@ -507,10 +524,11 @@ public class HexcraftBlocks {
 
 
 	public static final RegistryObject<Block> HELLFIRE_CAMPFIRE = BLOCKS.register("hellfire_campfire",
-			() -> new CampfireBlock(true, 2, BlockBehaviour.Properties.copy(Blocks.CAMPFIRE)
+			() -> new HellfireCampfireBlock(BlockBehaviour.Properties.copy(Blocks.CAMPFIRE)
 					.strength(2.0F)
 					.lightLevel(state -> state.getValue(BlockStateProperties.LIT) ? 15 : 0)
-					.sound(SoundType.WOOD)));
+					.sound(SoundType.WOOD)
+			));
 
 
 	//Light Blocks
@@ -545,6 +563,13 @@ public class HexcraftBlocks {
 					.strength(1.5F)
 					.lightLevel(state -> 12)
 					.sound(SoundType.LANTERN)));
+
+	public static final RegistryObject<Block> SANGUINE_LANTERN = registerBlock("sanguine_lantern",
+			() -> new RotatedPillarBlock(BlockBehaviour.Properties.copy(Blocks.SEA_LANTERN)
+					.strength(0.3F).sound(SoundType.GLASS)
+					.lightLevel((state) -> 15)));
+
+
 
 
 	//Mushrooms
@@ -669,9 +694,43 @@ public class HexcraftBlocks {
 
 	public static final RegistryObject<Block> IGNEOROCK = registerBlock("igneorock",
 			() -> new Block(BlockBehaviour.Properties.copy(Blocks.BASALT)
-					.strength(3.0F, 9.0F) // Tougher than normal stone
-					.lightLevel(state -> 2) // Slight ambient glow
-					.requiresCorrectToolForDrops()));
+					.strength(3.0F, 9.0F).lightLevel(state -> 2).requiresCorrectToolForDrops()));
+
+	public static final RegistryObject<Block> IGNEOROCK_COBBLESTONE = registerBlock("igneorock_cobblestone",
+			() -> new Block(BlockBehaviour.Properties.copy(Blocks.STONE).strength(3.0F, 9.0F).lightLevel(state -> 2)));
+
+	public static final RegistryObject<Block> IGNEOROCK_STONE_BRICKS = registerBlock("igneorock_stone_bricks",
+			() -> new Block(BlockBehaviour.Properties.copy(Blocks.STONE).strength(3.0F, 9.0F).lightLevel(state -> 2)));
+
+	public static final RegistryObject<Block> POLISHED_IGNEOROCK = registerBlock("polished_igneorock",
+			() -> new Block(BlockBehaviour.Properties.copy(Blocks.STONE).strength(3.0F, 9.0F).lightLevel(state -> 2)));
+
+	public static final RegistryObject<Block> CHISELED_IGNEOROCK = registerBlock("chiseled_igneorock",
+			() -> new Block(BlockBehaviour.Properties.copy(Blocks.STONE).strength(3.0F, 9.0F).lightLevel(state -> 2)));
+
+	public static final RegistryObject<Block> CRACKED_IGNEOROCK = registerBlock("cracked_igneorock",
+			() -> new Block(BlockBehaviour.Properties.copy(Blocks.STONE)
+					.requiresCorrectToolForDrops().strength(3.0F, 9.0F).lightLevel(state -> 2)));
+
+	public static final RegistryObject<Block> BLOODSHALE = registerBlock("bloodshale",
+			() -> new Block(BlockBehaviour.Properties.copy(Blocks.BASALT)
+					.strength(3.0F, 9.0F).lightLevel(state -> 2).requiresCorrectToolForDrops()));
+
+	public static final RegistryObject<Block> BLOODSHALE_COBBLESTONE = registerBlock("bloodshale_cobblestone",
+			() -> new Block(BlockBehaviour.Properties.copy(Blocks.STONE).strength(3.0F, 9.0F).lightLevel(state -> 2)));
+
+	public static final RegistryObject<Block> BLOODSHALE_STONE_BRICKS = registerBlock("bloodshale_stone_bricks",
+			() -> new Block(BlockBehaviour.Properties.copy(Blocks.STONE).strength(3.0F, 9.0F).lightLevel(state -> 2)));
+
+	public static final RegistryObject<Block> POLISHED_BLOODSHALE = registerBlock("polished_bloodshale",
+			() -> new Block(BlockBehaviour.Properties.copy(Blocks.STONE).strength(3.0F, 9.0F).lightLevel(state -> 2)));
+
+	public static final RegistryObject<Block> CHISELED_BLOODSHALE = registerBlock("chiseled_bloodshale",
+			() -> new Block(BlockBehaviour.Properties.copy(Blocks.STONE).strength(3.0F, 9.0F).lightLevel(state -> 2)));
+
+	public static final RegistryObject<Block> CRACKED_BLOODSHALE = registerBlock("cracked_bloodshale",
+			() -> new Block(BlockBehaviour.Properties.copy(Blocks.STONE)
+					.requiresCorrectToolForDrops().strength(3.0F, 9.0F).lightLevel(state -> 2)));
 
 	public static final RegistryObject <Block> CRIMSON_SAND = registerBlock("crimson_sand",
 			() -> new SandBlock(14406560,BlockBehaviour.Properties.copy(Blocks.SAND)
@@ -2147,7 +2206,7 @@ public class HexcraftBlocks {
 					BlockBehaviour.Properties.copy(Blocks.STONE).strength(1.5F, 6.0F)));
 
 	public static final RegistryObject<Block> PEARL_COBBLESTONE_STAIRS = registerBlock("pearl_cobblestone_stairs",
-			() -> new StairBlock(() -> HexcraftBlocks.PEARL_STONE.get().defaultBlockState(),
+			() -> new StairBlock(() -> HexcraftBlocks.PEARL_COBBLESTONE.get().defaultBlockState(),
 					BlockBehaviour.Properties.copy(Blocks.STONE).strength(1.5F, 6.0F)));
 
 	public static final RegistryObject<Block> PEARL_STONE_BRICKS_STAIRS = registerBlock("pearl_stone_bricks_stairs",
@@ -2204,6 +2263,38 @@ public class HexcraftBlocks {
 
 	public static final RegistryObject<Block> POLISHED_CHARSTONE_STONE_STAIRS = registerBlock("polished_charstone_stairs",
 			() -> new StairBlock(() -> HexcraftBlocks.POLISHED_CHARSTONE.get().defaultBlockState(),
+					BlockBehaviour.Properties.copy(Blocks.STONE).strength(1.5F, 6.0F)));
+
+	public static final RegistryObject<Block> IGNEOROCK_STAIRS = registerBlock("igneorock_stairs",
+			() -> new StairBlock(() -> HexcraftBlocks.IGNEOROCK.get().defaultBlockState(),
+					BlockBehaviour.Properties.copy(Blocks.STONE).strength(1.5F, 6.0F)));
+
+	public static final RegistryObject<Block> IGNEOROCK_COBBLESTONE_STAIRS = registerBlock("igneorock_cobblestone_stairs",
+			() -> new StairBlock(() -> HexcraftBlocks.IGNEOROCK_COBBLESTONE.get().defaultBlockState(),
+					BlockBehaviour.Properties.copy(Blocks.STONE).strength(1.5F, 6.0F)));
+
+	public static final RegistryObject<Block> IGNEOROCK_STONE_BRICKS_STAIRS = registerBlock("igneorock_stone_bricks_stairs",
+			() -> new StairBlock(() -> HexcraftBlocks.IGNEOROCK_STONE_BRICKS.get().defaultBlockState(),
+					BlockBehaviour.Properties.copy(Blocks.STONE).strength(1.5F, 6.0F)));
+
+	public static final RegistryObject<Block> POLISHED_IGNEOROCK_STAIRS = registerBlock("polished_igneorock_stairs",
+			() -> new StairBlock(() -> HexcraftBlocks.POLISHED_IGNEOROCK.get().defaultBlockState(),
+					BlockBehaviour.Properties.copy(Blocks.STONE).strength(1.5F, 6.0F)));
+
+	public static final RegistryObject<Block> BLOODSHALE_STAIRS = registerBlock("bloodshale_stairs",
+			() -> new StairBlock(() -> HexcraftBlocks.BLOODSHALE.get().defaultBlockState(),
+					BlockBehaviour.Properties.copy(Blocks.STONE).strength(1.5F, 6.0F)));
+
+	public static final RegistryObject<Block> BLOODSHALE_COBBLESTONE_STAIRS = registerBlock("bloodshale_cobblestone_stairs",
+			() -> new StairBlock(() -> HexcraftBlocks.BLOODSHALE_COBBLESTONE.get().defaultBlockState(),
+					BlockBehaviour.Properties.copy(Blocks.STONE).strength(1.5F, 6.0F)));
+
+	public static final RegistryObject<Block> BLOODSHALE_STONE_BRICKS_STAIRS = registerBlock("bloodshale_stone_bricks_stairs",
+			() -> new StairBlock(() -> HexcraftBlocks.BLOODSHALE_STONE_BRICKS.get().defaultBlockState(),
+					BlockBehaviour.Properties.copy(Blocks.STONE).strength(1.5F, 6.0F)));
+
+	public static final RegistryObject<Block> POLISHED_BLOODSHALE_STAIRS = registerBlock("polished_bloodshale_stairs",
+			() -> new StairBlock(() -> HexcraftBlocks.POLISHED_BLOODSHALE.get().defaultBlockState(),
 					BlockBehaviour.Properties.copy(Blocks.STONE).strength(1.5F, 6.0F)));
 
 	public static final RegistryObject<Block> CRIMSON_SAND_STONE_STAIRS = registerBlock("crimson_sand_stone_stairs",
@@ -2400,6 +2491,11 @@ public class HexcraftBlocks {
 					.mapColor(MapColor.WOOD).forceSolidOn().instrument(NoteBlockInstrument.BASS).noCollission().strength(0.5F).ignitedByLava().pushReaction(PushReaction.DESTROY), BlockSetType.OAK
 			));
 
+	public static final RegistryObject<Block> UMBRACITE_PRESSURE_PLATE = registerBlock("umbracite_pressure_plate",
+			() -> new PressurePlateBlock(PressurePlateBlock.Sensitivity.EVERYTHING,BlockBehaviour.Properties.copy(Blocks.HEAVY_WEIGHTED_PRESSURE_PLATE)
+					.mapColor(MapColor.RAW_IRON).forceSolidOn().instrument(NoteBlockInstrument.BASS).noCollission().strength(0.5F).pushReaction(PushReaction.DESTROY), BlockSetType.IRON
+			));
+
 	//Buttons
 	public static final RegistryObject<Block> PEARL_STONE_BUTTON = registerBlock("pearl_stone_button",
 			() -> new ButtonBlock(BlockBehaviour.Properties.copy(Blocks.STONE_BUTTON).noCollission().strength(0.5F)
@@ -2417,6 +2513,16 @@ public class HexcraftBlocks {
 			));
 
 	public static final RegistryObject<Block> CHARSTONE_BUTTON = registerBlock("charstone_button",
+			() -> new ButtonBlock(BlockBehaviour.Properties.copy(Blocks.STONE_BUTTON).noCollission().strength(0.5F)
+					.pushReaction(PushReaction.DESTROY), BlockSetType.STONE, 20, false
+			));
+
+	public static final RegistryObject<Block> IGNEOROCK_BUTTON = registerBlock("igneorock_button",
+			() -> new ButtonBlock(BlockBehaviour.Properties.copy(Blocks.STONE_BUTTON).noCollission().strength(0.5F)
+					.pushReaction(PushReaction.DESTROY), BlockSetType.STONE, 20, false
+			));
+
+	public static final RegistryObject<Block> BLOODSHALE_BUTTON = registerBlock("bloodshale_button",
 			() -> new ButtonBlock(BlockBehaviour.Properties.copy(Blocks.STONE_BUTTON).noCollission().strength(0.5F)
 					.pushReaction(PushReaction.DESTROY), BlockSetType.STONE, 20, false
 			));
@@ -2715,6 +2821,10 @@ public class HexcraftBlocks {
 			() -> new DoorBlock(BlockBehaviour.Properties.copy(Blocks.OAK_DOOR), BlockSetType.OAK
 			));
 
+	public static final RegistryObject<Block> UMBRACITE_DOOR = registerBlock("umbracite_door",
+			() -> new DoorBlock(BlockBehaviour.Properties.copy(Blocks.IRON_DOOR), BlockSetType.IRON
+			));
+
 	//Trapdoor
 	public static final RegistryObject<Block> EBONY_TRAPDOOR = registerBlock("ebony_trapdoor",
 			() -> new TrapDoorBlock(BlockBehaviour.Properties.copy(Blocks.OAK_TRAPDOOR), BlockSetType.OAK
@@ -2782,6 +2892,10 @@ public class HexcraftBlocks {
 
 	public static final RegistryObject<Block> PHOENIX_TRAPDOOR = registerBlock("phoenix_trapdoor",
 			() -> new TrapDoorBlock(BlockBehaviour.Properties.copy(Blocks.OAK_TRAPDOOR), BlockSetType.OAK
+			));
+
+	public static final RegistryObject<Block> UMBRACITE_TRAPDOOR = registerBlock("umbracite_trapdoor",
+			() -> new TrapDoorBlock(BlockBehaviour.Properties.copy(Blocks.IRON_TRAPDOOR), BlockSetType.IRON
 			));
 
 	public static final RegistryObject <Block> AMETHYST_CHIMES = registerBlock("amethyst_chimes",
@@ -3133,6 +3247,10 @@ public class HexcraftBlocks {
 			() -> new DropExperienceBlock(BlockBehaviour.Properties.copy(Blocks.STONE).requiresCorrectToolForDrops()
 					.strength(3.0F, 3.0F).sound(SoundType.STONE), UniformInt.of(3, 7)));
 
+	public static final RegistryObject <Block> UMBRACITE_ORE = registerBlock("umbracite_ore",
+			() -> new DropExperienceBlock(BlockBehaviour.Properties.copy(Blocks.STONE).requiresCorrectToolForDrops()
+					.strength(3.0F, 3.0F).sound(SoundType.STONE), UniformInt.of(3, 7)));
+
 	public static final RegistryObject <Block> ABYSSAL_COAL_ORE = registerBlock("abyssal_coal_ore",
 			() -> new DropExperienceBlock(BlockBehaviour.Properties.copy(Blocks.STONE).requiresCorrectToolForDrops()
 					.strength(3.0F, 3.0F).sound(SoundType.STONE), UniformInt.of(3, 7)));
@@ -3215,6 +3333,10 @@ public class HexcraftBlocks {
 	public static final RegistryObject <Block> ECLIPSIUM_BLOCK = registerBlock("eclipsium_block",
 			() -> new Block(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK).requiresCorrectToolForDrops()
 					.strength(3.0F, 3.0F).sound(SoundType.METAL)));
+
+	public static final RegistryObject <Block> UMBRACITE_BLOCK = registerBlock("umbracite_block",
+			() -> new Block(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK).requiresCorrectToolForDrops()
+					.strength(5.0F, 6.0F).sound(SoundType.METAL)));
 
 	public static final RegistryObject <Block> ABYSSAL_COAL_BLOCK = registerBlock("abyssal_coal_block",
 			() -> new Block(BlockBehaviour.Properties.copy(Blocks.STONE).requiresCorrectToolForDrops().strength(5.0F, 6.0F)));

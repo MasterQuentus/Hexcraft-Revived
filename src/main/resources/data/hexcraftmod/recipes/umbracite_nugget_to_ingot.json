@@ -1,0 +1,17 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "###",
+        "###",
+        "###"
+    ],
+    "key": {
+        "#": {
+            "item": "hexcraftmod:umbracite_nugget"
+        }
+    },
+    "result": {
+        "item": "hexcraftmod:umbracite_ingot",
+        "count": 1
+    }
+}

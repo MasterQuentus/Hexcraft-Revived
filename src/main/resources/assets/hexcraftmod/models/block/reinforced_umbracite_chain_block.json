@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_all",
+  "render_type": "cutout",
+  "textures": {
+    "all": "hexcraftmod:block/reinforced_umbracite_chain_block"
+  }
+}

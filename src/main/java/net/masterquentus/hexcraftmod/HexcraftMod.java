@@ -5,11 +5,9 @@ import com.mojang.brigadier.arguments.BoolArgumentType;
 import com.mojang.logging.LogUtils;
 import net.masterquentus.hexcraftmod.block.entity.renderer.SacrificialPillarBlockEntityRenderer;
 import net.masterquentus.hexcraftmod.block.events.VampireProgressionHandler;
-import net.masterquentus.hexcraftmod.block.render.PandorasBoxRenderer;
 import net.masterquentus.hexcraftmod.block.entity.client.HexcraftBoatRenderer;
 import net.masterquentus.hexcraftmod.block.entity.client.HexcraftChestRenderer;
 import net.masterquentus.hexcraftmod.block.events.PandoraMobLootHandler;
-import net.masterquentus.hexcraftmod.block.render.SacrificialPillarRenderer;
 import net.masterquentus.hexcraftmod.client.render.VampireHUDRenderer;
 import net.masterquentus.hexcraftmod.comands.VampireCommand;
 import net.masterquentus.hexcraftmod.config.HexcraftConfig;
@@ -175,7 +173,6 @@ public class HexcraftMod {
 			CapabilityManager.get(new CapabilityToken<SiphonerData>() {});
 
 
-			// Register the Leach Chest Block Entity
 			HexcraftBlockEntities.BLOCK_ENTITIES.register(modEventBus);
 
 			// Other setup logic, such as adding plants to flower pots, etc.
@@ -329,6 +326,7 @@ public class HexcraftMod {
 			event.registerLayerDefinition(LAYER_DOUBLE_CHEST_RIGHT, HexcraftChestRenderer::createDoubleBodyRightLayer);
 		}
 
+
 		@SubscribeEvent
 		public static void onClientSetup(FMLClientSetupEvent event) {
 
@@ -383,8 +381,7 @@ public class HexcraftMod {
 				EntityRenderers.register(HexcraftEntities.HEXCRAFT_CHEST_BOAT.get(), pContext -> new HexcraftBoatRenderer(pContext, true));
 
 				// Register other block entity renderers
-				BlockEntityRenderers.register(HexcraftBlockEntities.PANDORAS_BOX_ENTITY.get(), PandorasBoxRenderer::new);
-				BlockEntityRenderers.register(HexcraftBlockEntities.SACRIFICIAL_PILLAR_ENTITY.get(), SacrificialPillarRenderer::new);
+				BlockEntityRenderers.register(HexcraftBlockEntities.SACRIFICIAL_PILLAR_ENTITY.get(), SacrificialPillarBlockEntityRenderer::new);
 			});
 		}
 	}

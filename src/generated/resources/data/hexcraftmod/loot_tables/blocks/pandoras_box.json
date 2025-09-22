@@ -11,7 +11,7 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "hexcraftmod:pandoras_box"
+          "name": "hexcraftmod:pandoras_box_item"
         }
       ],
       "rolls": 1.0

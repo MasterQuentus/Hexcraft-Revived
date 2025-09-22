@@ -1,10 +1,32 @@
 {
   "values": [
     "hexcraftmod:pearl_stone_stairs",
+    "hexcraftmod:pearl_cobblestone_stairs",
+    "hexcraftmod:pearl_stone_bricks_stairs",
+    "hexcraftmod:polished_pearl_stone_stairs",
     "hexcraftmod:crimson_stone_stairs",
+    "hexcraftmod:crimson_cobblestone_stairs",
+    "hexcraftmod:crimson_stone_bricks_stairs",
+    "hexcraftmod:polished_crimson_stone_stairs",
     "hexcraftmod:under_world_stone_stairs",
+    "hexcraftmod:under_world_cobblestone_stairs",
+    "hexcraftmod:under_world_stone_bricks_stairs",
+    "hexcraftmod:polished_under_world_stone_stairs",
     "hexcraftmod:charstone_stairs",
+    "hexcraftmod:charstone_cobblestone_stairs",
+    "hexcraftmod:charstone_bricks_stairs",
+    "hexcraftmod:polished_charstone_stairs",
+    "hexcraftmod:igneorock_stairs",
+    "hexcraftmod:igneorock_cobblestone_stairs",
+    "hexcraftmod:igneorock_stone_bricks_stairs",
+    "hexcraftmod:polished_igneorock_stairs",
+    "hexcraftmod:bloodshale",
+    "hexcraftmod:bloodshale_cobblestone_stairs",
+    "hexcraftmod:bloodshale_stone_bricks_stairs",
+    "hexcraftmod:polished_bloodshale_stairs",
     "hexcraftmod:crimson_sand_stone_stairs",
+    "hexcraftmod:smooth_crimson_sand_stone_stairs",
+    "hexcraftmod:fairy_sand_stone_stairs",
     "hexcraftmod:smooth_crimson_sand_stone_stairs"
   ]
 }

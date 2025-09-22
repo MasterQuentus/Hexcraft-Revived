@@ -8,11 +8,11 @@ import net.minecraft.world.level.block.state.BlockState;
 
 public class HexcraftSignBlockEntity extends SignBlockEntity {
     public HexcraftSignBlockEntity(BlockPos pPos, BlockState pBlockState) {
-        super(HexcraftBlockEntities.Hexcraft_SIGN.get(),pPos, pBlockState);
+        super(HexcraftBlockEntities.HEXCRAFT_SIGN.get(),pPos, pBlockState);
     }
 
     @Override
     public BlockEntityType<?> getType() {
-        return HexcraftBlockEntities.Hexcraft_SIGN.get();
+        return HexcraftBlockEntities.HEXCRAFT_SIGN.get();
     }
 }

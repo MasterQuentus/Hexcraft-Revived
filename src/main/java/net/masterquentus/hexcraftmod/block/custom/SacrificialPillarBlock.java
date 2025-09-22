@@ -18,6 +18,8 @@ import net.minecraft.world.level.block.BaseEntityBlock;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.RenderShape;
 import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraft.world.level.block.entity.BlockEntityTicker;
+import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
@@ -39,9 +41,12 @@ public class SacrificialPillarBlock extends BaseEntityBlock {
     public void tick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
         BlockEntity entity = level.getBlockEntity(pos);
         if (entity instanceof SacrificialPillarBlockEntity pillar) {
-            pillar.broadcastMessage("⏳ DEBUG: Tick detected on Sacrificial Pillar!", ChatFormatting.BLUE);
+            // pillar.broadcastMessage("⏳ DEBUG: Tick detected on Sacrificial Pillar!", ChatFormatting.BLUE);
             pillar.attemptRitual();
         }
+
+        // Schedule next tick so ritual keeps updating
+        level.scheduleTick(pos, this, 1);
     }
 
     @Override
@@ -111,7 +116,7 @@ public class SacrificialPillarBlock extends BaseEntityBlock {
         }
 
         // Always try ritual after interaction
-        player.displayClientMessage(Component.literal("🔮 DEBUG: Attempting ritual..."), true);
+        //player.displayClientMessage(Component.literal("🔮 DEBUG: Attempting ritual..."), true);
         pillar.attemptRitual();
 
         return InteractionResult.PASS;
@@ -132,6 +137,23 @@ public class SacrificialPillarBlock extends BaseEntityBlock {
     @Override
     public BlockEntity newBlockEntity(BlockPos pos, BlockState state) {
         return new SacrificialPillarBlockEntity(pos, state);
+    }
+
+    @Override
+    public void onPlace(BlockState state, Level level, BlockPos pos, BlockState oldState, boolean isMoving) {
+        if (!level.isClientSide) {
+            // Schedule first tick in 1 tick (so your tick method will run)
+            level.scheduleTick(pos, this, 1);
+        }
+    }
+
+    @Override
+    public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level level, BlockState state, BlockEntityType<T> type) {
+        return (lvl, pos, st, be) -> {
+            if (be instanceof SacrificialPillarBlockEntity pillar) {
+                pillar.tick(); // calls the tick method in your BlockEntity
+            }
+        };
     }
 
 }

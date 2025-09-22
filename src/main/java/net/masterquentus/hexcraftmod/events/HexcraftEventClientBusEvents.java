@@ -23,8 +23,8 @@ public class HexcraftEventClientBusEvents {
     public static void registerBER(EntityRenderersEvent.RegisterRenderers event) {
 
 
-        event.registerBlockEntityRenderer(HexcraftBlockEntities.Hexcraft_SIGN.get(), SignRenderer::new);
-        event.registerBlockEntityRenderer(HexcraftBlockEntities.Hexcraft_HANGING_SIGN.get(), HangingSignRenderer::new);
+        event.registerBlockEntityRenderer(HexcraftBlockEntities.HEXCRAFT_SIGN.get(), SignRenderer::new);
+        event.registerBlockEntityRenderer(HexcraftBlockEntities.HEXCRAFT_HANGING_SIGN.get(), HangingSignRenderer::new);
         event.registerBlockEntityRenderer(HexcraftBlockEntities.CHEST.get(), HexcraftChestRenderer::new);
     }
 

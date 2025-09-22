@@ -1388,11 +1388,11 @@ public class HexcraftItems {
     public static final RegistryObject<Item> ECHO_WOOD_CHEST_BOAT = ITEMS.register("echo_wood_chest_boat",
             () -> new HexcraftBoatItem(true, HexcraftBoatEntity.Type.ECHO_WOOD, new Item.Properties()));
 
-    //public static final RegistryObject<Item> PHOENIX_BOAT = ITEMS.register("phoenix_boat",
-            //() -> new HexcraftBoatItem(false, HexcraftBoatEntity.Type.PHOENIX, new Item.Properties()));
+    public static final RegistryObject<Item> PHOENIX_BOAT = ITEMS.register("phoenix_boat",
+            () -> new HexcraftBoatItem(false, HexcraftBoatEntity.Type.PHOENIX, new Item.Properties()));
 
-    //public static final RegistryObject<Item> PHOENIX_CHEST_BOAT = ITEMS.register("phoenix_chest_boat",
-            //() -> new HexcraftBoatItem(true, HexcraftBoatEntity.Type.PHOENIX, new Item.Properties()));
+    public static final RegistryObject<Item> PHOENIX_CHEST_BOAT = ITEMS.register("phoenix_chest_boat",
+            () -> new HexcraftBoatItem(true, HexcraftBoatEntity.Type.PHOENIX, new Item.Properties()));
 
 
     //Chest

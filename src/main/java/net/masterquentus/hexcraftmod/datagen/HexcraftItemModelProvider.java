@@ -426,7 +426,7 @@ public class HexcraftItemModelProvider extends ItemModelProvider {
 		//simpleItem(HexcraftItems.WITCH_WOOD_CHEST_BOAT);
 		//simpleItem(HexcraftItems.ECHO_WOOD_BOAT);
 		//simpleItem(HexcraftItems.ECHO_WOOD_CHEST_BOAT);
-		//simpleItem(HexcraftItems.PHOENIX_BOAT);
+		simpleItem(HexcraftItems.PHOENIX_BOAT);
 		//simpleItem(HexcraftItems.PHOENIX_CHEST_BOAT);
 
 		//handheldItem(HexcraftItems.STEEL_SWORD);

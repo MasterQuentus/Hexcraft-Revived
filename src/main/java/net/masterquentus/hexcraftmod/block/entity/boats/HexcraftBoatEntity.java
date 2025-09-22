@@ -18,6 +18,8 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 
+import static net.masterquentus.hexcraftmod.util.HexcraftWoodTypes.PHOENIX;
+
 public class HexcraftBoatEntity extends Boat {
 	private static final EntityDataAccessor<Integer> DATA_ID_TYPE = SynchedEntityData.defineId(Boat.class,
 			EntityDataSerializers.INT);
@@ -55,7 +57,7 @@ public class HexcraftBoatEntity extends Boat {
 			case WITCH_HAZEL -> HexcraftItems.WITCH_HAZEL_BOAT.get();
 			case WITCH_WOOD -> HexcraftItems.WITCH_WOOD_BOAT.get();
 			case ECHO_WOOD -> HexcraftItems.ECHO_WOOD_BOAT.get();
-			//case PHOENIX -> HexcraftItems.PHOENIX_BOAT.get();
+			case PHOENIX -> HexcraftItems.PHOENIX_BOAT.get();
 		};
 
 		System.out.println("DEBUG: Boat Broken - " + type + " -> Drops: " + item);
@@ -105,13 +107,16 @@ public class HexcraftBoatEntity extends Boat {
 		ALDER(HexcraftBlocks.ALDER_PLANKS.get(), "alder"),
 		WITCH_HAZEL(HexcraftBlocks.WITCH_HAZEL_PLANKS.get(), "witch_hazel"),
 		WILLOW(HexcraftBlocks.WILLOW_PLANKS.get(), "willow"),
-		HAWTHORN(HexcraftBlocks.HAWTHORN_PLANKS.get(), "hawthorn"), CEDAR(HexcraftBlocks.CEDAR_PLANKS.get(), "cedar"),
+		HAWTHORN(HexcraftBlocks.HAWTHORN_PLANKS.get(), "hawthorn"),
+		CEDAR(HexcraftBlocks.CEDAR_PLANKS.get(), "cedar"),
 		DISTORTED(HexcraftBlocks.DISTORTED_PLANKS.get(), "distorted"),
-		ELDER(HexcraftBlocks.ELDER_PLANKS.get(), "elder"), JUNIPER(HexcraftBlocks.JUNIPER_PLANKS.get(), "juniper"),
-		ROWAN(HexcraftBlocks.ROWAN_PLANKS.get(), "rowan"), TWISTED(HexcraftBlocks.TWISTED_PLANKS.get(), "twisted"),
+		ELDER(HexcraftBlocks.ELDER_PLANKS.get(), "elder"),
+		JUNIPER(HexcraftBlocks.JUNIPER_PLANKS.get(), "juniper"),
+		ROWAN(HexcraftBlocks.ROWAN_PLANKS.get(), "rowan"),
+		TWISTED(HexcraftBlocks.TWISTED_PLANKS.get(), "twisted"),
 		WITCH_WOOD(HexcraftBlocks.WITCH_WOOD_PLANKS.get(), "witch_wood"),
-		ECHO_WOOD(HexcraftBlocks.ECHO_WOOD_PLANKS.get(), "echo_wood");
-		//PHOENIX(HexcraftBlocks.PHOENIX_PLANKS.get(), "phoenix");
+		ECHO_WOOD(HexcraftBlocks.ECHO_WOOD_PLANKS.get(), "echo_wood"),
+		PHOENIX(HexcraftBlocks.PHOENIX_PLANKS.get(), "phoenix");
 
 		private final String name;
 		private final Block planks;

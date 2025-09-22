@@ -1,4 +1,4 @@
-// 1.20.1	2025-07-03T02:06:51.4298006	Item Models: hexcraftmod
+// 1.20.1	2025-09-21T21:50:56.3072053	Item Models: hexcraftmod
 d31e8b29755a61296a2b4fd100f8b3b260f3becd assets/hexcraftmod/models/item/abyssal_coal.json
 2bbb18db183d9511a2dfbcba9d826be0e4991afb assets/hexcraftmod/models/item/abyssium_ingot.json
 fbf3c0516eda2f1f4177cd57eb701056504c40a6 assets/hexcraftmod/models/item/abyssium_nugget.json
@@ -207,6 +207,7 @@ cdb5ab3b9c9a459c0191138e0ffd8188d35bff1d assets/hexcraftmod/models/item/pearl_st
 813064a4068890fc119d3ad8a3c0e3be62b339b9 assets/hexcraftmod/models/item/pearl_stone_wall.json
 ed47966c4bc181ccc92202598365eb0c63516978 assets/hexcraftmod/models/item/perennia.json
 e5a6aa32b584d9ff6f0dd7b849126a40d07bc456 assets/hexcraftmod/models/item/perennia_seeds.json
+356c6faa7a0c8004f560ae96db0d851ab964f3dd assets/hexcraftmod/models/item/phoenix_boat.json
 6941da08d6cad47af44512443a9fbd00cd5ce8c4 assets/hexcraftmod/models/item/phoenix_button.json
 1df12abcd56b63bc413d4c941dccc1b4a08fcb70 assets/hexcraftmod/models/item/phoenix_door.json
 ccf69ea1ee5c8941c917d6fa11a2876155945f3a assets/hexcraftmod/models/item/phoenix_fence.json

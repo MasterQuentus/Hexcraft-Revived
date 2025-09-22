@@ -598,6 +598,7 @@ public class HexcraftCreativeModTabs {
                         output.accept(HexcraftItems.TWISTED_BOAT.get());
                         output.accept(HexcraftItems.WITCH_WOOD_BOAT.get());
                         output.accept(HexcraftItems.ECHO_WOOD_BOAT.get());
+                        output.accept(HexcraftItems.PHOENIX_BOAT.get());
                         output.accept(HexcraftItems.EBONY_CHEST_BOAT.get());
                         output.accept(HexcraftItems.BLOOD_OAK_CHEST_BOAT.get());
                         output.accept(HexcraftItems.HELL_BARK_CHEST_BOAT.get());
@@ -614,8 +615,7 @@ public class HexcraftCreativeModTabs {
                         output.accept(HexcraftItems.TWISTED_CHEST_BOAT.get());
                         output.accept(HexcraftItems.WITCH_WOOD_CHEST_BOAT.get());
                         output.accept(HexcraftItems.ECHO_WOOD_CHEST_BOAT.get());
-                        //output.accept(HexcraftItems.PHOENIX_BOAT.get());
-                        //output.accept(HexcraftItems.PHOENIX_CHEST_BOAT.get());
+                        output.accept(HexcraftItems.PHOENIX_CHEST_BOAT.get());
 
 // Bookshelves
                         output.accept(HexcraftBlocks.EBONY_BOOKSHELF.get());

@@ -101,6 +101,12 @@ public class HexcraftModelLayers {
 
     public static final ModelLayerLocation ECHO_WOOD_CHEST_BOAT_LAYER = new ModelLayerLocation(
             new ResourceLocation(HexcraftMod.MOD_ID, "chest_boat/echo_wood"), "main");
+
+    public static final ModelLayerLocation PHOENIX_BOAT_LAYER = new ModelLayerLocation(
+            new ResourceLocation(HexcraftMod.MOD_ID, "boat/phoenix"), "main");
+
+    public static final ModelLayerLocation PHOENIX_CHEST_BOAT_LAYER = new ModelLayerLocation(
+            new ResourceLocation(HexcraftMod.MOD_ID, "chest_boat/phoenix"), "main");
     
     
     

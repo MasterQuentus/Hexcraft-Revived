@@ -82,5 +82,8 @@ public class ModEvents {
         event.registerLayerDefinition(HexcraftModelLayers.ECHO_WOOD_BOAT_LAYER, BoatModel::createBodyModel);
         event.registerLayerDefinition(HexcraftModelLayers.ECHO_WOOD_CHEST_BOAT_LAYER, ChestBoatModel::createBodyModel);
 
+        event.registerLayerDefinition(HexcraftModelLayers.PHOENIX_BOAT_LAYER, BoatModel::createBodyModel);
+        event.registerLayerDefinition(HexcraftModelLayers.PHOENIX_CHEST_BOAT_LAYER, ChestBoatModel::createBodyModel);
+
     }
 }

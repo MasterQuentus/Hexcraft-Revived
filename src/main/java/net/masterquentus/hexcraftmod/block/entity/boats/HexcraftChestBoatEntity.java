@@ -48,7 +48,7 @@ public class HexcraftChestBoatEntity extends ChestBoat {
 			case WITCH_HAZEL -> HexcraftItems.WITCH_HAZEL_CHEST_BOAT.get();
 			case WITCH_WOOD -> HexcraftItems.WITCH_WOOD_CHEST_BOAT.get();
 			case ECHO_WOOD -> HexcraftItems.ECHO_WOOD_CHEST_BOAT.get();
-			//case PHOENIX -> HexcraftItems.PHOENIX_CHEST_BOAT.get();
+			case PHOENIX -> HexcraftItems.PHOENIX_CHEST_BOAT.get();
 		};
 	}
 

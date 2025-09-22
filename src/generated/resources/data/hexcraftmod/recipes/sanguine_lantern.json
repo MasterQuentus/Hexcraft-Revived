@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "B": {
+      "item": "hexcraftmod:bloodshale_shards"
+    },
+    "U": {
+      "item": "hexcraftmod:umbracite_ingot"
+    }
+  },
+  "pattern": [
+    "UBU",
+    "BBB",
+    "UBU"
+  ],
+  "result": {
+    "item": "hexcraftmod:sanguine_lantern"
+  },
+  "show_notification": true
+}

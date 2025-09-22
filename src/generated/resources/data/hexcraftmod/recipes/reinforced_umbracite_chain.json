@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "U": {
+      "item": "hexcraftmod:umbracite_bars"
+    }
+  },
+  "pattern": [
+    "UUU",
+    "UUU",
+    "UUU"
+  ],
+  "result": {
+    "count": 16,
+    "item": "hexcraftmod:reinforced_umbracite_chain"
+  },
+  "show_notification": true
+}

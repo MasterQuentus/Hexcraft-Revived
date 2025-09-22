@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:smelting",
+  "category": "misc",
+  "cookingtime": 200,
+  "experience": 0.7,
+  "group": "umbracite_ingot",
+  "ingredient": {
+    "item": "hexcraftmod:raw_umbracite"
+  },
+  "result": "hexcraftmod:umbracite_ingot"
+}

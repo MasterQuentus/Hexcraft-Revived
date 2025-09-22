@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "N": {
+      "item": "hexcraftmod:umbracite_nugget"
+    },
+    "U": {
+      "item": "hexcraftmod:umbracite_ingot"
+    }
+  },
+  "pattern": [
+    " N ",
+    " U ",
+    " N "
+  ],
+  "result": {
+    "item": "hexcraftmod:umbracite_chain"
+  },
+  "show_notification": true
+}

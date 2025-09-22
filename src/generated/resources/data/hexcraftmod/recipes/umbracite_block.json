@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "U": {
+      "item": "hexcraftmod:umbracite_ingot"
+    }
+  },
+  "pattern": [
+    "UUU",
+    "UUU",
+    "UUU"
+  ],
+  "result": {
+    "item": "hexcraftmod:umbracite_block"
+  },
+  "show_notification": true
+}

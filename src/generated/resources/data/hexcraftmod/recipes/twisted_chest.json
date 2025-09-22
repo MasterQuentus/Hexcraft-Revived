@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "T": {
+      "item": "hexcraftmod:twisted_planks"
+    }
+  },
+  "pattern": [
+    "TTT",
+    "T T",
+    "TTT"
+  ],
+  "result": {
+    "item": "hexcraftmod:twisted_chest"
+  },
+  "show_notification": true
+}

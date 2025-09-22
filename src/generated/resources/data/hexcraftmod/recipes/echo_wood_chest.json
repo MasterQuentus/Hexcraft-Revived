@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "E": {
+      "item": "hexcraftmod:echo_wood_planks"
+    }
+  },
+  "pattern": [
+    "EEE",
+    "E E",
+    "EEE"
+  ],
+  "result": {
+    "item": "hexcraftmod:echo_wood_chest"
+  },
+  "show_notification": true
+}

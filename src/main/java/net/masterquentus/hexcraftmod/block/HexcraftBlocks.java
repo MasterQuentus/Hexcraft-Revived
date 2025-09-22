@@ -8,10 +8,10 @@ import net.masterquentus.hexcraftmod.block.custom.*;
 import net.masterquentus.hexcraftmod.block.custom.UnderworldPortalBlock;
 import net.masterquentus.hexcraftmod.block.custom.chalk.AbstractChalkBlock;
 import net.masterquentus.hexcraftmod.block.custom.plants.*;
+import net.masterquentus.hexcraftmod.block.custom.signs.HexcraftHangingSignBlock;
 import net.masterquentus.hexcraftmod.block.custom.signs.HexcraftStadingSignBlock;
 import net.masterquentus.hexcraftmod.block.custom.signs.HexcraftWallHangingSignBlock;
 import net.masterquentus.hexcraftmod.block.custom.signs.HexcraftWallSignBlock;
-import net.masterquentus.hexcraftmod.block.custom.signs.HexcraftlHangingSignBlock;
 import net.masterquentus.hexcraftmod.block.entity.custom.*;
 import net.masterquentus.hexcraftmod.block.entity.custom.liquid.DeepWaterBlock;
 import net.masterquentus.hexcraftmod.effects.HexcraftEffects;
@@ -1979,55 +1979,55 @@ public class HexcraftBlocks {
 			() -> new HexcraftWallSignBlock(BlockBehaviour.Properties.copy(Blocks.OAK_WALL_SIGN), HexcraftWoodTypes.PHOENIX));
 
 	public static final RegistryObject<Block> EBONY_HANGING_SIGN = BLOCKS.register("ebony_hanging_sign",
-			() -> new HexcraftlHangingSignBlock(BlockBehaviour.Properties.copy(Blocks.OAK_HANGING_SIGN), HexcraftWoodTypes.EBONY));
+			() -> new HexcraftHangingSignBlock(BlockBehaviour.Properties.copy(Blocks.OAK_HANGING_SIGN), HexcraftWoodTypes.EBONY));
 
 	public static final RegistryObject<Block> BLOOD_OAK_HANGING_SIGN = BLOCKS.register("blood_oak_hanging_sign",
-			() -> new HexcraftlHangingSignBlock(BlockBehaviour.Properties.copy(Blocks.OAK_HANGING_SIGN), HexcraftWoodTypes.BLOOD_OAK));
+			() -> new HexcraftHangingSignBlock(BlockBehaviour.Properties.copy(Blocks.OAK_HANGING_SIGN), HexcraftWoodTypes.BLOOD_OAK));
 
 	public static final RegistryObject<Block> HELL_BARK_HANGING_SIGN = BLOCKS.register("hell_bark_hanging_sign",
-			() -> new HexcraftlHangingSignBlock(BlockBehaviour.Properties.copy(Blocks.OAK_HANGING_SIGN), HexcraftWoodTypes.HELL_BARK));
+			() -> new HexcraftHangingSignBlock(BlockBehaviour.Properties.copy(Blocks.OAK_HANGING_SIGN), HexcraftWoodTypes.HELL_BARK));
 
 	public static final RegistryObject<Block> WHITE_OAK_HANGING_SIGN = BLOCKS.register("white_oak_hanging_sign",
-			() -> new HexcraftlHangingSignBlock(BlockBehaviour.Properties.copy(Blocks.OAK_HANGING_SIGN), HexcraftWoodTypes.WHITE_OAK));
+			() -> new HexcraftHangingSignBlock(BlockBehaviour.Properties.copy(Blocks.OAK_HANGING_SIGN), HexcraftWoodTypes.WHITE_OAK));
 
 	public static final RegistryObject<Block> ALDER_HANGING_SIGN = BLOCKS.register("alder_hanging_sign",
-			() -> new HexcraftlHangingSignBlock(BlockBehaviour.Properties.copy(Blocks.OAK_HANGING_SIGN), HexcraftWoodTypes.ALDER));
+			() -> new HexcraftHangingSignBlock(BlockBehaviour.Properties.copy(Blocks.OAK_HANGING_SIGN), HexcraftWoodTypes.ALDER));
 
 	public static final RegistryObject<Block> WITCH_HAZEL_HANGING_SIGN = BLOCKS.register("witch_hazel_hanging_sign",
-			() -> new HexcraftlHangingSignBlock(BlockBehaviour.Properties.copy(Blocks.OAK_HANGING_SIGN), HexcraftWoodTypes.WITCH_HAZEL));
+			() -> new HexcraftHangingSignBlock(BlockBehaviour.Properties.copy(Blocks.OAK_HANGING_SIGN), HexcraftWoodTypes.WITCH_HAZEL));
 
 	public static final RegistryObject<Block> WILLOW_HANGING_SIGN = BLOCKS.register("willow_hanging_sign",
-			() -> new HexcraftlHangingSignBlock(BlockBehaviour.Properties.copy(Blocks.OAK_HANGING_SIGN), HexcraftWoodTypes.WILLOW));
+			() -> new HexcraftHangingSignBlock(BlockBehaviour.Properties.copy(Blocks.OAK_HANGING_SIGN), HexcraftWoodTypes.WILLOW));
 
 	public static final RegistryObject<Block> HAWTHORN_HANGING_SIGN = BLOCKS.register("hawthorn_hanging_sign",
-			() -> new HexcraftlHangingSignBlock(BlockBehaviour.Properties.copy(Blocks.OAK_HANGING_SIGN), HexcraftWoodTypes.HAWTHORN));
+			() -> new HexcraftHangingSignBlock(BlockBehaviour.Properties.copy(Blocks.OAK_HANGING_SIGN), HexcraftWoodTypes.HAWTHORN));
 
 	public static final RegistryObject<Block> CEDAR_HANGING_SIGN = BLOCKS.register("cedar_hanging_sign",
-			() -> new HexcraftlHangingSignBlock(BlockBehaviour.Properties.copy(Blocks.OAK_HANGING_SIGN), HexcraftWoodTypes.CEDAR));
+			() -> new HexcraftHangingSignBlock(BlockBehaviour.Properties.copy(Blocks.OAK_HANGING_SIGN), HexcraftWoodTypes.CEDAR));
 
 	public static final RegistryObject<Block> DISTORTED_HANGING_SIGN = BLOCKS.register("distorted_hanging_sign",
-			() -> new HexcraftlHangingSignBlock(BlockBehaviour.Properties.copy(Blocks.OAK_HANGING_SIGN), HexcraftWoodTypes.DISTORTED));
+			() -> new HexcraftHangingSignBlock(BlockBehaviour.Properties.copy(Blocks.OAK_HANGING_SIGN), HexcraftWoodTypes.DISTORTED));
 
 	public static final RegistryObject<Block> ELDER_HANGING_SIGN = BLOCKS.register("elder_hanging_sign",
-			() -> new HexcraftlHangingSignBlock(BlockBehaviour.Properties.copy(Blocks.OAK_HANGING_SIGN), HexcraftWoodTypes.ELDER));
+			() -> new HexcraftHangingSignBlock(BlockBehaviour.Properties.copy(Blocks.OAK_HANGING_SIGN), HexcraftWoodTypes.ELDER));
 
 	public static final RegistryObject<Block> JUNIPER_HANGING_SIGN = BLOCKS.register("juniper_hanging_sign",
-			() -> new HexcraftlHangingSignBlock(BlockBehaviour.Properties.copy(Blocks.OAK_HANGING_SIGN), HexcraftWoodTypes.JUNIPER));
+			() -> new HexcraftHangingSignBlock(BlockBehaviour.Properties.copy(Blocks.OAK_HANGING_SIGN), HexcraftWoodTypes.JUNIPER));
 
 	public static final RegistryObject<Block> ROWAN_HANGING_SIGN = BLOCKS.register("rowan_hanging_sign",
-			() -> new HexcraftlHangingSignBlock(BlockBehaviour.Properties.copy(Blocks.OAK_HANGING_SIGN), HexcraftWoodTypes.ROWAN));
+			() -> new HexcraftHangingSignBlock(BlockBehaviour.Properties.copy(Blocks.OAK_HANGING_SIGN), HexcraftWoodTypes.ROWAN));
 
 	public static final RegistryObject<Block> TWISTED_HANGING_SIGN = BLOCKS.register("twisted_hanging_sign",
-			() -> new HexcraftlHangingSignBlock(BlockBehaviour.Properties.copy(Blocks.OAK_HANGING_SIGN), HexcraftWoodTypes.TWISTED));
+			() -> new HexcraftHangingSignBlock(BlockBehaviour.Properties.copy(Blocks.OAK_HANGING_SIGN), HexcraftWoodTypes.TWISTED));
 
 	public static final RegistryObject<Block> WITCH_WOOD_HANGING_SIGN = BLOCKS.register("witch_wood_hanging_sign",
-			() -> new HexcraftlHangingSignBlock(BlockBehaviour.Properties.copy(Blocks.OAK_HANGING_SIGN), HexcraftWoodTypes.WITCH_WOOD));
+			() -> new HexcraftHangingSignBlock(BlockBehaviour.Properties.copy(Blocks.OAK_HANGING_SIGN), HexcraftWoodTypes.WITCH_WOOD));
 
 	public static final RegistryObject<Block> ECHO_WOOD_HANGING_SIGN = BLOCKS.register("echo_hanging_sign",
-			() -> new HexcraftlHangingSignBlock(BlockBehaviour.Properties.copy(Blocks.OAK_HANGING_SIGN), HexcraftWoodTypes.ECHO_WOOD));
+			() -> new HexcraftHangingSignBlock(BlockBehaviour.Properties.copy(Blocks.OAK_HANGING_SIGN), HexcraftWoodTypes.ECHO_WOOD));
 
 	public static final RegistryObject<Block> PHOENIX_HANGING_SIGN = BLOCKS.register("phoenix_hanging_sign",
-			() -> new HexcraftlHangingSignBlock(BlockBehaviour.Properties.copy(Blocks.OAK_HANGING_SIGN), HexcraftWoodTypes.PHOENIX));
+			() -> new HexcraftHangingSignBlock(BlockBehaviour.Properties.copy(Blocks.OAK_HANGING_SIGN), HexcraftWoodTypes.PHOENIX));
 
 	public static final RegistryObject<Block> EBONY_WALL_HANGING_SIGN = BLOCKS.register("ebony_wall_hanging_sign",
 			() -> new HexcraftWallHangingSignBlock(BlockBehaviour.Properties.copy(Blocks.OAK_WALL_HANGING_SIGN), HexcraftWoodTypes.EBONY));

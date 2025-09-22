@@ -1,0 +1,35 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_raw_umbracite": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "hexcraftmod:raw_umbracite"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "hexcraftmod:umbracite_ingot_from_smelting_raw_umbracite"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_raw_umbracite",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "hexcraftmod:umbracite_ingot_from_smelting_raw_umbracite"
+    ]
+  },
+  "sends_telemetry_event": false
+}

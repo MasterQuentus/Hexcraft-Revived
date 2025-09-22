@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "S": {
+      "item": "hexcraftmod:umbracite_ingot"
+    }
+  },
+  "pattern": [
+    "S S",
+    "SSS",
+    "SSS"
+  ],
+  "result": {
+    "item": "hexcraftmod:umbracite_chestplate"
+  },
+  "show_notification": true
+}

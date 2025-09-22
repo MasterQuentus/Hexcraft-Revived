@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "C": {
+      "item": "hexcraftmod:cedar_planks"
+    }
+  },
+  "pattern": [
+    "CCC",
+    "C C",
+    "CCC"
+  ],
+  "result": {
+    "item": "hexcraftmod:cedar_chest"
+  },
+  "show_notification": true
+}

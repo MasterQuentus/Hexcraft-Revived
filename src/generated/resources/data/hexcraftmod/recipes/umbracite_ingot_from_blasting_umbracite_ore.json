@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:blasting",
+  "category": "misc",
+  "cookingtime": 100,
+  "experience": 0.7,
+  "group": "umbracite_ingot",
+  "ingredient": {
+    "item": "hexcraftmod:umbracite_ore"
+  },
+  "result": "hexcraftmod:umbracite_ingot"
+}

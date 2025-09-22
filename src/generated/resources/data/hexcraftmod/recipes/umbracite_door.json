@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "U": {
+      "item": "hexcraftmod:umbracite_ingot"
+    }
+  },
+  "pattern": [
+    "UU ",
+    "UU ",
+    "UU "
+  ],
+  "result": {
+    "count": 3,
+    "item": "hexcraftmod:umbracite_door"
+  },
+  "show_notification": true
+}

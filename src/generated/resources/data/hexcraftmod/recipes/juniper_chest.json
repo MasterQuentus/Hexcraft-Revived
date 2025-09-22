@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "J": {
+      "item": "hexcraftmod:juniper_planks"
+    }
+  },
+  "pattern": [
+    "JJJ",
+    "J J",
+    "JJJ"
+  ],
+  "result": {
+    "item": "hexcraftmod:juniper_chest"
+  },
+  "show_notification": true
+}

@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "hexcraftmod:umbracite_ingot"
+    }
+  ],
+  "result": {
+    "count": 9,
+    "item": "hexcraftmod:umbracite_nugget"
+  }
+}

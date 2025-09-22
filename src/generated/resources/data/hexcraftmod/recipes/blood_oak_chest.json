@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "B": {
+      "item": "hexcraftmod:blood_oak_planks"
+    }
+  },
+  "pattern": [
+    "BBB",
+    "B B",
+    "BBB"
+  ],
+  "result": {
+    "item": "hexcraftmod:blood_oak_chest"
+  },
+  "show_notification": true
+}

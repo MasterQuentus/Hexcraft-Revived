@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "S": {
+      "item": "hexcraftmod:umbracite_ingot"
+    },
+    "W": {
+      "item": "minecraft:stick"
+    }
+  },
+  "pattern": [
+    " S ",
+    " W ",
+    " W "
+  ],
+  "result": {
+    "item": "hexcraftmod:umbracite_shovel"
+  },
+  "show_notification": true
+}

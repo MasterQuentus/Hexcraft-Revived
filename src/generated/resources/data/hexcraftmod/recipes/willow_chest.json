@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "W": {
+      "item": "hexcraftmod:willow_planks"
+    }
+  },
+  "pattern": [
+    "WWW",
+    "W W",
+    "WWW"
+  ],
+  "result": {
+    "item": "hexcraftmod:willow_chest"
+  },
+  "show_notification": true
+}
